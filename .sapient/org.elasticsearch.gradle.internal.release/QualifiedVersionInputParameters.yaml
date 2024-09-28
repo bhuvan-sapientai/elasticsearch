@@ -1,0 +1,817 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+methods:
+- method:
+    name: "of"
+    sourceCodeSignature: "QualifiedVersion of(final String s)"
+    returnType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    parameters:
+    - name: "s"
+      type: "java.lang.String"
+    instructionFingerprint: "562739F50B4DD3672A3FDAF60275750C"
+  paths:
+  - testPathName: "ofWhenMatcherMatchesEqualsFalseThrowsIllegalArgumentException"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "s"
+      valueUuid: "s"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "s"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Invalid version format: 'B'. Should be ^v? (\\\\d+) \\\\. (\\\
+                \\d+) \\\\. (\\\\d+) (?: - (alpha\\\\d+ | beta\\\\d+ | rc\\\\d+ |\
+                \ SNAPSHOT ) )? $"
+            valueType: "java.lang.String"
+            uuid: "string3"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 42
+      expression: "matcher.matches() == false"
+      range: "(42,13)-(42,38)"
+      evaluatedAs: true
+  - testPathName: "ofWhenMatcherGroup4IsNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "s"
+      valueUuid: "s"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "qualifiedVersion2"
+    disabled: false
+    failureReason:
+      reason: "PROVER_COULD_NOT_SOLVE_THE_PROBLEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "s1"
+      valueType: "java.lang.String"
+      uuid: "s"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int3"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int4"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int5"
+        - name: "qualifier"
+          value:
+            sapientType: "NULL"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier2"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion2"
+    branches:
+    - lineNumber: 42
+      expression: "matcher.matches() == false"
+      range: "(42,13)-(42,38)"
+      evaluatedAs: false
+    - lineNumber: 50
+      expression: "matcher.group(4) == null"
+      range: "(50,13)-(50,36)"
+      evaluatedAs: true
+  - testPathName: "ofWhenMatcherGroup4IsNotNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "s"
+      valueUuid: "s"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "qualifiedVersion2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_ACCESS_IGNORE_DEPENDENCY_CALLS"
+      source: "matcher.group(4) == null ? null : Qualifier.of(matcher.group(4))"
+      lineNumber: 50
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "s1"
+      valueType: "java.lang.String"
+      uuid: "s"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int3"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int4"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int5"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifiedVersionQualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion2"
+    branches:
+    - lineNumber: 42
+      expression: "matcher.matches() == false"
+      range: "(42,13)-(42,38)"
+      evaluatedAs: false
+    - lineNumber: 50
+      expression: "matcher.group(4) == null"
+      range: "(50,13)-(50,36)"
+      evaluatedAs: false
+- method:
+    name: "toString"
+    sourceCodeSignature: "String toString()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "E3183EDCE697D57D7505AA2B0EE69117"
+  paths:
+  - testPathName: "toStringWhenQualifierIsNull"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "NULL"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "null.null.nullnull"
+      valueType: "java.lang.String"
+      uuid: "string"
+    branches:
+    - lineNumber: 56
+      expression: "qualifier == null"
+      range: "(56,81)-(56,97)"
+      evaluatedAs: true
+  - testPathName: "toStringWhenQualifierIsNotNull"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string3"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.lang.String.format(java.util.Locale,java.lang.String,java.lang.Object[])\
+        \ : java.lang.String"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+            nameForMock: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "result1"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    branches:
+    - lineNumber: 56
+      expression: "qualifier == null"
+      range: "(56,81)-(56,97)"
+      evaluatedAs: false
+- method:
+    name: "hasQualifier"
+    sourceCodeSignature: "boolean hasQualifier()"
+    returnType: "boolean"
+    instructionFingerprint: "E762D91526107A79732F748C6A08736D"
+  paths:
+  - testPathName: "hasQualifierWhenQualifierIsNotNull"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 60
+      expression: "qualifier != null"
+      range: "(60,16)-(60,32)"
+      evaluatedAs: true
+  - testPathName: "hasQualifierWhenQualifierIsNull"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "NULL"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 60
+      expression: "qualifier != null"
+      range: "(60,16)-(60,32)"
+      evaluatedAs: false
+- method:
+    name: "isSnapshot"
+    sourceCodeSignature: "boolean isSnapshot()"
+    returnType: "boolean"
+    instructionFingerprint: "A26612ABFD572ACB9ED1E1D2C4BCA681"
+  paths:
+  - testPathName: "isSnapshotWhenThisQualifierLevelNotEqualsQualifierLevelSNAPSHOT"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 64
+      expression: "this.qualifier != null"
+      range: "(64,16)-(64,37)"
+      evaluatedAs: true
+    - lineNumber: 64
+      expression: "this.qualifier.level == QualifierLevel.SNAPSHOT"
+      range: "(64,42)-(64,88)"
+      evaluatedAs: false
+- method:
+    name: "withoutQualifier"
+    sourceCodeSignature: "QualifiedVersion withoutQualifier()"
+    returnType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    instructionFingerprint: "711D1EF72C6E0F511B5611A9603F7DFA"
+  paths:
+  - testPathName: "withoutQualifierTest"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "qualifiedVersion3"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "NULL"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier3"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion3"
+- method:
+    name: "compareTo"
+    sourceCodeSignature: "int compareTo(QualifiedVersion other)"
+    returnType: "int"
+    parameters:
+    - name: "other"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    instructionFingerprint: "6D31DDD9BF04DEA1F0303BC4A3BE0308"
+  paths:
+  - testPathName: "compareToTest"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator6"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "int3"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "comparator6"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "targetClassObject"
+- method:
+    name: "isBefore"
+    sourceCodeSignature: "boolean isBefore(QualifiedVersion other)"
+    returnType: "boolean"
+    parameters:
+    - name: "other"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    instructionFingerprint: "966C07CD97C4FF399E0CCD83585ACD0E"
+  paths:
+  - testPathName: "isBeforeWhenThisCompareToOtherLessThan0"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator6"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "comparator6"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: -2147483648
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "targetClassObject"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 82
+      expression: "this.compareTo(other) < 0"
+      range: "(82,16)-(82,40)"
+      evaluatedAs: true
+  - testPathName: "isBeforeWhenThisCompareToOtherNotLessThan0"
+    constructorSignature: "<init>(int,int,int,org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator6"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "PRIVATE_INNER_CLASS_COMMENT"
+      details: "PRIVATE_INNER_CLASS_COMMENT"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "revision"
+        - name: "qualifier"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion$Qualifier"
+            uuid: "qualifier"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "comparator6"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "targetClassObject"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 82
+      expression: "this.compareTo(other) < 0"
+      range: "(82,16)-(82,40)"
+      evaluatedAs: false

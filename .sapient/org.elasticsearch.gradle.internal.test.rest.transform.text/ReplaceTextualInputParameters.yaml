@@ -1,0 +1,589 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+methods:
+- method:
+    name: "requiredChildKey"
+    sourceCodeSignature: "String requiredChildKey()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "75BFCDF31AF9D3B8C88E98070038AED0"
+  paths:
+  - testPathName: "requiredChildKeyTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "valueToBeReplaced"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "valueToBeReplaced1"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "valueToBeReplaced1"
+      valueType: "java.lang.String"
+      uuid: "valueToBeReplaced"
+- method:
+    name: "shouldApply"
+    sourceCodeSignature: "boolean shouldApply(RestTestContext testContext)"
+    returnType: "boolean"
+    parameters:
+    - name: "testContext"
+      type: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+    instructionFingerprint: "FC7E9488EDA58F7FFACBCFD482A91C1C"
+  paths:
+  - testPathName: "shouldApplyWhenTestContextTestNameEqualsTestName"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testContext"
+      valueUuid: "testContext"
+    - type: "LOCAL_VARIABLE"
+      name: "testContext"
+      valueUuid: "testContext"
+      methodExercised:
+        expression: "testName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "valueToBeReplaced1"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+      uuid: "testContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 58
+      expression: "testName == null"
+      range: "(58,16)-(58,31)"
+      evaluatedAs: false
+    - lineNumber: 58
+      expression: "testContext.testName().equals(testName)"
+      range: "(58,36)-(58,74)"
+      evaluatedAs: true
+  - testPathName: "shouldApplyWhenTestContextTestNameNotEqualsTestName"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testContext"
+      valueUuid: "testContext"
+    - type: "LOCAL_VARIABLE"
+      name: "testContext"
+      valueUuid: "testContext"
+      methodExercised:
+        expression: "testName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "valueToBeReplaced1"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+      uuid: "testContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 58
+      expression: "testName == null"
+      range: "(58,16)-(58,31)"
+      evaluatedAs: false
+    - lineNumber: 58
+      expression: "testContext.testName().equals(testName)"
+      range: "(58,36)-(58,74)"
+      evaluatedAs: false
+- method:
+    name: "transformTest"
+    sourceCodeSignature: "void transformTest(ObjectNode matchParent)"
+    returnType: "void"
+    parameters:
+    - name: "matchParent"
+      type: "com.fasterxml.jackson.databind.node.ObjectNode"
+    instructionFingerprint: "016F7D6F34F0350775BC9C26FEF1DF9B"
+  paths:
+  - testPathName: "transformTestTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "matchParent"
+      valueUuid: "matchParent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "valueToBeReplaced1"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "matchParent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "matchParent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "matchParent"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "getReplacementNode"
+    sourceCodeSignature: "JsonNode getReplacementNode()"
+    returnType: "com.fasterxml.jackson.databind.JsonNode"
+    instructionFingerprint: "F1E12488BBCCE9F3AB5EF9F5631DB991"
+  paths:
+  - testPathName: "getReplacementNodeTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "replacementNode"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "valueToBeReplaced1"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.TextNode"
+        parameters:
+        - name: "v"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "v1"
+            valueType: "java.lang.String"
+            uuid: "replacementNode-v"
+      valueType: "com.fasterxml.jackson.databind.node.TextNode"
+      uuid: "replacementNode"
+- method:
+    name: "matches"
+    sourceCodeSignature: "boolean matches(JsonNode child)"
+    returnType: "boolean"
+    parameters:
+    - name: "child"
+      type: "com.fasterxml.jackson.databind.JsonNode"
+    instructionFingerprint: "9BCC3F785A5E75494ABAE6D3299A4D78"
+  paths:
+  - testPathName: "matchesWhenChildAsTextEqualsRequiredChildKey"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "child"
+      valueUuid: "child"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "boolean1"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: com.fasterxml.jackson.databind.JsonNode.asText()\
+        \ : java.lang.String"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+        parameters:
+        - name: "v"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "java.math.BigInteger"
+            uuid: "child-v"
+      valueType: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+      uuid: "child"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    branches:
+    - lineNumber: 84
+      expression: "child.asText().equals(requiredChildKey())"
+      range: "(84,16)-(84,56)"
+      evaluatedAs: true
+  - testPathName: "matchesWhenChildAsTextNotEqualsRequiredChildKey"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,com.fasterxml.jackson.databind.node.TextNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "child"
+      valueUuid: "child"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "boolean1"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+        parameters:
+        - name: "keyToReplaceName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "keyToReplaceName1"
+            valueType: "java.lang.String"
+            uuid: "keyToReplaceName"
+        - name: "valueToBeReplaced"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "valueToBeReplaced"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.TextNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "v1"
+                  valueType: "java.lang.String"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.TextNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+        parameters:
+        - name: "v"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "java.math.BigInteger"
+            uuid: "child-v"
+      valueType: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+      uuid: "child"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    branches:
+    - lineNumber: 84
+      expression: "child.asText().equals(requiredChildKey())"
+      range: "(84,16)-(84,56)"
+      evaluatedAs: false

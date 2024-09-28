@@ -1,0 +1,189 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.StringTemplatePlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "74DCD2A8526327D4BD6771E0DBB2C805"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getSourceSets():sourceSetContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "mainSourceSet"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getJava():sourceDirectorySet"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "withType(class-JavaPlugin,configureAction-any):domainObjectCollection"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "file(path):file"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceDirectorySet"
+      methodExercised:
+        expression: "srcDir(taskProvider):sourceDirectorySet2"
+    - type: "LOCAL_VARIABLE"
+      name: "sourceSets"
+      valueUuid: "sourceSetContainer"
+      methodExercised:
+        expression: "getByName(name2):object2"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name,class-StringTemplateTask):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      name: "generateSourceTask"
+      valueUuid: "taskProvider"
+      methodExercised:
+        expression: "configure(action-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.StringTemplatePlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.StringTemplatePlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "class-JavaPluginExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "sourceSetContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.DomainObjectCollection"
+      uuid: "domainObjectCollection"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPlugin"
+      uuid: "class-JavaPlugin"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configureAction-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "src/main/generated-src/"
+      valueType: "java.lang.String"
+      uuid: "path"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.elasticsearch.gradle.internal.StringTemplateTask"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "main"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "stringTemplates"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.StringTemplateTask"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.StringTemplateTask"
+      uuid: "class-StringTemplateTask"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      uuid: "void3"

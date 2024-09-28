@@ -1,0 +1,205 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.testclusters.MockApmServer"
+methods:
+- method:
+    name: "start"
+    sourceCodeSignature: "int start()"
+    returnType: "int"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "53ED30D4B09DDA875BE2EA1418148B4A"
+  paths:
+  - testPathName: "startWhenInstanceIsNull"
+    constructorSignature: "<init>(int) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "STATIC"
+      name: "HttpServer.class"
+      valueUuid: "HttpServer.class"
+      methodExercised:
+        expression: "create(inetSocketAddress-any,backlog):httpServer"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "server"
+      valueUuid: "httpServer"
+      methodExercised:
+        expression: "createContext(arg0,mockApmServerExitHandler-any):httpContext"
+    - type: "LOCAL_VARIABLE"
+      name: "server"
+      valueUuid: "httpServer"
+      methodExercised:
+        expression: "createContext(arg02,httpHandler-any):httpContext2"
+    - type: "LOCAL_VARIABLE"
+      name: "server"
+      valueUuid: "httpServer"
+      methodExercised:
+        expression: "start():void"
+    - type: "LOCAL_VARIABLE"
+      name: "server"
+      valueUuid: "httpServer"
+      methodExercised:
+        expression: "getAddress():inetSocketAddress2"
+    - type: "LOCAL_VARIABLE"
+      name: "server"
+      valueUuid: "httpServer"
+      methodExercised:
+        expression: "getAddress():inetSocketAddress3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "int2"
+    disabled: false
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.net.InetSocketAddress.getPort() : int"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.MockApmServer"
+        parameters:
+        - name: "port"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 9200
+            valueType: "int"
+            uuid: "port"
+      valueType: "org.elasticsearch.gradle.testclusters.MockApmServer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "com.sun.net.httpserver.HttpServer"
+      uuid: "HttpServer.class"
+    - sapientType: "MOCK"
+      valueType: "com.sun.net.httpserver.HttpServer"
+      uuid: "httpServer"
+    - sapientType: "ANY"
+      valueType: "java.net.InetSocketAddress"
+      uuid: "inetSocketAddress-any"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 10
+      valueType: "int"
+      uuid: "backlog"
+    - sapientType: "MOCK"
+      valueType: "com.sun.net.httpserver.HttpContext"
+      uuid: "httpContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "/exit"
+      valueType: "java.lang.String"
+      uuid: "arg0"
+    - sapientType: "ANY"
+      valueType: "org.elasticsearch.gradle.testclusters.MockApmServer$ExitHandler"
+      uuid: "mockApmServerExitHandler-any"
+    - sapientType: "MOCK"
+      valueType: "com.sun.net.httpserver.HttpContext"
+      uuid: "httpContext2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "/"
+      valueType: "java.lang.String"
+      uuid: "arg02"
+    - sapientType: "ANY"
+      valueType: "org.elasticsearch.gradle.testclusters.MockApmServer$RootHandler"
+      uuid: "httpHandler-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.net.InetSocketAddress"
+        parameters:
+        - name: "port"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "inetSocketAddress2-port"
+      valueType: "java.net.InetSocketAddress"
+      uuid: "inetSocketAddress2"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.net.InetSocketAddress"
+        parameters:
+        - name: "port"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "inetSocketAddress3-port"
+      valueType: "java.net.InetSocketAddress"
+      uuid: "inetSocketAddress3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int2"
+    branches:
+    - lineNumber: 63
+      expression: "instance != null"
+      range: "(63,13)-(63,28)"
+      evaluatedAs: false
+- method:
+    name: "stop"
+    sourceCodeSignature: "void stop()"
+    returnType: "void"
+    instructionFingerprint: "BAF797D969B91F1516642CCEEFA32307"
+  paths:
+  - testPathName: "stopTest"
+    constructorSignature: "<init>(int) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "instance"
+      valueUuid: "fieldHttpServer"
+      methodExercised:
+        expression: "stop(arg02):void2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.MockApmServer"
+        parameters:
+        - name: "port"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "port"
+        propertiesMap:
+          instance:
+            sapientType: "MOCK"
+            valueType: "com.sun.net.httpserver.HttpServer"
+            uuid: "fieldHttpServer"
+      valueType: "org.elasticsearch.gradle.testclusters.MockApmServer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "com.sun.net.httpserver.HttpServer"
+      uuid: "fieldHttpServer"
+      nameForMock: "instance"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "int"
+      uuid: "arg02"
+    - sapientType: "VOID"
+      uuid: "void3"

@@ -1,0 +1,359 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+methods:
+- method:
+    name: "transformSetup"
+    sourceCodeSignature: "ObjectNode transformSetup(ObjectNode setupNodeParent)"
+    returnType: "com.fasterxml.jackson.databind.node.ObjectNode"
+    parameters:
+    - name: "setupNodeParent"
+      type: "com.fasterxml.jackson.databind.node.ObjectNode"
+    instructionFingerprint: "A18C1C51432A8E179B17FED6114B54D1"
+  paths:
+  - testPathName: "transformSetupWhenFoundEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "setupNodeParent"
+      valueUuid: "setupNodeParent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "setupNodeParent"
+    disabled: false
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: com.fasterxml.jackson.databind.node.ObjectNode.get(java.lang.String)\
+        \ : com.fasterxml.jackson.databind.JsonNode"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+        parameters:
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+        - name: "skipReason"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "skipReason1"
+            valueType: "java.lang.String"
+            uuid: "skipReason"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "setupNodeParent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "setupNodeParent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "setupNodeParent"
+    branches:
+    - lineNumber: 48
+      expression: "testName.isBlank()"
+      range: "(48,13)-(48,30)"
+      evaluatedAs: true
+    - lineNumber: 50
+      expression: "setupNodeParent == null"
+      range: "(50,17)-(50,39)"
+      evaluatedAs: false
+    - lineNumber: 64
+      expression: "skipParentIt.hasNext()"
+      range: "(64,16)-(64,37)"
+      evaluatedAs: false
+      internalMethodName: "addSkip"
+    - lineNumber: 78
+      expression: "found == false"
+      range: "(78,13)-(78,26)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+  - testPathName: "transformSetupWhenFoundNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "setupNodeParent"
+      valueUuid: "setupNodeParent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "objectNode"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "while (skipParentIt.hasNext()) {"
+      lineNumber: 64
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: skipParentIt - Method: hasNext"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+        parameters:
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+        - name: "skipReason"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "skipReason1"
+            valueType: "java.lang.String"
+            uuid: "skipReason"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+      uuid: "target"
+    - sapientType: "NULL"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "setupNodeParent"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<static_method_return>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              method: "withExactBigDecimals"
+              methodParameters:
+              - value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "boolean5"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "jsonNodeFactory"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "objectNode"
+    branches:
+    - lineNumber: 48
+      expression: "testName.isBlank()"
+      range: "(48,13)-(48,30)"
+      evaluatedAs: true
+    - lineNumber: 50
+      expression: "setupNodeParent == null"
+      range: "(50,17)-(50,39)"
+      evaluatedAs: true
+    - lineNumber: 64
+      expression: "skipParentIt.hasNext()"
+      range: "(64,16)-(64,37)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 66
+      expression: "arrayEntry.isObject()"
+      range: "(66,17)-(66,37)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 68
+      expression: "skipCandidate.get(\\\"skip\\\") != null"
+      range: "(68,21)-(68,53)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 78
+      expression: "found == false"
+      range: "(78,13)-(78,26)"
+      evaluatedAs: false
+      internalMethodName: "addSkip"
+- method:
+    name: "transformTest"
+    sourceCodeSignature: "void transformTest(ObjectNode parent)"
+    returnType: "void"
+    parameters:
+    - name: "parent"
+      type: "com.fasterxml.jackson.databind.node.ObjectNode"
+    instructionFingerprint: "BBB64839FEE47F9974FD78E8A2BEFAA9"
+  paths:
+  - testPathName: "transformTestWhenDefaultBranchThrowsAssertionError"
+    constructorSignature: "<init>(java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "parent"
+      valueUuid: "parent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "assertionError"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+        parameters:
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "testName"
+        - name: "skipReason"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "skipReason1"
+            valueType: "java.lang.String"
+            uuid: "skipReason"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "parent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "parent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "parent"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.AssertionError"
+        parameters: []
+      valueType: "java.lang.AssertionError"
+      uuid: "assertionError"
+    branches:
+    - lineNumber: 89
+      expression: "testName.isBlank() == false"
+      range: "(89,13)-(89,39)"
+      evaluatedAs: true
+    - lineNumber: 90
+      expression: "branch expression (line 90)"
+      range: "(90,1)-(90,200)"
+      evaluatedAs: false
+  - testPathName: "transformTestWhenFoundNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "parent"
+      valueUuid: "parent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: com.fasterxml.jackson.databind.node.ObjectNode.get(java.lang.String)\
+        \ : com.fasterxml.jackson.databind.JsonNode"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+        parameters:
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "testName"
+        - name: "skipReason"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "skipReason"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "parent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "parent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "parent"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 89
+      expression: "testName.isBlank() == false"
+      range: "(89,13)-(89,39)"
+      evaluatedAs: true
+    - lineNumber: 90
+      expression: "branch expression (line 90)"
+      range: "(90,1)-(90,200)"
+      evaluatedAs: false
+    - lineNumber: 64
+      expression: "skipParentIt.hasNext()"
+      range: "(64,16)-(64,37)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 66
+      expression: "arrayEntry.isObject()"
+      range: "(66,17)-(66,37)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 68
+      expression: "skipCandidate.get(\\\"skip\\\") != null"
+      range: "(68,21)-(68,53)"
+      evaluatedAs: true
+      internalMethodName: "addSkip"
+    - lineNumber: 78
+      expression: "found == false"
+      range: "(78,13)-(78,26)"
+      evaluatedAs: false
+      internalMethodName: "addSkip"

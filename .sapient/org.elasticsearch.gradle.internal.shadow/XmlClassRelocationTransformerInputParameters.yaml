@@ -1,0 +1,1118 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+methods:
+- method:
+    name: "canTransformResource"
+    sourceCodeSignature: "boolean canTransformResource(FileTreeElement element)"
+    returnType: "boolean"
+    parameters:
+    - name: "element"
+      type: "org.gradle.api.file.FileTreeElement"
+    instructionFingerprint: "12E785564A2FA960E1AEA4380451B98E"
+  paths:
+  - testPathName: "canTransformResourceWhenResourceIsNull"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "element"
+      valueUuid: "element"
+    - type: "LOCAL_VARIABLE"
+      name: "element"
+      valueUuid: "element"
+      methodExercised:
+        expression: "getRelativePath():relativePath"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "relativePath"
+      methodExercised:
+        expression: "getPathString():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTreeElement"
+      uuid: "element"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RelativePath"
+      uuid: "relativePath"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getPathString1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 49
+      expression: "resource != null"
+      range: "(49,13)-(49,28)"
+      evaluatedAs: false
+- method:
+    name: "transform"
+    sourceCodeSignature: "void transform(TransformerContext context)"
+    returnType: "void"
+    parameters:
+    - name: "context"
+      type: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+    instructionFingerprint: "5F851F56ADE951F200DDCE74B75E2AAB"
+  paths:
+  - testPathName: "transformWhenClassNameIsNullThrowsRuntimeException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "context"
+      valueUuid: "context"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "element"
+      methodExercised:
+        expression: "normalize():void"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeType():short1"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeValue():string"
+        throwsExceptions:
+        - "org.w3c.dom.DOMException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "runtimeException"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();"
+      lineNumber: 60
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: dbFactory - Method: newDocumentBuilder"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+        propertiesMap:
+          doc:
+            sapientType: "MOCK"
+            valueType: "org.w3c.dom.Document"
+            uuid: "document"
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "path1"
+            valueType: "java.lang.String"
+            uuid: "context-path"
+        - name: "is"
+          value:
+            sapientType: "INPUT_STREAM"
+            content: !<inputStream>
+              inputStreamClass: "java.io.InputStream"
+              values: []
+            valueType: "java.io.InputStream"
+            uuid: "context-is"
+        - name: "relocators"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+            uuid: "context-relocators"
+        - name: "stats"
+          value:
+            sapientType: "MOCK"
+            valueType: "com.github.jengelman.gradle.plugins.shadow.ShadowStats"
+            uuid: "context-stats"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "context"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Document"
+      uuid: "document"
+      nameForMock: "doc"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "short"
+      uuid: "short1"
+    - sapientType: "NULL"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.RuntimeException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "message1"
+            valueType: "java.lang.String"
+            uuid: "string3"
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.lang.Exception"
+              parameters: []
+            valueType: "java.lang.Exception"
+            uuid: "exception"
+      valueType: "java.lang.RuntimeException"
+      uuid: "runtimeException"
+    branches:
+    - lineNumber: 89
+      expression: "node.getNodeType() == Node.TEXT_NODE"
+      range: "(89,13)-(89,48)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 91
+      expression: "nodeValue.isBlank() == false"
+      range: "(91,17)-(91,44)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 76
+      expression: "className != null"
+      range: "(76,13)-(76,29)"
+      evaluatedAs: false
+      internalMethodName: "getRelocatedClass"
+  - testPathName: "transformWhenHasTransformedResourceNotEqualsFalse"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "context"
+      valueUuid: "context"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "element"
+      methodExercised:
+        expression: "normalize():void"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeType():short1"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeValue():string"
+        throwsExceptions:
+        - "org.w3c.dom.DOMException"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "setNodeValue(string2):void2"
+        throwsExceptions:
+        - "org.w3c.dom.DOMException"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getChildNodes():nodeList"
+    - type: "LOCAL_VARIABLE"
+      name: "nodeList"
+      valueUuid: "nodeList"
+      methodExercised:
+        expression: "getLength():int5"
+    - type: "LOCAL_VARIABLE"
+      name: "nodeList"
+      valueUuid: "nodeList"
+      methodExercised:
+        expression: "item(int4):node"
+    - type: "LOCAL_VARIABLE"
+      name: "nodeList"
+      valueUuid: "nodeList"
+      methodExercised:
+        expression: "getLength():int7"
+    - type: "LOCAL_VARIABLE"
+      name: "relocator"
+      valueUuid: "object"
+      methodExercised:
+        expression: "canRelocateClass(string):boolean3"
+    - type: "LOCAL_VARIABLE"
+      name: "relocator"
+      valueUuid: "object"
+      methodExercised:
+        expression: "relocateClass(relocateClassContext-any):string2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();"
+      lineNumber: 60
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: dbFactory - Method: newDocumentBuilder"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+        propertiesMap:
+          doc:
+            sapientType: "MOCK"
+            valueType: "org.w3c.dom.Document"
+            uuid: "document"
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "path1"
+            valueType: "java.lang.String"
+            uuid: "context-path"
+        - name: "is"
+          value:
+            sapientType: "INPUT_STREAM"
+            content: !<inputStream>
+              inputStreamClass: "java.io.InputStream"
+              values: []
+            valueType: "java.io.InputStream"
+            uuid: "context-is"
+        - name: "relocators"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.ArrayList"
+              parameters: []
+              values:
+              - sapientType: "MOCK"
+                valueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+                uuid: "object"
+            valueType: "java.util.List"
+            genericValueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+            uuid: "context-relocators"
+        - name: "stats"
+          value:
+            sapientType: "MOCK"
+            valueType: "com.github.jengelman.gradle.plugins.shadow.ShadowStats"
+            uuid: "context-stats"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "context"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Document"
+      uuid: "document"
+      nameForMock: "doc"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "short"
+      uuid: "short1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.NodeList"
+      uuid: "nodeList"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "int"
+      uuid: "int5"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Node"
+      uuid: "node"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int7"
+    - sapientType: "MOCK"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "ANY"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.relocation.RelocateClassContext"
+      uuid: "relocateClassContext-any"
+    - sapientType: "VOID"
+      uuid: "void3"
+    branches:
+    - lineNumber: 89
+      expression: "node.getNodeType() == Node.TEXT_NODE"
+      range: "(89,13)-(89,48)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 91
+      expression: "nodeValue.isBlank() == false"
+      range: "(91,17)-(91,44)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 76
+      expression: "className != null"
+      range: "(76,13)-(76,29)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 76
+      expression: "className.length() > 0"
+      range: "(76,34)-(76,55)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 76
+      expression: "relocators != null"
+      range: "(76,60)-(76,77)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 77
+      expression: "for-each(relocators)"
+      range: "(77,40)-(77,49)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 78
+      expression: "relocator.canRelocateClass(className)"
+      range: "(78,21)-(78,57)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 93
+      expression: "relocatedClass.equals(nodeValue) == false"
+      range: "(93,21)-(93,61)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 100
+      expression: "i < nodeList.getLength()"
+      range: "(100,25)-(100,48)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 65
+      expression: "hasTransformedResource == false"
+      range: "(65,17)-(65,47)"
+      evaluatedAs: false
+  - testPathName: "transformWhenINotLessThanNodeListGetLengthAndHasTransformedResourceEqualsFalse5"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "context"
+      valueUuid: "context"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element"
+    - type: "FIELD"
+      name: "doc"
+      valueUuid: "document"
+      methodExercised:
+        expression: "getDocumentElement():element2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "element"
+      methodExercised:
+        expression: "normalize():void"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeType():short1"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getNodeValue():string"
+        throwsExceptions:
+        - "org.w3c.dom.DOMException"
+    - type: "LOCAL_VARIABLE"
+      name: "node"
+      valueUuid: "element2"
+      methodExercised:
+        expression: "getChildNodes():nodeList"
+    - type: "LOCAL_VARIABLE"
+      name: "nodeList"
+      valueUuid: "nodeList"
+      methodExercised:
+        expression: "getLength():int4"
+    - type: "LOCAL_VARIABLE"
+      name: "relocator"
+      valueUuid: "object"
+      methodExercised:
+        expression: "canRelocateClass(string):boolean3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();"
+      lineNumber: 60
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: dbFactory - Method: newDocumentBuilder"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+        propertiesMap:
+          doc:
+            sapientType: "MOCK"
+            valueType: "org.w3c.dom.Document"
+            uuid: "document"
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "path1"
+            valueType: "java.lang.String"
+            uuid: "context-path"
+        - name: "is"
+          value:
+            sapientType: "INPUT_STREAM"
+            content: !<inputStream>
+              inputStreamClass: "java.io.InputStream"
+              values: []
+            valueType: "java.io.InputStream"
+            uuid: "context-is"
+        - name: "relocators"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.ArrayList"
+              parameters: []
+              values:
+              - sapientType: "MOCK"
+                valueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+                uuid: "object"
+            valueType: "java.util.List"
+            genericValueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+            uuid: "context-relocators"
+        - name: "stats"
+          value:
+            sapientType: "MOCK"
+            valueType: "com.github.jengelman.gradle.plugins.shadow.ShadowStats"
+            uuid: "context-stats"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "context"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Document"
+      uuid: "document"
+      nameForMock: "doc"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.Element"
+      uuid: "element2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "short"
+      uuid: "short1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.w3c.dom.NodeList"
+      uuid: "nodeList"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "MOCK"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.relocation.Relocator"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 89
+      expression: "node.getNodeType() == Node.TEXT_NODE"
+      range: "(89,13)-(89,48)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 91
+      expression: "nodeValue.isBlank() == false"
+      range: "(91,17)-(91,44)"
+      evaluatedAs: true
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 76
+      expression: "className != null"
+      range: "(76,13)-(76,29)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 76
+      expression: "className.length() > 0"
+      range: "(76,34)-(76,55)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 76
+      expression: "relocators != null"
+      range: "(76,60)-(76,77)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 77
+      expression: "for-each(relocators)"
+      range: "(77,40)-(77,49)"
+      evaluatedAs: true
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 78
+      expression: "relocator.canRelocateClass(className)"
+      range: "(78,21)-(78,57)"
+      evaluatedAs: false
+      internalMethodName: "getRelocatedClass"
+    - lineNumber: 93
+      expression: "relocatedClass.equals(nodeValue) == false"
+      range: "(93,21)-(93,61)"
+      evaluatedAs: false
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 100
+      expression: "i < nodeList.getLength()"
+      range: "(100,25)-(100,48)"
+      evaluatedAs: false
+      internalMethodName: "walkThroughNodes"
+    - lineNumber: 65
+      expression: "hasTransformedResource == false"
+      range: "(65,17)-(65,47)"
+      evaluatedAs: true
+- method:
+    name: "hasTransformedResource"
+    sourceCodeSignature: "boolean hasTransformedResource()"
+    returnType: "boolean"
+    instructionFingerprint: "4F46A0B398A632A3E538601102EFE301"
+  paths:
+  - testPathName: "hasTransformedResourceTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "int1"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "int1"
+- method:
+    name: "modifyOutputStream"
+    sourceCodeSignature: "void modifyOutputStream(ZipOutputStream os, boolean preserveFileTimestamps)"
+    returnType: "void"
+    parameters:
+    - name: "os"
+      type: "org.apache.tools.zip.ZipOutputStream"
+    - name: "preserveFileTimestamps"
+      type: "boolean"
+    instructionFingerprint: "91920BCD6D52CF783294EA33F6ADF0E1"
+  paths:
+  - testPathName: "modifyOutputStreamTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "os"
+      valueUuid: "os"
+    - type: "INPUT"
+      name: "preserveFileTimestamps"
+      valueUuid: "preserveFileTimestamps"
+    - type: "STATIC"
+      name: "TransformerContext.class.real"
+      valueUuid: "TransformerContext.class.real"
+      methodExercised:
+        expression: "getEntryTimestamp(preserveFileTimestamps,long1):long2"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "putNextEntry(zipEntry-any):void3"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "closeEntry():void5"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void6"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "entry.setTime(TransformerContext.getEntryTimestamp(preserveFileTimestamps,\
+        \ entry.getTime()));"
+      lineNumber: 114
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: entry - Method: getTime"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.apache.tools.zip.ZipOutputStream"
+      uuid: "os"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "preserveFileTimestamps"
+    - sapientType: "REAL"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "TransformerContext.class.real"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 318191400000
+      valueType: "long"
+      uuid: "long2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "long"
+      uuid: "long1"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "org.apache.tools.zip.ZipEntry"
+      uuid: "zipEntry-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "VOID"
+      uuid: "void6"
+  - testPathName: "modifyOutputStreamWhenCaughtIOExceptionThrowsRuntimeException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "os"
+      valueUuid: "os"
+    - type: "INPUT"
+      name: "preserveFileTimestamps"
+      valueUuid: "preserveFileTimestamps"
+    - type: "STATIC"
+      name: "IOUtils.class"
+      valueUuid: "IOUtils.class"
+      methodExercised:
+        expression: "write(byteArray,os):void4"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "STATIC"
+      name: "TransformerContext.class.real"
+      valueUuid: "TransformerContext.class.real"
+      methodExercised:
+        expression: "getEntryTimestamp(preserveFileTimestamps,long1):long2"
+    - type: "STATIC"
+      name: "TransformerFactory.class"
+      valueUuid: "TransformerFactory.class"
+      methodExercised:
+        expression: "newInstance():transformerFactory"
+        throwsExceptions:
+        - "javax.xml.transform.TransformerFactoryConfigurationError"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "putNextEntry(zipEntry-any):void3"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "closeEntry():void5"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "runtimeException"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "entry.setTime(TransformerContext.getEntryTimestamp(preserveFileTimestamps,\
+        \ entry.getTime()));"
+      lineNumber: 114
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: entry - Method: getTime"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.apache.tools.zip.ZipOutputStream"
+      uuid: "os"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "preserveFileTimestamps"
+    - sapientType: "MOCK"
+      valueType: "org.apache.commons.io.IOUtils"
+      uuid: "IOUtils.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values: {}
+      valueType: "byte[]"
+      uuid: "byteArray"
+    - sapientType: "REAL"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "TransformerContext.class.real"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 318191400000
+      valueType: "long"
+      uuid: "long2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "long"
+      uuid: "long1"
+    - sapientType: "MOCK"
+      valueType: "javax.xml.transform.TransformerFactory"
+      uuid: "TransformerFactory.class"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "javax.xml.transform.TransformerFactory"
+        method: "newDefaultInstance"
+        methodParameters: []
+      valueType: "javax.xml.transform.TransformerFactory"
+      uuid: "transformerFactory"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "org.apache.tools.zip.ZipEntry"
+      uuid: "zipEntry-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.RuntimeException"
+        parameters:
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.IOException"
+              parameters: []
+            valueType: "java.io.IOException"
+            uuid: "iOException"
+      valueType: "java.lang.RuntimeException"
+      uuid: "runtimeException"
+    branches:
+    - lineNumber: 129
+      expression: "catch-exception (IOException)"
+      range: "(129,11)-(129,30)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 2
+      catchExceptions:
+      - "java.io.IOException"
+  - testPathName: "modifyOutputStreamWhenCaughtTransformerExceptionThrowsRuntimeException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "os"
+      valueUuid: "os"
+    - type: "INPUT"
+      name: "preserveFileTimestamps"
+      valueUuid: "preserveFileTimestamps"
+    - type: "STATIC"
+      name: "IOUtils.class"
+      valueUuid: "IOUtils.class"
+      methodExercised:
+        expression: "write(byteArray,os):void4"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "STATIC"
+      name: "TransformerContext.class.real"
+      valueUuid: "TransformerContext.class.real"
+      methodExercised:
+        expression: "getEntryTimestamp(preserveFileTimestamps,long1):long2"
+    - type: "STATIC"
+      name: "TransformerFactory.class"
+      valueUuid: "TransformerFactory.class"
+      methodExercised:
+        expression: "newInstance():transformerFactory"
+        throwsExceptions:
+        - "javax.xml.transform.TransformerFactoryConfigurationError"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "putNextEntry(zipEntry-any):void3"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "os"
+      valueUuid: "os"
+      methodExercised:
+        expression: "closeEntry():void5"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "runtimeException"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "entry.setTime(TransformerContext.getEntryTimestamp(preserveFileTimestamps,\
+        \ entry.getTime()));"
+      lineNumber: 114
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: entry - Method: getTime"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.apache.tools.zip.ZipOutputStream"
+      uuid: "os"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "preserveFileTimestamps"
+    - sapientType: "MOCK"
+      valueType: "org.apache.commons.io.IOUtils"
+      uuid: "IOUtils.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values: {}
+      valueType: "byte[]"
+      uuid: "byteArray"
+    - sapientType: "REAL"
+      valueType: "com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext"
+      uuid: "TransformerContext.class.real"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 318191400000
+      valueType: "long"
+      uuid: "long2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "long"
+      uuid: "long1"
+    - sapientType: "MOCK"
+      valueType: "javax.xml.transform.TransformerFactory"
+      uuid: "TransformerFactory.class"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "javax.xml.transform.TransformerFactory"
+        method: "newDefaultInstance"
+        methodParameters: []
+      valueType: "javax.xml.transform.TransformerFactory"
+      uuid: "transformerFactory"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "org.apache.tools.zip.ZipEntry"
+      uuid: "zipEntry-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.RuntimeException"
+        parameters:
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "javax.xml.transform.TransformerException"
+              parameters:
+              - name: "message"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "message1"
+                  valueType: "java.lang.String"
+                  uuid: "transformerException-message"
+            valueType: "javax.xml.transform.TransformerException"
+            uuid: "transformerException"
+      valueType: "java.lang.RuntimeException"
+      uuid: "runtimeException"
+    branches:
+    - lineNumber: 131
+      expression: "catch-exception (TransformerException)"
+      range: "(131,11)-(131,39)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 3
+      catchExceptions:
+      - "javax.xml.transform.TransformerException"
+- method:
+    name: "getName"
+    sourceCodeSignature: "String getName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "AA42EC26751D3CD865428C1AEDC8261D"
+  paths:
+  - testPathName: "getNameTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "XmlClassRelocationTransformer"
+      valueType: "java.lang.String"
+      uuid: "string"

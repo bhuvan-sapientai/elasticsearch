@@ -1,0 +1,62 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType"
+methods:
+- method:
+    name: "getName"
+    sourceCodeSignature: "String getName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "3025289BE4C07200625B68F7BE315AA4"
+  paths:
+  - testPathName: "getNameTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "dockerUbi"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "isDocker"
+    sourceCodeSignature: "boolean isDocker()"
+    returnType: "boolean"
+    instructionFingerprint: "7483742E0E84D44E52276911E42E1556"
+  paths:
+  - testPathName: "isDockerTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"

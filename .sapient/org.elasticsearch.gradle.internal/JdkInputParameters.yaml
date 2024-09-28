@@ -1,0 +1,3307 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.Jdk"
+methods:
+- method:
+    name: "getVendor"
+    sourceCodeSignature: "String getVendor()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "0EAD005CC1C6C52328D5B15A552D39CE"
+  paths:
+  - testPathName: "getVendorTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "get():object"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+      nameForMock: "vendor"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "setVendor"
+    sourceCodeSignature: "void setVendor(final String vendor)"
+    returnType: "void"
+    parameters:
+    - name: "vendor"
+      type: "java.lang.String"
+    instructionFingerprint: "34997034BE2719F8275FEAF4DAFF54FF"
+  paths:
+  - testPathName: "setVendorWhenALLOWED_VENDORSContainsVendorEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "vendor"
+      valueUuid: "vendor"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "vendor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "unknown vendor [A] for jdk [B], must be one of [adoptium, openjdk,\
+                \ zulu]"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 67
+      expression: "ALLOWED_VENDORS.contains(vendor) == false"
+      range: "(67,13)-(67,53)"
+      evaluatedAs: true
+  - testPathName: "setVendorWhenALLOWED_VENDORSContainsVendorNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "vendor"
+      valueUuid: "vendor"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "set(vendor):void"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "zulu"
+      valueType: "java.lang.String"
+      uuid: "vendor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+      nameForMock: "vendor"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 67
+      expression: "ALLOWED_VENDORS.contains(vendor) == false"
+      range: "(67,13)-(67,53)"
+      evaluatedAs: false
+- method:
+    name: "getVersion"
+    sourceCodeSignature: "String getVersion()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "E4ED5EFAA47D8C86D97EFBC5661E1012"
+  paths:
+  - testPathName: "getVersionTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "get():object"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "setVersion"
+    sourceCodeSignature: "void setVersion(String version)"
+    returnType: "void"
+    parameters:
+    - name: "version"
+      type: "java.lang.String"
+    instructionFingerprint: "9B4BD42FFBF4FA0632660250F7561ED6"
+  paths:
+  - testPathName: "setVersionWhenLEGACY_VERSION_PATTERNMatcherVersionMatchesEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "malformed version [A] for jdk [B]"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 78
+      expression: "VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,13)-(78,63)"
+      evaluatedAs: true
+    - lineNumber: 78
+      expression: "LEGACY_VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,68)-(78,125)"
+      evaluatedAs: true
+  - testPathName: "setVersionWhenJdkVersionMatcherMatchesEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: true
+    failureReason:
+      reason: "PROVER_COULD_NOT_SOLVE_THE_PROBLEM"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "s1"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 78
+      expression: "VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,13)-(78,63)"
+      evaluatedAs: true
+    - lineNumber: 78
+      expression: "LEGACY_VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,68)-(78,125)"
+      evaluatedAs: false
+    - lineNumber: 215
+      expression: "jdkVersionMatcher.matches() == false"
+      range: "(215,13)-(215,48)"
+      evaluatedAs: true
+      internalMethodName: "parseVersion"
+    - lineNumber: 219
+      expression: "jdkVersionMatcher.matches() == false"
+      range: "(219,17)-(219,52)"
+      evaluatedAs: true
+      internalMethodName: "parseVersion"
+  - testPathName: "setVersionWhenJdkVersionMatcherGroup2IsNotNull"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "set(version):void"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "PROVER_COULD_NOT_SOLVE_THE_PROBLEM"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 78
+      expression: "VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,13)-(78,63)"
+      evaluatedAs: true
+    - lineNumber: 78
+      expression: "LEGACY_VERSION_PATTERN.matcher(version).matches() == false"
+      range: "(78,68)-(78,125)"
+      evaluatedAs: false
+    - lineNumber: 215
+      expression: "jdkVersionMatcher.matches() == false"
+      range: "(215,13)-(215,48)"
+      evaluatedAs: true
+      internalMethodName: "parseVersion"
+    - lineNumber: 219
+      expression: "jdkVersionMatcher.matches() == false"
+      range: "(219,17)-(219,52)"
+      evaluatedAs: false
+      internalMethodName: "parseVersion"
+    - lineNumber: 224
+      expression: "jdkVersionMatcher.group(2) != null"
+      range: "(224,53)-(224,86)"
+      evaluatedAs: true
+      internalMethodName: "parseVersion"
+- method:
+    name: "getPlatform"
+    sourceCodeSignature: "String getPlatform()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "9BC8FD168EA783B115B43781B4C914F6"
+  paths:
+  - testPathName: "getPlatformTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "get():object"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "setPlatform"
+    sourceCodeSignature: "void setPlatform(String platform)"
+    returnType: "void"
+    parameters:
+    - name: "platform"
+      type: "java.lang.String"
+    instructionFingerprint: "6E2EB60C059B901E3FC948B1D199A436"
+  paths:
+  - testPathName: "setPlatformWhenALLOWED_PLATFORMSContainsPlatformEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "platform"
+      valueUuid: "platform"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "platform"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "unknown platform [A] for jdk [B], must be one of [darwin, linux,\
+                \ windows, mac]"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 90
+      expression: "ALLOWED_PLATFORMS.contains(platform) == false"
+      range: "(90,13)-(90,57)"
+      evaluatedAs: true
+  - testPathName: "setPlatformWhenALLOWED_PLATFORMSContainsPlatformNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "platform"
+      valueUuid: "platform"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "set(platform):void"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "mac"
+      valueType: "java.lang.String"
+      uuid: "platform"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 90
+      expression: "ALLOWED_PLATFORMS.contains(platform) == false"
+      range: "(90,13)-(90,57)"
+      evaluatedAs: false
+- method:
+    name: "getArchitecture"
+    sourceCodeSignature: "String getArchitecture()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "32F4B8BF3758952B2DED672D4EE034D2"
+  paths:
+  - testPathName: "getArchitectureTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "architecture"
+      valueUuid: "property4"
+      methodExercised:
+        expression: "get():object"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+      nameForMock: "architecture"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "setArchitecture"
+    sourceCodeSignature: "void setArchitecture(final String architecture)"
+    returnType: "void"
+    parameters:
+    - name: "architecture"
+      type: "java.lang.String"
+    instructionFingerprint: "40D9186801018255A7B6838A18DE944E"
+  paths:
+  - testPathName: "setArchitectureWhenALLOWED_ARCHITECTURESContainsArchitectureEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "architecture"
+      valueUuid: "architecture"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "architecture"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "unknown architecture [A] for jdk [B], must be one of [aarch64,\
+                \ x64]"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 103
+      expression: "ALLOWED_ARCHITECTURES.contains(architecture) == false"
+      range: "(103,13)-(103,65)"
+      evaluatedAs: true
+  - testPathName: "setArchitectureWhenALLOWED_ARCHITECTURESContainsArchitectureNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "architecture"
+      valueUuid: "architecture"
+    - type: "FIELD"
+      name: "architecture"
+      valueUuid: "property4"
+      methodExercised:
+        expression: "set(architecture):void"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "x64"
+      valueType: "java.lang.String"
+      uuid: "architecture"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+      nameForMock: "architecture"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 103
+      expression: "ALLOWED_ARCHITECTURES.contains(architecture) == false"
+      range: "(103,13)-(103,65)"
+      evaluatedAs: false
+- method:
+    name: "getDistributionVersion"
+    sourceCodeSignature: "String getDistributionVersion()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "7D33B2984A2B6B548FD38FBB62913E44"
+  paths:
+  - testPathName: "getDistributionVersionTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "distributionVersion"
+      valueUuid: "property5"
+      methodExercised:
+        expression: "get():object"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+      nameForMock: "distributionVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+- method:
+    name: "setDistributionVersion"
+    sourceCodeSignature: "void setDistributionVersion(String distributionVersion)"
+    returnType: "void"
+    parameters:
+    - name: "distributionVersion"
+      type: "java.lang.String"
+    instructionFingerprint: "01AF0A48C8CF21FFBB1BF43A575E7BF3"
+  paths:
+  - testPathName: "setDistributionVersionTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "distributionVersion"
+      valueUuid: "distributionVersion"
+    - type: "FIELD"
+      name: "distributionVersion"
+      valueUuid: "property5"
+      methodExercised:
+        expression: "set(distributionVersion):void"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "distributionVersion1"
+      valueType: "java.lang.String"
+      uuid: "distributionVersion"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+      nameForMock: "distributionVersion"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "getPath"
+    sourceCodeSignature: "String getPath()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "4326AF89009143EF430D01D3C23143C5"
+  paths:
+  - testPathName: "getPathTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getSingleFile():file"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "MOCK"
+      valueType: "java.io.File"
+      uuid: "file"
+      nameForMock: "file"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "file"
+      valueType: "java.lang.String"
+      uuid: "string"
+- method:
+    name: "getConfigurationName"
+    sourceCodeSignature: "String getConfigurationName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "15A06713ED49609A72956F9139C8BC72"
+  paths:
+  - testPathName: "getConfigurationNameTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getName():string"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getName1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "toString"
+    sourceCodeSignature: "String toString()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "A04CF7BA4D169C2843FE61F39D84513E"
+  paths:
+  - testPathName: "toStringTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getSingleFile():file"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "MOCK"
+      valueType: "java.io.File"
+      uuid: "file"
+      nameForMock: "file"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "file"
+      valueType: "java.lang.String"
+      uuid: "string"
+- method:
+    name: "getBuildDependencies"
+    sourceCodeSignature: "TaskDependency getBuildDependencies()"
+    returnType: "org.gradle.api.tasks.TaskDependency"
+    instructionFingerprint: "2A3D0C58108656E8C4D906589D6AEA83"
+  paths:
+  - testPathName: "getBuildDependenciesTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getBuildDependencies():taskDependency"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "taskDependency"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskDependency"
+      uuid: "taskDependency"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+- method:
+    name: "getBinJavaPath"
+    sourceCodeSignature: "Object getBinJavaPath()"
+    returnType: "java.lang.Object"
+    instructionFingerprint: "A7B62A831080F57C0EF4B805335FEA21"
+  paths:
+  - testPathName: "getBinJavaPathTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullNotNull"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "NOT_NULL"
+      valueType: "java.lang.Object"
+      uuid: "nullNotNull"
+- method:
+    name: "getJavaHomePath"
+    sourceCodeSignature: "Object getJavaHomePath()"
+    returnType: "java.lang.Object"
+    instructionFingerprint: "4ED3C7C8301A8103341AA959303BB680"
+  paths:
+  - testPathName: "getJavaHomePathTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullNotNull"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "NOT_NULL"
+      valueType: "java.lang.Object"
+      uuid: "nullNotNull"
+- method:
+    name: "finalizeValues"
+    sourceCodeSignature: "void finalizeValues()"
+    returnType: "void"
+    instructionFingerprint: "13803F8E982C562B656345CCE8B94F45"
+  paths:
+  - testPathName: "finalizeValuesWhenVersionIsPresentEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "isPresent():boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "version not specified for jdk [A]"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 187
+      expression: "version.isPresent() == false"
+      range: "(187,13)-(187,40)"
+      evaluatedAs: true
+  - testPathName: "finalizeValuesWhenPlatformIsPresentEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "isPresent():boolean1"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "isPresent():boolean2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "platform not specified for jdk [A]"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 187
+      expression: "version.isPresent() == false"
+      range: "(187,13)-(187,40)"
+      evaluatedAs: false
+    - lineNumber: 190
+      expression: "platform.isPresent() == false"
+      range: "(190,13)-(190,41)"
+      evaluatedAs: true
+  - testPathName: "finalizeValuesWhenVendorIsPresentEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "isPresent():boolean1"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "isPresent():boolean2"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "isPresent():boolean3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+      nameForMock: "vendor"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "vendor not specified for jdk [A]"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 187
+      expression: "version.isPresent() == false"
+      range: "(187,13)-(187,40)"
+      evaluatedAs: false
+    - lineNumber: 190
+      expression: "platform.isPresent() == false"
+      range: "(190,13)-(190,41)"
+      evaluatedAs: false
+    - lineNumber: 193
+      expression: "vendor.isPresent() == false"
+      range: "(193,13)-(193,39)"
+      evaluatedAs: true
+  - testPathName: "finalizeValuesWhenArchitectureIsPresentEqualsFalseThrowsIllegalArgumentException"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "isPresent():boolean1"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "isPresent():boolean2"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "isPresent():boolean3"
+    - type: "FIELD"
+      name: "architecture"
+      valueUuid: "property4"
+      methodExercised:
+        expression: "isPresent():boolean4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+      nameForMock: "vendor"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+      nameForMock: "architecture"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "architecture not specified for jdk [A]"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 187
+      expression: "version.isPresent() == false"
+      range: "(187,13)-(187,40)"
+      evaluatedAs: false
+    - lineNumber: 190
+      expression: "platform.isPresent() == false"
+      range: "(190,13)-(190,41)"
+      evaluatedAs: false
+    - lineNumber: 193
+      expression: "vendor.isPresent() == false"
+      range: "(193,13)-(193,39)"
+      evaluatedAs: false
+    - lineNumber: 196
+      expression: "architecture.isPresent() == false"
+      range: "(196,13)-(196,45)"
+      evaluatedAs: true
+  - testPathName: "finalizeValuesWhenArchitectureIsPresentNotEqualsFalse"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "isPresent():boolean1"
+    - type: "FIELD"
+      name: "version"
+      valueUuid: "property2"
+      methodExercised:
+        expression: "finalizeValue():void"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "isPresent():boolean2"
+    - type: "FIELD"
+      name: "platform"
+      valueUuid: "property3"
+      methodExercised:
+        expression: "finalizeValue():void2"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "isPresent():boolean3"
+    - type: "FIELD"
+      name: "vendor"
+      valueUuid: "property"
+      methodExercised:
+        expression: "finalizeValue():void3"
+    - type: "FIELD"
+      name: "architecture"
+      valueUuid: "property4"
+      methodExercised:
+        expression: "isPresent():boolean4"
+    - type: "FIELD"
+      name: "architecture"
+      valueUuid: "property4"
+      methodExercised:
+        expression: "finalizeValue():void4"
+    - type: "FIELD"
+      name: "distributionVersion"
+      valueUuid: "property5"
+      methodExercised:
+        expression: "finalizeValue():void5"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void6"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+      nameForMock: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+      nameForMock: "platform"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+      nameForMock: "vendor"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+      nameForMock: "architecture"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean4"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+      nameForMock: "distributionVersion"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "VOID"
+      uuid: "void6"
+    branches:
+    - lineNumber: 187
+      expression: "version.isPresent() == false"
+      range: "(187,13)-(187,40)"
+      evaluatedAs: false
+    - lineNumber: 190
+      expression: "platform.isPresent() == false"
+      range: "(190,13)-(190,41)"
+      evaluatedAs: false
+    - lineNumber: 193
+      expression: "vendor.isPresent() == false"
+      range: "(193,13)-(193,39)"
+      evaluatedAs: false
+    - lineNumber: 196
+      expression: "architecture.isPresent() == false"
+      range: "(196,13)-(196,45)"
+      evaluatedAs: false
+- method:
+    name: "iterator"
+    sourceCodeSignature: "Iterator<File> iterator()"
+    returnType: "java.util.Iterator"
+    genericReturnType: "java.io.File"
+    instructionFingerprint: "0E0838C4B0855F35313F0E192755600B"
+  paths:
+  - testPathName: "iteratorTest"
+    constructorSignature: "<init>(java.lang.String,org.gradle.api.artifacts.Configuration,org.gradle.api.model.ObjectFactory)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "iterator():iterator"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property2"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property3"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property4"
+    - type: "LOCAL_VARIABLE"
+      name: "objectFactory"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "property(class-String):property5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "iteratorNotNull"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.Jdk"
+        parameters:
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+        - name: "configuration"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "configuration"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.Jdk"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "ITERATOR"
+      content: !<iterator>
+        collectionValue:
+          sapientType: "COLLECTION"
+          content: !<collection>
+            parameters: []
+            values: []
+          valueType: "java.util.List"
+          genericValueType: "java.io.File"
+          uuid: "iteratorCollection"
+      valueType: "java.util.Iterator"
+      genericValueType: "java.io.File"
+      uuid: "iterator"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "java.lang.String"
+      valueType: "java.lang.Class"
+      genericValueType: "java.lang.String"
+      uuid: "class-String"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property5"
+    - sapientType: "NOT_NULL"
+      valueType: "java.util.Iterator"
+      genericValueType: "java.io.File"
+      uuid: "iteratorNotNull"

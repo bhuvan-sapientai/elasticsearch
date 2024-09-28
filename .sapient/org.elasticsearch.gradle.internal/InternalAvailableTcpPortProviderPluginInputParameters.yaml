@@ -1,0 +1,71 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "9C4FC517FCC695D95BC1C0E991F2F4F9"
+  paths:
+  - testPathName: "applyThrowsNullPointerException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin$InternalAvailableTcpPortProviderRootPlugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin$InternalAvailableTcpPortProviderRootPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin$InternalAvailableTcpPortProviderRootPlugin"
+      uuid: "class-InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"

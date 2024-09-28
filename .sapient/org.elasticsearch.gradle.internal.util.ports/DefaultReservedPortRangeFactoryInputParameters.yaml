@@ -1,0 +1,73 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+methods:
+- method:
+    name: "getReservedPortRange"
+    sourceCodeSignature: "ReservedPortRange getReservedPortRange(int startPort, int\
+      \ endPort)"
+    returnType: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+    parameters:
+    - name: "startPort"
+      type: "int"
+    - name: "endPort"
+      type: "int"
+    instructionFingerprint: "B5A71045114F9B12F41A727C1753AEBB"
+  paths:
+  - testPathName: "getReservedPortRangeTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "startPort"
+      valueUuid: "startPort"
+    - type: "INPUT"
+      name: "endPort"
+      valueUuid: "endPort"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "reservedPortRange"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "startPort"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "endPort"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+        parameters:
+        - name: "startPort"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "startPort"
+        - name: "endPort"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "endPort"
+      valueType: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+      uuid: "reservedPortRange"

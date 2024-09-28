@@ -1,0 +1,110 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension"
+methods:
+- method:
+    name: "restApi"
+    sourceCodeSignature: "void restApi(Action<? super RestResourcesSpec> spec)"
+    returnType: "void"
+    parameters:
+    - name: "spec"
+      type: "org.gradle.api.Action"
+      genericType: "? super org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$RestResourcesSpec"
+    instructionFingerprint: "20B6434604E8D614D7C7223DF59002D8"
+  paths:
+  - testPathName: "restApiTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "spec"
+      valueUuid: "spec"
+    - type: "LOCAL_VARIABLE"
+      name: "spec"
+      valueUuid: "spec"
+      methodExercised:
+        expression: "execute(restResourcesExtensionRestResourcesSpec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$RestResourcesSpec"
+      uuid: "spec"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$RestResourcesSpec"
+      uuid: "restResourcesExtensionRestResourcesSpec-any"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "restTests"
+    sourceCodeSignature: "void restTests(Action<? super XpackRestResourcesSpec> spec)"
+    returnType: "void"
+    parameters:
+    - name: "spec"
+      type: "org.gradle.api.Action"
+      genericType: "? super org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$XpackRestResourcesSpec"
+    instructionFingerprint: "9EE750A1980494FAA7C06FA1E480D512"
+  paths:
+  - testPathName: "restTestsTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "spec"
+      valueUuid: "spec"
+    - type: "LOCAL_VARIABLE"
+      name: "spec"
+      valueUuid: "spec"
+      methodExercised:
+        expression: "execute(restResourcesExtensionXpackRestResourcesSpec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$XpackRestResourcesSpec"
+      uuid: "spec"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension$XpackRestResourcesSpec"
+      uuid: "restResourcesExtensionXpackRestResourcesSpec-any"
+    - sapientType: "VOID"
+      uuid: "void2"

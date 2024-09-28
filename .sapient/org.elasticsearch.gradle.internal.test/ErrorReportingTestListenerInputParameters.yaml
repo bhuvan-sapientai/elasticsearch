@@ -1,0 +1,786 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+methods:
+- method:
+    name: "onOutput"
+    sourceCodeSignature: "void onOutput(TestDescriptor testDescriptor, TestOutputEvent\
+      \ outputEvent)"
+    returnType: "void"
+    parameters:
+    - name: "testDescriptor"
+      type: "org.gradle.api.tasks.testing.TestDescriptor"
+    - name: "outputEvent"
+      type: "org.gradle.api.tasks.testing.TestOutputEvent"
+    instructionFingerprint: "E44E5B88CB94EA4C98D08D5D1CFBBC8C"
+  paths:
+  - testPathName: "onOutputWhenOutputEventGetMessageStartsWithREPRODUCE_WITH_PREFIX"
+    constructorSignature: "<init>(org.gradle.api.tasks.testing.Test,java.io.File)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+    - type: "INPUT"
+      name: "outputEvent"
+      valueUuid: "outputEvent"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(testDescriptor):errorReportingTestListenerDescriptor"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(testDescriptor):errorReportingTestListenerDescriptor2"
+    - type: "LOCAL_VARIABLE"
+      name: "outputEvent"
+      valueUuid: "outputEvent"
+      methodExercised:
+        expression: "getMessage():string"
+    - type: "LOCAL_VARIABLE"
+      name: "outputEvent"
+      valueUuid: "outputEvent"
+      methodExercised:
+        expression: "getMessage():string2"
+    - type: "LOCAL_VARIABLE"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+      methodExercised:
+        expression: "getParent():testDescriptor2"
+    - type: "LOCAL_VARIABLE"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+      methodExercised:
+        expression: "isComposite():boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getTestLogging():testLoggingContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.Map.computeIfAbsent(org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor,java.util.function.Function)\
+        \ : java.lang.Object"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+        parameters:
+        - name: "testTask"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.testing.Test"
+            uuid: "testTask"
+        - name: "outputDirectory"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "outputDirectory-pathname"
+            valueType: "java.io.File"
+            uuid: "outputDirectory"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestOutputEvent"
+      uuid: "outputEvent"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "ErrorReportingTestListener.Descriptor.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "REPRODUCE WITHA"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getMessage1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "testTask"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.logging.TestLoggingContainer"
+      uuid: "testLoggingContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 65
+      expression: "testDescriptor.isComposite()"
+      range: "(65,13)-(65,40)"
+      evaluatedAs: true
+    - lineNumber: 70
+      expression: "outputEvent.getMessage().startsWith(REPRODUCE_WITH_PREFIX)"
+      range: "(70,13)-(70,70)"
+      evaluatedAs: true
+- method:
+    name: "afterSuite"
+    sourceCodeSignature: "void afterSuite(final TestDescriptor suite, TestResult result)"
+    returnType: "void"
+    parameters:
+    - name: "suite"
+      type: "org.gradle.api.tasks.testing.TestDescriptor"
+    - name: "result"
+      type: "org.gradle.api.tasks.testing.TestResult"
+    instructionFingerprint: "74D38A59FF515204229A9B040343208D"
+  paths:
+  - testPathName: "afterSuiteWhenGetFailedTestsSizeNotGreaterThan0AndCaughtIOExceptionThrowsUncheckedIOException"
+    constructorSignature: "<init>(org.gradle.api.tasks.testing.Test,java.io.File)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "suite"
+      valueUuid: "suite"
+    - type: "INPUT"
+      name: "result"
+      valueUuid: "result1"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(suite):errorReportingTestListenerDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getResultType():testResultResultType"
+    - type: "LOCAL_VARIABLE"
+      name: "suite"
+      valueUuid: "suite"
+      methodExercised:
+        expression: "getParent():testDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getTestLogging():testLoggingContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "uncheckedIOException"
+    disabled: true
+    failureReason:
+      reason: "DEPENDENCY_TO_THROW_EXCEPTION_NOT_FOUND"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+        parameters:
+        - name: "testTask"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.testing.Test"
+            uuid: "testTask"
+        - name: "outputDirectory"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "outputDirectory-pathname"
+            valueType: "java.io.File"
+            uuid: "outputDirectory"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "suite"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestResult"
+      uuid: "result1"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "ErrorReportingTestListener.Descriptor.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "FAILURE"
+      valueType: "org.gradle.api.tasks.testing.TestResult$ResultType"
+      uuid: "testResultResultType"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "testTask"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.logging.TestLoggingContainer"
+      uuid: "testLoggingContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.io.UncheckedIOException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Error reading test suite output"
+            valueType: "java.lang.String"
+            uuid: "message"
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.IOException"
+              parameters: []
+            valueType: "java.io.IOException"
+            uuid: "iOException"
+      valueType: "java.io.UncheckedIOException"
+      uuid: "uncheckedIOException"
+    branches:
+    - lineNumber: 89
+      expression: "dumpOutputOnFailure"
+      range: "(89,17)-(89,35)"
+      evaluatedAs: true
+    - lineNumber: 91
+      expression: "result.getResultType().equals(TestResult.ResultType.FAILURE)"
+      range: "(91,21)-(91,80)"
+      evaluatedAs: true
+    - lineNumber: 94
+      expression: "eventWriter != null"
+      range: "(94,25)-(94,43)"
+      evaluatedAs: false
+    - lineNumber: 120
+      expression: "suite.getParent() == null"
+      range: "(120,17)-(120,41)"
+      evaluatedAs: true
+    - lineNumber: 122
+      expression: "getFailedTests().size() > 0"
+      range: "(122,21)-(122,47)"
+      evaluatedAs: false
+    - lineNumber: 129
+      expression: "catch-exception (IOException)"
+      range: "(129,11)-(129,30)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 4
+      catchExceptions:
+      - "java.io.IOException"
+  - testPathName: "afterSuiteWhenSuiteGetParentIsNullAndGetFailedTestsSizeNotGreaterThan0AndWriterIsNull"
+    constructorSignature: "<init>(org.gradle.api.tasks.testing.Test,java.io.File)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "suite"
+      valueUuid: "suite"
+    - type: "INPUT"
+      name: "result"
+      valueUuid: "result1"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(suite):errorReportingTestListenerDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getResultType():testResultResultType"
+    - type: "LOCAL_VARIABLE"
+      name: "suite"
+      valueUuid: "suite"
+      methodExercised:
+        expression: "getParent():testDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getTestLogging():testLoggingContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+        parameters:
+        - name: "testTask"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.testing.Test"
+            uuid: "testTask"
+        - name: "outputDirectory"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "outputDirectory-pathname"
+            valueType: "java.io.File"
+            uuid: "outputDirectory"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "suite"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestResult"
+      uuid: "result1"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "ErrorReportingTestListener.Descriptor.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "FAILURE"
+      valueType: "org.gradle.api.tasks.testing.TestResult$ResultType"
+      uuid: "testResultResultType"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "testTask"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.logging.TestLoggingContainer"
+      uuid: "testLoggingContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 89
+      expression: "dumpOutputOnFailure"
+      range: "(89,17)-(89,35)"
+      evaluatedAs: true
+    - lineNumber: 91
+      expression: "result.getResultType().equals(TestResult.ResultType.FAILURE)"
+      range: "(91,21)-(91,80)"
+      evaluatedAs: true
+    - lineNumber: 94
+      expression: "eventWriter != null"
+      range: "(94,25)-(94,43)"
+      evaluatedAs: false
+    - lineNumber: 120
+      expression: "suite.getParent() == null"
+      range: "(120,17)-(120,41)"
+      evaluatedAs: true
+    - lineNumber: 122
+      expression: "getFailedTests().size() > 0"
+      range: "(122,21)-(122,47)"
+      evaluatedAs: false
+    - lineNumber: 134
+      expression: "writer != null"
+      range: "(134,17)-(134,30)"
+      evaluatedAs: false
+  - testPathName: "afterSuiteWhenDefaultBranchAndSuiteGetParentIsNullAndGetFailedTestsSizeNotGreaterThan0AndWriterIsNull"
+    constructorSignature: "<init>(org.gradle.api.tasks.testing.Test,java.io.File)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "suite"
+      valueUuid: "suite"
+    - type: "INPUT"
+      name: "result"
+      valueUuid: "result1"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(suite):errorReportingTestListenerDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getResultType():testResultResultType"
+    - type: "LOCAL_VARIABLE"
+      name: "suite"
+      valueUuid: "suite"
+      methodExercised:
+        expression: "getParent():testDescriptor"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getTestLogging():testLoggingContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    failureReason:
+      reason: "DEPENDENCY_TO_THROW_EXCEPTION_NOT_FOUND"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+        parameters:
+        - name: "testTask"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.testing.Test"
+            uuid: "testTask"
+        - name: "outputDirectory"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "outputDirectory-pathname"
+            valueType: "java.io.File"
+            uuid: "outputDirectory"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "suite"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestResult"
+      uuid: "result1"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "ErrorReportingTestListener.Descriptor.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "FAILURE"
+      valueType: "org.gradle.api.tasks.testing.TestResult$ResultType"
+      uuid: "testResultResultType"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "testTask"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.logging.TestLoggingContainer"
+      uuid: "testLoggingContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 89
+      expression: "dumpOutputOnFailure"
+      range: "(89,17)-(89,35)"
+      evaluatedAs: true
+    - lineNumber: 91
+      expression: "result.getResultType().equals(TestResult.ResultType.FAILURE)"
+      range: "(91,21)-(91,80)"
+      evaluatedAs: true
+    - lineNumber: 94
+      expression: "eventWriter != null"
+      range: "(94,25)-(94,43)"
+      evaluatedAs: false
+    - lineNumber: 103
+      expression: "branch expression (line 103)"
+      range: "(103,1)-(103,200)"
+      evaluatedAs: true
+    - lineNumber: 120
+      expression: "suite.getParent() == null"
+      range: "(120,17)-(120,41)"
+      evaluatedAs: true
+    - lineNumber: 122
+      expression: "getFailedTests().size() > 0"
+      range: "(122,21)-(122,47)"
+      evaluatedAs: false
+    - lineNumber: 134
+      expression: "writer != null"
+      range: "(134,17)-(134,30)"
+      evaluatedAs: false
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.lang.Throwable"
+- method:
+    name: "afterTest"
+    sourceCodeSignature: "void afterTest(TestDescriptor testDescriptor, TestResult\
+      \ result)"
+    returnType: "void"
+    parameters:
+    - name: "testDescriptor"
+      type: "org.gradle.api.tasks.testing.TestDescriptor"
+    - name: "result"
+      type: "org.gradle.api.tasks.testing.TestResult"
+    instructionFingerprint: "9821B74C4F46A271BEF81438AB07298E"
+  paths:
+  - testPathName: "afterTestWhenResultGetExceptionsSizeGreaterThan0"
+    constructorSignature: "<init>(org.gradle.api.tasks.testing.Test,java.io.File)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+    - type: "INPUT"
+      name: "result"
+      valueUuid: "result1"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(testDescriptor):errorReportingTestListenerDescriptor"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(testDescriptor3):errorReportingTestListenerDescriptor2"
+    - type: "STATIC"
+      name: "ErrorReportingTestListener.Descriptor.class"
+      valueUuid: "ErrorReportingTestListener.Descriptor.class"
+      methodExercised:
+        expression: "of(testDescriptor4):errorReportingTestListenerDescriptor3"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getResultType():testResultResultType"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getExceptions():list"
+    - type: "LOCAL_VARIABLE"
+      name: "result"
+      valueUuid: "result1"
+      methodExercised:
+        expression: "getExceptions():list2"
+    - type: "LOCAL_VARIABLE"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+      methodExercised:
+        expression: "getParent():testDescriptor2"
+    - type: "LOCAL_VARIABLE"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+      methodExercised:
+        expression: "getParent():testDescriptor3"
+    - type: "LOCAL_VARIABLE"
+      name: "testDescriptor"
+      valueUuid: "testDescriptor"
+      methodExercised:
+        expression: "getParent():testDescriptor4"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getTestLogging():testLoggingContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "testTask"
+      valueUuid: "testTask"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "String message = formatter.format(testDescriptor, result.getExceptions()).substring(4);"
+      lineNumber: 166
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: formatter - Method: format"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+        parameters:
+        - name: "testTask"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.testing.Test"
+            uuid: "testTask"
+        - name: "outputDirectory"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "outputDirectory-pathname"
+            valueType: "java.io.File"
+            uuid: "outputDirectory"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestResult"
+      uuid: "result1"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "ErrorReportingTestListener.Descriptor.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor3"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.ErrorReportingTestListener$Descriptor"
+      uuid: "errorReportingTestListenerDescriptor3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor4"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "FAILURE"
+      valueType: "org.gradle.api.tasks.testing.TestResult$ResultType"
+      uuid: "testResultResultType"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.ArrayList"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.lang.Throwable"
+            parameters: []
+          valueType: "java.lang.Throwable"
+          uuid: "listItem0"
+      valueType: "java.util.List"
+      genericValueType: "java.lang.Throwable"
+      uuid: "list"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.List"
+      genericValueType: "java.lang.Throwable"
+      uuid: "list2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.TestDescriptor"
+      uuid: "testDescriptor2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "testTask"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.logging.TestLoggingContainer"
+      uuid: "testLoggingContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 151
+      expression: "result.getResultType() == TestResult.ResultType.FAILURE"
+      range: "(151,13)-(151,67)"
+      evaluatedAs: true
+    - lineNumber: 154
+      expression: "testDescriptor.getParent() != null"
+      range: "(154,17)-(154,50)"
+      evaluatedAs: true
+    - lineNumber: 157
+      expression: "lines != null"
+      range: "(157,21)-(157,33)"
+      evaluatedAs: false
+    - lineNumber: 165
+      expression: "result.getExceptions().size() > 0"
+      range: "(165,21)-(165,53)"
+      evaluatedAs: true

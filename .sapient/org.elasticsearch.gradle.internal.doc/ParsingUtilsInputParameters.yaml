@@ -1,0 +1,314 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.doc.ParsingUtils"
+methods:
+- method:
+    name: "extraContent"
+    sourceCodeSignature: "void extraContent(String message, String content, int offset,\
+      \ String pattern)"
+    returnType: "void"
+    parameters:
+    - name: "message"
+      type: "java.lang.String"
+    - name: "content"
+      type: "java.lang.String"
+    - name: "offset"
+      type: "int"
+    - name: "pattern"
+      type: "java.lang.String"
+    instructionFingerprint: "4FBA741E8CFC1DE5172BA84A73299FE8"
+  paths:
+  - testPathName: "extraContentThrowsInvalidUserDataException"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "message"
+      valueUuid: "message"
+    - type: "INPUT"
+      name: "content"
+      valueUuid: "content"
+    - type: "INPUT"
+      name: "offset"
+      valueUuid: "offset"
+    - type: "INPUT"
+      name: "pattern"
+      valueUuid: "pattern"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "invalidUserDataException"
+    disabled: false
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ""
+      valueType: "java.lang.String"
+      uuid: "message"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "BACEFGH"
+      valueType: "java.lang.String"
+      uuid: "content"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 6
+      valueType: "int"
+      uuid: "offset"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ""
+      valueType: "java.lang.String"
+      uuid: "pattern"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.InvalidUserDataException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Extra content  ('BACEFG*H') matching []: BACEFGH"
+            valueType: "java.lang.String"
+            uuid: "string5"
+      valueType: "org.gradle.api.InvalidUserDataException"
+      uuid: "invalidUserDataException"
+- method:
+    name: "parse"
+    sourceCodeSignature: "void parse(String content, String pattern, BiConsumer<Matcher,\
+      \ Boolean> testHandler)"
+    returnType: "void"
+    parameters:
+    - name: "content"
+      type: "java.lang.String"
+    - name: "pattern"
+      type: "java.lang.String"
+    - name: "testHandler"
+      type: "java.util.function.BiConsumer"
+      genericType: "java.util.regex.Matcher,java.lang.Boolean"
+    instructionFingerprint: "5EE67D19C95AA7614212C155F4CC483B"
+  paths:
+  - testPathName: "parseWhenContentIsNull"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "content"
+      valueUuid: "content"
+    - type: "INPUT"
+      name: "pattern"
+      valueUuid: "pattern"
+    - type: "INPUT"
+      name: "testHandler"
+      valueUuid: "testHandler"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "NULL"
+      valueType: "java.lang.String"
+      uuid: "content"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "pattern1"
+      valueType: "java.lang.String"
+      uuid: "pattern"
+    - sapientType: "MOCK"
+      valueType: "java.util.function.BiConsumer"
+      uuid: "testHandler"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 36
+      expression: "content == null"
+      range: "(36,13)-(36,27)"
+      evaluatedAs: true
+  - testPathName: "parseWhenOffsetEqualsContentLengthAndOffsetEquals0ThrowsInvalidUserDataException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "content"
+      valueUuid: "content"
+    - type: "INPUT"
+      name: "pattern"
+      valueUuid: "pattern"
+    - type: "INPUT"
+      name: "testHandler"
+      valueUuid: "testHandler"
+    - type: "STATIC"
+      name: "ParsingUtils.class"
+      valueUuid: "ParsingUtils.class"
+      methodExercised:
+        expression: "extraContent(message,content,int1,pattern):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "invalidUserDataException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.function.BiConsumer.accept(java.util.regex.Matcher,java.lang.Boolean)\
+        \ : void"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "content1"
+      valueType: "java.lang.String"
+      uuid: "content"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "pattern1"
+      valueType: "java.lang.String"
+      uuid: "pattern"
+    - sapientType: "MOCK"
+      valueType: "java.util.function.BiConsumer"
+      uuid: "testHandler"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.doc.ParsingUtils"
+      uuid: "ParsingUtils.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "between [$offset] and [${m.start()}]"
+      valueType: "java.lang.String"
+      uuid: "message"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.InvalidUserDataException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "message1"
+            valueType: "java.lang.String"
+            uuid: "string"
+      valueType: "org.gradle.api.InvalidUserDataException"
+      uuid: "invalidUserDataException"
+    branches:
+    - lineNumber: 36
+      expression: "content == null"
+      range: "(36,13)-(36,27)"
+      evaluatedAs: false
+    - lineNumber: 41
+      expression: "m.find()"
+      range: "(41,16)-(41,23)"
+      evaluatedAs: true
+    - lineNumber: 42
+      expression: "m.start() != offset"
+      range: "(42,17)-(42,35)"
+      evaluatedAs: true
+    - lineNumber: 46
+      expression: "offset == content.length()"
+      range: "(46,35)-(46,60)"
+      evaluatedAs: true
+    - lineNumber: 48
+      expression: "offset == 0"
+      range: "(48,13)-(48,23)"
+      evaluatedAs: true
+  - testPathName: "parseWhenOffsetNotEqualsContentLength"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "content"
+      valueUuid: "content"
+    - type: "INPUT"
+      name: "pattern"
+      valueUuid: "pattern"
+    - type: "INPUT"
+      name: "testHandler"
+      valueUuid: "testHandler"
+    - type: "STATIC"
+      name: "ParsingUtils.class"
+      valueUuid: "ParsingUtils.class"
+      methodExercised:
+        expression: "extraContent(message,content,int1,pattern):void"
+    - type: "STATIC"
+      name: "ParsingUtils.class"
+      valueUuid: "ParsingUtils.class"
+      methodExercised:
+        expression: "extraContent(string,content,int3,pattern):void3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.function.BiConsumer.accept(java.util.regex.Matcher,java.lang.Boolean)\
+        \ : void"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "content1"
+      valueType: "java.lang.String"
+      uuid: "content"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "pattern1"
+      valueType: "java.lang.String"
+      uuid: "pattern"
+    - sapientType: "MOCK"
+      valueType: "java.util.function.BiConsumer"
+      uuid: "testHandler"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.doc.ParsingUtils"
+      uuid: "ParsingUtils.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "between [$offset] and [${m.start()}]"
+      valueType: "java.lang.String"
+      uuid: "message"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "VOID"
+      uuid: "void4"
+    branches:
+    - lineNumber: 36
+      expression: "content == null"
+      range: "(36,13)-(36,27)"
+      evaluatedAs: false
+    - lineNumber: 41
+      expression: "m.find()"
+      range: "(41,16)-(41,23)"
+      evaluatedAs: true
+    - lineNumber: 42
+      expression: "m.start() != offset"
+      range: "(42,17)-(42,35)"
+      evaluatedAs: true
+    - lineNumber: 46
+      expression: "offset == content.length()"
+      range: "(46,35)-(46,60)"
+      evaluatedAs: false
+    - lineNumber: 48
+      expression: "offset == 0"
+      range: "(48,13)-(48,23)"
+      evaluatedAs: false
+    - lineNumber: 51
+      expression: "offset != content.length()"
+      range: "(51,13)-(51,38)"
+      evaluatedAs: true

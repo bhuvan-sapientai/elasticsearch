@@ -1,0 +1,203 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "AF0AA981F8FED02DF22C000B75B96531"
+  paths:
+  - testPathName: "applyWhenBuildParamsGetRuntimeJavaVersionCompareToJavaVersionVERSION_14LessThan0"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getRuntimeJavaVersion():javaVersion"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "addTestSourceSet(project,sourceSetName):taskProvider"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "extendSourceSet(project,parentSourceSetName,childSourceSetName):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "internalClusterTest"
+      valueUuid: "taskProvider"
+      methodExercised:
+        expression: "configure(action-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "VERSION_1_2"
+      valueType: "org.gradle.api.JavaVersion"
+      uuid: "javaVersion"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.util.GradleUtils"
+      uuid: "GradleUtils.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "internalClusterTest"
+      valueType: "java.lang.String"
+      uuid: "sourceSetName"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "test"
+      valueType: "java.lang.String"
+      uuid: "parentSourceSetName"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "internalClusterTest"
+      valueType: "java.lang.String"
+      uuid: "childSourceSetName"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      uuid: "void3"
+    branches:
+    - lineNumber: 30
+      expression: "BuildParams.getRuntimeJavaVersion().compareTo(JavaVersion.VERSION_14)\
+        \ < 0"
+      range: "(30,17)-(30,89)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$0"
+  - testPathName: "applyWhenBuildParamsGetRuntimeJavaVersionCompareToJavaVersionVERSION_14NotLessThan0"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getRuntimeJavaVersion():javaVersion"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "addTestSourceSet(project,sourceSetName):taskProvider"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "extendSourceSet(project,parentSourceSetName,childSourceSetName):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "internalClusterTest"
+      valueUuid: "taskProvider"
+      methodExercised:
+        expression: "configure(action-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "VERSION_HIGHER"
+      valueType: "org.gradle.api.JavaVersion"
+      uuid: "javaVersion"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.util.GradleUtils"
+      uuid: "GradleUtils.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "internalClusterTest"
+      valueType: "java.lang.String"
+      uuid: "sourceSetName"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "test"
+      valueType: "java.lang.String"
+      uuid: "parentSourceSetName"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "internalClusterTest"
+      valueType: "java.lang.String"
+      uuid: "childSourceSetName"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      uuid: "void3"
+    branches:
+    - lineNumber: 30
+      expression: "BuildParams.getRuntimeJavaVersion().compareTo(JavaVersion.VERSION_14)\
+        \ < 0"
+      range: "(30,17)-(30,89)"
+      evaluatedAs: false
+      internalMethodName: "lambda$apply$0"

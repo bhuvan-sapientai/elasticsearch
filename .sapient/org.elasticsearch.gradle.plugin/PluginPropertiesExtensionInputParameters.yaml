@@ -1,0 +1,775 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+methods:
+- method:
+    name: "getName"
+    sourceCodeSignature: "String getName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "A45759C1DC3F911173A4DF0D9CE2C1B7"
+  paths:
+  - testPathName: "getNameWhenNameIsNull"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+        propertiesMap:
+          name:
+            sapientType: "NULL"
+            valueType: "java.lang.String"
+            uuid: "fieldString"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getName1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    branches:
+    - lineNumber: 63
+      expression: "name == null"
+      range: "(63,16)-(63,27)"
+      evaluatedAs: true
+  - testPathName: "getNameWhenNameIsNotNull"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fieldString"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+        propertiesMap:
+          name:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "fieldString"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "name1"
+      valueType: "java.lang.String"
+      uuid: "fieldString"
+    branches:
+    - lineNumber: 63
+      expression: "name == null"
+      range: "(63,16)-(63,27)"
+      evaluatedAs: false
+- method:
+    name: "setName"
+    sourceCodeSignature: "void setName(String name)"
+    returnType: "void"
+    parameters:
+    - name: "name"
+      type: "java.lang.String"
+    instructionFingerprint: "EE9D6E908023FBB7E451CCC40E626687"
+  paths:
+  - testPathName: "setNameTest"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-BasePluginExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getArchivesName():property"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "property"
+      methodExercised:
+        expression: "set(name):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "name1"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.BasePluginExtension"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.BasePluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.BasePluginExtension"
+      uuid: "class-BasePluginExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "getVersion"
+    sourceCodeSignature: "String getVersion()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "B05A6877146B9075556E244F914FA91F"
+  paths:
+  - testPathName: "getVersionWhenVersionIsNull"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getVersion():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+        propertiesMap:
+          version:
+            sapientType: "NULL"
+            valueType: "java.lang.String"
+            uuid: "fieldString2"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "java.lang.Object"
+      uuid: "object"
+      nameForMock: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "object"
+      valueType: "java.lang.String"
+      uuid: "string"
+    branches:
+    - lineNumber: 72
+      expression: "version == null"
+      range: "(72,16)-(72,30)"
+      evaluatedAs: true
+  - testPathName: "getVersionWhenVersionIsNotNull"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fieldString2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+        propertiesMap:
+          version:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "version1"
+            valueType: "java.lang.String"
+            uuid: "fieldString2"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "fieldString2"
+    branches:
+    - lineNumber: 72
+      expression: "version == null"
+      range: "(72,16)-(72,30)"
+      evaluatedAs: false
+- method:
+    name: "setDescription"
+    sourceCodeSignature: "void setDescription(String description)"
+    returnType: "void"
+    parameters:
+    - name: "description"
+      type: "java.lang.String"
+    instructionFingerprint: "4FDDBEE1B0B9AE04DEAF000789BBEB6D"
+  paths:
+  - testPathName: "setDescriptionTest"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "description"
+      valueUuid: "description"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "setDescription(description):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "description"
+      valueUuid: "description"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "description1"
+      valueType: "java.lang.String"
+      uuid: "description"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setLicenseFile"
+    sourceCodeSignature: "void setLicenseFile(File licenseFile)"
+    returnType: "void"
+    parameters:
+    - name: "licenseFile"
+      type: "java.io.File"
+    instructionFingerprint: "8492737BCFBBCC068DA352B48A72D044"
+  paths:
+  - testPathName: "setLicenseFileWhenExtraPropertiesHasLicenseFile"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "licenseFile"
+      valueUuid: "licenseFile"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getExtraProperties():extraPropertiesExtension"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "has(name):boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "get(name2):object"
+        throwsExceptions:
+        - "org.gradle.api.plugins.ExtraPropertiesExtension$UnknownPropertyException"
+    - type: "LOCAL_VARIABLE"
+      name: "regularFileProperty"
+      valueUuid: "object"
+      methodExercised:
+        expression: "set(licenseFile):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "licenseFile"
+      valueUuid: "licenseFile"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "licenseFile-pathname"
+      valueType: "java.io.File"
+      uuid: "licenseFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtraPropertiesExtension"
+      uuid: "extraPropertiesExtension"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "licenseFile"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "licenseFile"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 130
+      expression: "extraProperties.has(\\\"licenseFile\\\")"
+      range: "(130,51)-(130,84)"
+      evaluatedAs: true
+  - testPathName: "setLicenseFileWhenExtraPropertiesNotHasLicenseFile"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "licenseFile"
+      valueUuid: "licenseFile"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getObjects():objectFactory"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getExtraProperties():extraPropertiesExtension"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "has(name):boolean1"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "fileProperty():regularFileProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "regularFileProperty"
+      valueUuid: "regularFileProperty"
+      methodExercised:
+        expression: "set(licenseFile):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "licenseFile"
+      valueUuid: "licenseFile"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "licenseFile-pathname"
+      valueType: "java.io.File"
+      uuid: "licenseFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtraPropertiesExtension"
+      uuid: "extraPropertiesExtension"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "licenseFile"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "regularFileProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 130
+      expression: "extraProperties.has(\\\"licenseFile\\\")"
+      range: "(130,51)-(130,84)"
+      evaluatedAs: false
+- method:
+    name: "setNoticeFile"
+    sourceCodeSignature: "void setNoticeFile(File noticeFile)"
+    returnType: "void"
+    parameters:
+    - name: "noticeFile"
+      type: "java.io.File"
+    instructionFingerprint: "9CD774F062E6222DDF0D4B9E5E99195A"
+  paths:
+  - testPathName: "setNoticeFileWhenExtraPropertiesHasNoticeFile"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "noticeFile"
+      valueUuid: "noticeFile"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getExtraProperties():extraPropertiesExtension"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "has(name):boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "get(name2):object"
+        throwsExceptions:
+        - "org.gradle.api.plugins.ExtraPropertiesExtension$UnknownPropertyException"
+    - type: "LOCAL_VARIABLE"
+      name: "regularFileProperty"
+      valueUuid: "object"
+      methodExercised:
+        expression: "set(noticeFile):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "noticeFile"
+      valueUuid: "noticeFile"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "noticeFile-pathname"
+      valueType: "java.io.File"
+      uuid: "noticeFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtraPropertiesExtension"
+      uuid: "extraPropertiesExtension"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "noticeFile"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "noticeFile"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 143
+      expression: "extraProperties.has(\\\"noticeFile\\\")"
+      range: "(143,51)-(143,83)"
+      evaluatedAs: true
+  - testPathName: "setNoticeFileWhenExtraPropertiesNotHasNoticeFile"
+    constructorSignature: "<init>(org.gradle.api.Project) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "noticeFile"
+      valueUuid: "noticeFile"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "FIELD"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getObjects():objectFactory"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getExtraProperties():extraPropertiesExtension"
+    - type: "LOCAL_VARIABLE"
+      name: "extraProperties"
+      valueUuid: "extraPropertiesExtension"
+      methodExercised:
+        expression: "has(name):boolean1"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "objectFactory"
+      methodExercised:
+        expression: "fileProperty():regularFileProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "regularFileProperty"
+      valueUuid: "regularFileProperty"
+      methodExercised:
+        expression: "set(noticeFile):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "noticeFile"
+      valueUuid: "noticeFile"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "org.elasticsearch.gradle.plugin.PluginPropertiesExtension"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "noticeFile-pathname"
+      valueType: "java.io.File"
+      uuid: "noticeFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtraPropertiesExtension"
+      uuid: "extraPropertiesExtension"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "noticeFile"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "regularFileProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 143
+      expression: "extraProperties.has(\\\"noticeFile\\\")"
+      range: "(143,51)-(143,83)"
+      evaluatedAs: false

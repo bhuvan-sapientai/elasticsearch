@@ -1,0 +1,220 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "A4B7E0FBF96B3AD5E766BD43054DAB24"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "DistributionDownloadPlugin.class"
+      valueUuid: "DistributionDownloadPlugin.class"
+      methodExercised:
+        expression: "getRegistrationsContainer(project):list"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "getBuildService(buildServiceRegistry,name):provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getSharedServices():buildServiceRegistry"
+    - type: "LOCAL_VARIABLE"
+      name: "distributionDownloadPlugin"
+      valueUuid: "plugin"
+      methodExercised:
+        expression: "setDockerAvailability(provider2):void3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-DistributionDownloadPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-GlobalBuildInfoPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager2"
+      methodExercised:
+        expression: "apply(class-DockerSupportPlugin):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPluginManager():pluginManager2"
+    - type: "LOCAL_VARIABLE"
+      name: "dockerSupport"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.DistributionDownloadPlugin"
+      uuid: "DistributionDownloadPlugin.class"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.ArrayList"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "org.elasticsearch.gradle.DistributionResolution"
+            parameters:
+            - name: "name"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "local-build"
+                valueType: "java.lang.String"
+                uuid: "name2"
+            - name: "resolver"
+              value:
+                sapientType: "PRIVATE_INNER_CLASS_OR_LAMBDA"
+                valueType: "org.elasticsearch.gradle.DistributionResolution$Resolver"
+                uuid: "resolver"
+          valueType: "org.elasticsearch.gradle.DistributionResolution"
+          uuid: "distributionResolution"
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "org.elasticsearch.gradle.DistributionResolution"
+            parameters:
+            - name: "name"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "bwc"
+                valueType: "java.lang.String"
+                uuid: "name3"
+            - name: "resolver"
+              value:
+                sapientType: "PRIVATE_INNER_CLASS_OR_LAMBDA"
+                valueType: "org.elasticsearch.gradle.DistributionResolution$Resolver"
+                uuid: "resolver2"
+          valueType: "org.elasticsearch.gradle.DistributionResolution"
+          uuid: "distributionResolution2"
+      valueType: "java.util.List"
+      genericValueType: "org.elasticsearch.gradle.DistributionResolution"
+      uuid: "list"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.util.GradleUtils"
+      uuid: "GradleUtils.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.internal.docker.DockerSupportService"
+      uuid: "provider"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.services.BuildServiceRegistry"
+      uuid: "buildServiceRegistry"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "dockerSupportService"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.DistributionDownloadPlugin"
+      uuid: "plugin"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.Boolean"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.DistributionDownloadPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.DistributionDownloadPlugin"
+      uuid: "class-DistributionDownloadPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      uuid: "class-GlobalBuildInfoPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.docker.DockerSupportPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.docker.DockerSupportPlugin"
+      uuid: "class-DockerSupportPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project3"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "VOID"
+      uuid: "void4"

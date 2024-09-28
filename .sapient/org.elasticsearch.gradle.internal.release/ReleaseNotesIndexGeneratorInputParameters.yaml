@@ -1,0 +1,486 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.ReleaseNotesIndexGenerator"
+methods:
+- method:
+    name: "update"
+    sourceCodeSignature: "void update(Set<QualifiedVersion> versions, File indexTemplate,\
+      \ File indexFile)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "versions"
+      type: "java.util.Set"
+      genericType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    - name: "indexTemplate"
+      type: "java.io.File"
+    - name: "indexFile"
+      type: "java.io.File"
+    instructionFingerprint: "6119C0070E95F25B0E1A6551C90C9BAE"
+  paths:
+  - testPathName: "updateTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "versions"
+      valueUuid: "versions"
+    - type: "INPUT"
+      name: "indexTemplate"
+      valueUuid: "indexTemplate"
+    - type: "INPUT"
+      name: "indexFile"
+      valueUuid: "indexFile"
+    - type: "STATIC"
+      name: "ReleaseNotesIndexGenerator.class"
+      valueUuid: "ReleaseNotesIndexGenerator.class"
+      methodExercised:
+        expression: "generateFile(versions,string):string2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "try (FileWriter indexFileWriter = new FileWriter(indexFile)) {"
+      lineNumber: 34
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.FileWriter"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "versions"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "indexTemplate-pathname"
+      valueType: "java.io.File"
+      uuid: "indexTemplate"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "indexFile-pathname"
+      valueType: "java.io.File"
+      uuid: "indexFile"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.ReleaseNotesIndexGenerator"
+      uuid: "ReleaseNotesIndexGenerator.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_generateFile1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "VOID"
+      uuid: "void3"
+  - testPathName: "updateWhenDefaultBranchThrowsThrowable"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "versions"
+      valueUuid: "versions"
+    - type: "INPUT"
+      name: "indexTemplate"
+      valueUuid: "indexTemplate"
+    - type: "INPUT"
+      name: "indexFile"
+      valueUuid: "indexFile"
+    - type: "STATIC"
+      name: "Files.class"
+      valueUuid: "Files.class"
+      methodExercised:
+        expression: "readString(path):string"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "STATIC"
+      name: "ReleaseNotesIndexGenerator.class"
+      valueUuid: "ReleaseNotesIndexGenerator.class"
+      methodExercised:
+        expression: "generateFile(versions,string):string2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "throwable"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "try (FileWriter indexFileWriter = new FileWriter(indexFile)) {"
+      lineNumber: 34
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.FileWriter"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "versions"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "indexTemplate-pathname"
+      valueType: "java.io.File"
+      uuid: "indexTemplate"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "indexFile-pathname"
+      valueType: "java.io.File"
+      uuid: "indexFile"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Files"
+      uuid: "Files.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_readString1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "path"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.ReleaseNotesIndexGenerator"
+      uuid: "ReleaseNotesIndexGenerator.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_generateFile1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.Throwable"
+        parameters: []
+      valueType: "java.lang.Throwable"
+      uuid: "throwable"
+    branches:
+    - lineNumber: 34
+      expression: "branch expression (line 34)"
+      range: "(34,1)-(34,200)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.lang.Throwable"
+- method:
+    name: "generateFile"
+    sourceCodeSignature: "String generateFile(Set<QualifiedVersion> versionsSet, String\
+      \ template)"
+    returnType: "java.lang.String"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "versionsSet"
+      type: "java.util.Set"
+      genericType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    - name: "template"
+      type: "java.lang.String"
+    instructionFingerprint: "3585C886F4AF8F3F71730A079AA4B815"
+  paths:
+  - testPathName: "generateFileWhenVIsSnapshot"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "versionsSet"
+      valueUuid: "versionsSet"
+    - type: "INPUT"
+      name: "template"
+      valueUuid: "template"
+    - type: "STATIC"
+      name: "TemplateUtils.class"
+      valueUuid: "TemplateUtils.class"
+      methodExercised:
+        expression: "render(template,hashMap):string2"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "v"
+      valueUuid: "qualifiedVersion"
+      methodExercised:
+        expression: "isSnapshot():boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "v"
+      valueUuid: "qualifiedVersion"
+      methodExercised:
+        expression: "withoutQualifier():qualifiedVersion2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string2"
+    disabled: false
+    allValues:
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+          uuid: "qualifiedVersion"
+      valueType: "java.util.Set"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "versionsSet"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "template1"
+      valueType: "java.lang.String"
+      uuid: "template"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.TemplateUtils"
+      uuid: "TemplateUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_render1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashMap"
+        parameters: []
+        values:
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "versions"
+              valueType: "java.lang.String"
+              uuid: "key"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                collectionClass: "java.util.TreeSet"
+                parameters:
+                - name: "comparator"
+                  value:
+                    sapientType: "OBJECT"
+                    content: !<static_method_return>
+                      target: "java.util.Comparator"
+                      method: "reverseOrder"
+                      methodParameters: []
+                    valueType: "java.util.Comparator"
+                    uuid: "comparator"
+                values:
+                - sapientType: "MOCK"
+                  valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+                  uuid: "qualifiedVersion2"
+                  nameForMock: "qualifiedVersion2"
+              valueType: "java.util.Set"
+              genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+              uuid: "treeSet"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "includeVersions"
+              valueType: "java.lang.String"
+              uuid: "key2"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                parameters: []
+                values:
+                - sapientType: "BASIC"
+                  content: !<regular>
+                    value: "qualifiedVersion2"
+                  valueType: "java.lang.String"
+                  uuid: "string"
+              valueType: "java.util.List"
+              genericValueType: "java.lang.String"
+              uuid: "object"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair2"
+      valueType: "java.util.Map"
+      genericValueType: "java.lang.String,java.lang.Object"
+      uuid: "hashMap"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion2"
+      nameForMock: "qualifiedVersion2"
+    branches:
+    - lineNumber: 44
+      expression: "v.isSnapshot()"
+      range: "(44,39)-(44,52)"
+      evaluatedAs: true
+      internalMethodName: "lambda$generateFile$0"
+  - testPathName: "generateFileWhenVNotIsSnapshot"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "versionsSet"
+      valueUuid: "versionsSet"
+    - type: "INPUT"
+      name: "template"
+      valueUuid: "template"
+    - type: "STATIC"
+      name: "TemplateUtils.class"
+      valueUuid: "TemplateUtils.class"
+      methodExercised:
+        expression: "render(template,hashMap):string2"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "v"
+      valueUuid: "qualifiedVersion"
+      methodExercised:
+        expression: "isSnapshot():boolean1"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string2"
+    disabled: false
+    allValues:
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+          uuid: "qualifiedVersion"
+          nameForMock: "qualifiedVersion"
+      valueType: "java.util.Set"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "versionsSet"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "template1"
+      valueType: "java.lang.String"
+      uuid: "template"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.TemplateUtils"
+      uuid: "TemplateUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_render1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashMap"
+        parameters: []
+        values:
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "versions"
+              valueType: "java.lang.String"
+              uuid: "key"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                collectionClass: "java.util.TreeSet"
+                parameters:
+                - name: "comparator"
+                  value:
+                    sapientType: "OBJECT"
+                    content: !<static_method_return>
+                      target: "java.util.Comparator"
+                      method: "reverseOrder"
+                      methodParameters: []
+                    valueType: "java.util.Comparator"
+                    uuid: "comparator"
+                values:
+                - sapientType: "MOCK"
+                  valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+                  uuid: "qualifiedVersion"
+                  nameForMock: "qualifiedVersion"
+              valueType: "java.util.Set"
+              genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+              uuid: "treeSet"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "includeVersions"
+              valueType: "java.lang.String"
+              uuid: "key2"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                parameters: []
+                values:
+                - sapientType: "BASIC"
+                  content: !<regular>
+                    value: "qualifiedVersion"
+                  valueType: "java.lang.String"
+                  uuid: "string"
+              valueType: "java.util.List"
+              genericValueType: "java.lang.String"
+              uuid: "object"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair2"
+      valueType: "java.util.Map"
+      genericValueType: "java.lang.String,java.lang.Object"
+      uuid: "hashMap"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion"
+      nameForMock: "qualifiedVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    branches:
+    - lineNumber: 44
+      expression: "v.isSnapshot()"
+      range: "(44,39)-(44,52)"
+      evaluatedAs: false
+      internalMethodName: "lambda$generateFile$0"

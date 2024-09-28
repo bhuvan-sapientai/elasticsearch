@@ -1,0 +1,150 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength"
+methods:
+- method:
+    name: "getKeyToFind"
+    sourceCodeSignature: "String getKeyToFind()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "E127990A11EED98B2FBD78A95D0A0CE7"
+  paths:
+  - testPathName: "getKeyToFindTest"
+    constructorSignature: "<init>(java.lang.String,com.fasterxml.jackson.databind.node.NumericNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength"
+        parameters:
+        - name: "replaceKey"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "replaceKey1"
+            valueType: "java.lang.String"
+            uuid: "replaceKey"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: 0
+                  valueType: "java.math.BigInteger"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "length"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "transformTest"
+    sourceCodeSignature: "void transformTest(ObjectNode matchParent)"
+    returnType: "void"
+    parameters:
+    - name: "matchParent"
+      type: "com.fasterxml.jackson.databind.node.ObjectNode"
+    instructionFingerprint: "A744AC162AFFF1D7E64DE1C403D79908"
+  paths:
+  - testPathName: "transformTestTest"
+    constructorSignature: "<init>(java.lang.String,com.fasterxml.jackson.databind.node.NumericNode,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "matchParent"
+      valueUuid: "matchParent"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength"
+        parameters:
+        - name: "replaceKey"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "replaceKey1"
+            valueType: "java.lang.String"
+            uuid: "replaceKey"
+        - name: "replacementNode"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+              parameters:
+              - name: "v"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: 0
+                  valueType: "java.math.BigInteger"
+                  uuid: "replacementNode-v"
+            valueType: "com.fasterxml.jackson.databind.node.BigIntegerNode"
+            uuid: "replacementNode"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "matchParent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "matchParent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "matchParent"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"

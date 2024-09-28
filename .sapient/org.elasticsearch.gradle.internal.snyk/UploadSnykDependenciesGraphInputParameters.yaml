@@ -1,0 +1,1212 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+methods:
+- method:
+    name: "upload"
+    sourceCodeSignature: "void upload()"
+    returnType: "void"
+    instructionFingerprint: "3D29CAE48A61984B681E6E96168153D5"
+  paths:
+  - testPathName: "uploadWhenDefaultBranchThrowsGradleException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "FIELD"
+      name: "url"
+      valueUuid: "fieldProperty2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "FIELD"
+      name: "snykOrganisation"
+      valueUuid: "fieldProperty3"
+      methodExercised:
+        expression: "map(transformer-any):provider"
+    - type: "FIELD"
+      name: "token"
+      valueUuid: "fieldProperty"
+      methodExercised:
+        expression: "get():object6"
+    - type: "FIELD"
+      name: "inputFile"
+      valueUuid: "fieldRegularFileProperty"
+      methodExercised:
+        expression: "getAsFile():provider2"
+    - type: "STATIC"
+      name: "EntityUtils.class"
+      valueUuid: "EntityUtils.class"
+      methodExercised:
+        expression: "toString(httpEntity):string8"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.ParseException"
+    - type: "STATIC"
+      name: "HttpClients.class"
+      valueUuid: "HttpClients.class"
+      methodExercised:
+        expression: "createDefault():closeableHttpClient"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "execute(httpPut-any):closeableHttpResponse"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.client.ClientProtocolException"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "close():void5"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getStatusLine():statusLine"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getEntity():httpEntity"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string9):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "getOrElse(object4):object5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object7"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "statusLine"
+      methodExercised:
+        expression: "getStatusCode():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty2"
+      nameForMock: "url"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty3"
+      nameForMock: "snykOrganisation"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty"
+      nameForMock: "token"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "E"
+      valueType: "java.lang.String"
+      uuid: "object6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+      nameForMock: "inputFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.util.EntityUtils"
+      uuid: "EntityUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "string8"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.HttpEntity"
+      uuid: "httpEntity"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.HttpClients"
+      uuid: "HttpClients.class"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.CloseableHttpClient"
+      uuid: "closeableHttpClient"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.client.methods.CloseableHttpResponse"
+      uuid: "closeableHttpResponse"
+    - sapientType: "ANY"
+      valueType: "org.apache.http.client.methods.HttpPut"
+      uuid: "httpPut-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.StatusLine"
+      uuid: "statusLine"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Snyk API call response status: 2"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getOrElse1"
+      valueType: "java.lang.String"
+      uuid: "object5"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object7-pathname"
+      valueType: "java.io.File"
+      uuid: "object7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Uploading Snyk Graph failed with http code 2: D"
+            valueType: "java.lang.String"
+            uuid: "string10"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 69
+      expression: "statusCode != HttpURLConnection.HTTP_CREATED"
+      range: "(69,17)-(69,60)"
+      evaluatedAs: true
+    - lineNumber: 60
+      expression: "branch expression (line 60)"
+      range: "(60,1)-(60,200)"
+      evaluatedAs: false
+  - testPathName: "uploadWhenStatusCodeNotEqualsHttpURLConnectionHTTP_CREATEDAndDefaultBranchThrowsGradleException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "FIELD"
+      name: "url"
+      valueUuid: "fieldProperty2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "FIELD"
+      name: "snykOrganisation"
+      valueUuid: "fieldProperty3"
+      methodExercised:
+        expression: "map(transformer-any):provider"
+    - type: "FIELD"
+      name: "token"
+      valueUuid: "fieldProperty"
+      methodExercised:
+        expression: "get():object6"
+    - type: "FIELD"
+      name: "inputFile"
+      valueUuid: "fieldRegularFileProperty"
+      methodExercised:
+        expression: "getAsFile():provider2"
+    - type: "STATIC"
+      name: "EntityUtils.class"
+      valueUuid: "EntityUtils.class"
+      methodExercised:
+        expression: "toString(httpEntity):string8"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.ParseException"
+    - type: "STATIC"
+      name: "HttpClients.class"
+      valueUuid: "HttpClients.class"
+      methodExercised:
+        expression: "createDefault():closeableHttpClient"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "execute(httpPut-any):closeableHttpResponse"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.client.ClientProtocolException"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "close():void5"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getStatusLine():statusLine"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getEntity():httpEntity"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string9):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "getOrElse(object4):object5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object7"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "statusLine"
+      methodExercised:
+        expression: "getStatusCode():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty2"
+      nameForMock: "url"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty3"
+      nameForMock: "snykOrganisation"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty"
+      nameForMock: "token"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "E"
+      valueType: "java.lang.String"
+      uuid: "object6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+      nameForMock: "inputFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.util.EntityUtils"
+      uuid: "EntityUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "string8"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.HttpEntity"
+      uuid: "httpEntity"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.HttpClients"
+      uuid: "HttpClients.class"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.CloseableHttpClient"
+      uuid: "closeableHttpClient"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.client.methods.CloseableHttpResponse"
+      uuid: "closeableHttpResponse"
+    - sapientType: "ANY"
+      valueType: "org.apache.http.client.methods.HttpPut"
+      uuid: "httpPut-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.StatusLine"
+      uuid: "statusLine"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Snyk API call response status: 2"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getOrElse1"
+      valueType: "java.lang.String"
+      uuid: "object5"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object7-pathname"
+      valueType: "java.io.File"
+      uuid: "object7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Uploading Snyk Graph failed with http code 2: D"
+            valueType: "java.lang.String"
+            uuid: "string10"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 69
+      expression: "statusCode != HttpURLConnection.HTTP_CREATED"
+      range: "(69,17)-(69,60)"
+      evaluatedAs: true
+    - lineNumber: 60
+      expression: "branch expression (line 60)"
+      range: "(60,1)-(60,200)"
+      evaluatedAs: false
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 2
+      catchExceptions:
+      - "java.lang.Throwable"
+  - testPathName: "uploadWhenCaughtIOException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger2"
+    - type: "FIELD"
+      name: "url"
+      valueUuid: "fieldProperty2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "FIELD"
+      name: "snykOrganisation"
+      valueUuid: "fieldProperty3"
+      methodExercised:
+        expression: "map(transformer-any):provider"
+    - type: "FIELD"
+      name: "token"
+      valueUuid: "fieldProperty"
+      methodExercised:
+        expression: "get():object6"
+    - type: "FIELD"
+      name: "inputFile"
+      valueUuid: "fieldRegularFileProperty"
+      methodExercised:
+        expression: "getAsFile():provider2"
+    - type: "STATIC"
+      name: "EntityUtils.class"
+      valueUuid: "EntityUtils.class"
+      methodExercised:
+        expression: "toString(httpEntity):string8"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.ParseException"
+    - type: "STATIC"
+      name: "HttpClients.class"
+      valueUuid: "HttpClients.class"
+      methodExercised:
+        expression: "createDefault():closeableHttpClient"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "execute(httpPut-any):closeableHttpResponse"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.client.ClientProtocolException"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "close():void6"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getStatusLine():statusLine"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getEntity():httpEntity"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string9):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger2"
+      methodExercised:
+        expression: "info(string8):void5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "getOrElse(object4):object5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object7"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "statusLine"
+      methodExercised:
+        expression: "getStatusCode():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void7"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty2"
+      nameForMock: "url"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty3"
+      nameForMock: "snykOrganisation"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty"
+      nameForMock: "token"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "object6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+      nameForMock: "inputFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.util.EntityUtils"
+      uuid: "EntityUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_toString1"
+      valueType: "java.lang.String"
+      uuid: "string8"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.HttpEntity"
+      uuid: "httpEntity"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.HttpClients"
+      uuid: "HttpClients.class"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.CloseableHttpClient"
+      uuid: "closeableHttpClient"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.client.methods.CloseableHttpResponse"
+      uuid: "closeableHttpResponse"
+    - sapientType: "ANY"
+      valueType: "org.apache.http.client.methods.HttpPut"
+      uuid: "httpPut-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.StatusLine"
+      uuid: "statusLine"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Snyk API call response status: 201"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getOrElse1"
+      valueType: "java.lang.String"
+      uuid: "object5"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object7-pathname"
+      valueType: "java.io.File"
+      uuid: "object7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 201
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "VOID"
+      uuid: "void7"
+    branches:
+    - lineNumber: 69
+      expression: "statusCode != HttpURLConnection.HTTP_CREATED"
+      range: "(69,17)-(69,60)"
+      evaluatedAs: false
+    - lineNumber: 73
+      expression: "catch-exception (IOException)"
+      range: "(73,11)-(73,30)"
+      evaluatedAs: false
+  - testPathName: "uploadWhenCaughtIOExceptionThrowsGradleException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger2"
+    - type: "FIELD"
+      name: "url"
+      valueUuid: "fieldProperty2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "FIELD"
+      name: "snykOrganisation"
+      valueUuid: "fieldProperty3"
+      methodExercised:
+        expression: "map(transformer-any):provider"
+    - type: "FIELD"
+      name: "token"
+      valueUuid: "fieldProperty"
+      methodExercised:
+        expression: "get():object6"
+    - type: "FIELD"
+      name: "inputFile"
+      valueUuid: "fieldRegularFileProperty"
+      methodExercised:
+        expression: "getAsFile():provider2"
+    - type: "STATIC"
+      name: "EntityUtils.class"
+      valueUuid: "EntityUtils.class"
+      methodExercised:
+        expression: "toString(httpEntity):string8"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.ParseException"
+    - type: "STATIC"
+      name: "HttpClients.class"
+      valueUuid: "HttpClients.class"
+      methodExercised:
+        expression: "createDefault():closeableHttpClient"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "execute(httpPut-any):closeableHttpResponse"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.client.ClientProtocolException"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "close():void6"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getStatusLine():statusLine"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getEntity():httpEntity"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string9):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger2"
+      methodExercised:
+        expression: "info(string8):void5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "getOrElse(object4):object5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object7"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "statusLine"
+      methodExercised:
+        expression: "getStatusCode():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty2"
+      nameForMock: "url"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty3"
+      nameForMock: "snykOrganisation"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty"
+      nameForMock: "token"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "object6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+      nameForMock: "inputFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.util.EntityUtils"
+      uuid: "EntityUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_toString1"
+      valueType: "java.lang.String"
+      uuid: "string8"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.HttpEntity"
+      uuid: "httpEntity"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.HttpClients"
+      uuid: "HttpClients.class"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.CloseableHttpClient"
+      uuid: "closeableHttpClient"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.client.methods.CloseableHttpResponse"
+      uuid: "closeableHttpResponse"
+    - sapientType: "ANY"
+      valueType: "org.apache.http.client.methods.HttpPut"
+      uuid: "httpPut-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.StatusLine"
+      uuid: "statusLine"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Snyk API call response status: 201"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getOrElse1"
+      valueType: "java.lang.String"
+      uuid: "object5"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object7-pathname"
+      valueType: "java.io.File"
+      uuid: "object7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 201
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Failed to call API endpoint to submit updated dependency graph"
+            valueType: "java.lang.String"
+            uuid: "message"
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.IOException"
+              parameters: []
+            valueType: "java.io.IOException"
+            uuid: "iOException"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 69
+      expression: "statusCode != HttpURLConnection.HTTP_CREATED"
+      range: "(69,17)-(69,60)"
+      evaluatedAs: false
+    - lineNumber: 73
+      expression: "catch-exception (IOException)"
+      range: "(73,11)-(73,30)"
+      evaluatedAs: false
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 3
+      catchExceptions:
+      - "java.io.IOException"
+  - testPathName: "uploadWhenDefaultBranch"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger2"
+    - type: "FIELD"
+      name: "url"
+      valueUuid: "fieldProperty2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "FIELD"
+      name: "snykOrganisation"
+      valueUuid: "fieldProperty3"
+      methodExercised:
+        expression: "map(transformer-any):provider"
+    - type: "FIELD"
+      name: "token"
+      valueUuid: "fieldProperty"
+      methodExercised:
+        expression: "get():object6"
+    - type: "FIELD"
+      name: "inputFile"
+      valueUuid: "fieldRegularFileProperty"
+      methodExercised:
+        expression: "getAsFile():provider2"
+    - type: "STATIC"
+      name: "EntityUtils.class"
+      valueUuid: "EntityUtils.class"
+      methodExercised:
+        expression: "toString(httpEntity):string8"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.ParseException"
+    - type: "STATIC"
+      name: "HttpClients.class"
+      valueUuid: "HttpClients.class"
+      methodExercised:
+        expression: "createDefault():closeableHttpClient"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "execute(httpPut-any):closeableHttpResponse"
+        throwsExceptions:
+        - "java.io.IOException"
+        - "org.apache.http.client.ClientProtocolException"
+    - type: "LOCAL_VARIABLE"
+      name: "client"
+      valueUuid: "closeableHttpClient"
+      methodExercised:
+        expression: "close():void6"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getStatusLine():statusLine"
+    - type: "LOCAL_VARIABLE"
+      name: "response"
+      valueUuid: "closeableHttpResponse"
+      methodExercised:
+        expression: "getEntity():httpEntity"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string9):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger2"
+      methodExercised:
+        expression: "info(string8):void5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "getOrElse(object4):object5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object7"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "statusLine"
+      methodExercised:
+        expression: "getStatusCode():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void7"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty2"
+      nameForMock: "url"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty3"
+      nameForMock: "snykOrganisation"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProperty"
+      nameForMock: "token"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "object6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+      nameForMock: "inputFile"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.util.EntityUtils"
+      uuid: "EntityUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_toString1"
+      valueType: "java.lang.String"
+      uuid: "string8"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.HttpEntity"
+      uuid: "httpEntity"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.HttpClients"
+      uuid: "HttpClients.class"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.impl.client.CloseableHttpClient"
+      uuid: "closeableHttpClient"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.client.methods.CloseableHttpResponse"
+      uuid: "closeableHttpResponse"
+    - sapientType: "ANY"
+      valueType: "org.apache.http.client.methods.HttpPut"
+      uuid: "httpPut-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.apache.http.StatusLine"
+      uuid: "statusLine"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Snyk API call response status: 201"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getOrElse1"
+      valueType: "java.lang.String"
+      uuid: "object5"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object7-pathname"
+      valueType: "java.io.File"
+      uuid: "object7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 201
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "VOID"
+      uuid: "void7"
+    branches:
+    - lineNumber: 69
+      expression: "statusCode != HttpURLConnection.HTTP_CREATED"
+      range: "(69,17)-(69,60)"
+      evaluatedAs: false
+    - lineNumber: 73
+      expression: "catch-exception (IOException)"
+      range: "(73,11)-(73,30)"
+      evaluatedAs: false
+    - lineNumber: 60
+      expression: "branch expression (line 60)"
+      range: "(60,1)-(60,200)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 2
+      catchExceptions:
+      - "java.lang.Throwable"

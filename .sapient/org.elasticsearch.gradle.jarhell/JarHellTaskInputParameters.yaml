@@ -1,0 +1,253 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.jarhell.JarHellTask"
+methods:
+- method:
+    name: "getSuccessMarker"
+    sourceCodeSignature: "File getSuccessMarker()"
+    returnType: "java.io.File"
+    instructionFingerprint: "3C03718B7163A425FA882E9486E93C92"
+  paths:
+  - testPathName: "getSuccessMarkerTest"
+    constructorSignature: "<init>(org.gradle.process.ExecOperations,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getName():string5"
+    - type: "FIELD"
+      name: "projectLayout"
+      valueUuid: "fieldProjectLayout"
+      methodExercised:
+        expression: "getBuildDirectory():directoryProperty"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "directoryProperty"
+      methodExercised:
+        expression: "getAsFile():provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "get():object4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.jarhell.JarHellTask"
+        parameters:
+        - name: "execOperations"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.process.ExecOperations"
+            uuid: "execOperations"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        propertiesMap:
+          projectLayout:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "fieldProjectLayout"
+      valueType: "org.elasticsearch.gradle.jarhell.JarHellTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ProjectLayout"
+      uuid: "fieldProjectLayout"
+      nameForMock: "projectLayout"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "directoryProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object4-pathname"
+      valueType: "java.io.File"
+      uuid: "object4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "parent"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "object4-pathname"
+            valueType: "java.io.File"
+            uuid: "object4"
+        - name: "child"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "markers/A"
+            valueType: "java.lang.String"
+            uuid: "string6"
+      valueType: "java.io.File"
+      uuid: "file"
+- method:
+    name: "runJarHellCheck"
+    sourceCodeSignature: "void runJarHellCheck()"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "5FE7547B3919E499439E5FB1EF4024D7"
+  paths:
+  - testPathName: "runJarHellCheckTest"
+    constructorSignature: "<init>(org.gradle.process.ExecOperations,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getSuccessMarker():file"
+    - type: "STATIC"
+      name: "LoggedExec.class"
+      valueUuid: "LoggedExec.class"
+      methodExercised:
+        expression: "javaexec(fieldExecOperations,action-any):execResult"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.jarhell.JarHellTask"
+        parameters:
+        - name: "execOperations"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.process.ExecOperations"
+            uuid: "execOperations"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+      valueType: "org.elasticsearch.gradle.jarhell.JarHellTask"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "LoggedExec.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.process.ExecResult"
+      uuid: "execResult"
+    - sapientType: "NULL"
+      valueType: "org.gradle.process.ExecOperations"
+      uuid: "fieldExecOperations"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "org.gradle.process.JavaExecSpec"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "getClasspath"
+    sourceCodeSignature: "FileCollection getClasspath()"
+    returnType: "org.gradle.api.file.FileCollection"
+    instructionFingerprint: "EBF605BE04A81E04D4963E221BACB433"
+  paths:
+  - testPathName: "getClasspathWhenClasspathIsNull"
+    constructorSignature: "<init>(org.gradle.process.ExecOperations,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileCollection"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.jarhell.JarHellTask"
+        parameters:
+        - name: "execOperations"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.process.ExecOperations"
+            uuid: "execOperations"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+      valueType: "org.elasticsearch.gradle.jarhell.JarHellTask"
+      uuid: "target"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fileCollection"
+    branches:
+    - lineNumber: 73
+      expression: "classpath == null"
+      range: "(73,16)-(73,32)"
+      evaluatedAs: true

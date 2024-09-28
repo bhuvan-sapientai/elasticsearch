@@ -1,0 +1,129 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "B631CAD28E663DDFA17A318A1ADCBDF7"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "setupIdeForTestSourceSet(project,object2):void3"
+    - type: "STATIC"
+      name: "RestTestUtil.class"
+      valueUuid: "RestTestUtil.class"
+      methodExercised:
+        expression: "registerTestTask(project,object2):provider"
+    - type: "STATIC"
+      name: "RestTestUtil.class"
+      valueUuid: "RestTestUtil.class"
+      methodExercised:
+        expression: "setupJavaRestTestDependenciesDefaults(project,object2):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-SourceSetContainer):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      name: "sourceSets"
+      valueUuid: "object"
+      methodExercised:
+        expression: "create(name):object2"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-LegacyRestTestBasePlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.util.GradleUtils"
+      uuid: "GradleUtils.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.RestTestUtil"
+      uuid: "RestTestUtil.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.internal.test.RestIntegTestTask"
+      uuid: "provider"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.SourceSetContainer"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "class-SourceSetContainer"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "javaRestTest"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.test.LegacyRestTestBasePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.test.LegacyRestTestBasePlugin"
+      uuid: "class-LegacyRestTestBasePlugin"
+    - sapientType: "VOID"
+      uuid: "void4"

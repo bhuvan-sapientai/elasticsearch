@@ -1,0 +1,235 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.util.DependenciesUtils"
+methods:
+- method:
+    name: "createFileCollectionFromNonTransitiveArtifactsView"
+    sourceCodeSignature: "FileCollection createFileCollectionFromNonTransitiveArtifactsView(Configuration\
+      \ configuration, Spec<ComponentIdentifier> componentFilter)"
+    returnType: "org.gradle.api.file.FileCollection"
+    parameters:
+    - name: "configuration"
+      type: "org.gradle.api.artifacts.Configuration"
+    - name: "componentFilter"
+      type: "org.gradle.api.specs.Spec"
+      genericType: "org.gradle.api.artifacts.component.ComponentIdentifier"
+    instructionFingerprint: "34594CFB1321464626C03E75BE974BC9"
+  paths:
+  - testPathName: "createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranch"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "configuration"
+      valueUuid: "configuration"
+    - type: "INPUT"
+      name: "componentFilter"
+      valueUuid: "componentFilter"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "artifactView"
+      methodExercised:
+        expression: "getFiles():fileCollection"
+    - type: "LOCAL_VARIABLE"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getIncoming():resolvableDependencies"
+    - type: "LOCAL_VARIABLE"
+      name: "dependency"
+      valueUuid: "dependencyResult"
+      methodExercised:
+        expression: "getSelected():resolvedComponentResult2"
+    - type: "LOCAL_VARIABLE"
+      name: "dependency"
+      valueUuid: "dependencyResult"
+      methodExercised:
+        expression: "getSelected():resolvedComponentResult3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolutionResult"
+      methodExercised:
+        expression: "getRootComponent():provider"
+    - type: "LOCAL_VARIABLE"
+      name: "incoming"
+      valueUuid: "resolvableDependencies"
+      methodExercised:
+        expression: "getResolutionResult():resolutionResult"
+    - type: "LOCAL_VARIABLE"
+      name: "incoming"
+      valueUuid: "resolvableDependencies"
+      methodExercised:
+        expression: "artifactView(configAction-any):artifactView"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedComponentResult3"
+      methodExercised:
+        expression: "getId():componentIdentifier"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileCollection"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "org.gradle.api.artifacts.component.ComponentIdentifier"
+      uuid: "componentFilter"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ArtifactView"
+      uuid: "artifactView"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fileCollection"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvableDependencies"
+      uuid: "resolvableDependencies"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.result.ResolvedDependencyResult"
+      uuid: "dependencyResult"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.result.ResolvedComponentResult"
+      uuid: "resolvedComponentResult2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.result.ResolvedComponentResult"
+      uuid: "resolvedComponentResult3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.gradle.api.artifacts.result.ResolvedComponentResult"
+      uuid: "provider"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.artifacts.component.ComponentIdentifier"
+          uuid: "componentIdentifier2"
+      valueType: "java.util.Set"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.result.ResolutionResult"
+      uuid: "resolutionResult"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.artifacts.ArtifactView$ViewConfiguration"
+      uuid: "configAction-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.component.ComponentIdentifier"
+      uuid: "componentIdentifier"
+    branches:
+    - lineNumber: 37
+      expression: "branch expression (line 37)"
+      evaluatedAs: true
+    - lineNumber: 45
+      expression: "branch expression (line 45)"
+      evaluatedAs: true
+  - testPathName: "createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranchAndDefaultBranch2"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "configuration"
+      valueUuid: "configuration"
+    - type: "INPUT"
+      name: "componentFilter"
+      valueUuid: "componentFilter"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "artifactView"
+      methodExercised:
+        expression: "getFiles():fileCollection"
+    - type: "LOCAL_VARIABLE"
+      name: "configuration"
+      valueUuid: "configuration"
+      methodExercised:
+        expression: "getIncoming():resolvableDependencies"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolutionResult"
+      methodExercised:
+        expression: "getRootComponent():provider"
+    - type: "LOCAL_VARIABLE"
+      name: "incoming"
+      valueUuid: "resolvableDependencies"
+      methodExercised:
+        expression: "getResolutionResult():resolutionResult"
+    - type: "LOCAL_VARIABLE"
+      name: "incoming"
+      valueUuid: "resolvableDependencies"
+      methodExercised:
+        expression: "artifactView(configAction-any):artifactView"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileCollection"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "org.gradle.api.artifacts.component.ComponentIdentifier"
+      uuid: "componentFilter"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ArtifactView"
+      uuid: "artifactView"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fileCollection"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvableDependencies"
+      uuid: "resolvableDependencies"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.gradle.api.artifacts.result.ResolvedComponentResult"
+      uuid: "provider"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      uuid: "provider2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.result.ResolutionResult"
+      uuid: "resolutionResult"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.artifacts.ArtifactView$ViewConfiguration"
+      uuid: "configAction-any"
+    branches:
+    - lineNumber: 37
+      expression: "branch expression (line 37)"
+      evaluatedAs: false
+    - lineNumber: 45
+      expression: "branch expression (line 45)"
+      evaluatedAs: false

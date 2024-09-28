@@ -1,0 +1,193 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.LazyFileOutputStream"
+methods:
+- method:
+    name: "write"
+    sourceCodeSignature: "void write(int b)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "b"
+      type: "int"
+    instructionFingerprint: "63AA5C87C10E4206DED46B0AAEA8D0B2"
+  paths:
+  - testPathName: "writeTest"
+    constructorSignature: "<init>(java.io.File) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "b"
+      valueUuid: "b"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.LazyFileOutputStream"
+        parameters:
+        - name: "file"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "file-pathname"
+            valueType: "java.io.File"
+            uuid: "file"
+        propertiesMap:
+          delegate:
+            sapientType: "MOCK"
+            uuid: "null"
+      valueType: "org.elasticsearch.gradle.LazyFileOutputStream"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "b"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "write"
+    sourceCodeSignature: "void write(byte[] b, int off, int len)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "b"
+      type: "byte[]"
+    - name: "off"
+      type: "int"
+    - name: "len"
+      type: "int"
+    instructionFingerprint: "A45CA66107085CD7134CF9722AF481F5"
+  paths:
+  - testPathName: "write1Test"
+    constructorSignature: "<init>(java.io.File) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "b"
+      valueUuid: "b"
+    - type: "INPUT"
+      name: "off"
+      valueUuid: "off"
+    - type: "INPUT"
+      name: "len"
+      valueUuid: "len"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.LazyFileOutputStream"
+        parameters:
+        - name: "file"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "file-pathname"
+            valueType: "java.io.File"
+            uuid: "file"
+        propertiesMap:
+          delegate:
+            sapientType: "MOCK"
+            uuid: "null"
+      valueType: "org.elasticsearch.gradle.LazyFileOutputStream"
+      uuid: "target"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values: {}
+      valueType: "byte[]"
+      uuid: "b"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "off"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "len"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "close"
+    sourceCodeSignature: "void close()"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "182D51CB494C2319973DF1FD76741397"
+  paths:
+  - testPathName: "closeTest"
+    constructorSignature: "<init>(java.io.File) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.LazyFileOutputStream"
+        parameters:
+        - name: "file"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.File"
+              parameters:
+              - name: "pathname"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "pathname1"
+                  valueType: "java.lang.String"
+                  uuid: "file-pathname"
+            valueType: "java.io.File"
+            uuid: "file"
+        propertiesMap:
+          delegate:
+            sapientType: "MOCK"
+            uuid: "null"
+      valueType: "org.elasticsearch.gradle.LazyFileOutputStream"
+      uuid: "target"
+    - sapientType: "VOID"
+      uuid: "void2"

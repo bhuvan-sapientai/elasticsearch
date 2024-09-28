@@ -1,0 +1,62 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.distribution.DockerIronBankElasticsearchDistributionType"
+methods:
+- method:
+    name: "getName"
+    sourceCodeSignature: "String getName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "8E254A0ACCF46D56840BFC28E529DBE3"
+  paths:
+  - testPathName: "getNameTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DockerIronBankElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DockerIronBankElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "dockerIronBank"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "isDocker"
+    sourceCodeSignature: "boolean isDocker()"
+    returnType: "boolean"
+    instructionFingerprint: "7483742E0E84D44E52276911E42E1556"
+  paths:
+  - testPathName: "isDockerTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DockerIronBankElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DockerIronBankElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"

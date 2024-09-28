@@ -1,0 +1,569 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.BreakingChangesGenerator"
+methods:
+- method:
+    name: "update"
+    sourceCodeSignature: "void update(File migrationTemplateFile, File migrationOutputFile,\
+      \ List<ChangelogEntry> entries)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "migrationTemplateFile"
+      type: "java.io.File"
+    - name: "migrationOutputFile"
+      type: "java.io.File"
+    - name: "entries"
+      type: "java.util.List"
+      genericType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+    instructionFingerprint: "5F8D0CC76B05B697F7CBE4658C1D6C6A"
+  paths:
+  - testPathName: "updateTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "migrationTemplateFile"
+      valueUuid: "migrationTemplateFile"
+    - type: "INPUT"
+      name: "migrationOutputFile"
+      valueUuid: "migrationOutputFile"
+    - type: "INPUT"
+      name: "entries"
+      valueUuid: "entries"
+    - type: "STATIC"
+      name: "BreakingChangesGenerator.class"
+      valueUuid: "BreakingChangesGenerator.class"
+      methodExercised:
+        expression: "generateMigrationFile(qualifiedVersion,string2,entries):string3"
+    - type: "STATIC"
+      name: "QualifiedVersion.class"
+      valueUuid: "QualifiedVersion.class"
+      methodExercised:
+        expression: "of(string):qualifiedVersion"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getElasticsearch():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "try (FileWriter output = new FileWriter(migrationOutputFile)) {"
+      lineNumber: 36
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.FileWriter"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "migrationTemplateFile-pathname"
+      valueType: "java.io.File"
+      uuid: "migrationTemplateFile"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "migrationOutputFile-pathname"
+      valueType: "java.io.File"
+      uuid: "migrationOutputFile"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.List"
+      genericValueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "entries"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.BreakingChangesGenerator"
+      uuid: "BreakingChangesGenerator.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_generateMigrationFile1"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string2"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "QualifiedVersion.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getElasticsearch1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "VOID"
+      uuid: "void3"
+  - testPathName: "updateWhenDefaultBranchThrowsThrowable"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "migrationTemplateFile"
+      valueUuid: "migrationTemplateFile"
+    - type: "INPUT"
+      name: "migrationOutputFile"
+      valueUuid: "migrationOutputFile"
+    - type: "INPUT"
+      name: "entries"
+      valueUuid: "entries"
+    - type: "STATIC"
+      name: "BreakingChangesGenerator.class"
+      valueUuid: "BreakingChangesGenerator.class"
+      methodExercised:
+        expression: "generateMigrationFile(qualifiedVersion,string2,entries):string3"
+    - type: "STATIC"
+      name: "Files.class"
+      valueUuid: "Files.class"
+      methodExercised:
+        expression: "readString(path):string2"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "STATIC"
+      name: "QualifiedVersion.class"
+      valueUuid: "QualifiedVersion.class"
+      methodExercised:
+        expression: "of(string):qualifiedVersion"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getElasticsearch():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "throwable"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "try (FileWriter output = new FileWriter(migrationOutputFile)) {"
+      lineNumber: 36
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.FileWriter"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "migrationTemplateFile-pathname"
+      valueType: "java.io.File"
+      uuid: "migrationTemplateFile"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "migrationOutputFile-pathname"
+      valueType: "java.io.File"
+      uuid: "migrationOutputFile"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.List"
+      genericValueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "entries"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.BreakingChangesGenerator"
+      uuid: "BreakingChangesGenerator.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_generateMigrationFile1"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_readString1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Files"
+      uuid: "Files.class"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "path"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "QualifiedVersion.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getElasticsearch1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.Throwable"
+        parameters: []
+      valueType: "java.lang.Throwable"
+      uuid: "throwable"
+    branches:
+    - lineNumber: 36
+      expression: "branch expression (line 36)"
+      range: "(36,1)-(36,200)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.lang.Throwable"
+- method:
+    name: "generateMigrationFile"
+    sourceCodeSignature: "String generateMigrationFile(QualifiedVersion version, String\
+      \ template, List<ChangelogEntry> entries)"
+    returnType: "java.lang.String"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "version"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    - name: "template"
+      type: "java.lang.String"
+    - name: "entries"
+      type: "java.util.List"
+      genericType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+    instructionFingerprint: "44CD9B835201EC2A933F521B114CCBA2"
+  paths:
+  - testPathName: "generateMigrationFileTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "template"
+      valueUuid: "template"
+    - type: "INPUT"
+      name: "entries"
+      valueUuid: "entries"
+    - type: "STATIC"
+      name: "TemplateUtils.class"
+      valueUuid: "TemplateUtils.class"
+      methodExercised:
+        expression: "render(template,hashMap):string10"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "isSnapshot():boolean5"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "minor():int2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int3"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "minor():int4"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "revision():int5"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int6"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "minor():int7"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int8"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string10"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.Comparator.comparing(java.util.function.Function)\
+        \ : java.util.Comparator"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "template1"
+      valueType: "java.lang.String"
+      uuid: "template"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.ArrayList"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+            parameters: []
+            propertiesMap:
+              deprecation:
+                sapientType: "MOCK"
+                valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry$Deprecation"
+                uuid: "deprecation"
+              breaking:
+                sapientType: "MOCK"
+                valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry$Breaking"
+                uuid: "breaking"
+          valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+          uuid: "changelogEntry"
+      valueType: "java.util.List"
+      genericValueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "entries"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.TemplateUtils"
+      uuid: "TemplateUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_render1"
+      valueType: "java.lang.String"
+      uuid: "string10"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashMap"
+        parameters: []
+        values:
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "breakingByNotabilityByArea"
+              valueType: "java.lang.String"
+              uuid: "key"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                parameters: []
+                values: []
+              valueType: "java.util.Map"
+              uuid: "object2"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "deprecationsByNotabilityByArea"
+              valueType: "java.lang.String"
+              uuid: "key2"
+            value:
+              sapientType: "COLLECTION"
+              content: !<collection>
+                parameters: []
+                values: []
+              valueType: "java.util.Map"
+              uuid: "object"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair2"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "isElasticsearchSnapshot"
+              valueType: "java.lang.String"
+              uuid: "key3"
+            value:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: false
+              valueType: "java.lang.Boolean"
+              uuid: "boolean6"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair3"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "majorDotMinor"
+              valueType: "java.lang.String"
+              uuid: "key4"
+            value:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "2.2"
+              valueType: "java.lang.String"
+              uuid: "string5"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair4"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "majorDotMinorDotRevision"
+              valueType: "java.lang.String"
+              uuid: "key5"
+            value:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "2.2.8"
+              valueType: "java.lang.String"
+              uuid: "string6"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair5"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "majorMinor"
+              valueType: "java.lang.String"
+              uuid: "key6"
+            value:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "88"
+              valueType: "java.lang.String"
+              uuid: "string8"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair6"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "nextMajor"
+              valueType: "java.lang.String"
+              uuid: "key7"
+            value:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "2.0"
+              valueType: "java.lang.String"
+              uuid: "string9"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair7"
+        - sapientType: "PAIR"
+          content: !<pair>
+            key:
+              sapientType: "BASIC"
+              content: !<regular>
+                value: "version"
+              valueType: "java.lang.String"
+              uuid: "key8"
+            value:
+              sapientType: "MOCK"
+              valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+              uuid: "version"
+          valueType: "java.util.Map$Entry"
+          genericValueType: "java.lang.String,java.lang.Object"
+          uuid: "pair8"
+      valueType: "java.util.Map"
+      genericValueType: "java.lang.String,java.lang.Object"
+      uuid: "hashMap"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "int"
+      uuid: "int8"

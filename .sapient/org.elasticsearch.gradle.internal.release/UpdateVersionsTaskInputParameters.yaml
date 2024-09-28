@@ -1,0 +1,584 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+methods:
+- method:
+    name: "addVersion"
+    sourceCodeSignature: "void addVersion(String version)"
+    returnType: "void"
+    parameters:
+    - name: "version"
+      type: "java.lang.String"
+    instructionFingerprint: "765EAB87FEE683215D8EBC63B4BC0672"
+  paths:
+  - testPathName: "addVersionTest"
+    constructorSignature: "<init>(org.gradle.initialization.layout.BuildLayout) :\
+      \ void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "STATIC"
+      name: "Version.class"
+      valueUuid: "Version.class"
+      methodExercised:
+        expression: "fromString(version):version2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "versionClass.getMembers().addAfter(newVersion, previousVersion.getValue());"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+        parameters:
+        - name: "layout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.initialization.layout.BuildLayout"
+            uuid: "layout"
+      valueType: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "Version.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version2"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "removeVersion"
+    sourceCodeSignature: "void removeVersion(String version)"
+    returnType: "void"
+    parameters:
+    - name: "version"
+      type: "java.lang.String"
+    instructionFingerprint: "3B6E738F6864A0EDC1E9BB3E11E68D90"
+  paths:
+  - testPathName: "removeVersionTest"
+    constructorSignature: "<init>(org.gradle.initialization.layout.BuildLayout) :\
+      \ void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "STATIC"
+      name: "Version.class"
+      valueUuid: "Version.class"
+      methodExercised:
+        expression: "fromString(version):version2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "versionClass.getMembers().addAfter(newVersion, previousVersion.getValue());"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+        parameters:
+        - name: "layout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.initialization.layout.BuildLayout"
+            uuid: "layout"
+      valueType: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "Version.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version2"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "toVersionField"
+    sourceCodeSignature: "String toVersionField(Version version)"
+    returnType: "java.lang.String"
+    parameters:
+    - name: "version"
+      type: "org.elasticsearch.gradle.Version"
+    instructionFingerprint: "EF237D3E997853FCB49384C03DAF3C13"
+  paths:
+  - testPathName: "toVersionFieldTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.Version"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "version-major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "version-minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "version-revision"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "V_2_2_2"
+      valueType: "java.lang.String"
+      uuid: "string"
+- method:
+    name: "parseVersionField"
+    sourceCodeSignature: "Optional<Version> parseVersionField(CharSequence field)"
+    returnType: "java.util.Optional"
+    genericReturnType: "org.elasticsearch.gradle.Version"
+    parameters:
+    - name: "field"
+      type: "java.lang.CharSequence"
+    instructionFingerprint: "47AF31E2D8DDEDCFBCFBA9425713E401"
+  paths:
+  - testPathName: "parseVersionFieldWhenMFindEqualsFalse"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "field"
+      valueUuid: "field"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: false
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "field1"
+      valueType: "java.lang.String"
+      uuid: "field"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          valueType: "org.elasticsearch.gradle.Version"
+          uuid: "optionalValue"
+      valueType: "java.util.Optional"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "optional"
+    branches:
+    - lineNumber: 81
+      expression: "m.find() == false"
+      range: "(81,13)-(81,29)"
+      evaluatedAs: true
+  - testPathName: "parseVersionFieldWhenMFindNotEqualsFalse"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "field"
+      valueUuid: "field"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "Matcher m = VERSION_FIELD.matcher(field);"
+      lineNumber: 80
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: VERSION_FIELD - Method: matcher"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "field1"
+      valueType: "java.lang.String"
+      uuid: "field"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "OBJECT"
+          content: !<new>
+            target: "org.elasticsearch.gradle.Version"
+            parameters:
+            - name: "major"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: 0
+                valueType: "int"
+                uuid: "int1"
+            - name: "minor"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: 2
+                valueType: "int"
+                uuid: "int2"
+            - name: "revision"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: 0
+                valueType: "int"
+                uuid: "int3"
+            - name: "qualifier"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "qualifier1"
+                valueType: "java.lang.String"
+                uuid: "string4"
+          valueType: "org.elasticsearch.gradle.Version"
+          uuid: "version"
+      valueType: "java.util.Optional"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "optional"
+    branches:
+    - lineNumber: 81
+      expression: "m.find() == false"
+      range: "(81,13)-(81,29)"
+      evaluatedAs: false
+- method:
+    name: "executeTask"
+    sourceCodeSignature: "void executeTask()"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "8BE61D79A372844A12692D3E01F671CE"
+  paths:
+  - testPathName: "executeTaskWhenRemoveVersionIsNullThrowsIllegalArgumentException"
+    constructorSignature: "<init>(org.gradle.initialization.layout.BuildLayout) :\
+      \ void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "versionClass.getMembers().addAfter(newVersion, previousVersion.getValue());"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+        parameters:
+        - name: "layout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.initialization.layout.BuildLayout"
+            uuid: "layout"
+      valueType: "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+      uuid: "target"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "No versions to add or remove specified"
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 90
+      expression: "addVersion == null"
+      range: "(90,13)-(90,30)"
+      evaluatedAs: true
+    - lineNumber: 90
+      expression: "removeVersion == null"
+      range: "(90,35)-(90,55)"
+      evaluatedAs: true
+- method:
+    name: "removeVersionConstant"
+    sourceCodeSignature: "Optional<CompilationUnit> removeVersionConstant(CompilationUnit\
+      \ versionJava, Version version)"
+    returnType: "java.util.Optional"
+    genericReturnType: "com.github.javaparser.ast.CompilationUnit"
+    parameters:
+    - name: "versionJava"
+      type: "com.github.javaparser.ast.CompilationUnit"
+    - name: "version"
+      type: "org.elasticsearch.gradle.Version"
+    instructionFingerprint: "DE2A1A184C731EE4901AA40520C4FBFB"
+  paths:
+  - testPathName: "removeVersionConstantWhenDeclarationIsEmpty"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "versionJava"
+      valueUuid: "versionJava"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "LOCAL_VARIABLE"
+      name: "versionClass"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getFieldByName(string):optional2"
+    - type: "LOCAL_VARIABLE"
+      name: "versionJava"
+      valueUuid: "versionJava"
+      methodExercised:
+        expression: "getClassByName(className):optional"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional3"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "com.github.javaparser.ast.CompilationUnit"
+      uuid: "versionJava"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.Version"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 8
+            valueType: "int"
+            uuid: "version-major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 8
+            valueType: "int"
+            uuid: "version-minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "version-revision"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+      uuid: "object"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          valueType: "com.github.javaparser.ast.body.FieldDeclaration"
+          uuid: "optionalValue2"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.body.FieldDeclaration"
+      uuid: "optional2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "V_8_8_2"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+          uuid: "object"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+      uuid: "optional"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Version"
+      valueType: "java.lang.String"
+      uuid: "className"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          valueType: "com.github.javaparser.ast.CompilationUnit"
+          uuid: "optionalValue"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.CompilationUnit"
+      uuid: "optional3"
+    branches:
+    - lineNumber: 181
+      expression: "declaration.isEmpty()"
+      range: "(181,13)-(181,33)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"
+  - testPathName: "removeVersionConstantWhenDeclarationNotIsEmptyThrowsIllegalArgumentException"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "versionJava"
+      valueUuid: "versionJava"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "LOCAL_VARIABLE"
+      name: "versionClass"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getFieldByName(string):optional2"
+    - type: "LOCAL_VARIABLE"
+      name: "versionClass"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getFieldByName(name):optional3"
+    - type: "LOCAL_VARIABLE"
+      name: "versionJava"
+      valueUuid: "versionJava"
+      methodExercised:
+        expression: "getClassByName(className):optional"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "com.github.javaparser.ast.CompilationUnit"
+      uuid: "versionJava"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.Version"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 8
+            valueType: "int"
+            uuid: "version-major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 8
+            valueType: "int"
+            uuid: "version-minor"
+        - name: "revision"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "version-revision"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+      uuid: "object"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "com.github.javaparser.ast.body.FieldDeclaration"
+          uuid: "optional2-value"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.body.FieldDeclaration"
+      uuid: "optional2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "V_8_8_2"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          uuid: "optional3Empty"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.body.FieldDeclaration"
+      uuid: "optional3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "CURRENT"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+          uuid: "object"
+      valueType: "java.util.Optional"
+      genericValueType: "com.github.javaparser.ast.body.ClassOrInterfaceDeclaration"
+      uuid: "optional"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Version"
+      valueType: "java.lang.String"
+      uuid: "className"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Could not find CURRENT constant"
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 181
+      expression: "declaration.isEmpty()"
+      range: "(181,13)-(181,33)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.UpdateVersionsTask"

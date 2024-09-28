@@ -1,0 +1,77 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.distribution.ElasticsearchDistributionPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "4F95FC274AC00EC747163F1B081107DE"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "create(name,class-ElasticsearchDistributionExtension,objectArray):object"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.ElasticsearchDistributionPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.ElasticsearchDistributionPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.lang.Object"
+        parameters: []
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "distro"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.distribution.ElasticsearchDistributionExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.distribution.ElasticsearchDistributionExtension"
+      uuid: "class-ElasticsearchDistributionExtension"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "VOID"
+      uuid: "void"

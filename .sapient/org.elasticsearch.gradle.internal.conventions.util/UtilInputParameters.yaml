@@ -1,0 +1,1456 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.conventions.util.Util"
+methods:
+- method:
+    name: "getBooleanProperty"
+    sourceCodeSignature: "boolean getBooleanProperty(String property, boolean defaultValue)"
+    returnType: "boolean"
+    parameters:
+    - name: "property"
+      type: "java.lang.String"
+    - name: "defaultValue"
+      type: "boolean"
+    instructionFingerprint: "D64EBC972D3BBD009A083AC997F99636"
+  paths:
+  - testPathName: "getBooleanPropertyWhenDefaultValue"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "property"
+      valueUuid: "property"
+    - type: "INPUT"
+      name: "defaultValue"
+      valueUuid: "defaultValue"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "defaultValue"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "String propertyValue = System.getProperty(property);"
+      lineNumber: 32
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "property1"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "defaultValue"
+    branches:
+    - lineNumber: 33
+      expression: "propertyValue == null"
+      range: "(33,13)-(33,33)"
+      evaluatedAs: true
+    - lineNumber: 34
+      expression: "defaultValue"
+      range: "(34,20)-(34,31)"
+      evaluatedAs: true
+  - testPathName: "getBooleanPropertyWhenNotDefaultValue"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "property"
+      valueUuid: "property"
+    - type: "INPUT"
+      name: "defaultValue"
+      valueUuid: "defaultValue"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "defaultValue"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "String propertyValue = System.getProperty(property);"
+      lineNumber: 32
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "property1"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "defaultValue"
+    branches:
+    - lineNumber: 33
+      expression: "propertyValue == null"
+      range: "(33,13)-(33,33)"
+      evaluatedAs: true
+    - lineNumber: 34
+      expression: "defaultValue"
+      range: "(34,20)-(34,31)"
+      evaluatedAs: false
+  - testPathName: "getBooleanPropertyWhenTrueEqualsPropertyValue"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "property"
+      valueUuid: "property"
+    - type: "INPUT"
+      name: "defaultValue"
+      valueUuid: "defaultValue"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "String propertyValue = System.getProperty(property);"
+      lineNumber: 32
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "property1"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "defaultValue"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 33
+      expression: "propertyValue == null"
+      range: "(33,13)-(33,33)"
+      evaluatedAs: false
+    - lineNumber: 36
+      expression: "\\\"true\\\".equals(propertyValue)"
+      range: "(36,13)-(36,40)"
+      evaluatedAs: true
+  - testPathName: "getBooleanPropertyWhenFalseEqualsPropertyValue"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "property"
+      valueUuid: "property"
+    - type: "INPUT"
+      name: "defaultValue"
+      valueUuid: "defaultValue"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "String propertyValue = System.getProperty(property);"
+      lineNumber: 32
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "property1"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "defaultValue"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 33
+      expression: "propertyValue == null"
+      range: "(33,13)-(33,33)"
+      evaluatedAs: false
+    - lineNumber: 36
+      expression: "\\\"true\\\".equals(propertyValue)"
+      range: "(36,13)-(36,40)"
+      evaluatedAs: false
+    - lineNumber: 38
+      expression: "\\\"false\\\".equals(propertyValue)"
+      range: "(38,20)-(38,48)"
+      evaluatedAs: true
+  - testPathName: "getBooleanPropertyWhenFalseNotEqualsPropertyValueThrowsGradleException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "property"
+      valueUuid: "property"
+    - type: "INPUT"
+      name: "defaultValue"
+      valueUuid: "defaultValue"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "String propertyValue = System.getProperty(property);"
+      lineNumber: 32
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "defaultValue"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Sysprop [B] must be [true] or [false] but was [A]"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 33
+      expression: "propertyValue == null"
+      range: "(33,13)-(33,33)"
+      evaluatedAs: false
+    - lineNumber: 36
+      expression: "\\\"true\\\".equals(propertyValue)"
+      range: "(36,13)-(36,40)"
+      evaluatedAs: false
+    - lineNumber: 38
+      expression: "\\\"false\\\".equals(propertyValue)"
+      range: "(38,20)-(38,48)"
+      evaluatedAs: false
+- method:
+    name: "getJavaMainSourceResources"
+    sourceCodeSignature: "FileTree getJavaMainSourceResources(Project project, Action<?\
+      \ super PatternFilterable> filter)"
+    returnType: "org.gradle.api.file.FileTree"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    - name: "filter"
+      type: "org.gradle.api.Action"
+      genericType: "? super org.gradle.api.tasks.util.PatternFilterable"
+    instructionFingerprint: "19150FAF5B88957CEE8912FAF0310ACA"
+  paths:
+  - testPathName: "getJavaMainSourceResourcesTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "INPUT"
+      name: "filter"
+      valueUuid: "filter"
+    - type: "STATIC"
+      name: "Util.class"
+      valueUuid: "Util.class"
+      methodExercised:
+        expression: "getJavaMainSourceSet(project):optional"
+    - type: "LOCAL_VARIABLE"
+      name: "files"
+      valueUuid: "fileTree"
+      methodExercised:
+        expression: "matching(filter):fileTree2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceDirectorySet"
+      methodExercised:
+        expression: "getAsFileTree():fileTree"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSet"
+      methodExercised:
+        expression: "getResources():sourceDirectorySet"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileTree2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.tasks.util.PatternFilterable"
+      uuid: "filter"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.conventions.util.Util"
+      uuid: "Util.class"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "sourceSet"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "sourceSet"
+- method:
+    name: "getJavaTestSourceResources"
+    sourceCodeSignature: "FileTree getJavaTestSourceResources(Project project, Action<?\
+      \ super PatternFilterable> filter)"
+    returnType: "org.gradle.api.file.FileTree"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    - name: "filter"
+      type: "org.gradle.api.Action"
+      genericType: "? super org.gradle.api.tasks.util.PatternFilterable"
+    instructionFingerprint: "D2FE181E982AF8C7461F3AA673F41B54"
+  paths:
+  - testPathName: "getJavaTestSourceResourcesTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "INPUT"
+      name: "filter"
+      valueUuid: "filter"
+    - type: "STATIC"
+      name: "Util.class"
+      valueUuid: "Util.class"
+      methodExercised:
+        expression: "getJavaTestSourceSet(project):optional"
+    - type: "LOCAL_VARIABLE"
+      name: "files"
+      valueUuid: "fileTree"
+      methodExercised:
+        expression: "matching(filter):fileTree2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceDirectorySet"
+      methodExercised:
+        expression: "getAsFileTree():fileTree"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSet"
+      methodExercised:
+        expression: "getResources():sourceDirectorySet"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileTree2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.tasks.util.PatternFilterable"
+      uuid: "filter"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.conventions.util.Util"
+      uuid: "Util.class"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "sourceSet"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "sourceSet"
+- method:
+    name: "getJavaTestAndMainSourceResources"
+    sourceCodeSignature: "FileTree getJavaTestAndMainSourceResources(Project project,\
+      \ Action<? super PatternFilterable> filter)"
+    returnType: "org.gradle.api.file.FileTree"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    - name: "filter"
+      type: "org.gradle.api.Action"
+      genericType: "? super org.gradle.api.tasks.util.PatternFilterable"
+    instructionFingerprint: "3F04DBC34CB14A1F4CC4AC25D062A073"
+  paths:
+  - testPathName: "getJavaTestAndMainSourceResourcesWhenMainFileTreeIsPresent"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "INPUT"
+      name: "filter"
+      valueUuid: "filter"
+    - type: "STATIC"
+      name: "Util.class"
+      valueUuid: "Util.class"
+      methodExercised:
+        expression: "getJavaTestSourceSet(project):optional"
+    - type: "STATIC"
+      name: "Util.class"
+      valueUuid: "Util.class"
+      methodExercised:
+        expression: "getJavaMainSourceSet(project):optional4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "fileTree"
+      methodExercised:
+        expression: "plus(fileTree2):fileTree3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "fileTree3"
+      methodExercised:
+        expression: "matching(filter):fileTree4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceDirectorySet"
+      methodExercised:
+        expression: "getAsFileTree():fileTree"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceDirectorySet2"
+      methodExercised:
+        expression: "getAsFileTree():fileTree2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSet"
+      methodExercised:
+        expression: "getResources():sourceDirectorySet"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSet2"
+      methodExercised:
+        expression: "getResources():sourceDirectorySet2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileTree4"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.tasks.util.PatternFilterable"
+      uuid: "filter"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.conventions.util.Util"
+      uuid: "Util.class"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "sourceSet"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "sourceSet2"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileTree"
+      uuid: "fileTree4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.SourceDirectorySet"
+      uuid: "sourceDirectorySet2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "sourceSet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "sourceSet2"
+    branches:
+    - lineNumber: 76
+      expression: "testFileTree.isPresent()"
+      range: "(76,13)-(76,36)"
+      evaluatedAs: true
+    - lineNumber: 76
+      expression: "mainFileTree.isPresent()"
+      range: "(76,41)-(76,64)"
+      evaluatedAs: true
+- method:
+    name: "getJavaTestSourceSet"
+    sourceCodeSignature: "Optional<SourceSet> getJavaTestSourceSet(Project project)"
+    returnType: "java.util.Optional"
+    genericReturnType: "org.gradle.api.tasks.SourceSet"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "88CCD235F44E9A2732D5A96016151FF7"
+  paths:
+  - testPathName: "getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNull"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "findByName(name):object"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "NULL"
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "java"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "optionalValue"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    branches:
+    - lineNumber: 91
+      expression: "project.getExtensions().findByName(\\\"java\\\") == null"
+      range: "(91,16)-(91,65)"
+      evaluatedAs: true
+  - testPathName: "getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNotNull"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "findByName(name):object"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object2"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getSourceSets():sourceSetContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSetContainer"
+      methodExercised:
+        expression: "findByName(name2):object3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.lang.Object"
+        parameters: []
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "java"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "object2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "class-JavaPluginExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "sourceSetContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "object3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "test"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "object3"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    branches:
+    - lineNumber: 91
+      expression: "project.getExtensions().findByName(\\\"java\\\") == null"
+      range: "(91,16)-(91,65)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+- method:
+    name: "getJavaMainSourceSet"
+    sourceCodeSignature: "Optional<SourceSet> getJavaMainSourceSet(Project project)"
+    returnType: "java.util.Optional"
+    genericReturnType: "org.gradle.api.tasks.SourceSet"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "50E5FF7E78353267719B05EBC12E8EB3"
+  paths:
+  - testPathName: "getJavaMainSourceSetWhenIsJavaExtensionAvailableProject"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "NULL"
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "class-JavaPluginExtension"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "NULL"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "optionalValue"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    branches:
+    - lineNumber: 107
+      expression: "project.getExtensions().getByType(JavaPluginExtension.class) ==\
+        \ null"
+      range: "(107,16)-(107,83)"
+      evaluatedAs: true
+      internalMethodName: "isJavaExtensionAvailable"
+    - lineNumber: 101
+      expression: "isJavaExtensionAvailable(project)"
+      range: "(101,16)-(101,48)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+  - testPathName: "getJavaMainSourceSetWhenIsJavaExtensionAvailableNotProject"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object2"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getSourceSets():sourceSetContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "sourceSetContainer"
+      methodExercised:
+        expression: "findByName(name):object3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "optional"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.lang.Object"
+        parameters: []
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "class-JavaPluginExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "sourceSetContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "object3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "main"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "OPTIONAL"
+      content: !<optional>
+        value:
+          sapientType: "MOCK"
+          valueType: "org.gradle.api.tasks.SourceSet"
+          uuid: "object3"
+      valueType: "java.util.Optional"
+      genericValueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "optional"
+    branches:
+    - lineNumber: 107
+      expression: "project.getExtensions().getByType(JavaPluginExtension.class) ==\
+        \ null"
+      range: "(107,16)-(107,83)"
+      evaluatedAs: false
+      internalMethodName: "isJavaExtensionAvailable"
+    - lineNumber: 101
+      expression: "isJavaExtensionAvailable(project)"
+      range: "(101,16)-(101,48)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+- method:
+    name: "toStringable"
+    sourceCodeSignature: "Object toStringable(Supplier<String> getter)"
+    returnType: "java.lang.Object"
+    parameters:
+    - name: "getter"
+      type: "java.util.function.Supplier"
+      genericType: "java.lang.String"
+    instructionFingerprint: "25ABBC73425A001FB62BFA30C3BAE8ED"
+  paths:
+  - testPathName: "toStringableTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "getter"
+      valueUuid: "getter"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullNotNull"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_UNFILLED_PARAMS"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "java.util.function.Supplier"
+      uuid: "getter"
+    - sapientType: "NOT_NULL"
+      valueType: "java.lang.Object"
+      uuid: "nullNotNull"
+- method:
+    name: "getJavaSourceSets"
+    sourceCodeSignature: "SourceSetContainer getJavaSourceSets(Project project)"
+    returnType: "org.gradle.api.tasks.SourceSetContainer"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "D9C3B1A637BCB1024F7C1C78F57C193E"
+  paths:
+  - testPathName: "getJavaSourceSetsTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaPluginExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getSourceSets():sourceSetContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "sourceSetContainer"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JavaPluginExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JavaPluginExtension"
+      uuid: "class-JavaPluginExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "sourceSetContainer"
+- method:
+    name: "locateElasticsearchWorkspace"
+    sourceCodeSignature: "File locateElasticsearchWorkspace(Gradle gradle)"
+    returnType: "java.io.File"
+    parameters:
+    - name: "gradle"
+      type: "org.gradle.api.invocation.Gradle"
+    instructionFingerprint: "0B3966A7DCBF5FBE3CA0E7F20036CCE0"
+  paths:
+  - testPathName: "locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gradle"
+      valueUuid: "gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getParent():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getParent():gradle3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_INTERNAL_METHOD_RECURSIVE_CALL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    branches:
+    - lineNumber: 124
+      expression: "gradle.getRootProject().getName().startsWith(\\\"build-tools\\\"\
+        )"
+      range: "(124,13)-(124,71)"
+      evaluatedAs: false
+    - lineNumber: 131
+      expression: "gradle.getParent() == null"
+      range: "(131,13)-(131,38)"
+      evaluatedAs: false
+  - testPathName: "locateElasticsearchWorkspaceWhenVersionFileExistsBuildToolsParent"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gradle"
+      valueUuid: "gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project2"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getRootDir():file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.io.File.getParentFile() : java.io.File"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "build-toolsA"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file2-pathname"
+      valueType: "java.io.File"
+      uuid: "file2"
+    branches:
+    - lineNumber: 124
+      expression: "gradle.getRootProject().getName().startsWith(\\\"build-tools\\\"\
+        )"
+      range: "(124,13)-(124,71)"
+      evaluatedAs: true
+    - lineNumber: 148
+      expression: "new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists()"
+      range: "(148,16)-(148,84)"
+      evaluatedAs: true
+      internalMethodName: "versionFileExists"
+    - lineNumber: 126
+      expression: "versionFileExists(buildToolsParent)"
+      range: "(126,17)-(126,51)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+  - testPathName: "locateElasticsearchWorkspaceWhenVersionFileExistsNotBuildToolsParent"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gradle"
+      valueUuid: "gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project2"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getRootDir():file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.io.File.getParentFile() : java.io.File"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "build-toolsA"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file2-pathname"
+      valueType: "java.io.File"
+      uuid: "file2"
+    branches:
+    - lineNumber: 124
+      expression: "gradle.getRootProject().getName().startsWith(\\\"build-tools\\\"\
+        )"
+      range: "(124,13)-(124,71)"
+      evaluatedAs: true
+    - lineNumber: 148
+      expression: "new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists()"
+      range: "(148,16)-(148,84)"
+      evaluatedAs: false
+      internalMethodName: "versionFileExists"
+    - lineNumber: 126
+      expression: "versionFileExists(buildToolsParent)"
+      range: "(126,17)-(126,51)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+  - testPathName: "locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gradle"
+      valueUuid: "gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getParent():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getIncludedBuilds():collection"
+    - type: "LOCAL_VARIABLE"
+      name: "includedBuild"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getProjectDir():file"
+    - type: "LOCAL_VARIABLE"
+      name: "includedBuild"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getProjectDir():file3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file3"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "return new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists();"
+      lineNumber: 148
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.ArrayList"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.initialization.IncludedBuild"
+          uuid: "object"
+      valueType: "java.util.Collection"
+      genericValueType: "org.gradle.api.initialization.IncludedBuild"
+      uuid: "collection"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.initialization.IncludedBuild"
+      uuid: "object"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    branches:
+    - lineNumber: 124
+      expression: "gradle.getRootProject().getName().startsWith(\\\"build-tools\\\"\
+        )"
+      range: "(124,13)-(124,71)"
+      evaluatedAs: false
+    - lineNumber: 131
+      expression: "gradle.getParent() == null"
+      range: "(131,13)-(131,38)"
+      evaluatedAs: true
+    - lineNumber: 133
+      expression: "for-each(gradle.getIncludedBuilds())"
+      range: "(133,48)-(133,73)"
+      evaluatedAs: true
+    - lineNumber: 148
+      expression: "new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists()"
+      range: "(148,16)-(148,84)"
+      evaluatedAs: true
+      internalMethodName: "versionFileExists"
+    - lineNumber: 134
+      expression: "versionFileExists(includedBuild.getProjectDir())"
+      range: "(134,21)-(134,68)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"
+  - testPathName: "locateElasticsearchWorkspaceWhenVersionFileExistsNotIncludedBuildGetProjectDir"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gradle"
+      valueUuid: "gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getParent():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getIncludedBuilds():collection"
+    - type: "LOCAL_VARIABLE"
+      name: "gradle"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getRootProject():project2"
+        throwsExceptions:
+        - "java.lang.IllegalStateException"
+    - type: "LOCAL_VARIABLE"
+      name: "includedBuild"
+      valueUuid: "object"
+      methodExercised:
+        expression: "getProjectDir():file"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getName():string"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getRootDir():file3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file3"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "return new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists();"
+      lineNumber: 148
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.ArrayList"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.initialization.IncludedBuild"
+          uuid: "object"
+      valueType: "java.util.Collection"
+      genericValueType: "org.gradle.api.initialization.IncludedBuild"
+      uuid: "collection"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.initialization.IncludedBuild"
+      uuid: "object"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    branches:
+    - lineNumber: 124
+      expression: "gradle.getRootProject().getName().startsWith(\\\"build-tools\\\"\
+        )"
+      range: "(124,13)-(124,71)"
+      evaluatedAs: false
+    - lineNumber: 131
+      expression: "gradle.getParent() == null"
+      range: "(131,13)-(131,38)"
+      evaluatedAs: true
+    - lineNumber: 133
+      expression: "for-each(gradle.getIncludedBuilds())"
+      range: "(133,48)-(133,73)"
+      evaluatedAs: true
+    - lineNumber: 148
+      expression: "new File(rootDir, \\\"build-tools-internal/version.properties\\\
+        \").exists()"
+      range: "(148,16)-(148,84)"
+      evaluatedAs: false
+      internalMethodName: "versionFileExists"
+    - lineNumber: 134
+      expression: "versionFileExists(includedBuild.getProjectDir())"
+      range: "(134,21)-(134,68)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.conventions.util.Util"

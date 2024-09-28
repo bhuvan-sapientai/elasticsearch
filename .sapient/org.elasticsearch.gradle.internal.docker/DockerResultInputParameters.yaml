@@ -1,0 +1,108 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.docker.DockerResult"
+methods:
+- method:
+    name: "isSuccess"
+    sourceCodeSignature: "boolean isSuccess()"
+    returnType: "boolean"
+    instructionFingerprint: "CF691A12A8C59C30C748FE1DB2CCB6F0"
+  paths:
+  - testPathName: "isSuccessWhenExitCodeEquals0"
+    constructorSignature: "<init>(int,java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.docker.DockerResult"
+        parameters:
+        - name: "exitCode"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "exitCode"
+        - name: "stdout"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "stdout1"
+            valueType: "java.lang.String"
+            uuid: "stdout"
+        - name: "stderr"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "stderr1"
+            valueType: "java.lang.String"
+            uuid: "stderr"
+      valueType: "org.elasticsearch.gradle.internal.docker.DockerResult"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 56
+      expression: "exitCode == 0"
+      range: "(56,16)-(56,28)"
+      evaluatedAs: true
+  - testPathName: "isSuccessWhenExitCodeNotEquals0"
+    constructorSignature: "<init>(int,java.lang.String,java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.docker.DockerResult"
+        parameters:
+        - name: "exitCode"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: -1
+            valueType: "int"
+            uuid: "exitCode"
+        - name: "stdout"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "stdout1"
+            valueType: "java.lang.String"
+            uuid: "stdout"
+        - name: "stderr"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "stderr1"
+            valueType: "java.lang.String"
+            uuid: "stderr"
+      valueType: "org.elasticsearch.gradle.internal.docker.DockerResult"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 56
+      expression: "exitCode == 0"
+      range: "(56,16)-(56,28)"
+      evaluatedAs: false

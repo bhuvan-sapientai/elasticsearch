@@ -1,0 +1,146 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalTestArtifactPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "C5755B4EC4563318E1A485927D8243FE"
+  paths:
+  - testPathName: "applyWhenSourceSetGetNameEqualsSourceSetMAIN_SOURCE_SET_NAMEEqualsFalse"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-InternalTestArtifactExtension):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "getByType(class-SourceSetContainer):object2"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      name: "testArtifactExtension"
+      valueUuid: "object"
+      methodExercised:
+        expression: "registerTestArtifactFromSourceSet(sourceSet):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "all(action-any):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-InternalTestArtifactBasePlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "sourceSet"
+      valueUuid: "sourceSet"
+      methodExercised:
+        expression: "getName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalTestArtifactPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.InternalTestArtifactPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalTestArtifactExtension"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalTestArtifactExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalTestArtifactExtension"
+      uuid: "class-InternalTestArtifactExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "object2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.SourceSetContainer"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.SourceSetContainer"
+      uuid: "class-SourceSetContainer"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.SourceSet"
+      uuid: "sourceSet"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalTestArtifactBasePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalTestArtifactBasePlugin"
+      uuid: "class-InternalTestArtifactBasePlugin"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "VOID"
+      uuid: "void3"
+    branches:
+    - lineNumber: 28
+      expression: "sourceSet.getName().equals(SourceSet.MAIN_SOURCE_SET_NAME) == false"
+      range: "(28,17)-(28,83)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$0"

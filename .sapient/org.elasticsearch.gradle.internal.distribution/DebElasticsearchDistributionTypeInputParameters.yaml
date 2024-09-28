@@ -1,0 +1,82 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.distribution.DebElasticsearchDistributionType"
+methods:
+- method:
+    name: "getName"
+    sourceCodeSignature: "String getName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "D5BCB0916F8C5D1995A617B7A22E6C39"
+  paths:
+  - testPathName: "getNameTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DebElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DebElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "deb"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "getClassifier"
+    sourceCodeSignature: "String getClassifier(ElasticsearchDistribution.Platform\
+      \ platform, Version version)"
+    returnType: "java.lang.String"
+    parameters:
+    - name: "platform"
+      type: "org.elasticsearch.gradle.ElasticsearchDistribution$Platform"
+    - name: "version"
+      type: "org.elasticsearch.gradle.Version"
+    instructionFingerprint: "51FB8F79D2A69AD5F6BC07EE70E76AD2"
+  paths:
+  - testPathName: "getClassifierTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "platform"
+      valueUuid: "platform"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.distribution.DebElasticsearchDistributionType"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.distribution.DebElasticsearchDistributionType"
+      uuid: "target"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "LINUX"
+      valueType: "org.elasticsearch.gradle.ElasticsearchDistribution$Platform"
+      uuid: "platform"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ":amd64"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"

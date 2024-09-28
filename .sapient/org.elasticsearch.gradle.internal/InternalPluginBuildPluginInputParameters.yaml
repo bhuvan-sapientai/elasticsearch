@@ -1,0 +1,81 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalPluginBuildPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "F86488BBB622FD8C054CAA3D94AF0956"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-BuildPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager2"
+      methodExercised:
+        expression: "apply(class-BaseInternalPluginBuildPlugin):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPluginManager():pluginManager2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalPluginBuildPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.InternalPluginBuildPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.BuildPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.BuildPlugin"
+      uuid: "class-BuildPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.BaseInternalPluginBuildPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.BaseInternalPluginBuildPlugin"
+      uuid: "class-BaseInternalPluginBuildPlugin"
+    - sapientType: "VOID"
+      uuid: "void3"

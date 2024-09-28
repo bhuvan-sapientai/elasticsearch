@@ -1,0 +1,184 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.precommit.ValidateJsonNoKeywordsTask"
+methods:
+- method:
+    name: "validate"
+    sourceCodeSignature: "void validate(InputChanges inputChanges)"
+    returnType: "void"
+    parameters:
+    - name: "inputChanges"
+      type: "org.gradle.work.InputChanges"
+    instructionFingerprint: "624226E364E8243A04BF23A946BA26E2"
+  paths:
+  - testPathName: "validateWhenErrorsIsEmpty"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "inputChanges"
+      valueUuid: "inputChanges"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "LOCAL_VARIABLE"
+      name: "inputChanges"
+      valueUuid: "inputChanges"
+      methodExercised:
+        expression: "getFileChanges(fieldFileCollection):iterable"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "debug(arg0,string5):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "errorsForFile.forEach(err -> pw.printf(\\\"\\\\t%s%n\\\", err));"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.ValidateJsonNoKeywordsTask"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.ValidateJsonNoKeywordsTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.work.InputChanges"
+      uuid: "inputChanges"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.lang.Iterable"
+      genericValueType: "org.gradle.work.FileChange"
+      uuid: "iterable"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fieldFileCollection"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Loading keywords from {}"
+      valueType: "java.lang.String"
+      uuid: "arg0"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string5"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "VOID"
+      uuid: "void4"
+    branches:
+    - lineNumber: 133
+      expression: "errors.isEmpty()"
+      range: "(133,13)-(133,28)"
+      evaluatedAs: true
+  - testPathName: "validateWhenCaughtIOExceptionThrowsGradleException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "inputChanges"
+      valueUuid: "inputChanges"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "debug(arg0,string5):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "errorsForFile.forEach(err -> pw.printf(\\\"\\\\t%s%n\\\", err));"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.ValidateJsonNoKeywordsTask"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.ValidateJsonNoKeywordsTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.work.InputChanges"
+      uuid: "inputChanges"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Loading keywords from {}"
+      valueType: "java.lang.String"
+      uuid: "arg0"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string5"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Failed to load keywords JSON from A - B"
+            valueType: "java.lang.String"
+            uuid: "string8"
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.IOException"
+              parameters:
+              - name: "message"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: "B"
+                  valueType: "java.lang.String"
+                  uuid: "iOException-message"
+            valueType: "java.io.IOException"
+            uuid: "iOException"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 190
+      expression: "catch-exception (IOException)"
+      range: "(190,11)-(190,30)"
+      evaluatedAs: true
+      internalMethodName: "loadKeywords"
+    catchBlockExercised:
+      idExternalInstruction: 28
+      id: 4
+      catchExceptions:
+      - "java.io.IOException"

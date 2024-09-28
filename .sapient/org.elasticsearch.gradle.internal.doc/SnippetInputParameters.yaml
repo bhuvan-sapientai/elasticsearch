@@ -1,0 +1,578 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.doc.Snippet"
+methods:
+- method:
+    name: "toString"
+    sourceCodeSignature: "String toString()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "A4AFB8EA5FE4B1714DE6FBAD5AA16424"
+  paths:
+  - testPathName: "toStringWhenSkipIsNotNullAndTestSetupAndCurl"
+    constructorSignature: "<init>(java.nio.file.Path,int,int,java.lang.String,java.lang.Boolean,boolean,boolean,boolean,boolean,java.lang.String,boolean,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,java.util.List<java.lang.String>,boolean,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string16"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.doc.Snippet"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "MOCK"
+            valueType: "java.nio.file.Path"
+            uuid: "path"
+            nameForMock: "path"
+        - name: "start"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "start"
+        - name: "end"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "end"
+        - name: "contents"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "contents1"
+            valueType: "java.lang.String"
+            uuid: "contents"
+        - name: "console"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "java.lang.Boolean"
+            uuid: "console"
+        - name: "test"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "test"
+        - name: "testResponse"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "testResponse"
+        - name: "testSetup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "testSetup"
+        - name: "testTearDown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testTearDown"
+        - name: "skip"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "skip"
+        - name: "continued"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "continued"
+        - name: "language"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "language"
+        - name: "catchPart"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "catchPart"
+        - name: "setup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "setup"
+        - name: "teardown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "teardown"
+        - name: "curl"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "curl"
+        - name: "warnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.ArrayList"
+              parameters: []
+              values:
+              - sapientType: "BASIC"
+                content: !<regular>
+                  value: ""
+                valueType: "java.lang.String"
+                uuid: "object"
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "warnings"
+        - name: "skipShardsFailures"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "skipShardsFailures"
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+      valueType: "org.elasticsearch.gradle.internal.doc.Snippet"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "path[2:2]()// CONSOLE// TEST[catch: ][skip=][continued][setup:][teardown:][warning:][skip_shard_failures]//\
+          \ TESTRESPONSE[skip=]// TESTSETUP(curl)"
+      valueType: "java.lang.String"
+      uuid: "string16"
+    branches:
+    - lineNumber: 40
+      expression: "language != null"
+      range: "(40,13)-(40,28)"
+      evaluatedAs: true
+    - lineNumber: 43
+      expression: "console != null"
+      range: "(43,13)-(43,27)"
+      evaluatedAs: true
+    - lineNumber: 44
+      expression: "console"
+      range: "(44,23)-(44,29)"
+      evaluatedAs: true
+    - lineNumber: 46
+      expression: "test"
+      range: "(46,13)-(46,16)"
+      evaluatedAs: true
+    - lineNumber: 48
+      expression: "catchPart != null"
+      range: "(48,17)-(48,33)"
+      evaluatedAs: true
+    - lineNumber: 51
+      expression: "skip != null"
+      range: "(51,17)-(51,28)"
+      evaluatedAs: true
+    - lineNumber: 54
+      expression: "continued"
+      range: "(54,17)-(54,25)"
+      evaluatedAs: true
+    - lineNumber: 57
+      expression: "setup != null"
+      range: "(57,17)-(57,29)"
+      evaluatedAs: true
+    - lineNumber: 60
+      expression: "teardown != null"
+      range: "(60,17)-(60,32)"
+      evaluatedAs: true
+    - lineNumber: 63
+      expression: "for-each(warnings)"
+      range: "(63,35)-(63,42)"
+      evaluatedAs: true
+    - lineNumber: 66
+      expression: "skipShardsFailures"
+      range: "(66,17)-(66,34)"
+      evaluatedAs: true
+    - lineNumber: 70
+      expression: "testResponse"
+      range: "(70,13)-(70,24)"
+      evaluatedAs: true
+    - lineNumber: 72
+      expression: "skip != null"
+      range: "(72,17)-(72,28)"
+      evaluatedAs: true
+    - lineNumber: 76
+      expression: "testSetup"
+      range: "(76,13)-(76,21)"
+      evaluatedAs: true
+    - lineNumber: 79
+      expression: "curl"
+      range: "(79,13)-(79,16)"
+      evaluatedAs: true
+- method:
+    name: "isConsoleCandidate"
+    sourceCodeSignature: "boolean isConsoleCandidate()"
+    returnType: "boolean"
+    instructionFingerprint: "C3696EC93A823CCC0714150229A27CC6"
+  paths:
+  - testPathName: "isConsoleCandidateWhenTestResponse"
+    constructorSignature: "<init>(java.nio.file.Path,int,int,java.lang.String,java.lang.Boolean,boolean,boolean,boolean,boolean,java.lang.String,boolean,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,java.util.List<java.lang.String>,boolean,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.doc.Snippet"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "MOCK"
+            valueType: "java.nio.file.Path"
+            uuid: "path"
+        - name: "start"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "start"
+        - name: "end"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "end"
+        - name: "contents"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "contents1"
+            valueType: "java.lang.String"
+            uuid: "contents"
+        - name: "console"
+          value:
+            sapientType: "NULL"
+            valueType: "java.lang.Boolean"
+            uuid: "console"
+        - name: "test"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "test"
+        - name: "testResponse"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "testResponse"
+        - name: "testSetup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testSetup"
+        - name: "testTearDown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testTearDown"
+        - name: "skip"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "skip1"
+            valueType: "java.lang.String"
+            uuid: "skip"
+        - name: "continued"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "continued"
+        - name: "language"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "language1"
+            valueType: "java.lang.String"
+            uuid: "language"
+        - name: "catchPart"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "catchPart1"
+            valueType: "java.lang.String"
+            uuid: "catchPart"
+        - name: "setup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "setup1"
+            valueType: "java.lang.String"
+            uuid: "setup"
+        - name: "teardown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "teardown1"
+            valueType: "java.lang.String"
+            uuid: "teardown"
+        - name: "curl"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "curl"
+        - name: "warnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "warnings"
+        - name: "skipShardsFailures"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "skipShardsFailures"
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+      valueType: "org.elasticsearch.gradle.internal.doc.Snippet"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 91
+      expression: "console != null"
+      range: "(91,13)-(91,27)"
+      evaluatedAs: false
+    - lineNumber: 91
+      expression: "testResponse"
+      range: "(91,32)-(91,43)"
+      evaluatedAs: true
+  - testPathName: "isConsoleCandidateWhenCurl"
+    constructorSignature: "<init>(java.nio.file.Path,int,int,java.lang.String,java.lang.Boolean,boolean,boolean,boolean,boolean,java.lang.String,boolean,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,java.util.List<java.lang.String>,boolean,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.doc.Snippet"
+        parameters:
+        - name: "path"
+          value:
+            sapientType: "MOCK"
+            valueType: "java.nio.file.Path"
+            uuid: "path"
+        - name: "start"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "start"
+        - name: "end"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "end"
+        - name: "contents"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "contents1"
+            valueType: "java.lang.String"
+            uuid: "contents"
+        - name: "console"
+          value:
+            sapientType: "NULL"
+            valueType: "java.lang.Boolean"
+            uuid: "console"
+        - name: "test"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "test"
+        - name: "testResponse"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testResponse"
+        - name: "testSetup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testSetup"
+        - name: "testTearDown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "testTearDown"
+        - name: "skip"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "skip1"
+            valueType: "java.lang.String"
+            uuid: "skip"
+        - name: "continued"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "continued"
+        - name: "language"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "language"
+        - name: "catchPart"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "catchPart1"
+            valueType: "java.lang.String"
+            uuid: "catchPart"
+        - name: "setup"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "setup1"
+            valueType: "java.lang.String"
+            uuid: "setup"
+        - name: "teardown"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "teardown1"
+            valueType: "java.lang.String"
+            uuid: "teardown"
+        - name: "curl"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "curl"
+        - name: "warnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "warnings"
+        - name: "skipShardsFailures"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "skipShardsFailures"
+        - name: "name"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "name1"
+            valueType: "java.lang.String"
+            uuid: "name"
+      valueType: "org.elasticsearch.gradle.internal.doc.Snippet"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 91
+      expression: "console != null"
+      range: "(91,13)-(91,27)"
+      evaluatedAs: false
+    - lineNumber: 91
+      expression: "testResponse"
+      range: "(91,32)-(91,43)"
+      evaluatedAs: false
+    - lineNumber: 103
+      expression: "language.equals(\\\"js\\\")"
+      range: "(103,16)-(103,36)"
+      evaluatedAs: false
+    - lineNumber: 103
+      expression: "curl"
+      range: "(103,41)-(103,44)"
+      evaluatedAs: true

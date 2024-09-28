@@ -1,0 +1,431 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+methods:
+- method:
+    name: "transformTest"
+    sourceCodeSignature: "void transformTest(ObjectNode doNodeParent)"
+    returnType: "void"
+    parameters:
+    - name: "doNodeParent"
+      type: "com.fasterxml.jackson.databind.node.ObjectNode"
+    instructionFingerprint: "3090AA5BD1E42D84C4BEE2A3EB578D2F"
+  paths:
+  - testPathName: "transformTestWhenArrayWarningsIsNull"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "doNodeParent"
+      valueUuid: "doNodeParent"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getSkipFeatureName():string"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getSkipFeatureName():string2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: com.fasterxml.jackson.databind.node.ObjectNode.get(java.lang.String)\
+        \ : com.fasterxml.jackson.databind.JsonNode"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.ArrayList"
+              parameters: []
+              values:
+              - sapientType: "BASIC"
+                content: !<regular>
+                  value: "A"
+                valueType: "java.lang.String"
+                uuid: "string3"
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.node.ObjectNode"
+        parameters:
+        - name: "nc"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+              parameters:
+              - name: "bigDecimalExact"
+                value:
+                  sapientType: "BASIC"
+                  content: !<regular>
+                    value: false
+                  valueType: "boolean"
+                  uuid: "doNodeParent-nc-bigDecimalExact"
+            valueType: "com.fasterxml.jackson.databind.node.JsonNodeFactory"
+            uuid: "doNodeParent-nc"
+      valueType: "com.fasterxml.jackson.databind.node.ObjectNode"
+      uuid: "doNodeParent"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getSkipFeatureName1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getSkipFeatureName1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 66
+      expression: "arrayWarnings == null"
+      range: "(66,13)-(66,33)"
+      evaluatedAs: true
+- method:
+    name: "getKeyToFind"
+    sourceCodeSignature: "String getKeyToFind()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "B72AEA2221D119E8D57323F72DFBF963"
+  paths:
+  - testPathName: "getKeyToFindTest"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "do"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "getSkipFeatureName"
+    sourceCodeSignature: "String getSkipFeatureName()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "D10F6DF6966759D47DCB41FB0DFA2492"
+  paths:
+  - testPathName: "getSkipFeatureNameWhenIsRegex"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "allowed_warnings_regex"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 82
+      expression: "isRegex"
+      range: "(82,16)-(82,22)"
+      evaluatedAs: true
+  - testPathName: "getSkipFeatureNameWhenNotIsRegex"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "testName1"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "allowed_warnings"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 82
+      expression: "isRegex"
+      range: "(82,16)-(82,22)"
+      evaluatedAs: false
+- method:
+    name: "shouldApply"
+    sourceCodeSignature: "boolean shouldApply(RestTestContext testContext)"
+    returnType: "boolean"
+    parameters:
+    - name: "testContext"
+      type: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+    instructionFingerprint: "FC7E9488EDA58F7FFACBCFD482A91C1C"
+  paths:
+  - testPathName: "shouldApplyWhenTestContextTestNameEqualsTestName"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testContext"
+      valueUuid: "testContext"
+    - type: "LOCAL_VARIABLE"
+      name: "testContext"
+      valueUuid: "testContext"
+      methodExercised:
+        expression: "testName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+      uuid: "testContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 92
+      expression: "testName == null"
+      range: "(92,16)-(92,31)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "testContext.testName().equals(testName)"
+      range: "(92,36)-(92,74)"
+      evaluatedAs: true
+  - testPathName: "shouldApplyWhenTestContextTestNameNotEqualsTestName"
+    constructorSignature: "<init>(boolean,java.util.List<java.lang.String>,java.lang.String)\
+      \ : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "testContext"
+      valueUuid: "testContext"
+    - type: "LOCAL_VARIABLE"
+      name: "testContext"
+      valueUuid: "testContext"
+      methodExercised:
+        expression: "testName():string"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+        parameters:
+        - name: "isRegex"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "isRegex"
+        - name: "allowedWarnings"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.String"
+            uuid: "allowedWarnings"
+        - name: "testName"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "testName"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext"
+      uuid: "testContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 92
+      expression: "testName == null"
+      range: "(92,16)-(92,31)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "testContext.testName().equals(testName)"
+      range: "(92,36)-(92,74)"
+      evaluatedAs: false

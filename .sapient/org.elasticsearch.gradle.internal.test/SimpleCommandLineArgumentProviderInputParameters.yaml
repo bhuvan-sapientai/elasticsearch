@@ -1,0 +1,43 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.SimpleCommandLineArgumentProvider"
+methods:
+- method:
+    name: "asArguments"
+    sourceCodeSignature: "Iterable<String> asArguments()"
+    returnType: "java.lang.Iterable"
+    genericReturnType: "java.lang.String"
+    instructionFingerprint: "296621266B318F380A55EE050A70D8C5"
+  paths:
+  - testPathName: "asArgumentsTest"
+    constructorSignature: "<init>(java.lang.String[]) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "list"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.SimpleCommandLineArgumentProvider"
+        parameters:
+        - name: "arguments"
+          value:
+            sapientType: "ARRAY"
+            content: !<array>
+              values: {}
+            valueType: "java.lang.String[]"
+            uuid: "arguments"
+      valueType: "org.elasticsearch.gradle.internal.test.SimpleCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.List"
+      genericValueType: "java.lang.String"
+      uuid: "list"

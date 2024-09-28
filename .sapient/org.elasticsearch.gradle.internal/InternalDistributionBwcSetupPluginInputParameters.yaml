@@ -1,0 +1,3258 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "40C3F08B79C77915D6BF2C048369DA5E"
+  paths:
+  - testPathName: "applyWhenDistributionProjectsIsNotEmptyThrowsNullPointerException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getBwcVersions():bwcVersions"
+    - type: "STATIC"
+      name: "InternalDistributionBwcSetupPlugin.class"
+      valueUuid: "InternalDistributionBwcSetupPlugin.class"
+      methodExercised:
+        expression: "createBuildBwcTask(object3,project3,provider3,string34,string35,internalDistributionBwcSetupPluginDistributionProjectArtifact,taskProvider,string33):void6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "bwcVersions"
+      methodExercised:
+        expression: "forPreviousUnreleased(consumer-any):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "checkoutDir"
+      methodExercised:
+        expression: "set(provider2):void5"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "into(string31):abstractCopyTask"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "from(string32,configureAction-any):abstractCopyTask2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray3):copySpec2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray4):copySpec3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "directoryProperty"
+      methodExercised:
+        expression: "get():object2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaToolchainService):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "create(name,class-BwcSetupExtension,objectArray):object3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcVersion(provider4):void3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcBranch(provider5):void4"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "getCheckoutDir():checkoutDir"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle2"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getAsFile():file"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo):boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo2):boolean3"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo3):boolean7"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo4):boolean10"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo5):boolean13"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo6):boolean16"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo7):boolean18"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo8):boolean20"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo9):boolean23"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo10):boolean26"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "getGitExtension():gitExtension"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-JvmToolchainsPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer2"
+      methodExercised:
+        expression: "apply(class-InternalBwcGitPlugin):plugin2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer3"
+      methodExercised:
+        expression: "apply(class-LifecycleBasePlugin):plugin3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-GlobalBuildInfoPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "project(string):project3"
+        throwsExceptions:
+        - "org.gradle.api.UnknownProjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getLayout():projectLayout"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getName():string30"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "layout"
+      valueUuid: "projectLayout"
+      methodExercised:
+        expression: "getBuildDirectory():directoryProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer2-any):provider3"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer3-any):provider4"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer4-any):provider5"
+    - type: "LOCAL_VARIABLE"
+      name: "checkoutDir"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "provider3"
+      methodExercised:
+        expression: "get():object5"
+    - type: "LOCAL_VARIABLE"
+      name: "providerFactory"
+      valueUuid: "providerFactory"
+      methodExercised:
+        expression: "provider(value-any):provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name2):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer2"
+      methodExercised:
+        expression: "register(name3,class-Copy,configurationAction-any):taskProvider2"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "info -> new File(layout.getBuildDirectory().get().getAsFile(), \\\"\
+        bwc/checkout-\\\" + info.branch())"
+      lineNumber: 88
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions"
+      uuid: "bwcVersions"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "InternalDistributionBwcSetupPlugin.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "object3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string34"
+      valueType: "java.lang.String"
+      uuid: "string34"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string35"
+      valueType: "java.lang.String"
+      uuid: "string35"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+      uuid: "internalDistributionBwcSetupPluginDistributionProjectArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string33"
+      valueType: "java.lang.String"
+      uuid: "string33"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "ANY"
+      valueType: "java.util.function.Consumer"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "consumer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.io.File"
+      uuid: "checkoutDir"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.Copy"
+      uuid: "copy"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A-C"
+      valueType: "java.lang.String"
+      uuid: "string31"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string32"
+      valueType: "java.lang.String"
+      uuid: "string32"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.file.CopySpec"
+      uuid: "configureAction-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec2"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradle.properties"
+            valueType: "java.lang.String"
+            uuid: "stringArray4Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec3"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "init.d/*"
+            valueType: "java.lang.String"
+            uuid: "stringArray5Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "directoryProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.Directory"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.jvm.toolchain.JavaToolchainService"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "class-JavaToolchainService"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "bwcSetup"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "class-BwcSetupExtension"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project3"
+          1:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+          2:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+          3:
+            sapientType: "MOCK"
+            valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+            uuid: "object"
+          4:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+            uuid: "provider"
+          5:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "java.io.File"
+            uuid: "provider2"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcGitExtension"
+      uuid: "gitExtension"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider4"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "provider5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file4-pathname"
+      valueType: "java.io.File"
+      uuid: "file4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.13.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean10"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean13"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean16"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean18"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean20"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo8"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean23"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean26"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo10"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "plugin2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      uuid: "class-JvmToolchainsPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "class-InternalBwcGitPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      uuid: "class-LifecycleBasePlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      uuid: "class-GlobalBuildInfoPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_gradleProjectPath1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ProjectLayout"
+      uuid: "projectLayout"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string30"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer2-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer3-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer4-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object4-pathname"
+      valueType: "java.io.File"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ProviderFactory"
+      uuid: "providerFactory"
+    - sapientType: "ANY"
+      valueType: "java.util.concurrent.Callable"
+      uuid: "value-any"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwc"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      uuid: "taskProvider2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "setupGradleUserHome"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.Copy"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.Copy"
+      uuid: "class-Copy"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configurationAction-any"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"
+    branches:
+    - lineNumber: 236
+      expression: "bwcVersion.onOrAfter(\\\"7.13.0\\\")"
+      range: "(236,13)-(236,42)"
+      evaluatedAs: false
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 242
+      expression: "bwcVersion.onOrAfter(\\\"7.0.0\\\")"
+      range: "(242,17)-(242,45)"
+      evaluatedAs: false
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"zip\\\")"
+      range: "(255,48)-(255,67)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"tar\\\")"
+      range: "(255,72)-(255,91)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 258
+      expression: "bwcVersion.onOrAfter(\\\"7.0.0\\\")"
+      range: "(258,17)-(258,45)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 122
+      expression: "for-each(distributionProjects)"
+      range: "(122,56)-(122,75)"
+      evaluatedAs: true
+      internalMethodName: "configureBwcProject"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+  - testPathName: "applyWhenBwcVersionNotOnOrAfter7_0_0AndDistributionProjectsIsNotEmptyThrowsNullPointerException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getBwcVersions():bwcVersions"
+    - type: "STATIC"
+      name: "InternalDistributionBwcSetupPlugin.class"
+      valueUuid: "InternalDistributionBwcSetupPlugin.class"
+      methodExercised:
+        expression: "createBuildBwcTask(object3,project3,provider3,string52,string53,internalDistributionBwcSetupPluginDistributionProjectArtifact,taskProvider,string51):void6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "bwcVersions"
+      methodExercised:
+        expression: "forPreviousUnreleased(consumer-any):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "checkoutDir"
+      methodExercised:
+        expression: "set(provider2):void5"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "into(string49):abstractCopyTask"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "from(string50,configureAction-any):abstractCopyTask2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray4):copySpec2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray5):copySpec3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "directoryProperty"
+      methodExercised:
+        expression: "get():object2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaToolchainService):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "create(name,class-BwcSetupExtension,objectArray):object3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcVersion(provider4):void3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcBranch(provider5):void4"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "getCheckoutDir():checkoutDir"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle2"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getAsFile():file"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo):boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo2):boolean3"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo3):boolean5"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo4):boolean9"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo5):boolean12"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo6):boolean15"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo7):boolean18"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo8):boolean20"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo9):boolean22"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo10):boolean25"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo11):boolean28"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo12):boolean31"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo13):boolean34"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo14):boolean37"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo15):boolean40"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo16):boolean43"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo17):boolean46"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "getGitExtension():gitExtension"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-JvmToolchainsPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer2"
+      methodExercised:
+        expression: "apply(class-InternalBwcGitPlugin):plugin2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer3"
+      methodExercised:
+        expression: "apply(class-LifecycleBasePlugin):plugin3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-GlobalBuildInfoPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "project(string):project3"
+        throwsExceptions:
+        - "org.gradle.api.UnknownProjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getLayout():projectLayout"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getName():string48"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "layout"
+      valueUuid: "projectLayout"
+      methodExercised:
+        expression: "getBuildDirectory():directoryProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer2-any):provider3"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer3-any):provider4"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer4-any):provider5"
+    - type: "LOCAL_VARIABLE"
+      name: "checkoutDir"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "provider3"
+      methodExercised:
+        expression: "get():object5"
+    - type: "LOCAL_VARIABLE"
+      name: "providerFactory"
+      valueUuid: "providerFactory"
+      methodExercised:
+        expression: "provider(value-any):provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name2):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer2"
+      methodExercised:
+        expression: "register(name3,class-Copy,configurationAction-any):taskProvider2"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "info -> new File(layout.getBuildDirectory().get().getAsFile(), \\\"\
+        bwc/checkout-\\\" + info.branch())"
+      lineNumber: 88
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions"
+      uuid: "bwcVersions"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "InternalDistributionBwcSetupPlugin.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "object3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string52"
+      valueType: "java.lang.String"
+      uuid: "string52"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string53"
+      valueType: "java.lang.String"
+      uuid: "string53"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+      uuid: "internalDistributionBwcSetupPluginDistributionProjectArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string51"
+      valueType: "java.lang.String"
+      uuid: "string51"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "ANY"
+      valueType: "java.util.function.Consumer"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "consumer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.io.File"
+      uuid: "checkoutDir"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.Copy"
+      uuid: "copy"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A-C"
+      valueType: "java.lang.String"
+      uuid: "string49"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string50"
+      valueType: "java.lang.String"
+      uuid: "string50"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.file.CopySpec"
+      uuid: "configureAction-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec2"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradle.properties"
+            valueType: "java.lang.String"
+            uuid: "stringArray4Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec3"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "init.d/*"
+            valueType: "java.lang.String"
+            uuid: "stringArray5Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "directoryProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.Directory"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.jvm.toolchain.JavaToolchainService"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "class-JavaToolchainService"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "bwcSetup"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "class-BwcSetupExtension"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project3"
+          1:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+          2:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+          3:
+            sapientType: "MOCK"
+            valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+            uuid: "object"
+          4:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+            uuid: "provider"
+          5:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "java.io.File"
+            uuid: "provider2"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcGitExtension"
+      uuid: "gitExtension"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider4"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "provider5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file4-pathname"
+      valueType: "java.io.File"
+      uuid: "file4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.13.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.12.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean12"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean15"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean18"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean20"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo8"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean22"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean25"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo10"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean28"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo11"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean31"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo12"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean34"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo13"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean37"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo14"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean40"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo15"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean43"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo16"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean46"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo17"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "plugin2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      uuid: "class-JvmToolchainsPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "class-InternalBwcGitPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      uuid: "class-LifecycleBasePlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      uuid: "class-GlobalBuildInfoPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_gradleProjectPath1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ProjectLayout"
+      uuid: "projectLayout"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string48"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer2-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer3-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer4-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object4-pathname"
+      valueType: "java.io.File"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ProviderFactory"
+      uuid: "providerFactory"
+    - sapientType: "ANY"
+      valueType: "java.util.concurrent.Callable"
+      uuid: "value-any"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwc"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      uuid: "taskProvider2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "setupGradleUserHome"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.Copy"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.Copy"
+      uuid: "class-Copy"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configurationAction-any"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"
+    branches:
+    - lineNumber: 236
+      expression: "bwcVersion.onOrAfter(\\\"7.13.0\\\")"
+      range: "(236,13)-(236,42)"
+      evaluatedAs: false
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 242
+      expression: "bwcVersion.onOrAfter(\\\"7.0.0\\\")"
+      range: "(242,17)-(242,45)"
+      evaluatedAs: true
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 246
+      expression: "bwcVersion.onOrAfter(\\\"7.12.0\\\")"
+      range: "(246,21)-(246,50)"
+      evaluatedAs: true
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"zip\\\")"
+      range: "(255,48)-(255,67)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"tar\\\")"
+      range: "(255,72)-(255,91)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 258
+      expression: "bwcVersion.onOrAfter(\\\"7.0.0\\\")"
+      range: "(258,17)-(258,45)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 122
+      expression: "for-each(distributionProjects)"
+      range: "(122,56)-(122,75)"
+      evaluatedAs: true
+      internalMethodName: "configureBwcProject"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+  - testPathName: "applyWhenNameContainsDebAndDistributionProjectsIsNotEmptyThrowsNullPointerException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getBwcVersions():bwcVersions"
+    - type: "STATIC"
+      name: "InternalDistributionBwcSetupPlugin.class"
+      valueUuid: "InternalDistributionBwcSetupPlugin.class"
+      methodExercised:
+        expression: "createBuildBwcTask(object3,project3,provider3,string32,string33,internalDistributionBwcSetupPluginDistributionProjectArtifact,taskProvider,string31):void6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "bwcVersions"
+      methodExercised:
+        expression: "forPreviousUnreleased(consumer-any):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "checkoutDir"
+      methodExercised:
+        expression: "set(provider2):void5"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "into(string29):abstractCopyTask"
+    - type: "LOCAL_VARIABLE"
+      name: "copy"
+      valueUuid: "copy"
+      methodExercised:
+        expression: "from(string30,configureAction-any):abstractCopyTask2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray4):copySpec2"
+    - type: "LOCAL_VARIABLE"
+      name: "copySpec"
+      valueUuid: "copySpec"
+      methodExercised:
+        expression: "include(stringArray5):copySpec3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "directoryProperty"
+      methodExercised:
+        expression: "get():object2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByType(class-JavaToolchainService):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer2"
+      methodExercised:
+        expression: "create(name,class-BwcSetupExtension,objectArray):object3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcVersion(provider4):void3"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "setBwcBranch(provider5):void4"
+    - type: "LOCAL_VARIABLE"
+      name: "gitExtension"
+      valueUuid: "gitExtension"
+      methodExercised:
+        expression: "getCheckoutDir():checkoutDir"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle2"
+      methodExercised:
+        expression: "getGradleUserHomeDir():file4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object2"
+      methodExercised:
+        expression: "getAsFile():file"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo):boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo2):boolean7"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo3):boolean13"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo4):boolean15"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo5):boolean18"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo6):boolean21"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo7):boolean24"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "onOrAfter(compareTo8):boolean27"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "getGitExtension():gitExtension"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-JvmToolchainsPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer2"
+      methodExercised:
+        expression: "apply(class-InternalBwcGitPlugin):plugin2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer3"
+      methodExercised:
+        expression: "apply(class-LifecycleBasePlugin):plugin3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-GlobalBuildInfoPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "project(string):project3"
+        throwsExceptions:
+        - "org.gradle.api.UnknownProjectException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getLayout():projectLayout"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getExtensions():extensionContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getPlugins():pluginContainer3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getTasks():taskContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getName():string28"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project3"
+      methodExercised:
+        expression: "getGradle():gradle2"
+    - type: "LOCAL_VARIABLE"
+      name: "layout"
+      valueUuid: "projectLayout"
+      methodExercised:
+        expression: "getBuildDirectory():directoryProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer-any):provider2"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer2-any):provider3"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer3-any):provider4"
+    - type: "LOCAL_VARIABLE"
+      name: "versionInfoProvider"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "map(transformer4-any):provider5"
+    - type: "LOCAL_VARIABLE"
+      name: "checkoutDir"
+      valueUuid: "provider2"
+      methodExercised:
+        expression: "get():object4"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcVersion"
+      valueUuid: "provider3"
+      methodExercised:
+        expression: "get():object5"
+    - type: "LOCAL_VARIABLE"
+      name: "providerFactory"
+      valueUuid: "providerFactory"
+      methodExercised:
+        expression: "provider(value-any):provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name2):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer2"
+      methodExercised:
+        expression: "register(name3,class-Copy,configurationAction-any):taskProvider2"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "info -> new File(layout.getBuildDirectory().get().getAsFile(), \\\"\
+        bwc/checkout-\\\" + info.branch())"
+      lineNumber: 88
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions"
+      uuid: "bwcVersions"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+      uuid: "InternalDistributionBwcSetupPlugin.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "object3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string32"
+      valueType: "java.lang.String"
+      uuid: "string32"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string33"
+      valueType: "java.lang.String"
+      uuid: "string33"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+      uuid: "internalDistributionBwcSetupPluginDistributionProjectArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string31"
+      valueType: "java.lang.String"
+      uuid: "string31"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "ANY"
+      valueType: "java.util.function.Consumer"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "consumer-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.io.File"
+      uuid: "checkoutDir"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.Copy"
+      uuid: "copy"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A-C"
+      valueType: "java.lang.String"
+      uuid: "string29"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.AbstractCopyTask"
+      uuid: "abstractCopyTask2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string30"
+      valueType: "java.lang.String"
+      uuid: "string30"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.file.CopySpec"
+      uuid: "configureAction-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec2"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradle.properties"
+            valueType: "java.lang.String"
+            uuid: "stringArray4Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.CopySpec"
+      uuid: "copySpec3"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "init.d/*"
+            valueType: "java.lang.String"
+            uuid: "stringArray5Item1"
+      valueType: "java.lang.String[]"
+      uuid: "stringArray5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "directoryProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.Directory"
+      uuid: "object2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "object"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.jvm.toolchain.JavaToolchainService"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+      uuid: "class-JavaToolchainService"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "bwcSetup"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "class-BwcSetupExtension"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project3"
+          1:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+          2:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+          3:
+            sapientType: "MOCK"
+            valueType: "org.gradle.jvm.toolchain.JavaToolchainService"
+            uuid: "object"
+          4:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+            uuid: "provider"
+          5:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.Provider"
+            genericValueType: "java.io.File"
+            uuid: "provider2"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcGitExtension"
+      uuid: "gitExtension"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "provider4"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "provider5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle2"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file4-pathname"
+      valueType: "java.io.File"
+      uuid: "file4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.13.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean13"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean15"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo4"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean18"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean21"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean24"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean27"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "7.0.0"
+      valueType: "java.lang.String"
+      uuid: "compareTo8"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "plugin2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.plugins.JvmToolchainsPlugin"
+      uuid: "class-JvmToolchainsPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalBwcGitPlugin"
+      uuid: "class-InternalBwcGitPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.language.base.plugins.LifecycleBasePlugin"
+      uuid: "class-LifecycleBasePlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin"
+      uuid: "class-GlobalBuildInfoPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_gradleProjectPath1"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ProjectLayout"
+      uuid: "projectLayout"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string28"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer2-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer3-any"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Transformer"
+      uuid: "transformer4-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "object4-pathname"
+      valueType: "java.io.File"
+      uuid: "object4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ProviderFactory"
+      uuid: "providerFactory"
+    - sapientType: "ANY"
+      valueType: "java.util.concurrent.Callable"
+      uuid: "value-any"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwc"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      uuid: "taskProvider2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "setupGradleUserHome"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.Copy"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.Copy"
+      uuid: "class-Copy"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configurationAction-any"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"
+    branches:
+    - lineNumber: 236
+      expression: "bwcVersion.onOrAfter(\\\"7.13.0\\\")"
+      range: "(236,13)-(236,42)"
+      evaluatedAs: true
+      internalMethodName: "resolveArchiveProjects"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"zip\\\")"
+      range: "(255,48)-(255,67)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 255
+      expression: "name.endsWith(\\\"tar\\\")"
+      range: "(255,72)-(255,91)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 258
+      expression: "bwcVersion.onOrAfter(\\\"7.0.0\\\")"
+      range: "(258,17)-(258,45)"
+      evaluatedAs: true
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 259
+      expression: "name.contains(\\\"zip\\\")"
+      range: "(259,21)-(259,40)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 259
+      expression: "name.contains(\\\"tar\\\")"
+      range: "(259,45)-(259,64)"
+      evaluatedAs: false
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 267
+      expression: "name.contains(\\\"deb\\\")"
+      range: "(267,28)-(267,47)"
+      evaluatedAs: true
+      internalMethodName: "lambda$resolveArchiveProjects$10"
+    - lineNumber: 122
+      expression: "for-each(distributionProjects)"
+      range: "(122,56)-(122,75)"
+      evaluatedAs: true
+      internalMethodName: "configureBwcProject"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+- method:
+    name: "buildBwcTaskName"
+    sourceCodeSignature: "String buildBwcTaskName(String projectName)"
+    returnType: "java.lang.String"
+    parameters:
+    - name: "projectName"
+      type: "java.lang.String"
+    instructionFingerprint: "F9F33AC5C32917005FC3E70B30711A9B"
+  paths:
+  - testPathName: "buildBwcTaskNameTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "projectName"
+      valueUuid: "projectName"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "projectName"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwcA"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "createBuildBwcTask"
+    sourceCodeSignature: "void createBuildBwcTask(BwcSetupExtension bwcSetupExtension,\
+      \ Project project, Provider<Version> bwcVersion, String projectName, String\
+      \ projectPath, DistributionProjectArtifact projectArtifact, TaskProvider<Task>\
+      \ bwcTaskProvider, String assembleTaskName)"
+    returnType: "void"
+    parameters:
+    - name: "bwcSetupExtension"
+      type: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+    - name: "project"
+      type: "org.gradle.api.Project"
+    - name: "bwcVersion"
+      type: "org.gradle.api.provider.Provider"
+      genericType: "org.elasticsearch.gradle.Version"
+    - name: "projectName"
+      type: "java.lang.String"
+    - name: "projectPath"
+      type: "java.lang.String"
+    - name: "projectArtifact"
+      type: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+    - name: "bwcTaskProvider"
+      type: "org.gradle.api.tasks.TaskProvider"
+      genericType: "org.gradle.api.Task"
+    - name: "assembleTaskName"
+      type: "java.lang.String"
+    instructionFingerprint: "DF0E6F361C716C5D07D26612C195878F"
+  paths:
+  - testPathName: "createBuildBwcTaskWhenProjectGetGradleGetStartParameterIsBuildCacheEnabled"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "bwcSetupExtension"
+      valueUuid: "bwcSetupExtension"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "INPUT"
+      name: "bwcVersion"
+      valueUuid: "bwcVersion"
+    - type: "INPUT"
+      name: "projectName"
+      valueUuid: "projectName"
+    - type: "INPUT"
+      name: "projectPath"
+      valueUuid: "projectPath"
+    - type: "INPUT"
+      name: "projectArtifact"
+      valueUuid: "projectArtifact"
+    - type: "INPUT"
+      name: "bwcTaskProvider"
+      valueUuid: "bwcTaskProvider"
+    - type: "INPUT"
+      name: "assembleTaskName"
+      valueUuid: "assembleTaskName"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isCi():boolean"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcSetupExtension"
+      valueUuid: "bwcSetupExtension"
+      methodExercised:
+        expression: "bwcTask(string,configuration-any):taskProvider"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcTaskProvider"
+      valueUuid: "bwcTaskProvider"
+      methodExercised:
+        expression: "configure(action2-any):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getStartParameter():startParameter"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "listProperty"
+      methodExercised:
+        expression: "add(string3):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "listProperty2"
+      methodExercised:
+        expression: "add(element):void3"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getInputs():taskInputsInternal"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getOutputs():taskOutputsInternal"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getOutputs():taskOutputsInternal2"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getArgs():listProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getArgs():listProperty2"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "doLast(action-any):task2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getBuildDir():file3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootDir():file5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskInputsInternal"
+      methodExercised:
+        expression: "file(file4-any):taskInputFilePropertyBuilder"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskOutputsInternal"
+      methodExercised:
+        expression: "files(objectArray):taskOutputFilePropertyBuilder"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskOutputsInternal2"
+      methodExercised:
+        expression: "doNotCacheIf(cachingDisabledReason,spec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void5"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.map(java.util.function.Function)\
+        \ : java.util.stream.Stream"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "bwcSetupExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "bwcVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "projectName"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "/"
+      valueType: "java.lang.String"
+      uuid: "projectPath"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+      uuid: "projectArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "bwcTaskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "assembleTaskName"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "java.lang.Boolean"
+      uuid: "boolean"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwcC"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "configuration-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action2-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.gradle.StartParameter"
+        parameters: []
+        propertiesMap:
+          buildCacheEnabled:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "buildCacheEnabled"
+      valueType: "org.gradle.StartParameter"
+      uuid: "startParameter"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ListProperty"
+      genericValueType: "java.lang.Object"
+      uuid: "listProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "::D"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ListProperty"
+      genericValueType: "java.lang.Object"
+      uuid: "listProperty2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "--build-cache"
+      valueType: "java.lang.String"
+      uuid: "element"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "loggedExec"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskInputsInternal"
+      uuid: "taskInputsInternal"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskOutputsInternal"
+      uuid: "taskOutputsInternal"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskOutputsInternal"
+      uuid: "taskOutputsInternal2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Task"
+      uuid: "task2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file5-pathname"
+      valueType: "java.io.File"
+      uuid: "file5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskInputFilePropertyBuilder"
+      uuid: "taskInputFilePropertyBuilder"
+    - sapientType: "ANY"
+      valueType: "java.io.File"
+      uuid: "file4-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskOutputFilePropertyBuilder"
+      uuid: "taskOutputFilePropertyBuilder"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "NULL"
+            valueType: "java.io.File"
+            uuid: "file2"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "BWC distribution caching is disabled for local builds"
+      valueType: "java.lang.String"
+      uuid: "cachingDisabledReason"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super org.gradle.api.Task"
+      uuid: "spec-any"
+    - sapientType: "VOID"
+      uuid: "void5"
+    branches:
+    - lineNumber: 304
+      expression: "projectArtifact.expandedDistDir != null"
+      range: "(304,41)-(304,79)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 305
+      expression: "useNativeExpanded"
+      range: "(305,39)-(305,55)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 309
+      expression: "useNativeExpanded"
+      range: "(309,17)-(309,33)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 314
+      expression: "BuildParams.isCi() == false"
+      range: "(314,106)-(314,132)"
+      evaluatedAs: true
+      internalMethodName: "lambda$createBuildBwcTask$13"
+    - lineNumber: 316
+      expression: "project.getGradle().getStartParameter().isBuildCacheEnabled()"
+      range: "(316,17)-(316,77)"
+      evaluatedAs: true
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"
+  - testPathName: "createBuildBwcTaskWhenBuildParamsIsCiNotEqualsFalseAndProjectGetGradleGetStartParameterNotIsBuildCacheEnabled"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "bwcSetupExtension"
+      valueUuid: "bwcSetupExtension"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "INPUT"
+      name: "bwcVersion"
+      valueUuid: "bwcVersion"
+    - type: "INPUT"
+      name: "projectName"
+      valueUuid: "projectName"
+    - type: "INPUT"
+      name: "projectPath"
+      valueUuid: "projectPath"
+    - type: "INPUT"
+      name: "projectArtifact"
+      valueUuid: "projectArtifact"
+    - type: "INPUT"
+      name: "bwcTaskProvider"
+      valueUuid: "bwcTaskProvider"
+    - type: "INPUT"
+      name: "assembleTaskName"
+      valueUuid: "assembleTaskName"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isCi():boolean"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcSetupExtension"
+      valueUuid: "bwcSetupExtension"
+      methodExercised:
+        expression: "bwcTask(string,configuration-any):taskProvider"
+    - type: "LOCAL_VARIABLE"
+      name: "bwcTaskProvider"
+      valueUuid: "bwcTaskProvider"
+      methodExercised:
+        expression: "configure(action2-any):void3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "gradle"
+      methodExercised:
+        expression: "getStartParameter():startParameter"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "listProperty"
+      methodExercised:
+        expression: "add(string3):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getInputs():taskInputsInternal"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getOutputs():taskOutputsInternal"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getOutputs():taskOutputsInternal2"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "getArgs():listProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "c"
+      valueUuid: "loggedExec"
+      methodExercised:
+        expression: "doLast(action-any):task2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getBuildDir():file3"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getGradle():gradle"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootDir():file5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskInputsInternal"
+      methodExercised:
+        expression: "file(file4-any):taskInputFilePropertyBuilder"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskOutputsInternal"
+      methodExercised:
+        expression: "files(objectArray):taskOutputFilePropertyBuilder"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskOutputsInternal2"
+      methodExercised:
+        expression: "doNotCacheIf(cachingDisabledReason,spec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.map(java.util.function.Function)\
+        \ : java.util.stream.Stream"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcSetupExtension"
+      uuid: "bwcSetupExtension"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.elasticsearch.gradle.Version"
+      uuid: "bwcVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "projectName"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "/"
+      valueType: "java.lang.String"
+      uuid: "projectPath"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin$DistributionProjectArtifact"
+      uuid: "projectArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "bwcTaskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "assembleTaskName"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "java.lang.Boolean"
+      uuid: "boolean"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "buildBwcC"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "configuration-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action2-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.invocation.Gradle"
+      uuid: "gradle"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.gradle.StartParameter"
+        parameters: []
+        propertiesMap:
+          buildCacheEnabled:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "buildCacheEnabled"
+      valueType: "org.gradle.StartParameter"
+      uuid: "startParameter"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ListProperty"
+      genericValueType: "java.lang.Object"
+      uuid: "listProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "::D"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.LoggedExec"
+      uuid: "loggedExec"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskInputsInternal"
+      uuid: "taskInputsInternal"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskOutputsInternal"
+      uuid: "taskOutputsInternal"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.TaskOutputsInternal"
+      uuid: "taskOutputsInternal2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Task"
+      uuid: "task2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file3-pathname"
+      valueType: "java.io.File"
+      uuid: "file3"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file5-pathname"
+      valueType: "java.io.File"
+      uuid: "file5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskInputFilePropertyBuilder"
+      uuid: "taskInputFilePropertyBuilder"
+    - sapientType: "ANY"
+      valueType: "java.io.File"
+      uuid: "file4-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskOutputFilePropertyBuilder"
+      uuid: "taskOutputFilePropertyBuilder"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "NULL"
+            valueType: "java.io.File"
+            uuid: "file2"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "BWC distribution caching is disabled for local builds"
+      valueType: "java.lang.String"
+      uuid: "cachingDisabledReason"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super org.gradle.api.Task"
+      uuid: "spec-any"
+    - sapientType: "VOID"
+      uuid: "void4"
+    branches:
+    - lineNumber: 304
+      expression: "projectArtifact.expandedDistDir != null"
+      range: "(304,41)-(304,79)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 305
+      expression: "useNativeExpanded"
+      range: "(305,39)-(305,55)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 309
+      expression: "useNativeExpanded"
+      range: "(309,17)-(309,33)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    - lineNumber: 314
+      expression: "BuildParams.isCi() == false"
+      range: "(314,106)-(314,132)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$13"
+    - lineNumber: 316
+      expression: "project.getGradle().getStartParameter().isBuildCacheEnabled()"
+      range: "(316,17)-(316,77)"
+      evaluatedAs: false
+      internalMethodName: "lambda$createBuildBwcTask$14"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.InternalDistributionBwcSetupPlugin"

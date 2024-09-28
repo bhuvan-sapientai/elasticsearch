@@ -1,0 +1,299 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.RepositoriesSetupPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "D295C7D3F6B6A73158031EC3C5DFCC4F"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "RepositoriesSetupPlugin.class"
+      valueUuid: "RepositoriesSetupPlugin.class"
+      methodExercised:
+        expression: "configureRepositories(project):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.RepositoriesSetupPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.RepositoriesSetupPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.RepositoriesSetupPlugin"
+      uuid: "RepositoriesSetupPlugin.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "configureRepositories"
+    sourceCodeSignature: "void configureRepositories(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "07FC3F0BC2E975AFD77EF91E0A4888ED"
+  paths:
+  - testPathName: "configureRepositoriesWhenMatcherFindEqualsFalseThrowsGradleException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getLucene():string2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRepositories():repositoryHandler"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "mavenLocal():mavenArtifactRepository"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "mavenCentral():mavenArtifactRepository2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "if (System.getProperty(\\\"repos.mavenLocal\\\") != null) {"
+      lineNumber: 36
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "-snapshot"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.dsl.RepositoryHandler"
+      uuid: "repositoryHandler"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository2"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Malformed lucene snapshot version: -snapshot"
+            valueType: "java.lang.String"
+            uuid: "string3"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 36
+      expression: "System.getProperty(\\\"repos.mavenLocal\\\") != null"
+      range: "(36,13)-(36,58)"
+      evaluatedAs: true
+    - lineNumber: 45
+      expression: "luceneVersion.contains(\\\"-snapshot\\\")"
+      range: "(45,13)-(45,47)"
+      evaluatedAs: true
+    - lineNumber: 48
+      expression: "matcher.find() == false"
+      range: "(48,17)-(48,39)"
+      evaluatedAs: true
+  - testPathName: "configureRepositoriesWhenMatcherFindNotEqualsFalse"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getLucene():string2"
+    - type: "LOCAL_VARIABLE"
+      name: "exclusiveRepo"
+      valueUuid: "exclusiveContentRepository"
+      methodExercised:
+        expression: "filter(config-any):exclusiveContentRepository2"
+    - type: "LOCAL_VARIABLE"
+      name: "exclusiveRepo"
+      valueUuid: "exclusiveContentRepository"
+      methodExercised:
+        expression: "forRepositories(artifactRepositoryArray):exclusiveContentRepository3"
+    - type: "LOCAL_VARIABLE"
+      name: "repo"
+      valueUuid: "mavenArtifactRepository4"
+      methodExercised:
+        expression: "setName(name):void"
+    - type: "LOCAL_VARIABLE"
+      name: "repo"
+      valueUuid: "mavenArtifactRepository4"
+      methodExercised:
+        expression: "setUrl(string4):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRepositories():repositoryHandler"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "mavenLocal():mavenArtifactRepository"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "mavenCentral():mavenArtifactRepository2"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "maven(action-any):mavenArtifactRepository3"
+    - type: "LOCAL_VARIABLE"
+      name: "repos"
+      valueUuid: "repositoryHandler"
+      methodExercised:
+        expression: "exclusiveContent(action2-any):void3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void5"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "if (System.getProperty(\\\"repos.mavenLocal\\\") != null) {"
+      lineNumber: 36
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getLucene1"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.ExclusiveContentRepository"
+      uuid: "exclusiveContentRepository"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.ExclusiveContentRepository"
+      uuid: "exclusiveContentRepository2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.artifacts.repositories.InclusiveRepositoryContentDescriptor"
+      uuid: "config-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.ExclusiveContentRepository"
+      uuid: "exclusiveContentRepository3"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+            uuid: "mavenArtifactRepository3"
+      valueType: "org.gradle.api.artifacts.repositories.ArtifactRepository[]"
+      uuid: "artifactRepositoryArray"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository4"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "lucene-snapshots"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "string4"
+      valueType: "java.lang.String"
+      uuid: "string4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.dsl.RepositoryHandler"
+      uuid: "repositoryHandler"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "mavenArtifactRepository3"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.artifacts.repositories.MavenArtifactRepository"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      genericValueType: "? super org.gradle.api.artifacts.repositories.ExclusiveContentRepository"
+      uuid: "action2-any"
+    - sapientType: "VOID"
+      uuid: "void5"
+    branches:
+    - lineNumber: 36
+      expression: "System.getProperty(\\\"repos.mavenLocal\\\") != null"
+      range: "(36,13)-(36,58)"
+      evaluatedAs: true
+    - lineNumber: 45
+      expression: "luceneVersion.contains(\\\"-snapshot\\\")"
+      range: "(45,13)-(45,47)"
+      evaluatedAs: true
+    - lineNumber: 48
+      expression: "matcher.find() == false"
+      range: "(48,17)-(48,39)"
+      evaluatedAs: false

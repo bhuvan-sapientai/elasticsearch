@@ -1,0 +1,95 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.rerun.TestRerunPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "306C6BF95E414C21DFAAE351ACADAE10"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "TestTaskConfigurer.class"
+      valueUuid: "TestTaskConfigurer.class"
+      methodExercised:
+        expression: "configureTestTask(test,objectFactory):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskCollection"
+      methodExercised:
+        expression: "configureEach(action-any):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "withType(class-Test):taskCollection"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.test.rerun.TestRerunPlugin"
+        parameters:
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+      valueType: "org.elasticsearch.gradle.internal.test.rerun.TestRerunPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.test.rerun.TestTaskConfigurer"
+      uuid: "TestTaskConfigurer.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "test"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.model.ObjectFactory"
+      uuid: "objectFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskCollection"
+      uuid: "taskCollection"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.testing.Test"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "class-Test"
+    - sapientType: "VOID"
+      uuid: "void3"

@@ -1,0 +1,234 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.EmbeddedProviderPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "A97D3A2D383B30188F6BB3CC7147FD1F"
+  paths:
+  - testPathName: "applyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "attributeContainer"
+      methodExercised:
+        expression: "attribute(attribute2,value):attributeContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "attributeContainer2"
+      methodExercised:
+        expression: "attribute(attribute,boolean):attributeContainer3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "attributeContainer4"
+      methodExercised:
+        expression: "attribute(attribute2,value2):attributeContainer5"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "attributeContainer5"
+      methodExercised:
+        expression: "attribute(attribute,boolean2):attributeContainer6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "dependencyHandler"
+      methodExercised:
+        expression: "registerTransform(class-UnzipTransform,registrationAction-any):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "create(name3,class-EmbeddedProviderExtension,objectArray):object"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getDependencies():dependencyHandler"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name2):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "LOCAL_VARIABLE"
+      name: "transformSpec"
+      valueUuid: "transformSpec"
+      methodExercised:
+        expression: "getFrom():attributeContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "transformSpec"
+      valueUuid: "transformSpec"
+      methodExercised:
+        expression: "getTo():attributeContainer4"
+    - type: "LOCAL_VARIABLE"
+      name: "transformSpec"
+      valueUuid: "transformSpec"
+      methodExercised:
+        expression: "parameters(action-any):void2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.EmbeddedProviderPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.EmbeddedProviderPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer2"
+    - sapientType: "OBJECT"
+      content: !<static_field_return>
+        target: "org.gradle.api.artifacts.type.ArtifactTypeDefinition"
+        fieldName: "ARTIFACT_TYPE_ATTRIBUTE"
+      valueType: "org.gradle.api.attributes.Attribute"
+      uuid: "attribute2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "jar"
+      valueType: "java.lang.String"
+      uuid: "value"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer3"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "org.gradle.api.attributes.Attribute"
+        method: "of"
+        methodParameters:
+        - value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "is.impl"
+            valueType: "java.lang.String"
+            uuid: "string"
+        - value:
+            sapientType: "CLASS"
+            content: !<regular>
+              value: "java.lang.Boolean"
+            valueType: "java.lang.Class"
+            genericValueType: "java.lang.Boolean"
+            uuid: "class-Boolean"
+      valueType: "org.gradle.api.attributes.Attribute"
+      genericValueType: "java.lang.Boolean"
+      uuid: "attribute"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "java.lang.Boolean"
+      uuid: "boolean"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer4"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "directory"
+      valueType: "java.lang.String"
+      uuid: "value2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.attributes.AttributeContainer"
+      uuid: "attributeContainer6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "java.lang.Boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.dsl.DependencyHandler"
+      uuid: "dependencyHandler"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.transform.UnzipTransform"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.transform.UnzipTransform"
+      uuid: "class-UnzipTransform"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "registrationAction-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.lang.Object"
+        parameters: []
+      valueType: "java.lang.Object"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "embeddedProviders"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.EmbeddedProviderExtension"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.EmbeddedProviderExtension"
+      uuid: "class-EmbeddedProviderExtension"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+          1:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.tasks.TaskProvider"
+            genericValueType: "org.gradle.api.Task"
+            uuid: "taskProvider"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.gradle.api.Task"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "generateProviderImpls"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.transform.TransformSpec"
+      uuid: "transformSpec"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "VOID"
+      uuid: "void4"

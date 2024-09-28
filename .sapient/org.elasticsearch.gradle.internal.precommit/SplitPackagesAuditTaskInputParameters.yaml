@@ -1,0 +1,393 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+methods:
+- method:
+    name: "auditSplitPackages"
+    sourceCodeSignature: "void auditSplitPackages()"
+    returnType: "void"
+    instructionFingerprint: "F27EB8F8FD8B9CE7732C894E32DA0497"
+  paths:
+  - testPathName: "auditSplitPackagesTest"
+    constructorSignature: "<init>(org.gradle.workers.WorkerExecutor,org.gradle.api.model.ObjectFactory,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getPath():string5"
+    - type: "FIELD"
+      name: "workerExecutor"
+      valueUuid: "fieldWorkerExecutor"
+      methodExercised:
+        expression: "noIsolation():workQueue"
+    - type: "STATIC"
+      name: "GradleUtils.class"
+      valueUuid: "GradleUtils.class"
+      methodExercised:
+        expression: "projectPath(string5):string6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "configurableFileCollection"
+      methodExercised:
+        expression: "from(objectArray2):configurableFileCollection2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "mapProperty"
+      methodExercised:
+        expression: "set(fieldMap):void3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "property"
+      methodExercised:
+        expression: "set(string6):void2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "regularFileProperty"
+      methodExercised:
+        expression: "set(fieldRegularFileProperty):void6"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "setProperty"
+      methodExercised:
+        expression: "set(fieldSetProperty):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "setProperty2"
+      methodExercised:
+        expression: "set(fieldSetProperty2):void5"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getProjectPath():property"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getProjectBuildDirs():mapProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getClasspath():configurableFileCollection"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getSrcDirs():setProperty"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getIgnoreClasses():setProperty2"
+    - type: "LOCAL_VARIABLE"
+      name: "params"
+      valueUuid: "splitPackagesAuditTaskParameters"
+      methodExercised:
+        expression: "getMarkerFile():regularFileProperty"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "workQueue"
+      methodExercised:
+        expression: "submit(class-SplitPackagesAuditTask.SplitPackagesAuditAction,parameterAction-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void7"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "// Finally, print out (and fail) if we have any split packages"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+        parameters:
+        - name: "workerExecutor"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.workers.WorkerExecutor"
+            uuid: "workerExecutor"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        propertiesMap:
+          projectBuildDirs:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.Map"
+            genericValueType: "java.io.File,java.lang.String"
+            uuid: "fieldMap"
+      valueType: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.workers.WorkerExecutor"
+      uuid: "fieldWorkerExecutor"
+      nameForMock: "workerExecutor"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.workers.WorkQueue"
+      uuid: "workQueue"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.util.GradleUtils"
+      uuid: "GradleUtils.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_projectPath1"
+      valueType: "java.lang.String"
+      uuid: "string6"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ConfigurableFileCollection"
+      uuid: "configurableFileCollection"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.ConfigurableFileCollection"
+      uuid: "configurableFileCollection2"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "NULL"
+            valueType: "org.gradle.api.file.FileCollection"
+            uuid: "fieldFileCollection"
+      valueType: "java.lang.Object[]"
+      uuid: "objectArray2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.MapProperty"
+      genericValueType: "java.io.File,java.lang.String"
+      uuid: "mapProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Map"
+      genericValueType: "java.io.File,java.lang.String"
+      uuid: "fieldMap"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Property"
+      genericValueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "regularFileProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void6"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.file.RegularFileProperty"
+      uuid: "fieldRegularFileProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.SetProperty"
+      genericValueType: "java.io.File"
+      uuid: "setProperty"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.provider.SetProperty"
+      genericValueType: "java.io.File"
+      uuid: "fieldSetProperty"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.SetProperty"
+      genericValueType: "java.lang.String"
+      uuid: "setProperty2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void5"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.provider.SetProperty"
+      genericValueType: "java.lang.String"
+      uuid: "fieldSetProperty2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask$Parameters"
+      uuid: "splitPackagesAuditTaskParameters"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask$SplitPackagesAuditAction"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask$SplitPackagesAuditAction"
+      uuid: "class-SplitPackagesAuditTask.SplitPackagesAuditAction"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "parameterAction-any"
+    - sapientType: "VOID"
+      uuid: "void7"
+- method:
+    name: "getClasspath"
+    sourceCodeSignature: "FileCollection getClasspath()"
+    returnType: "org.gradle.api.file.FileCollection"
+    instructionFingerprint: "F2006655E622B65FBEDEE6CED30D4E29"
+  paths:
+  - testPathName: "getClasspathTest"
+    constructorSignature: "<init>(org.gradle.workers.WorkerExecutor,org.gradle.api.model.ObjectFactory,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "classpath"
+      valueUuid: "fieldFileCollection"
+      methodExercised:
+        expression: "filter(filterSpec-any):fileCollection"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fileCollection"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "// Finally, print out (and fail) if we have any split packages"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+        parameters:
+        - name: "workerExecutor"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.workers.WorkerExecutor"
+            uuid: "workerExecutor"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        propertiesMap:
+          classpath:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.FileCollection"
+            uuid: "fieldFileCollection"
+      valueType: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fieldFileCollection"
+      nameForMock: "classpath"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fileCollection"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super java.io.File"
+      uuid: "filterSpec-any"
+- method:
+    name: "ignoreClasses"
+    sourceCodeSignature: "void ignoreClasses(String... classes)"
+    returnType: "void"
+    parameters:
+    - name: "classes"
+      type: "java.lang.String[]"
+    instructionFingerprint: "364621B369AD4CF430AC04CBF1661DBB"
+  paths:
+  - testPathName: "ignoreClassesWhenClassesIsNotEmpty"
+    constructorSignature: "<init>(org.gradle.workers.WorkerExecutor,org.gradle.api.model.ObjectFactory,org.gradle.api.file.ProjectLayout)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "classes"
+      valueUuid: "classes"
+    - type: "FIELD"
+      name: "ignoreClasses"
+      valueUuid: "fieldSetProperty2"
+      methodExercised:
+        expression: "add(string5):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "// Finally, print out (and fail) if we have any split packages"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+        parameters:
+        - name: "workerExecutor"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.workers.WorkerExecutor"
+            uuid: "workerExecutor"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+      valueType: "org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask"
+      uuid: "target"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "classesItem1"
+            valueType: "java.lang.String"
+            uuid: "string5"
+      valueType: "java.lang.String[]"
+      uuid: "classes"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.SetProperty"
+      genericValueType: "java.lang.String"
+      uuid: "fieldSetProperty2"
+      nameForMock: "ignoreClasses"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "classesItem1"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 119
+      expression: "for-each(classes)"
+      range: "(119,33)-(119,39)"
+      evaluatedAs: true

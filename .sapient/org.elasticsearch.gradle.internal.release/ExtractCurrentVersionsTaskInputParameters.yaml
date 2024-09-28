@@ -1,0 +1,109 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask"
+methods:
+- method:
+    name: "outputFile"
+    sourceCodeSignature: "void outputFile(String file)"
+    returnType: "void"
+    parameters:
+    - name: "file"
+      type: "java.lang.String"
+    instructionFingerprint: "8FCFC01D99A3577F7C99EA0259CB6FEF"
+  paths:
+  - testPathName: "outputFileTest"
+    constructorSignature: "<init>(org.gradle.initialization.layout.BuildLayout) :\
+      \ void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "file"
+      valueUuid: "file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask"
+        parameters:
+        - name: "layout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.initialization.layout.BuildLayout"
+            uuid: "layout"
+      valueType: "org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "file"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "executeTask"
+    sourceCodeSignature: "void executeTask()"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "27B8B2623183B1621DE9D081F219E164"
+  paths:
+  - testPathName: "executeTaskWhenOutputFileIsNullThrowsIllegalArgumentException"
+    constructorSignature: "<init>(org.gradle.initialization.layout.BuildLayout) :\
+      \ void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalArgumentException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask"
+        parameters:
+        - name: "layout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.initialization.layout.BuildLayout"
+            uuid: "layout"
+      valueType: "org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask"
+      uuid: "target"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalArgumentException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Output file not specified"
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalArgumentException"
+      uuid: "illegalArgumentException"
+    branches:
+    - lineNumber: 49
+      expression: "outputFile == null"
+      range: "(49,13)-(49,30)"
+      evaluatedAs: true

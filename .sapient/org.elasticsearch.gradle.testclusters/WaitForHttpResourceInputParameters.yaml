@@ -1,0 +1,1180 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+methods:
+- method:
+    name: "setValidResponseCodes"
+    sourceCodeSignature: "void setValidResponseCodes(int... validResponseCodes)"
+    returnType: "void"
+    parameters:
+    - name: "validResponseCodes"
+      type: "int[]"
+    instructionFingerprint: "B607605F4D2A12C5E8CF8CB10E77A983"
+  paths:
+  - testPathName: "setValidResponseCodesWhenValidResponseCodesIsNotEmpty"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "validResponseCodes"
+      valueUuid: "validResponseCodes"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values:
+          0:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "int4"
+      valueType: "int[]"
+      uuid: "validResponseCodes"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 58
+      expression: "for-each(validResponseCodes)"
+      range: "(58,23)-(58,40)"
+      evaluatedAs: true
+- method:
+    name: "setCertificateAuthorities"
+    sourceCodeSignature: "void setCertificateAuthorities(File... certificateAuthorities)"
+    returnType: "void"
+    parameters:
+    - name: "certificateAuthorities"
+      type: "java.io.File[]"
+    instructionFingerprint: "246851C71577C32B89C91DB003771642"
+  paths:
+  - testPathName: "setCertificateAuthoritiesTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "certificateAuthorities"
+      valueUuid: "certificateAuthorities"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "ARRAY"
+      content: !<array>
+        values: {}
+      valueType: "java.io.File[]"
+      uuid: "certificateAuthorities"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setTrustStoreFile"
+    sourceCodeSignature: "void setTrustStoreFile(File trustStoreFile)"
+    returnType: "void"
+    parameters:
+    - name: "trustStoreFile"
+      type: "java.io.File"
+    instructionFingerprint: "9BFDB34126118CD35E8AFC9A3861276C"
+  paths:
+  - testPathName: "setTrustStoreFileTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "trustStoreFile"
+      valueUuid: "trustStoreFile"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "trustStoreFile-pathname"
+      valueType: "java.io.File"
+      uuid: "trustStoreFile"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setTrustStorePassword"
+    sourceCodeSignature: "void setTrustStorePassword(String trustStorePassword)"
+    returnType: "void"
+    parameters:
+    - name: "trustStorePassword"
+      type: "java.lang.String"
+    instructionFingerprint: "4CEF2914F20E421CC6404ABAD595D44D"
+  paths:
+  - testPathName: "setTrustStorePasswordTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "trustStorePassword"
+      valueUuid: "trustStorePassword"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "trustStorePassword1"
+      valueType: "java.lang.String"
+      uuid: "trustStorePassword"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setServerCertificate"
+    sourceCodeSignature: "void setServerCertificate(File serverCertificate)"
+    returnType: "void"
+    parameters:
+    - name: "serverCertificate"
+      type: "java.io.File"
+    instructionFingerprint: "4C70C46609BEEF7DAE770D0EAD83715E"
+  paths:
+  - testPathName: "setServerCertificateTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "serverCertificate"
+      valueUuid: "serverCertificate"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "serverCertificate-pathname"
+      valueType: "java.io.File"
+      uuid: "serverCertificate"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setServerKeystoreFile"
+    sourceCodeSignature: "void setServerKeystoreFile(File keyStoreFile)"
+    returnType: "void"
+    parameters:
+    - name: "keyStoreFile"
+      type: "java.io.File"
+    instructionFingerprint: "51E9AE72A006859946519B98259E092F"
+  paths:
+  - testPathName: "setServerKeystoreFileTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "keyStoreFile"
+      valueUuid: "keyStoreFile"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "keyStoreFile-pathname"
+      valueType: "java.io.File"
+      uuid: "keyStoreFile"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "setServerKeystorePassword"
+    sourceCodeSignature: "void setServerKeystorePassword(String keyStorePassword)"
+    returnType: "void"
+    parameters:
+    - name: "keyStorePassword"
+      type: "java.lang.String"
+    instructionFingerprint: "3198423B2A92D2ADD85D6EC133C124DB"
+  paths:
+  - testPathName: "setServerKeystorePasswordTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "keyStorePassword"
+      valueUuid: "keyStorePassword"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "keyStorePassword"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "wait"
+    sourceCodeSignature: "boolean wait(int durationInMs)"
+    returnType: "boolean"
+    throwsExceptions:
+    - "java.security.GeneralSecurityException"
+    - "java.lang.InterruptedException"
+    - "java.io.IOException"
+    parameters:
+    - name: "durationInMs"
+      type: "int"
+    instructionFingerprint: "CF846333616B42A49DE1CF87F4F77C42"
+  paths:
+  - testPathName: "waitTest"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "durationInMs"
+      valueUuid: "durationInMs"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "checkResource(sSLContext):void"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1000
+      valueType: "int"
+      uuid: "durationInMs"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "NULL"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "sSLContext"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+  - testPathName: "waitWhenSystemNanoTimeLessThanWaitUntilThrowsIOException"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "durationInMs"
+      valueUuid: "durationInMs"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "checkResource(sSLContext):void"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "checkResource(sSLContext):void4"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "STATIC"
+      name: "Thread.class"
+      valueUuid: "Thread.class"
+      methodExercised:
+        expression: "sleep(long6):void3"
+        throwsExceptions:
+        - "java.lang.InterruptedException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "iOException2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 8
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1000
+      valueType: "int"
+      uuid: "durationInMs"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "NULL"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "sSLContext"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "MOCK"
+      valueType: "java.lang.Thread"
+      uuid: "Thread.class"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 100
+      valueType: "long"
+      uuid: "long6"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.io.IOException"
+        parameters: []
+      valueType: "java.io.IOException"
+      uuid: "iOException2"
+    branches:
+    - lineNumber: 105
+      expression: "catch-exception (IOException)"
+      range: "(105,15)-(105,34)"
+      evaluatedAs: true
+    - lineNumber: 109
+      expression: "System.nanoTime() < waitUntil"
+      range: "(109,17)-(109,45)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.io.IOException"
+- method:
+    name: "checkResource"
+    sourceCodeSignature: "void checkResource(SSLContext ssl)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "ssl"
+      type: "javax.net.ssl.SSLContext"
+    instructionFingerprint: "F877FC7EC76E1176B73DD50634CC1BB4"
+  paths:
+  - testPathName: "checkResourceWhenValidResponseCodesContainsResponse"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "ssl"
+      valueUuid: "ssl"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "buildConnection(ssl):httpURLConnection"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "connection"
+      valueUuid: "httpURLConnection"
+      methodExercised:
+        expression: "connect():void"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "connection"
+      valueUuid: "httpURLConnection"
+      methodExercised:
+        expression: "getResponseCode():int1"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "ssl"
+    - sapientType: "MOCK"
+      valueType: "java.net.HttpURLConnection"
+      uuid: "httpURLConnection"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 200
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "VOID"
+      uuid: "void3"
+    branches:
+    - lineNumber: 121
+      expression: "validResponseCodes.contains(response)"
+      range: "(121,13)-(121,49)"
+      evaluatedAs: true
+  - testPathName: "checkResourceWhenValidResponseCodesNotContainsResponseThrowsIOException"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "ssl"
+      valueUuid: "ssl"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "buildConnection(ssl):httpURLConnection"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "connection"
+      valueUuid: "httpURLConnection"
+      methodExercised:
+        expression: "connect():void"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "connection"
+      valueUuid: "httpURLConnection"
+      methodExercised:
+        expression: "getResponseCode():int1"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "LOCAL_VARIABLE"
+      name: "connection"
+      valueUuid: "httpURLConnection"
+      methodExercised:
+        expression: "getResponseMessage():string2"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "iOException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "ssl"
+    - sapientType: "MOCK"
+      valueType: "java.net.HttpURLConnection"
+      uuid: "httpURLConnection"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.io.IOException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "2 A"
+            valueType: "java.lang.String"
+            uuid: "string3"
+      valueType: "java.io.IOException"
+      uuid: "iOException"
+    branches:
+    - lineNumber: 121
+      expression: "validResponseCodes.contains(response)"
+      range: "(121,13)-(121,49)"
+      evaluatedAs: false
+- method:
+    name: "buildConnection"
+    sourceCodeSignature: "HttpURLConnection buildConnection(SSLContext ssl)"
+    returnType: "java.net.HttpURLConnection"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "ssl"
+      type: "javax.net.ssl.SSLContext"
+    instructionFingerprint: "71BE0D1C174F23A0EB4EB7B7AFF4B05B"
+  paths:
+  - testPathName: "buildConnectionWhenConnectionNotInstanceOfHttpsURLConnectionThrowsIllegalStateException"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "ssl"
+      valueUuid: "ssl"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "ssl"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "SSL trust has been configured, but [C] is not a 'https' URL"
+            valueType: "java.lang.String"
+            uuid: "string3"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 138
+      expression: "ssl != null"
+      range: "(138,13)-(138,23)"
+      evaluatedAs: true
+      internalMethodName: "configureSslContext"
+    - lineNumber: 139
+      expression: "connection instanceof HttpsURLConnection"
+      range: "(139,17)-(139,56)"
+      evaluatedAs: false
+      internalMethodName: "configureSslContext"
+  - testPathName: "buildConnectionWhenPasswordIsNullThrowsIllegalStateException"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "ssl"
+      valueUuid: "ssl"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+        propertiesMap:
+          password:
+            sapientType: "NULL"
+            valueType: "java.lang.String"
+            uuid: "fieldString2"
+          username:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "C"
+            valueType: "java.lang.String"
+            uuid: "fieldString"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "ssl"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Basic Auth user [C] has been set, but no password has been configured"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 138
+      expression: "ssl != null"
+      range: "(138,13)-(138,23)"
+      evaluatedAs: true
+      internalMethodName: "configureSslContext"
+    - lineNumber: 139
+      expression: "connection instanceof HttpsURLConnection"
+      range: "(139,17)-(139,56)"
+      evaluatedAs: true
+      internalMethodName: "configureSslContext"
+    - lineNumber: 148
+      expression: "username != null"
+      range: "(148,13)-(148,28)"
+      evaluatedAs: true
+      internalMethodName: "configureBasicAuth"
+    - lineNumber: 149
+      expression: "password == null"
+      range: "(149,17)-(149,32)"
+      evaluatedAs: true
+      internalMethodName: "configureBasicAuth"
+  - testPathName: "buildConnectionWhenPasswordIsNotNull"
+    constructorSignature: "<init>(java.lang.String,java.lang.String,int) : void"
+    constructorExceptions:
+    - "java.net.MalformedURLException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "ssl"
+      valueUuid: "ssl"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "uRLConnection"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "this(new URL(protocol + \\\"://\\\" + host + \\\"/_cluster/health?wait_for_nodes=>=\\\
+        \" + numberOfNodes + \\\"&wait_for_status=yellow\\\"));"
+      lineNumber: 48
+      details: "No constructor found to create an object without any exception for\
+        \ class java.net.URL"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+        parameters:
+        - name: "protocol"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A"
+            valueType: "java.lang.String"
+            uuid: "protocol"
+        - name: "host"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "B"
+            valueType: "java.lang.String"
+            uuid: "host"
+        - name: "numberOfNodes"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "numberOfNodes"
+        propertiesMap:
+          password:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "fieldString2"
+          username:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: ""
+            valueType: "java.lang.String"
+            uuid: "fieldString"
+      valueType: "org.elasticsearch.gradle.testclusters.WaitForHttpResource"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.SSLContext"
+      uuid: "ssl"
+    - sapientType: "MOCK"
+      valueType: "javax.net.ssl.HttpsURLConnection"
+      uuid: "uRLConnection"
+    branches:
+    - lineNumber: 138
+      expression: "ssl != null"
+      range: "(138,13)-(138,23)"
+      evaluatedAs: true
+      internalMethodName: "configureSslContext"
+    - lineNumber: 139
+      expression: "connection instanceof HttpsURLConnection"
+      range: "(139,17)-(139,56)"
+      evaluatedAs: true
+      internalMethodName: "configureSslContext"
+    - lineNumber: 148
+      expression: "username != null"
+      range: "(148,13)-(148,28)"
+      evaluatedAs: true
+      internalMethodName: "configureBasicAuth"
+    - lineNumber: 149
+      expression: "password == null"
+      range: "(149,17)-(149,32)"
+      evaluatedAs: false
+      internalMethodName: "configureBasicAuth"

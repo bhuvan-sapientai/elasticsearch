@@ -1,0 +1,88 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector"
+methods:
+- method:
+    name: "isAvailable"
+    sourceCodeSignature: "boolean isAvailable(int port)"
+    returnType: "boolean"
+    parameters:
+    - name: "port"
+      type: "int"
+    instructionFingerprint: "C579EBFA306906BFECEE90F48877F459"
+  paths:
+  - testPathName: "isAvailableTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "port"
+      valueUuid: "port"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "port"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+  - testPathName: "isAvailableWhenCaughtIOException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "port"
+      valueUuid: "port"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "DEPENDENCY_TO_THROW_EXCEPTION_NOT_FOUND"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "port"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 40
+      expression: "catch-exception (IOException)"
+      range: "(40,11)-(40,30)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.io.IOException"

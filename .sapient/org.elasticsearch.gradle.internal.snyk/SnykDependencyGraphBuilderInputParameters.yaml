@@ -1,0 +1,361 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+methods:
+- method:
+    name: "addNode"
+    sourceCodeSignature: "SnykDependencyNode addNode(String nodeId, String pkgIdPrefix,\
+      \ String version)"
+    returnType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+    parameters:
+    - name: "nodeId"
+      type: "java.lang.String"
+    - name: "pkgIdPrefix"
+      type: "java.lang.String"
+    - name: "version"
+      type: "java.lang.String"
+    instructionFingerprint: "3A92D4D34E9FC0A1B3E629C092F2310B"
+  paths:
+  - testPathName: "addNodeWhenCurrentNodeIsNull"
+    constructorSignature: "<init>(java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "nodeId"
+      valueUuid: "nodeId"
+    - type: "INPUT"
+      name: "pkgIdPrefix"
+      valueUuid: "pkgIdPrefix"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "snykDependencyGraphSnykDependencyNode"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+        parameters:
+        - name: "gradleVersion"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradleVersion1"
+            valueType: "java.lang.String"
+            uuid: "gradleVersion"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "nodeId1"
+      valueType: "java.lang.String"
+      uuid: "nodeId"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "pkgIdPrefix"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+        parameters:
+        - name: "nodeId"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "nodeId1"
+            valueType: "java.lang.String"
+            uuid: "nodeId"
+        - name: "pkgId"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "A@B"
+            valueType: "java.lang.String"
+            uuid: "string2"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+      uuid: "snykDependencyGraphSnykDependencyNode"
+    branches:
+    - lineNumber: 35
+      expression: "currentNode != null"
+      range: "(35,13)-(35,31)"
+      evaluatedAs: false
+- method:
+    name: "addDependency"
+    sourceCodeSignature: "SnykDependencyNode addDependency(ResolvedDependency dep)"
+    returnType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+    parameters:
+    - name: "dep"
+      type: "org.gradle.api.artifacts.ResolvedDependency"
+    instructionFingerprint: "0E06ACD3F8E4D6C452A3A1CBA85D2658"
+  paths:
+  - testPathName: "addDependencyTest"
+    constructorSignature: "<init>(java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "dep"
+      valueUuid: "dep"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "addNode(string5,string3,string6):snykDependencyGraphSnykDependencyNode"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "dep"
+      methodExercised:
+        expression: "getModuleGroup():string"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "dep"
+      methodExercised:
+        expression: "getModuleName():string2"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "dep"
+      methodExercised:
+        expression: "getModuleVersion():string4"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "dep"
+      methodExercised:
+        expression: "getModuleVersion():string6"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "snykDependencyGraphSnykDependencyNode"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+        parameters:
+        - name: "gradleVersion"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradleVersion1"
+            valueType: "java.lang.String"
+            uuid: "gradleVersion"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedDependency"
+      uuid: "dep"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+      uuid: "snykDependencyGraphSnykDependencyNode"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A:B@C"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A:B"
+      valueType: "java.lang.String"
+      uuid: "string3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getModuleVersion1"
+      valueType: "java.lang.String"
+      uuid: "string6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string4"
+- method:
+    name: "build"
+    sourceCodeSignature: "SnykDependencyGraph build()"
+    returnType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph"
+    instructionFingerprint: "9A334109F9155EB22866774CF522732E"
+  paths:
+  - testPathName: "buildTest"
+    constructorSignature: "<init>(java.lang.String) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "snykDependencyGraph"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+        parameters:
+        - name: "gradleVersion"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradleVersion1"
+            valueType: "java.lang.String"
+            uuid: "gradleVersion"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph"
+        parameters:
+        - name: "gradleVersion"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradleVersion1"
+            valueType: "java.lang.String"
+            uuid: "gradleVersion"
+        - name: "nodes"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.LinkedHashSet"
+              parameters: []
+              values: []
+            valueType: "java.util.Set"
+            genericValueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+            uuid: "linkedHashSet"
+        - name: "pkgs"
+          value:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              collectionClass: "java.util.LinkedHashSet"
+              parameters: []
+              values: []
+            valueType: "java.util.Set"
+            genericValueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyPkg"
+            uuid: "linkedHashSet2"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph"
+      uuid: "snykDependencyGraph"
+- method:
+    name: "walkGraph"
+    sourceCodeSignature: "void walkGraph(String rootPkgId, String version, Set<ResolvedDependency>\
+      \ deps)"
+    returnType: "void"
+    parameters:
+    - name: "rootPkgId"
+      type: "java.lang.String"
+    - name: "version"
+      type: "java.lang.String"
+    - name: "deps"
+      type: "java.util.Set"
+      genericType: "org.gradle.api.artifacts.ResolvedDependency"
+    instructionFingerprint: "9E0C88CD55DBE9411161F16ED20C22A9"
+  paths:
+  - testPathName: "walkGraphTest"
+    constructorSignature: "<init>(java.lang.String) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "rootPkgId"
+      valueUuid: "rootPkgId"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "deps"
+      valueUuid: "deps"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "addNode(nodeId,rootPkgId,version):snykDependencyGraphSnykDependencyNode"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "addDependency(resolvedDependency):snykDependencyGraphSnykDependencyNode2"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "resolvedDependency"
+      methodExercised:
+        expression: "getChildren():set"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_INTERNAL_METHOD_RECURSIVE_CALL"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+        parameters:
+        - name: "gradleVersion"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "gradleVersion1"
+            valueType: "java.lang.String"
+            uuid: "gradleVersion"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "rootPkgId1"
+      valueType: "java.lang.String"
+      uuid: "rootPkgId"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "version1"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.artifacts.ResolvedDependency"
+          uuid: "resolvedDependency"
+      valueType: "java.util.Set"
+      genericValueType: "org.gradle.api.artifacts.ResolvedDependency"
+      uuid: "deps"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+      uuid: "snykDependencyGraphSnykDependencyNode"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "root-node"
+      valueType: "java.lang.String"
+      uuid: "nodeId"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph$SnykDependencyNode"
+      uuid: "snykDependencyGraphSnykDependencyNode2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedDependency"
+      uuid: "resolvedDependency"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "org.gradle.api.artifacts.ResolvedDependency"
+      uuid: "set"
+    - sapientType: "VOID"
+      uuid: "void2"

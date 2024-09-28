@@ -1,0 +1,1147 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.info.BuildParams"
+methods:
+- method:
+    name: "init"
+    sourceCodeSignature: "void init(Consumer<MutableBuildParams> initializer)"
+    returnType: "void"
+    parameters:
+    - name: "initializer"
+      type: "java.util.function.Consumer"
+      genericType: "org.elasticsearch.gradle.internal.info.BuildParams$MutableBuildParams"
+    instructionFingerprint: "FA4797225F69A7B5A0D04B2DECFD050F"
+  paths:
+  - testPathName: "initTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "initializer"
+      valueUuid: "initializer"
+    - type: "LOCAL_VARIABLE"
+      name: "initializer"
+      valueUuid: "initializer"
+      methodExercised:
+        expression: "accept(buildParamsMutableBuildParams):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "java.util.function.Consumer"
+      uuid: "initializer"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams$MutableBuildParams"
+      uuid: "buildParamsMutableBuildParams"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "getRuntimeJavaHome"
+    sourceCodeSignature: "File getRuntimeJavaHome()"
+    returnType: "java.io.File"
+    instructionFingerprint: "C0397B8488F508412BC586CE5BAB8C35"
+  paths:
+  - testPathName: "getRuntimeJavaHomeWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getIsRuntimeJavaHomeSet"
+    sourceCodeSignature: "Boolean getIsRuntimeJavaHomeSet()"
+    returnType: "java.lang.Boolean"
+    instructionFingerprint: "A4637B9DE65D776D6ADBA0659D2FC8B2"
+  paths:
+  - testPathName: "getIsRuntimeJavaHomeSetWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getJavaVersions"
+    sourceCodeSignature: "List<JavaHome> getJavaVersions()"
+    returnType: "java.util.List"
+    genericReturnType: "org.elasticsearch.gradle.internal.info.JavaHome"
+    instructionFingerprint: "520968C12D3128B82994CFB43EF2D11D"
+  paths:
+  - testPathName: "getJavaVersionsWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getMinimumCompilerVersion"
+    sourceCodeSignature: "JavaVersion getMinimumCompilerVersion()"
+    returnType: "org.gradle.api.JavaVersion"
+    instructionFingerprint: "00740BC2BD6D776926C6B41A382D558C"
+  paths:
+  - testPathName: "getMinimumCompilerVersionWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'it' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getMinimumRuntimeVersion"
+    sourceCodeSignature: "JavaVersion getMinimumRuntimeVersion()"
+    returnType: "org.gradle.api.JavaVersion"
+    instructionFingerprint: "251A61EBF6828575CADC98B0551538D4"
+  paths:
+  - testPathName: "getMinimumRuntimeVersionWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getGradleJavaVersion"
+    sourceCodeSignature: "JavaVersion getGradleJavaVersion()"
+    returnType: "org.gradle.api.JavaVersion"
+    instructionFingerprint: "8286962DDE9B91215CCB000E5AB748C4"
+  paths:
+  - testPathName: "getGradleJavaVersionWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getRuntimeJavaVersion"
+    sourceCodeSignature: "JavaVersion getRuntimeJavaVersion()"
+    returnType: "org.gradle.api.JavaVersion"
+    instructionFingerprint: "978A920CB68211F347A42EAA9951E02B"
+  paths:
+  - testPathName: "getRuntimeJavaVersionWhenObjectIsNotNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaVersion"
+      valueUuid: "fieldProvider2"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.gradle.api.JavaVersion"
+      uuid: "fieldProvider2"
+      nameForMock: "runtimeJavaVersion"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "VERSION_1_1"
+      valueType: "org.gradle.api.JavaVersion"
+      uuid: "object"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: false
+      internalMethodName: "value"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+  - testPathName: "getRuntimeJavaVersionWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaVersion"
+      valueUuid: "fieldProvider2"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "org.gradle.api.JavaVersion"
+      uuid: "fieldProvider2"
+      nameForMock: "runtimeJavaVersion"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.JavaVersion"
+      uuid: "object"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getRuntimeJavaDetails"
+    sourceCodeSignature: "String getRuntimeJavaDetails()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "74EC4BF1A5AA4AA0F38DCC2419D6DC41"
+  paths:
+  - testPathName: "getRuntimeJavaDetailsWhenObjectIsNotNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaDetails"
+      valueUuid: "fieldProvider4"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProvider4"
+      nameForMock: "runtimeJavaDetails"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_get1"
+      valueType: "java.lang.String"
+      uuid: "object"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: false
+      internalMethodName: "value"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+  - testPathName: "getRuntimeJavaDetailsWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaDetails"
+      valueUuid: "fieldProvider4"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProvider4"
+      nameForMock: "runtimeJavaDetails"
+    - sapientType: "NULL"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "isInFipsJvm"
+    sourceCodeSignature: "Boolean isInFipsJvm()"
+    returnType: "java.lang.Boolean"
+    instructionFingerprint: "A55A679F03B5102D232BABBBAEDF7338"
+  paths:
+  - testPathName: "isInFipsJvmWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "withFipsEnabledOnly"
+    sourceCodeSignature: "void withFipsEnabledOnly(Task task)"
+    returnType: "void"
+    parameters:
+    - name: "task"
+      type: "org.gradle.api.Task"
+    instructionFingerprint: "9AEABAE5F5574AE59E8D222BFEFC1171"
+  paths:
+  - testPathName: "withFipsEnabledOnlyWhenIsInFipsJvmEqualsFalse"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "task"
+      valueUuid: "task"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isInFipsJvm():boolean"
+    - type: "LOCAL_VARIABLE"
+      name: "task"
+      valueUuid: "task"
+      methodExercised:
+        expression: "onlyIf(onlyIfReason,onlyIfSpec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Task"
+      uuid: "task"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "java.lang.Boolean"
+      uuid: "boolean"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "FIPS mode disabled"
+      valueType: "java.lang.String"
+      uuid: "onlyIfReason"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super org.gradle.api.Task"
+      uuid: "onlyIfSpec-any"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 98
+      expression: "isInFipsJvm() == false"
+      range: "(98,52)-(98,73)"
+      evaluatedAs: true
+      internalMethodName: "lambda$withFipsEnabledOnly$0"
+  - testPathName: "withFipsEnabledOnlyWhenIsInFipsJvmNotEqualsFalse"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "task"
+      valueUuid: "task"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isInFipsJvm():boolean"
+    - type: "LOCAL_VARIABLE"
+      name: "task"
+      valueUuid: "task"
+      methodExercised:
+        expression: "onlyIf(onlyIfReason,onlyIfSpec-any):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Task"
+      uuid: "task"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "java.lang.Boolean"
+      uuid: "boolean"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "FIPS mode disabled"
+      valueType: "java.lang.String"
+      uuid: "onlyIfReason"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super org.gradle.api.Task"
+      uuid: "onlyIfSpec-any"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 98
+      expression: "isInFipsJvm() == false"
+      range: "(98,52)-(98,73)"
+      evaluatedAs: false
+      internalMethodName: "lambda$withFipsEnabledOnly$0"
+- method:
+    name: "getGitRevision"
+    sourceCodeSignature: "String getGitRevision()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "01080867464890A6BA4043CB4E711947"
+  paths:
+  - testPathName: "getGitRevisionWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getGitOrigin"
+    sourceCodeSignature: "String getGitOrigin()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "DF1252DCBD49D3FF218EC07E811BAB81"
+  paths:
+  - testPathName: "getGitOriginWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getBuildDate"
+    sourceCodeSignature: "ZonedDateTime getBuildDate()"
+    returnType: "java.time.ZonedDateTime"
+    instructionFingerprint: "23554386AD3EB4430AC199C4900AE0FB"
+  paths:
+  - testPathName: "getBuildDateWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getBwcVersions"
+    sourceCodeSignature: "BwcVersions getBwcVersions()"
+    returnType: "org.elasticsearch.gradle.internal.BwcVersions"
+    instructionFingerprint: "684E902F3A939257BDA8AC13541D57EB"
+  paths:
+  - testPathName: "getBwcVersionsWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getTestSeed"
+    sourceCodeSignature: "String getTestSeed()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "7C7D620BA62626324F6F3D34006DD971"
+  paths:
+  - testPathName: "getTestSeedWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getRandom"
+    sourceCodeSignature: "Random getRandom()"
+    returnType: "java.util.Random"
+    instructionFingerprint: "FD9EA9A2AFE62AACF9B7F99CC9324EA7"
+  paths:
+  - testPathName: "getRandomTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "random"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.util.Random"
+        parameters:
+        - name: "seed"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 11
+            valueType: "long"
+            uuid: "long1"
+      valueType: "java.util.Random"
+      uuid: "random"
+- method:
+    name: "isCi"
+    sourceCodeSignature: "Boolean isCi()"
+    returnType: "java.lang.Boolean"
+    instructionFingerprint: "035EEE03F62F11F3066B5EA18BE8BD5F"
+  paths:
+  - testPathName: "isCiWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "isGraalVmRuntime"
+    sourceCodeSignature: "Boolean isGraalVmRuntime()"
+    returnType: "java.lang.Boolean"
+    instructionFingerprint: "A9A7D20FA1377D25A4B40C0BA6967D7F"
+  paths:
+  - testPathName: "isGraalVmRuntimeWhenObjectIsNotNull"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaDetails"
+      valueUuid: "fieldProvider4"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "boolean2"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProvider4"
+      nameForMock: "runtimeJavaDetails"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "java.lang.Boolean"
+      uuid: "boolean2"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: false
+      internalMethodName: "value"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+  - testPathName: "isGraalVmRuntimeWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "FIELD"
+      name: "runtimeJavaDetails"
+      valueUuid: "fieldProvider4"
+      methodExercised:
+        expression: "get():object"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.String"
+      uuid: "fieldProvider4"
+      nameForMock: "runtimeJavaDetails"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "object"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s2"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getDefaultParallel"
+    sourceCodeSignature: "Integer getDefaultParallel()"
+    returnType: "java.lang.Integer"
+    instructionFingerprint: "2B86D3033832A1F0BCC9F3549ED5E1FB"
+  paths:
+  - testPathName: "getDefaultParallelWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "isSnapshotBuild"
+    sourceCodeSignature: "boolean isSnapshotBuild()"
+    returnType: "boolean"
+    instructionFingerprint: "4719352A6379194D791A3E2800DB3AF2"
+  paths:
+  - testPathName: "isSnapshotBuildWhenMethodNameNotStartsWithIsThrowsIllegalStateException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Build parameter 'oke' has not been initialized.\\nPerhaps the\
+                \ plugin responsible for initializing this property has not been applied."
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 146
+      expression: "object == null"
+      range: "(146,13)-(146,26)"
+      evaluatedAs: true
+      internalMethodName: "value"
+    - lineNumber: 161
+      expression: "methodName.startsWith(\\\"is\\\")"
+      range: "(161,31)-(161,57)"
+      evaluatedAs: false
+      internalMethodName: "propertyName"
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.info.BuildParams"
+- method:
+    name: "getJavaToolChainSpec"
+    sourceCodeSignature: "Provider<? extends Action<JavaToolchainSpec>> getJavaToolChainSpec()"
+    returnType: "org.gradle.api.provider.Provider"
+    genericReturnType: "? extends org.gradle.api.Action<org.gradle.jvm.toolchain.JavaToolchainSpec>"
+    instructionFingerprint: "9C8A4E9687050AB987CE44D726B0B129"
+  paths:
+  - testPathName: "getJavaToolChainSpecTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "fieldProvider3"
+    disabled: false
+    allValues:
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "? extends org.gradle.api.Action<org.gradle.jvm.toolchain.JavaToolchainSpec>"
+      uuid: "fieldProvider3"

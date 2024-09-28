@@ -1,0 +1,218 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+methods:
+- method:
+    name: "parse"
+    sourceCodeSignature: "ChangelogEntry parse(File file)"
+    returnType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+    parameters:
+    - name: "file"
+      type: "java.io.File"
+    instructionFingerprint: "9740907EAA218560E930438B638A14E6"
+  paths:
+  - testPathName: "parseTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "file"
+      valueUuid: "file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "return yamlMapper.readValue(file, ChangelogEntry.class);"
+      lineNumber: 55
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: yamlMapper - Method: readValue"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "object"
+  - testPathName: "parseWhenCaughtIOExceptionThrowsUncheckedIOException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "file"
+      valueUuid: "file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "uncheckedIOException"
+    disabled: false
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "return yamlMapper.readValue(file, ChangelogEntry.class);"
+      lineNumber: 55
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: yamlMapper - Method: readValue"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.io.UncheckedIOException"
+        parameters:
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.io.IOException"
+              parameters: []
+            valueType: "java.io.IOException"
+            uuid: "iOException"
+      valueType: "java.io.UncheckedIOException"
+      uuid: "uncheckedIOException"
+    branches:
+    - lineNumber: 56
+      expression: "catch-exception (IOException)"
+      range: "(56,11)-(56,30)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.io.IOException"
+- method:
+    name: "setHighlight"
+    sourceCodeSignature: "void setHighlight(Highlight highlight)"
+    returnType: "void"
+    parameters:
+    - name: "highlight"
+      type: "org.elasticsearch.gradle.internal.release.ChangelogEntry$Highlight"
+    instructionFingerprint: "28575B2BB5BB1833E6201DB44E68D5A2"
+  paths:
+  - testPathName: "setHighlightWhenThisHighlightIsNotNull"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "highlight"
+      valueUuid: "highlight"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    - type: "STATE_VERIFICATION_FIELD"
+      name: "highlight"
+      valueUuid: "highlight"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+        parameters: []
+        propertiesMap:
+          pr:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "java.lang.Integer"
+            uuid: "fieldInteger"
+      valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry$Highlight"
+      uuid: "highlight"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 108
+      expression: "this.highlight != null"
+      range: "(108,13)-(108,34)"
+      evaluatedAs: true
+- method:
+    name: "toString"
+    sourceCodeSignature: "String toString()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "35838DA6CE9A72B606573D210B479322"
+  paths:
+  - testPathName: "toStringTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.lang.String.format(java.util.Locale,java.lang.String,java.lang.Object[])\
+        \ : java.lang.String"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+        parameters: []
+        propertiesMap:
+          area:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "area1"
+            valueType: "java.lang.String"
+            uuid: "fieldString"
+          summary:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "summary1"
+            valueType: "java.lang.String"
+            uuid: "fieldString3"
+          pr:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "java.lang.Integer"
+            uuid: "fieldInteger"
+          type:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "type1"
+            valueType: "java.lang.String"
+            uuid: "fieldString2"
+          issues:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.List"
+            genericValueType: "java.lang.Integer"
+            uuid: "fieldList"
+      valueType: "org.elasticsearch.gradle.internal.release.ChangelogEntry"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "result1"
+      valueType: "java.lang.String"
+      uuid: "string"

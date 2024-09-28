@@ -1,0 +1,437 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+methods:
+- method:
+    name: "getResources"
+    sourceCodeSignature: "Set<String> getResources()"
+    returnType: "java.util.Set"
+    genericReturnType: "java.lang.String"
+    instructionFingerprint: "1A1829CF0BC5CA797038F358C6B4289E"
+  paths:
+  - testPathName: "getResourcesTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "set"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "java.lang.String"
+      uuid: "set"
+- method:
+    name: "getResourcesClasspath"
+    sourceCodeSignature: "String getResourcesClasspath()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "6CB434143BBDB307728DE3A7BFDF3CA2"
+  paths:
+  - testPathName: "getResourcesClasspathTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string6"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "result1"
+      valueType: "java.lang.String"
+      uuid: "string6"
+- method:
+    name: "setOutputDir"
+    sourceCodeSignature: "void setOutputDir(File outputDir)"
+    returnType: "void"
+    parameters:
+    - name: "outputDir"
+      type: "java.io.File"
+    instructionFingerprint: "4DC55C37696CD50F469D81B4F3C2121C"
+  paths:
+  - testPathName: "setOutputDirTest"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "outputDir"
+      valueUuid: "outputDir"
+    - type: "FIELD"
+      name: "outputDir"
+      valueUuid: "fieldDirectoryProperty"
+      methodExercised:
+        expression: "set(outputDir):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+        propertiesMap:
+          outputDir:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.DirectoryProperty"
+            uuid: "fieldDirectoryProperty"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "outputDir-pathname"
+      valueType: "java.io.File"
+      uuid: "outputDir"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "fieldDirectoryProperty"
+      nameForMock: "outputDir"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "copy"
+    sourceCodeSignature: "void copy(String resource)"
+    returnType: "void"
+    parameters:
+    - name: "resource"
+      type: "java.lang.String"
+    instructionFingerprint: "136DD5E4C109D632B52DDAD6AE5EC786"
+  paths:
+  - testPathName: "copyWhenGetStateGetExecutingThrowsGradleException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "resource"
+      valueUuid: "resource"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getState():taskStateInternal"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getState():taskStateInternal2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskStateInternal"
+      methodExercised:
+        expression: "getExecuted():boolean1"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "resource1"
+      valueType: "java.lang.String"
+      uuid: "resource"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.tasks.TaskStateInternal"
+      uuid: "taskStateInternal"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.gradle.api.internal.tasks.TaskStateInternal"
+        parameters: []
+        propertiesMap:
+          executing:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: true
+            valueType: "boolean"
+            uuid: "executing"
+      valueType: "org.gradle.api.internal.tasks.TaskStateInternal"
+      uuid: "taskStateInternal2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "buildResources can't be configured after the task ran. Make\
+                \ sure task is not used after configuration time"
+            valueType: "java.lang.String"
+            uuid: "message"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 77
+      expression: "getState().getExecuted()"
+      range: "(77,13)-(77,36)"
+      evaluatedAs: false
+    - lineNumber: 77
+      expression: "getState().getExecuting()"
+      range: "(77,41)-(77,65)"
+      evaluatedAs: true
+  - testPathName: "copyWhenGetStateNotGetExecuting"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "resource"
+      valueUuid: "resource"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getState():taskStateInternal"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getState():taskStateInternal2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskStateInternal"
+      methodExercised:
+        expression: "getExecuted():boolean1"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "resource1"
+      valueType: "java.lang.String"
+      uuid: "resource"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.internal.tasks.TaskStateInternal"
+      uuid: "taskStateInternal"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.gradle.api.internal.tasks.TaskStateInternal"
+        parameters: []
+        propertiesMap:
+          executing:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: false
+            valueType: "boolean"
+            uuid: "executing"
+      valueType: "org.gradle.api.internal.tasks.TaskStateInternal"
+      uuid: "taskStateInternal2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 77
+      expression: "getState().getExecuted()"
+      range: "(77,13)-(77,36)"
+      evaluatedAs: false
+    - lineNumber: 77
+      expression: "getState().getExecuting()"
+      range: "(77,41)-(77,65)"
+      evaluatedAs: false
+- method:
+    name: "doExport"
+    sourceCodeSignature: "void doExport()"
+    returnType: "void"
+    instructionFingerprint: "8174A093AFC3A4E56056C65C4367E720"
+  paths:
+  - testPathName: "doExportWhenResourcesIsEmptyThrowsStopExecutionException"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "setDidWork(didWork):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "stopExecutionException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "didWork"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.tasks.StopExecutionException"
+        parameters: []
+      valueType: "org.gradle.api.tasks.StopExecutionException"
+      uuid: "stopExecutionException"
+    branches:
+    - lineNumber: 87
+      expression: "resources.isEmpty()"
+      range: "(87,13)-(87,31)"
+      evaluatedAs: true
+  - testPathName: "doExportWhenResourcesNotIsEmpty"
+    constructorSignature: "<init>(org.gradle.api.model.ObjectFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+        parameters:
+        - name: "objects"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objects"
+      valueType: "org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask"
+      uuid: "target"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 87
+      expression: "resources.isEmpty()"
+      range: "(87,13)-(87,31)"
+      evaluatedAs: false

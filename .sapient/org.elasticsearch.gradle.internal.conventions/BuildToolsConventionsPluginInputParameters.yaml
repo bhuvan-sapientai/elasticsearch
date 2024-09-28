@@ -1,0 +1,218 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.conventions.BuildToolsConventionsPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "8CC92665784A007A533B2CF10E73751B"
+  paths:
+  - testPathName: "applyWhenUtilGetBooleanPropertyTests_fips_enabledFalseEqualsFalse"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "STATIC"
+      name: "ParallelDetector.class"
+      valueUuid: "ParallelDetector.class"
+      methodExercised:
+        expression: "findDefaultParallel(project):int1"
+    - type: "STATIC"
+      name: "Util.class.real"
+      valueUuid: "Util.class.real"
+      methodExercised:
+        expression: "getBooleanProperty(property,defaultValue):boolean1"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-LicenseHeadersPrecommitPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getBuildDir():file"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskCollection"
+      methodExercised:
+        expression: "configureEach(action-any):void"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskCollection2"
+      methodExercised:
+        expression: "configureEach(action2-any):void4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "withType(class-Test):taskCollection"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer2"
+      methodExercised:
+        expression: "withType(class-Jar):taskCollection2"
+    - type: "LOCAL_VARIABLE"
+      name: "test"
+      valueUuid: "test"
+      methodExercised:
+        expression: "onlyIf(onlyIfReason,spec-any):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "test"
+      valueUuid: "test"
+      methodExercised:
+        expression: "setMaxParallelForks(int1):void3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void6"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "j.getDestinationDirectory().set(new File(project.getBuildDir(), \\\"\
+        distributions\\\"))"
+      lineNumber: 35
+      details: "No constructor found to create an object without any exception for\
+        \ class java.io.File"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.conventions.BuildToolsConventionsPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.conventions.BuildToolsConventionsPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.conventions.info.ParallelDetector"
+      uuid: "ParallelDetector.class"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "REAL"
+      valueType: "org.elasticsearch.gradle.internal.conventions.util.Util"
+      uuid: "Util.class.real"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "tests.fips.enabled"
+      valueType: "java.lang.String"
+      uuid: "property"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "defaultValue"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPlugin"
+      uuid: "class-LicenseHeadersPrecommitPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer2"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskCollection"
+      uuid: "taskCollection"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskCollection"
+      uuid: "taskCollection2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action2-any"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.testing.Test"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "class-Test"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.gradle.api.tasks.bundling.Jar"
+      valueType: "java.lang.Class"
+      genericValueType: "org.gradle.api.tasks.bundling.Jar"
+      uuid: "class-Jar"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.testing.Test"
+      uuid: "test"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "FIPS mode disabled"
+      valueType: "java.lang.String"
+      uuid: "onlyIfReason"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.specs.Spec"
+      genericValueType: "? super org.gradle.api.Task"
+      uuid: "spec-any"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "VOID"
+      uuid: "void6"
+    branches:
+    - lineNumber: 30
+      expression: "Util.getBooleanProperty(\\\"tests.fips.enabled\\\", false) == false"
+      range: "(30,28)-(30,88)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$0"

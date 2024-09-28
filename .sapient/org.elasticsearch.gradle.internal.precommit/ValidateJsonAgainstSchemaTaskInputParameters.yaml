@@ -1,0 +1,201 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+methods:
+- method:
+    name: "getMapper"
+    sourceCodeSignature: "ObjectMapper getMapper()"
+    returnType: "com.fasterxml.jackson.databind.ObjectMapper"
+    instructionFingerprint: "2E7BA81D19AAA496894DD262B9CCB004"
+  paths:
+  - testPathName: "getMapperTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "objectMapper"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "}"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.ObjectMapper"
+        parameters: []
+      valueType: "com.fasterxml.jackson.databind.ObjectMapper"
+      uuid: "objectMapper"
+- method:
+    name: "getFileType"
+    sourceCodeSignature: "String getFileType()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "567ACCED66ACF958B90255F499CDDB2E"
+  paths:
+  - testPathName: "getFileTypeTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "}"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "JSON"
+      valueType: "java.lang.String"
+      uuid: "expectedResult"
+- method:
+    name: "validate"
+    sourceCodeSignature: "void validate(InputChanges inputChanges)"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "inputChanges"
+      type: "org.gradle.work.InputChanges"
+    instructionFingerprint: "D822A052C15BB5A72BA712A172F6B3F5"
+  paths:
+  - testPathName: "validateWhenErrorsIsEmptyThrowsNullPointerException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "inputChanges"
+      valueUuid: "inputChanges"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getMapper():objectMapper2"
+    - type: "STATIC"
+      name: "JsonSchemaFactory.class"
+      valueUuid: "JsonSchemaFactory.class"
+      methodExercised:
+        expression: "getInstance(Enum-com.networknt.schema.SpecVersion$VersionFlag-V7):jsonSchemaFactory"
+    - type: "LOCAL_VARIABLE"
+      name: "inputChanges"
+      valueUuid: "inputChanges"
+      methodExercised:
+        expression: "getFileChanges(fieldFileCollection):iterable"
+    - type: "LOCAL_VARIABLE"
+      name: "factory"
+      valueUuid: "jsonSchemaFactory"
+      methodExercised:
+        expression: "getSchema(jsonNode,schemaValidatorsConfig-any):jsonSchema"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "}"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.ValidateJsonAgainstSchemaTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.work.InputChanges"
+      uuid: "inputChanges"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "com.fasterxml.jackson.databind.ObjectMapper"
+        parameters: []
+      valueType: "com.fasterxml.jackson.databind.ObjectMapper"
+      uuid: "objectMapper2"
+    - sapientType: "MOCK"
+      valueType: "com.networknt.schema.JsonSchemaFactory"
+      uuid: "JsonSchemaFactory.class"
+    - sapientType: "MOCK"
+      valueType: "com.networknt.schema.JsonSchemaFactory"
+      uuid: "jsonSchemaFactory"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "V7"
+      valueType: "com.networknt.schema.SpecVersion$VersionFlag"
+      uuid: "Enum-com.networknt.schema.SpecVersion$VersionFlag-V7"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.lang.Iterable"
+      genericValueType: "org.gradle.work.FileChange"
+      uuid: "iterable"
+    - sapientType: "NULL"
+      valueType: "org.gradle.api.file.FileCollection"
+      uuid: "fieldFileCollection"
+    - sapientType: "MOCK"
+      valueType: "com.networknt.schema.JsonSchema"
+      uuid: "jsonSchema"
+    - sapientType: "OBJECT"
+      content: !<method_return_from_value>
+        target: "com.fasterxml.jackson.databind.JsonNode"
+        localVariableValue:
+          sapientType: "OBJECT"
+          content: !<new>
+            target: "com.fasterxml.jackson.databind.ObjectMapper"
+            parameters: []
+          valueType: "com.fasterxml.jackson.databind.ObjectMapper"
+          uuid: "objectMapper"
+        methodParameters:
+        - name: "file"
+          value:
+            sapientType: "NULL"
+            valueType: "java.io.File"
+            uuid: "fieldFile"
+        methodName: "readTree"
+      valueType: "com.fasterxml.jackson.databind.JsonNode"
+      uuid: "jsonNode"
+    - sapientType: "ANY"
+      valueType: "com.networknt.schema.SchemaValidatorsConfig"
+      uuid: "schemaValidatorsConfig-any"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"
+    branches:
+    - lineNumber: 113
+      expression: "errors.isEmpty()"
+      range: "(113,13)-(113,28)"
+      evaluatedAs: true

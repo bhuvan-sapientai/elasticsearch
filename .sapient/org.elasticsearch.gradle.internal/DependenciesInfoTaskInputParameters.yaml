@@ -1,0 +1,1715 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+methods:
+- method:
+    name: "getLicensesDir"
+    sourceCodeSignature: "File getLicensesDir()"
+    returnType: "java.io.File"
+    instructionFingerprint: "062FC60A8C5C144845CA02C92578B41B"
+  paths:
+  - testPathName: "getLicensesDirWhenAsFileExists"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "licensesDir"
+      valueUuid: "fieldDirectoryProperty"
+      methodExercised:
+        expression: "get():object4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object4"
+      methodExercised:
+        expression: "getAsFile():file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "fieldDirectoryProperty"
+      nameForMock: "licensesDir"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.Directory"
+      uuid: "object4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    branches:
+    - lineNumber: 86
+      expression: "asFile.exists()"
+      range: "(86,13)-(86,27)"
+      evaluatedAs: true
+  - testPathName: "getLicensesDirWhenAsFileNotExists"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "licensesDir"
+      valueUuid: "fieldDirectoryProperty"
+      methodExercised:
+        expression: "get():object4"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "object4"
+      methodExercised:
+        expression: "getAsFile():file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "file2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "fieldDirectoryProperty"
+      nameForMock: "licensesDir"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.Directory"
+      uuid: "object4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "NULL"
+      valueType: "java.io.File"
+      uuid: "file2"
+    branches:
+    - lineNumber: 86
+      expression: "asFile.exists()"
+      range: "(86,13)-(86,27)"
+      evaluatedAs: false
+- method:
+    name: "setLicensesDir"
+    sourceCodeSignature: "void setLicensesDir(File licensesDir)"
+    returnType: "void"
+    parameters:
+    - name: "licensesDir"
+      type: "java.io.File"
+    instructionFingerprint: "E173E62DB57F93D7B3F45014298B338B"
+  paths:
+  - testPathName: "setLicensesDirTest"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "licensesDir"
+      valueUuid: "licensesDir"
+    - type: "FIELD"
+      name: "licensesDir"
+      valueUuid: "fieldDirectoryProperty"
+      methodExercised:
+        expression: "set(licensesDir):void"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "licensesDir-pathname"
+      valueType: "java.io.File"
+      uuid: "licensesDir"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "fieldDirectoryProperty"
+      nameForMock: "licensesDir"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "VOID"
+      uuid: "void2"
+- method:
+    name: "generateDependenciesInfo"
+    sourceCodeSignature: "void generateDependenciesInfo()"
+    returnType: "void"
+    throwsExceptions:
+    - "java.io.IOException"
+    instructionFingerprint: "E219899FE8EA3BFBD1866A46761CFA09"
+  paths:
+  - testPathName: "generateDependenciesInfoWhenCompileOnlyArtifactsContainsDepGetGroupPlus_PlusDepGetNamePlus_PlusDepGetVersion"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "runtimeConfiguration"
+      valueUuid: "fieldConfiguration"
+      methodExercised:
+        expression: "getAllDependencies():dependencySet"
+    - type: "FIELD"
+      name: "compileOnlyConfiguration"
+      valueUuid: "fieldConfiguration2"
+      methodExercised:
+        expression: "getResolvedConfiguration():resolvedConfiguration"
+    - type: "LOCAL_VARIABLE"
+      name: "runtimeDependencies"
+      valueUuid: "dependencySet"
+      methodExercised:
+        expression: "iterator():iterator"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getGroup():string5"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getName():string6"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getVersion():string7"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string9"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string10"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getVersion():string11"
+    - type: "LOCAL_VARIABLE"
+      name: "r"
+      valueUuid: "resolvedArtifact"
+      methodExercised:
+        expression: "getModuleVersion():resolvedModuleVersion"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedConfiguration"
+      methodExercised:
+        expression: "getResolvedArtifacts():set"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.ResolveException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedModuleVersion"
+      methodExercised:
+        expression: "getId():moduleVersionIdentifier"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+        propertiesMap:
+          runtimeConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration"
+          compileOnlyConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration2"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration"
+      nameForMock: "runtimeConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.DependencySet"
+      uuid: "dependencySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration2"
+      nameForMock: "compileOnlyConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedConfiguration"
+      uuid: "resolvedConfiguration"
+    - sapientType: "ITERATOR"
+      content: !<iterator>
+        collectionValue:
+          sapientType: "COLLECTION"
+          content: !<collection>
+            collectionClass: "java.util.ArrayList"
+            parameters: []
+            values:
+            - sapientType: "MOCK"
+              valueType: "org.gradle.api.artifacts.Dependency"
+              uuid: "object5"
+          valueType: "java.util.List"
+          uuid: "iterator-CollectionContent"
+      valueType: "java.util.Iterator"
+      uuid: "iterator"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ModuleVersionIdentifier"
+      uuid: "moduleVersionIdentifier"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "G"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "string7"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Dependency"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "G"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "string10"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "string11"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "resolvedArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedModuleVersion"
+      uuid: "resolvedModuleVersion"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+          uuid: "resolvedArtifact"
+      valueType: "java.util.Set"
+      genericValueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "set"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 139
+      expression: "for-each(runtimeDependencies)"
+      range: "(139,37)-(139,55)"
+      evaluatedAs: true
+    - lineNumber: 141
+      expression: "compileOnlyArtifacts.contains(dep.getGroup() + \\\":\\\" + dep.getName()\
+        \ + \\\":\\\" + dep.getVersion())"
+      range: "(141,17)-(141,108)"
+      evaluatedAs: true
+  - testPathName: "generateDependenciesInfoWhenDepGetGroupStartsWithOrg_elasticsearch"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "FIELD"
+      name: "runtimeConfiguration"
+      valueUuid: "fieldConfiguration"
+      methodExercised:
+        expression: "getAllDependencies():dependencySet"
+    - type: "FIELD"
+      name: "compileOnlyConfiguration"
+      valueUuid: "fieldConfiguration2"
+      methodExercised:
+        expression: "getResolvedConfiguration():resolvedConfiguration"
+    - type: "LOCAL_VARIABLE"
+      name: "runtimeDependencies"
+      valueUuid: "dependencySet"
+      methodExercised:
+        expression: "iterator():iterator"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getGroup():string5"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getName():string6"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getVersion():string7"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string9"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string10"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getVersion():string11"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string13"
+    - type: "LOCAL_VARIABLE"
+      name: "r"
+      valueUuid: "resolvedArtifact"
+      methodExercised:
+        expression: "getModuleVersion():resolvedModuleVersion"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedConfiguration"
+      methodExercised:
+        expression: "getResolvedArtifacts():set"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.ResolveException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedModuleVersion"
+      methodExercised:
+        expression: "getId():moduleVersionIdentifier"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+        propertiesMap:
+          runtimeConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration"
+          compileOnlyConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration2"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration"
+      nameForMock: "runtimeConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.DependencySet"
+      uuid: "dependencySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration2"
+      nameForMock: "compileOnlyConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedConfiguration"
+      uuid: "resolvedConfiguration"
+    - sapientType: "ITERATOR"
+      content: !<iterator>
+        collectionValue:
+          sapientType: "COLLECTION"
+          content: !<collection>
+            collectionClass: "java.util.ArrayList"
+            parameters: []
+            values:
+            - sapientType: "MOCK"
+              valueType: "org.gradle.api.artifacts.Dependency"
+              uuid: "object5"
+          valueType: "java.util.List"
+          uuid: "iterator-CollectionContent"
+      valueType: "java.util.Iterator"
+      uuid: "iterator"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ModuleVersionIdentifier"
+      uuid: "moduleVersionIdentifier"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "D"
+      valueType: "java.lang.String"
+      uuid: "string7"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Dependency"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "E"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "F"
+      valueType: "java.lang.String"
+      uuid: "string10"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "G"
+      valueType: "java.lang.String"
+      uuid: "string11"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "org.elasticsearchA"
+      valueType: "java.lang.String"
+      uuid: "string13"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "resolvedArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedModuleVersion"
+      uuid: "resolvedModuleVersion"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+          uuid: "resolvedArtifact"
+      valueType: "java.util.Set"
+      genericValueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "set"
+    - sapientType: "VOID"
+      uuid: "void"
+    branches:
+    - lineNumber: 139
+      expression: "for-each(runtimeDependencies)"
+      range: "(139,37)-(139,55)"
+      evaluatedAs: true
+    - lineNumber: 141
+      expression: "compileOnlyArtifacts.contains(dep.getGroup() + \\\":\\\" + dep.getName()\
+        \ + \\\":\\\" + dep.getVersion())"
+      range: "(141,17)-(141,108)"
+      evaluatedAs: false
+    - lineNumber: 146
+      expression: "dep instanceof ProjectDependency"
+      range: "(146,17)-(146,48)"
+      evaluatedAs: false
+    - lineNumber: 146
+      expression: "dep.getGroup().startsWith(\\\"org.elasticsearch\\\")"
+      range: "(146,53)-(146,98)"
+      evaluatedAs: true
+  - testPathName: "generateDependenciesInfoWhenDepGetGroupNotStartsWithOrg_elasticsearch"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLogger():logger"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLicenseType(string25,string21):string26"
+        throwsExceptions:
+        - "java.io.IOException"
+    - type: "FIELD"
+      name: "runtimeConfiguration"
+      valueUuid: "fieldConfiguration"
+      methodExercised:
+        expression: "getAllDependencies():dependencySet"
+    - type: "FIELD"
+      name: "compileOnlyConfiguration"
+      valueUuid: "fieldConfiguration2"
+      methodExercised:
+        expression: "getResolvedConfiguration():resolvedConfiguration"
+    - type: "STATIC"
+      name: "DependencyLicensesTask.class"
+      valueUuid: "DependencyLicensesTask.class"
+      methodExercised:
+        expression: "getDependencyName(fieldLinkedHashMap,string20):string21"
+    - type: "LOCAL_VARIABLE"
+      name: "runtimeDependencies"
+      valueUuid: "dependencySet"
+      methodExercised:
+        expression: "iterator():iterator"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "logger"
+      methodExercised:
+        expression: "info(string24):void"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getGroup():string5"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getName():string6"
+    - type: "LOCAL_VARIABLE"
+      name: "id"
+      valueUuid: "moduleVersionIdentifier"
+      methodExercised:
+        expression: "getVersion():string7"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string9"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string10"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getVersion():string11"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string13"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string14"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string15"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getVersion():string16"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string20"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string22"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string23"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string25"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getGroup():string27"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getName():string28"
+    - type: "LOCAL_VARIABLE"
+      name: "dep"
+      valueUuid: "object5"
+      methodExercised:
+        expression: "getVersion():string29"
+    - type: "LOCAL_VARIABLE"
+      name: "r"
+      valueUuid: "resolvedArtifact"
+      methodExercised:
+        expression: "getModuleVersion():resolvedModuleVersion"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedConfiguration"
+      methodExercised:
+        expression: "getResolvedArtifacts():set"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.ResolveException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "resolvedModuleVersion"
+      methodExercised:
+        expression: "getId():moduleVersionIdentifier"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+        propertiesMap:
+          mappings:
+            sapientType: "COLLECTION"
+            content: !<collection>
+              parameters: []
+              values: []
+            valueType: "java.util.LinkedHashMap"
+            genericValueType: "java.lang.String,java.lang.String"
+            uuid: "fieldLinkedHashMap"
+          runtimeConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration"
+          compileOnlyConfiguration:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.artifacts.Configuration"
+            uuid: "fieldConfiguration2"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.logging.Logger"
+      uuid: "logger"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "P"
+      valueType: "java.lang.String"
+      uuid: "string26"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getGroup1"
+      valueType: "java.lang.String"
+      uuid: "string25"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Z"
+      valueType: "java.lang.String"
+      uuid: "string21"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration"
+      nameForMock: "runtimeConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.DependencySet"
+      uuid: "dependencySet"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "fieldConfiguration2"
+      nameForMock: "compileOnlyConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedConfiguration"
+      uuid: "resolvedConfiguration"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      uuid: "DependencyLicensesTask.class"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.LinkedHashMap"
+      genericValueType: "java.lang.String,java.lang.String"
+      uuid: "fieldLinkedHashMap"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getName1"
+      valueType: "java.lang.String"
+      uuid: "string20"
+    - sapientType: "ITERATOR"
+      content: !<iterator>
+        collectionValue:
+          sapientType: "COLLECTION"
+          content: !<collection>
+            collectionClass: "java.util.ArrayList"
+            parameters: []
+            values:
+            - sapientType: "MOCK"
+              valueType: "org.gradle.api.artifacts.Dependency"
+              uuid: "object5"
+          valueType: "java.util.List"
+          uuid: "iterator-CollectionContent"
+      valueType: "java.util.Iterator"
+      uuid: "iterator"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "mapped dependency X:Y to Z for license info"
+      valueType: "java.lang.String"
+      uuid: "string24"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ModuleVersionIdentifier"
+      uuid: "moduleVersionIdentifier"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "R"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "S"
+      valueType: "java.lang.String"
+      uuid: "string6"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "T"
+      valueType: "java.lang.String"
+      uuid: "string7"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Dependency"
+      uuid: "object5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "U"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "V"
+      valueType: "java.lang.String"
+      uuid: "string10"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "W"
+      valueType: "java.lang.String"
+      uuid: "string11"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Q"
+      valueType: "java.lang.String"
+      uuid: "string13"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "G"
+      valueType: "java.lang.String"
+      uuid: "string14"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "H"
+      valueType: "java.lang.String"
+      uuid: "string15"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "I"
+      valueType: "java.lang.String"
+      uuid: "string16"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "X"
+      valueType: "java.lang.String"
+      uuid: "string22"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "Y"
+      valueType: "java.lang.String"
+      uuid: "string23"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "M"
+      valueType: "java.lang.String"
+      uuid: "string27"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "N"
+      valueType: "java.lang.String"
+      uuid: "string28"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "O"
+      valueType: "java.lang.String"
+      uuid: "string29"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "resolvedArtifact"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ResolvedModuleVersion"
+      uuid: "resolvedModuleVersion"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "MOCK"
+          valueType: "org.gradle.api.artifacts.ResolvedArtifact"
+          uuid: "resolvedArtifact"
+      valueType: "java.util.Set"
+      genericValueType: "org.gradle.api.artifacts.ResolvedArtifact"
+      uuid: "set"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 139
+      expression: "for-each(runtimeDependencies)"
+      range: "(139,37)-(139,55)"
+      evaluatedAs: true
+    - lineNumber: 141
+      expression: "compileOnlyArtifacts.contains(dep.getGroup() + \\\":\\\" + dep.getName()\
+        \ + \\\":\\\" + dep.getVersion())"
+      range: "(141,17)-(141,108)"
+      evaluatedAs: false
+    - lineNumber: 146
+      expression: "dep instanceof ProjectDependency"
+      range: "(146,17)-(146,48)"
+      evaluatedAs: false
+    - lineNumber: 146
+      expression: "dep.getGroup().startsWith(\\\"org.elasticsearch\\\")"
+      range: "(146,53)-(146,98)"
+      evaluatedAs: false
+- method:
+    name: "createURL"
+    sourceCodeSignature: "String createURL(final String group, final String name,\
+      \ final String version)"
+    returnType: "java.lang.String"
+    parameters:
+    - name: "group"
+      type: "java.lang.String"
+    - name: "name"
+      type: "java.lang.String"
+    - name: "version"
+      type: "java.lang.String"
+    instructionFingerprint: "F3AA91985C935B169A65295C81598A8D"
+  paths:
+  - testPathName: "createURLTest"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "group"
+      valueUuid: "group"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string7"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "group"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "version"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "https://repo1.maven.org/maven2/A/B/C"
+      valueType: "java.lang.String"
+      uuid: "string7"
+- method:
+    name: "getLicenseType"
+    sourceCodeSignature: "String getLicenseType(final String group, final String name)"
+    returnType: "java.lang.String"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "group"
+      type: "java.lang.String"
+    - name: "name"
+      type: "java.lang.String"
+    instructionFingerprint: "854A55B7FFE3FCB400044CEECEA5F02B"
+  paths:
+  - testPathName: "getLicenseTypeWhenLicenseInfoSourceRedistributionRequired"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "group"
+      valueUuid: "group"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getDependencyInfoFile(group,name,infoFileSuffix):file"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getDependencyInfoFile(group,name,infoFileSuffix2):file2"
+    - type: "STATIC"
+      name: "LicenseAnalyzer.class"
+      valueUuid: "LicenseAnalyzer.class"
+      methodExercised:
+        expression: "licenseType(file):licenseAnalyzerLicenseInfo"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "spdxLicense():boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "identifier():string7"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "sourceRedistributionRequired():boolean2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string13"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "group1"
+      valueType: "java.lang.String"
+      uuid: "group"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "name1"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "LICENSE"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file2-pathname"
+      valueType: "java.io.File"
+      uuid: "file2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "SOURCES"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer"
+      uuid: "LicenseAnalyzer.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer$LicenseInfo"
+      uuid: "licenseAnalyzerLicenseInfo"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "string7"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C;B,D"
+      valueType: "java.lang.String"
+      uuid: "string13"
+    branches:
+    - lineNumber: 199
+      expression: "licenseInfo.spdxLicense() == false"
+      range: "(199,13)-(199,46)"
+      evaluatedAs: true
+    - lineNumber: 212
+      expression: "licenseInfo.sourceRedistributionRequired()"
+      range: "(212,13)-(212,54)"
+      evaluatedAs: true
+  - testPathName: "getLicenseTypeWhenLicenseInfoSpdxLicenseNotEqualsFalseAndLicenseInfoSourceRedistributionRequired"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "group"
+      valueUuid: "group"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getDependencyInfoFile(group,name,infoFileSuffix):file"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getDependencyInfoFile(group,name,infoFileSuffix2):file2"
+    - type: "STATIC"
+      name: "LicenseAnalyzer.class"
+      valueUuid: "LicenseAnalyzer.class"
+      methodExercised:
+        expression: "licenseType(file):licenseAnalyzerLicenseInfo"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "spdxLicense():boolean1"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "identifier():string5"
+    - type: "LOCAL_VARIABLE"
+      name: "licenseInfo"
+      valueUuid: "licenseAnalyzerLicenseInfo"
+      methodExercised:
+        expression: "sourceRedistributionRequired():boolean2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string9"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "group1"
+      valueType: "java.lang.String"
+      uuid: "group"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "name1"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "LICENSE"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file2-pathname"
+      valueType: "java.io.File"
+      uuid: "file2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "SOURCES"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer"
+      uuid: "LicenseAnalyzer.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer$LicenseInfo"
+      uuid: "licenseAnalyzerLicenseInfo"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ""
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ",B"
+      valueType: "java.lang.String"
+      uuid: "string9"
+    branches:
+    - lineNumber: 199
+      expression: "licenseInfo.spdxLicense() == false"
+      range: "(199,13)-(199,46)"
+      evaluatedAs: false
+    - lineNumber: 212
+      expression: "licenseInfo.sourceRedistributionRequired()"
+      range: "(212,13)-(212,54)"
+      evaluatedAs: true
+- method:
+    name: "getDependencyInfoFile"
+    sourceCodeSignature: "File getDependencyInfoFile(final String group, final String\
+      \ name, final String infoFileSuffix)"
+    returnType: "java.io.File"
+    parameters:
+    - name: "group"
+      type: "java.lang.String"
+    - name: "name"
+      type: "java.lang.String"
+    - name: "infoFileSuffix"
+      type: "java.lang.String"
+    instructionFingerprint: "1E6D6E14962352B51E9EC75CA90A3EE9"
+  paths:
+  - testPathName: "getDependencyInfoFileWhenDirIsNullThrowsIllegalStateException"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "group"
+      valueUuid: "group"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "INPUT"
+      name: "infoFileSuffix"
+      valueUuid: "infoFileSuffix"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLicensesDir():file"
+    - type: "FIELD"
+      name: "licensesDir"
+      valueUuid: "fieldDirectoryProperty"
+      methodExercised:
+        expression: "getAsFile():provider"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "provider"
+      methodExercised:
+        expression: "get():object4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "group"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix"
+    - sapientType: "NULL"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.file.DirectoryProperty"
+      uuid: "fieldDirectoryProperty"
+      nameForMock: "licensesDir"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider"
+    - sapientType: "MOCK"
+      valueType: "java.lang.Object"
+      uuid: "object4"
+      nameForMock: "object4"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Unable to find A file for dependency B:C  because license dir\
+                \ is missing at object4"
+            valueType: "java.lang.String"
+            uuid: "string7"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 226
+      expression: "dir == null"
+      range: "(226,13)-(226,23)"
+      evaluatedAs: true
+  - testPathName: "getDependencyInfoFileWhenDirIsNotNullThrowsIllegalStateException"
+    constructorSignature: "<init>(org.gradle.api.file.ProjectLayout,org.gradle.api.model.ObjectFactory,org.gradle.api.provider.ProviderFactory)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "group"
+      valueUuid: "group"
+    - type: "INPUT"
+      name: "name"
+      valueUuid: "name"
+    - type: "INPUT"
+      name: "infoFileSuffix"
+      valueUuid: "infoFileSuffix"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getLicensesDir():file"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "getLogger().info(\\\"mapped dependency \\\" + dep.getGroup() + \\\"\
+        :\\\" + dep.getName() + \\\" to \\\" + dependencyName + \\\" for license info\\\
+        \");"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+        parameters:
+        - name: "projectLayout"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.file.ProjectLayout"
+            uuid: "projectLayout"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.DependenciesInfoTask"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "B"
+      valueType: "java.lang.String"
+      uuid: "group"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "C"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "A"
+      valueType: "java.lang.String"
+      uuid: "infoFileSuffix"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+      nameForMock: "file"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Unable to find A file for dependency B:C  in file"
+            valueType: "java.lang.String"
+            uuid: "string7"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 226
+      expression: "dir == null"
+      range: "(226,13)-(226,23)"
+      evaluatedAs: false

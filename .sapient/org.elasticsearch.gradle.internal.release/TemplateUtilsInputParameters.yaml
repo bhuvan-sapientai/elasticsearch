@@ -1,0 +1,113 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.TemplateUtils"
+methods:
+- method:
+    name: "render"
+    sourceCodeSignature: "String render(String template, Map<String, Object> bindings)"
+    returnType: "java.lang.String"
+    throwsExceptions:
+    - "java.io.IOException"
+    parameters:
+    - name: "template"
+      type: "java.lang.String"
+    - name: "bindings"
+      type: "java.util.Map"
+      genericType: "java.lang.String,java.lang.Object"
+    instructionFingerprint: "14F7D6760D54F39C85E16E2A93C69B9C"
+  paths:
+  - testPathName: "renderTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "template"
+      valueUuid: "template"
+    - type: "INPUT"
+      name: "bindings"
+      valueUuid: "bindings"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string2"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "engine.createTemplate(template).make(bindings).writeTo(writer);"
+      lineNumber: 36
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: engine - Method: createTemplate"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "template1"
+      valueType: "java.lang.String"
+      uuid: "template"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Map"
+      genericValueType: "java.lang.String,java.lang.Object"
+      uuid: "bindings"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: ""
+      valueType: "java.lang.String"
+      uuid: "string2"
+  - testPathName: "renderWhenCaughtClassNotFoundExceptionThrowsRuntimeException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "template"
+      valueUuid: "template"
+    - type: "INPUT"
+      name: "bindings"
+      valueUuid: "bindings"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "runtimeException"
+    disabled: true
+    failureReason:
+      reason: "VARIABLE_THAT_COULD_NOT_BE_ISOLATED_MOCKED"
+      source: "engine.createTemplate(template).make(bindings).writeTo(writer);"
+      lineNumber: 36
+      details: "A variable could not be isolated/mocked when calling a method - Variable\
+        \ name: engine - Method: createTemplate"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "template1"
+      valueType: "java.lang.String"
+      uuid: "template"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Map"
+      genericValueType: "java.lang.String,java.lang.Object"
+      uuid: "bindings"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.RuntimeException"
+        parameters:
+        - name: "cause"
+          value:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "java.lang.ClassNotFoundException"
+              parameters: []
+            valueType: "java.lang.ClassNotFoundException"
+            uuid: "classNotFoundException"
+      valueType: "java.lang.RuntimeException"
+      uuid: "runtimeException"
+    branches:
+    - lineNumber: 37
+      expression: "catch-exception (ClassNotFoundException)"
+      range: "(37,11)-(37,41)"
+      evaluatedAs: true
+    catchBlockExercised:
+      idExternalInstruction: 0
+      id: 1
+      catchExceptions:
+      - "java.lang.ClassNotFoundException"

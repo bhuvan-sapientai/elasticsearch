@@ -1,0 +1,498 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.InternalTestClustersPlugin"
+methods:
+- method:
+    name: "apply"
+    sourceCodeSignature: "void apply(Project project)"
+    returnType: "void"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "F7BC4E799F3F3871A65FDA5449A9D940"
+  paths:
+  - testPathName: "applyWhenShouldConfigureTestClustersWithOneProcessor"
+    constructorSignature: "<init>(org.gradle.api.provider.ProviderFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "FIELD"
+      name: "providerFactory"
+      valueUuid: "providerFactory"
+      methodExercised:
+        expression: "provider(value2-any):provider"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getRuntimeJavaHome():file"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isSnapshotBuild():boolean2"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getBwcVersions():bwcVersions"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getElasticsearchVersion():version"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "bwcVersions"
+      methodExercised:
+        expression: "unreleasedInfo(version):bwcVersionsUnreleasedVersionInfo"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "extensionContainer"
+      methodExercised:
+        expression: "getByName(name):object"
+        throwsExceptions:
+        - "org.gradle.api.UnknownDomainObjectException"
+    - type: "LOCAL_VARIABLE"
+      name: "testClusters"
+      valueUuid: "object"
+      methodExercised:
+        expression: "configureEach(action-any):void4"
+    - type: "LOCAL_VARIABLE"
+      name: "testClustersPlugin"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "setRuntimeJava(provider):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "testClustersPlugin"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "setIsReleasedVersion(isReleasedVersion-any):void3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-InternalDistributionDownloadPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer2"
+      methodExercised:
+        expression: "apply(class-TestClustersPlugin):plugin2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-InternalReaperPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getExtensions():extensionContainer"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void6"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "return Boolean.parseBoolean(System.getProperty(\\\"tests.configure_test_clusters_with_one_processor\\\
+        \", \\\"false\\\"));"
+      lineNumber: 52
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalTestClustersPlugin"
+        parameters:
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.InternalTestClustersPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ProviderFactory"
+      uuid: "providerFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "java.util.concurrent.Callable"
+      uuid: "value2-any"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions"
+      uuid: "bwcVersions"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "NULL"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "bwcVersionsUnreleasedVersionInfo"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.ExtensionContainer"
+      uuid: "extensionContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.NamedDomainObjectContainer"
+      uuid: "object"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "testClusters"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void4"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "action-any"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      uuid: "plugin2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "java.util.function.Function"
+      genericValueType: "org.elasticsearch.gradle.Version,java.lang.Boolean"
+      uuid: "isReleasedVersion-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+      uuid: "class-InternalDistributionDownloadPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      uuid: "class-TestClustersPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalReaperPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalReaperPlugin"
+      uuid: "class-InternalReaperPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "VOID"
+      uuid: "void6"
+    branches:
+    - lineNumber: 39
+      expression: "version.equals(VersionProperties.getElasticsearchVersion())"
+      range: "(39,25)-(39,83)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 39
+      expression: "BuildParams.isSnapshotBuild() == false"
+      range: "(39,88)-(39,125)"
+      evaluatedAs: false
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 40
+      expression: "BuildParams.getBwcVersions().unreleasedInfo(version) == null"
+      range: "(40,20)-(40,79)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 52
+      expression: "Boolean.parseBoolean(System.getProperty(\\\"tests.configure_test_clusters_with_one_processor\\\
+        \", \\\"false\\\"))"
+      range: "(52,16)-(52,116)"
+      evaluatedAs: true
+      internalMethodName: "shouldConfigureTestClustersWithOneProcessor"
+    - lineNumber: 43
+      expression: "shouldConfigureTestClustersWithOneProcessor()"
+      range: "(43,13)-(43,57)"
+      evaluatedAs: true
+  - testPathName: "applyWhenBooleanNotParseBooleanSystemGetPropertyTests_configure_test_clusters_with_one_processorFalseAndShouldConfigure4"
+    constructorSignature: "<init>(org.gradle.api.provider.ProviderFactory) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "FIELD"
+      name: "providerFactory"
+      valueUuid: "providerFactory"
+      methodExercised:
+        expression: "provider(value2-any):provider"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getRuntimeJavaHome():file"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "isSnapshotBuild():boolean2"
+    - type: "STATIC"
+      name: "BuildParams.class"
+      valueUuid: "BuildParams.class"
+      methodExercised:
+        expression: "getBwcVersions():bwcVersions"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getElasticsearchVersion():version"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "bwcVersions"
+      methodExercised:
+        expression: "unreleasedInfo(version):bwcVersionsUnreleasedVersionInfo"
+    - type: "LOCAL_VARIABLE"
+      name: "testClustersPlugin"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "setRuntimeJava(provider):void2"
+    - type: "LOCAL_VARIABLE"
+      name: "testClustersPlugin"
+      valueUuid: "plugin2"
+      methodExercised:
+        expression: "setIsReleasedVersion(isReleasedVersion-any):void3"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-InternalDistributionDownloadPlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer2"
+      methodExercised:
+        expression: "apply(class-TestClustersPlugin):plugin2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginManager"
+      methodExercised:
+        expression: "apply(class-InternalReaperPlugin):void"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getRootProject():project2"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "project2"
+      methodExercised:
+        expression: "getPluginManager():pluginManager"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void4"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_UNSOLVABLE"
+      source: "return Boolean.parseBoolean(System.getProperty(\\\"tests.configure_test_clusters_with_one_processor\\\
+        \", \\\"false\\\"));"
+      lineNumber: 52
+      details: "Method java.lang.System::getProperty has a unrepeatable behavior"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.InternalTestClustersPlugin"
+        parameters:
+        - name: "providerFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.provider.ProviderFactory"
+            uuid: "providerFactory"
+      valueType: "org.elasticsearch.gradle.internal.InternalTestClustersPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.ProviderFactory"
+      uuid: "providerFactory"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.io.File"
+      uuid: "provider"
+    - sapientType: "ANY"
+      valueType: "java.util.concurrent.Callable"
+      uuid: "value2-any"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.info.BuildParams"
+      uuid: "BuildParams.class"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.io.File"
+        parameters:
+        - name: "pathname"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "pathname1"
+            valueType: "java.lang.String"
+            uuid: "file-pathname"
+      valueType: "java.io.File"
+      uuid: "file"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "boolean2"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions"
+      uuid: "bwcVersions"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.Version"
+      uuid: "version"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.BwcVersions$UnreleasedVersionInfo"
+      uuid: "bwcVersionsUnreleasedVersionInfo"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      uuid: "plugin2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void2"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void3"
+    - sapientType: "ANY"
+      valueType: "java.util.function.Function"
+      genericValueType: "org.elasticsearch.gradle.Version,java.lang.Boolean"
+      uuid: "isReleasedVersion-any"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalDistributionDownloadPlugin"
+      uuid: "class-InternalDistributionDownloadPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer2"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.testclusters.TestClustersPlugin"
+      uuid: "class-TestClustersPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginManager"
+      uuid: "pluginManager"
+    - sapientType: "VOID"
+      valueType: "void"
+      uuid: "void"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.InternalReaperPlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.InternalReaperPlugin"
+      uuid: "class-InternalReaperPlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project2"
+    - sapientType: "VOID"
+      uuid: "void4"
+    branches:
+    - lineNumber: 39
+      expression: "version.equals(VersionProperties.getElasticsearchVersion())"
+      range: "(39,25)-(39,83)"
+      evaluatedAs: true
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 39
+      expression: "BuildParams.isSnapshotBuild() == false"
+      range: "(39,88)-(39,125)"
+      evaluatedAs: false
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 40
+      expression: "BuildParams.getBwcVersions().unreleasedInfo(version) == null"
+      range: "(40,20)-(40,79)"
+      evaluatedAs: false
+      internalMethodName: "lambda$apply$1"
+    - lineNumber: 52
+      expression: "Boolean.parseBoolean(System.getProperty(\\\"tests.configure_test_clusters_with_one_processor\\\
+        \", \\\"false\\\"))"
+      range: "(52,16)-(52,116)"
+      evaluatedAs: false
+      internalMethodName: "shouldConfigureTestClustersWithOneProcessor"
+    - lineNumber: 43
+      expression: "shouldConfigureTestClustersWithOneProcessor()"
+      range: "(43,13)-(43,57)"
+      evaluatedAs: false

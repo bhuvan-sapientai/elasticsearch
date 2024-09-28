@@ -1,0 +1,50 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.test.TestUtil"
+methods:
+- method:
+    name: "getTestLibraryPath"
+    sourceCodeSignature: "String getTestLibraryPath(String nativeLibsDir)"
+    returnType: "java.lang.String"
+    parameters:
+    - name: "nativeLibsDir"
+      type: "java.lang.String"
+    instructionFingerprint: "550ABE6E330433733F2E2596481B3D88"
+  paths:
+  - testPathName: "getTestLibraryPathTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "nativeLibsDir"
+      valueUuid: "nativeLibsDir"
+    - type: "STATIC"
+      name: "Architecture.class.real"
+      valueUuid: "Architecture.class.real"
+      methodExercised:
+        expression: "current():architecture"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string4"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "nativeLibsDir1"
+      valueType: "java.lang.String"
+      uuid: "nativeLibsDir"
+    - sapientType: "REAL"
+      valueType: "org.elasticsearch.gradle.Architecture"
+      uuid: "Architecture.class.real"
+    - sapientType: "ENUM"
+      content: !<regular>
+        value: "AARCH64"
+      valueType: "org.elasticsearch.gradle.Architecture"
+      uuid: "architecture"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "nativeLibsDir1/null-null"
+      valueType: "java.lang.String"
+      uuid: "string4"

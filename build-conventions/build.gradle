@@ -11,12 +11,12 @@ import org.gradle.plugins.ide.eclipse.model.SourceFolder
 
 
 buildscript {
-  repositories {
-    maven {
-      url 'https://jitpack.io'
+    repositories {
+        maven {
+            url 'https://jitpack.io'
+        }
+        mavenCentral()
     }
-    mavenCentral()
-  }
 }
 
 plugins {
@@ -29,8 +29,8 @@ group = "org.elasticsearch"
 
 // This project contains Checkstyle rule implementations used by IDEs which use a Java 11 runtime
 java {
-  targetCompatibility = 11
-  sourceCompatibility = 11
+    targetCompatibility = 11
+    sourceCompatibility = 11
 }
 
 gradlePlugin {
@@ -71,7 +71,7 @@ gradlePlugin {
 
 repositories {
     maven {
-      url 'https://jitpack.io'
+        url 'https://jitpack.io'
     }
 
     mavenCentral()
@@ -84,13 +84,25 @@ dependencies {
     api buildLibs.apache.rat
     compileOnly buildLibs.checkstyle
     constraints {
-      api("org.eclipse.platform:org.eclipse.osgi:3.18.300") {
-        because("Use the same version as we do in spotless gradle plugin at runtime")
-      }
+        api("org.eclipse.platform:org.eclipse.osgi:3.18.300") {
+            because("Use the same version as we do in spotless gradle plugin at runtime")
+        }
     }
     api(buildLibs.spotless.plugin) {
-      exclude module: "groovy-xml"
+        exclude module: "groovy-xml"
     }
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+
+    testImplementation("org.mockito:mockito-core:5.6.0")
+
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+
+    testImplementation("net.bytebuddy:byte-buddy:1.14.8")
+
+    testImplementation("org.hamcrest:hamcrest:2.2")
 }
 
 project.getPlugins().withType(JavaBasePlugin.class) {
@@ -102,12 +114,12 @@ project.getPlugins().withType(JavaBasePlugin.class) {
          * in the usual build folder because eclipse becomes *very* sad
          * if we delete it. Which `gradlew clean` does all the time.
          */
-        classpath.getEntries().findAll{ s -> s instanceof SourceFolder }.eachWithIndex { s, i ->
+        classpath.getEntries().findAll { s -> s instanceof SourceFolder }.eachWithIndex { s, i ->
             s.setOutput("out/eclipse" + i)
         }
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
-  options.incremental = System.getenv("JENKINS_URL") == null && System.getenv("BUILDKITE_BUILD_URL") == null && System.getProperty("isCI") == null
+    options.incremental = System.getenv("JENKINS_URL") == null && System.getenv("BUILDKITE_BUILD_URL") == null && System.getProperty("isCI") == null
 }

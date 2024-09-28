@@ -1,0 +1,888 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+methods:
+- method:
+    name: "executeTask"
+    sourceCodeSignature: "void executeTask()"
+    returnType: "void"
+    instructionFingerprint: "79DD808CADA38A8049E49B96813BCB05"
+  paths:
+  - testPathName: "executeTaskThrowsNullPointerException"
+    constructorSignature: "<init>(org.gradle.api.Project,org.gradle.api.model.ObjectFactory,org.gradle.process.ExecOperations)\
+      \ : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "STATIC"
+      name: "QualifiedVersion.class"
+      valueUuid: "QualifiedVersion.class"
+      methodExercised:
+        expression: "of(string5):qualifiedVersion"
+    - type: "STATIC"
+      name: "VersionProperties.class"
+      valueUuid: "VersionProperties.class"
+      methodExercised:
+        expression: "getElasticsearch():string5"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "nullPointerException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_CALL_INSTRUCTION_CONSTRUCTION_FAILURE"
+      source: "return Stream.concat(gitWrapper.listVersions(currentMajorPattern),\
+        \ gitWrapper.listVersions(previousMajorPattern))"
+      lineNumber: 152
+      details: "No constructor found to create an object without any exception for\
+        \ class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+        parameters:
+        - name: "project"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.Project"
+            uuid: "project"
+        - name: "objectFactory"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.api.model.ObjectFactory"
+            uuid: "objectFactory"
+        - name: "execOperations"
+          value:
+            sapientType: "MOCK"
+            valueType: "org.gradle.process.ExecOperations"
+            uuid: "execOperations"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "QualifiedVersion.class"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "qualifiedVersion"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "return_of_getElasticsearch1"
+      valueType: "java.lang.String"
+      uuid: "string5"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.VersionProperties"
+      uuid: "VersionProperties.class"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.NullPointerException"
+        parameters: []
+      valueType: "java.lang.NullPointerException"
+      uuid: "nullPointerException"
+- method:
+    name: "findAndDeleteFiles"
+    sourceCodeSignature: "void findAndDeleteFiles(GitWrapper gitWrapper, DeleteHelper\
+      \ deleteHelper, QualifiedVersion version, Set<File> allFilesInCheckout, Path\
+      \ rootDir)"
+    returnType: "void"
+    parameters:
+    - name: "gitWrapper"
+      type: "org.elasticsearch.gradle.internal.release.GitWrapper"
+    - name: "deleteHelper"
+      type: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+    - name: "version"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    - name: "allFilesInCheckout"
+      type: "java.util.Set"
+      genericType: "java.io.File"
+    - name: "rootDir"
+      type: "java.nio.file.Path"
+    instructionFingerprint: "F53A5C5ADB33BC6EE3A6A5AE3F7EB7CD"
+  paths:
+  - testPathName: "findAndDeleteFilesWhenAllFilesInCheckoutIsEmpty"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "allFilesInCheckout"
+      valueUuid: "allFilesInCheckout"
+    - type: "INPUT"
+      name: "rootDir"
+      valueUuid: "rootDir"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+      uuid: "deleteHelper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "allFilesInCheckout"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "rootDir"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 85
+      expression: "allFilesInCheckout.isEmpty()"
+      range: "(85,13)-(85,40)"
+      evaluatedAs: true
+  - testPathName: "findAndDeleteFilesWhenEarlierFilesIsEmpty"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "allFilesInCheckout"
+      valueUuid: "allFilesInCheckout"
+    - type: "INPUT"
+      name: "rootDir"
+      valueUuid: "rootDir"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string):stream"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string2):stream2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.concat(java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>,java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>)\
+        \ : java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+      uuid: "deleteHelper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "allFilesInCheckoutItem0-pathname"
+          valueType: "java.io.File"
+          uuid: "allFilesInCheckoutItem0"
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "allFilesInCheckout"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "rootDir"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v8.*"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 85
+      expression: "allFilesInCheckout.isEmpty()"
+      range: "(85,13)-(85,40)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "earlierFiles.isEmpty()"
+      range: "(92,13)-(92,34)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+  - testPathName: "findAndDeleteFilesWhenFilesToDeleteIsEmpty"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "allFilesInCheckout"
+      valueUuid: "allFilesInCheckout"
+    - type: "INPUT"
+      name: "rootDir"
+      valueUuid: "rootDir"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string):stream"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string2):stream2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void2"
+    disabled: false
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.concat(java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>,java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>)\
+        \ : java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+      uuid: "deleteHelper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file-pathname"
+          valueType: "java.io.File"
+          uuid: "file"
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "allFilesInCheckout"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "rootDir"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 2
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "VOID"
+      uuid: "void2"
+    branches:
+    - lineNumber: 85
+      expression: "allFilesInCheckout.isEmpty()"
+      range: "(85,13)-(85,40)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "earlierFiles.isEmpty()"
+      range: "(92,13)-(92,34)"
+      evaluatedAs: false
+    - lineNumber: 98
+      expression: "branch expression (line 98)"
+      evaluatedAs: false
+    - lineNumber: 101
+      expression: "filesToDelete.isEmpty()"
+      range: "(101,13)-(101,35)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+  - testPathName: "findAndDeleteFilesWhenFailedToDeleteIsEmptyEqualsFalseThrowsGradleException"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "allFilesInCheckout"
+      valueUuid: "allFilesInCheckout"
+    - type: "INPUT"
+      name: "rootDir"
+      valueUuid: "rootDir"
+    - type: "LOCAL_VARIABLE"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+      methodExercised:
+        expression: "deleteFiles(object2):set"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string):stream"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string2):stream2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "gradleException"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.concat(java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>,java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>)\
+        \ : java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+      uuid: "deleteHelper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file-pathname"
+          valueType: "java.io.File"
+          uuid: "file"
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "allFilesInCheckout"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "rootDir"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file2-pathname"
+          valueType: "java.io.File"
+          uuid: "file2"
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "set"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file-pathname"
+          valueType: "java.io.File"
+          uuid: "file"
+      valueType: "java.util.TreeSet"
+      genericValueType: "java.io.File"
+      uuid: "object2"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v8.*"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "org.gradle.api.GradleException"
+        parameters:
+        - name: "message"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Failed to delete some files:\\n\\n\\tpath4\\n"
+            valueType: "java.lang.String"
+            uuid: "string6"
+      valueType: "org.gradle.api.GradleException"
+      uuid: "gradleException"
+    branches:
+    - lineNumber: 85
+      expression: "allFilesInCheckout.isEmpty()"
+      range: "(85,13)-(85,40)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "earlierFiles.isEmpty()"
+      range: "(92,13)-(92,34)"
+      evaluatedAs: false
+    - lineNumber: 98
+      expression: "branch expression (line 98)"
+      evaluatedAs: true
+    - lineNumber: 101
+      expression: "filesToDelete.isEmpty()"
+      range: "(101,13)-(101,35)"
+      evaluatedAs: false
+    - lineNumber: 112
+      expression: "failedToDelete.isEmpty() == false"
+      range: "(112,13)-(112,45)"
+      evaluatedAs: true
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+  - testPathName: "findAndDeleteFilesWhenFailedToDeleteIsEmptyNotEqualsFalse"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "INPUT"
+      name: "allFilesInCheckout"
+      valueUuid: "allFilesInCheckout"
+    - type: "INPUT"
+      name: "rootDir"
+      valueUuid: "rootDir"
+    - type: "LOCAL_VARIABLE"
+      name: "deleteHelper"
+      valueUuid: "deleteHelper"
+      methodExercised:
+        expression: "deleteFiles(object2):set"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string):stream"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string2):stream2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void5"
+    disabled: true
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.concat(java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>,java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>)\
+        \ : java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.PruneChangelogsTask$DeleteHelper"
+      uuid: "deleteHelper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        collectionClass: "java.util.HashSet"
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file-pathname"
+          valueType: "java.io.File"
+          uuid: "file"
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "allFilesInCheckout"
+    - sapientType: "MOCK"
+      valueType: "java.nio.file.Path"
+      uuid: "rootDir"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "java.io.File"
+      uuid: "set"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values:
+        - sapientType: "OBJECT"
+          content: !<new>
+            target: "java.io.File"
+            parameters:
+            - name: "pathname"
+              value:
+                sapientType: "BASIC"
+                content: !<regular>
+                  value: "pathname1"
+                valueType: "java.lang.String"
+                uuid: "file-pathname"
+          valueType: "java.io.File"
+          uuid: "file"
+      valueType: "java.util.TreeSet"
+      genericValueType: "java.io.File"
+      uuid: "object2"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v8.*"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "VOID"
+      uuid: "void5"
+    branches:
+    - lineNumber: 85
+      expression: "allFilesInCheckout.isEmpty()"
+      range: "(85,13)-(85,40)"
+      evaluatedAs: false
+    - lineNumber: 92
+      expression: "earlierFiles.isEmpty()"
+      range: "(92,13)-(92,34)"
+      evaluatedAs: false
+    - lineNumber: 98
+      expression: "branch expression (line 98)"
+      evaluatedAs: true
+    - lineNumber: 101
+      expression: "filesToDelete.isEmpty()"
+      range: "(101,13)-(101,35)"
+      evaluatedAs: false
+    - lineNumber: 112
+      expression: "failedToDelete.isEmpty() == false"
+      range: "(112,13)-(112,45)"
+      evaluatedAs: false
+    mockedStaticClassesWithCallRealMethods:
+    - "org.elasticsearch.gradle.internal.release.PruneChangelogsTask"
+- method:
+    name: "findPreviousVersion"
+    sourceCodeSignature: "Stream<QualifiedVersion> findPreviousVersion(GitWrapper\
+      \ gitWrapper, QualifiedVersion version)"
+    returnType: "java.util.stream.Stream"
+    genericReturnType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    parameters:
+    - name: "gitWrapper"
+      type: "org.elasticsearch.gradle.internal.release.GitWrapper"
+    - name: "version"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    instructionFingerprint: "113BE07D6AFF7E9EC87C56693DA9649D"
+  paths:
+  - testPathName: "findPreviousVersionTest"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "INPUT"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+    - type: "INPUT"
+      name: "version"
+      valueUuid: "version"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string):stream"
+    - type: "LOCAL_VARIABLE"
+      name: "gitWrapper"
+      valueUuid: "gitWrapper"
+      methodExercised:
+        expression: "listVersions(string2):stream2"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int1"
+    - type: "LOCAL_VARIABLE"
+      name: "version"
+      valueUuid: "version"
+      methodExercised:
+        expression: "major():int2"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "stream4"
+    disabled: false
+    failureReason:
+      reason: "METHOD_WITHOUT_EXPRESSION_SUPPORT"
+      details: "Expression missing: java.util.stream.Stream.concat(java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>,java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>)\
+        \ : java.util.stream.Stream<org.elasticsearch.gradle.internal.release.QualifiedVersion>"
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.GitWrapper"
+      uuid: "gitWrapper"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "version"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v8.*"
+      valueType: "java.lang.String"
+      uuid: "string"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "v2.*"
+      valueType: "java.lang.String"
+      uuid: "string2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 8
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 3
+      valueType: "int"
+      uuid: "int2"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "java.util.stream.Stream"
+        method: "empty"
+        methodParameters: []
+      valueType: "java.util.stream.Stream"
+      genericValueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "stream4"

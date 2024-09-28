@@ -1,0 +1,204 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+methods:
+- method:
+    name: "getNextPortRange"
+    sourceCodeSignature: "Pair<Integer, Integer> getNextPortRange(int rangeNumber)"
+    returnType: "org.gradle.internal.Pair"
+    genericReturnType: "java.lang.Integer,java.lang.Integer"
+    parameters:
+    - name: "rangeNumber"
+      type: "int"
+    instructionFingerprint: "9DA0AF9F51E2E109BFA466EF702086F2"
+  paths:
+  - testPathName: "getNextPortRangeWhenEndPortGreaterThanMAX_PRIVATE_PORTThrowsIllegalStateException"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "rangeNumber"
+      valueUuid: "rangeNumber"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "illegalStateException"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 300
+      valueType: "int"
+      uuid: "rangeNumber"
+    - sapientType: "EXCEPTION"
+      content: !<new>
+        target: "java.lang.IllegalStateException"
+        parameters:
+        - name: "s"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: "Available port ranges have exceeded Range from 10300 to 13300"
+            valueType: "java.lang.String"
+            uuid: "s"
+      valueType: "java.lang.IllegalStateException"
+      uuid: "illegalStateException"
+    branches:
+    - lineNumber: 29
+      expression: "endPort > MAX_PRIVATE_PORT"
+      range: "(29,13)-(29,38)"
+      evaluatedAs: true
+  - testPathName: "getNextPortRangeWhenEndPortNotGreaterThanMAX_PRIVATE_PORT"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "rangeNumber"
+      valueUuid: "rangeNumber"
+    - type: "STATIC"
+      name: "Pair.class"
+      valueUuid: "Pair.class"
+      methodExercised:
+        expression: "of(integer,integer2):pair"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "pair"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "rangeNumber"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.internal.Pair"
+      uuid: "Pair.class"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.internal.Pair"
+      genericValueType: "java.lang.Integer,java.lang.Integer"
+      uuid: "pair"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 10300
+      valueType: "java.lang.Integer"
+      uuid: "integer"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 10309
+      valueType: "java.lang.Integer"
+      uuid: "integer2"
+    branches:
+    - lineNumber: 29
+      expression: "endPort > MAX_PRIVATE_PORT"
+      range: "(29,13)-(29,38)"
+      evaluatedAs: false
+- method:
+    name: "reservePortRange"
+    sourceCodeSignature: "ReservedPortRange reservePortRange()"
+    returnType: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+    instructionFingerprint: "35C383D47027FF14079EAA2CB2060B32"
+  paths:
+  - testPathName: "reservePortRangeTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INTERNAL"
+      name: "internalMethod"
+      methodExercised:
+        expression: "getNextPortRange(int1):pair"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "reservedPortRange"
+    disabled: true
+    failureReason:
+      reason: "REFLECTION_CALL_FAILURE"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+        parameters: []
+        propertiesMap:
+          portRangeFactory:
+            sapientType: "OBJECT"
+            content: !<new>
+              target: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+              parameters: []
+            valueType: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+            uuid: "defaultReservedPortRangeFactory"
+      valueType: "org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator"
+      uuid: "target"
+    - sapientType: "OBJECT"
+      content: !<static_method_return>
+        target: "org.gradle.internal.Pair"
+        method: "of"
+        methodParameters:
+        - name: "left"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "java.lang.Integer"
+            uuid: "pair-left"
+        - name: "right"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "java.lang.Integer"
+            uuid: "pair-right"
+      valueType: "org.gradle.internal.Pair"
+      uuid: "pair"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int1"
+    - sapientType: "OBJECT"
+      content: !<method_return_from_value>
+        target: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+        localVariableValue:
+          sapientType: "OBJECT"
+          content: !<new>
+            target: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+            parameters: []
+          valueType: "org.elasticsearch.gradle.internal.util.ports.DefaultReservedPortRangeFactory"
+          uuid: "defaultReservedPortRangeFactory"
+        methodParameters:
+        - name: "arg0"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "int2"
+        - name: "arg1"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 1
+            valueType: "int"
+            uuid: "int3"
+        methodName: "getReservedPortRange"
+      valueType: "org.elasticsearch.gradle.internal.util.ports.ReservedPortRange"
+      uuid: "reservedPortRange"

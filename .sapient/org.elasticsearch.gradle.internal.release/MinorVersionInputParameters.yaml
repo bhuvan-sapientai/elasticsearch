@@ -1,0 +1,368 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.release.MinorVersion"
+methods:
+- method:
+    name: "of"
+    sourceCodeSignature: "MinorVersion of(final QualifiedVersion v)"
+    returnType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+    parameters:
+    - name: "v"
+      type: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+    instructionFingerprint: "25EA7F6DB4771EA477E4D8A9E60FF041"
+  paths:
+  - testPathName: "ofTest"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "INPUT"
+      name: "v"
+      valueUuid: "v"
+    - type: "LOCAL_VARIABLE"
+      name: "v"
+      valueUuid: "v"
+      methodExercised:
+        expression: "major():int3"
+    - type: "LOCAL_VARIABLE"
+      name: "v"
+      valueUuid: "v"
+      methodExercised:
+        expression: "minor():int4"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "minorVersion2"
+    disabled: false
+    allValues:
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.QualifiedVersion"
+      uuid: "v"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int4"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int3"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "int4"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "minorVersion2"
+- method:
+    name: "toString"
+    sourceCodeSignature: "String toString()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "AF04D89AB857A01CD64886084ED79D58"
+  paths:
+  - testPathName: "toStringTest"
+    constructorSignature: "<init>(int,int) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "minor"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "2.2"
+      valueType: "java.lang.String"
+      uuid: "string"
+- method:
+    name: "underscore"
+    sourceCodeSignature: "String underscore()"
+    returnType: "java.lang.String"
+    instructionFingerprint: "1A10E9C4A228806919EA7FA5D6BEC150"
+  paths:
+  - testPathName: "underscoreTest"
+    constructorSignature: "<init>(int,int) : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "string"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 2
+            valueType: "int"
+            uuid: "minor"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "2_2"
+      valueType: "java.lang.String"
+      uuid: "string"
+- method:
+    name: "compareTo"
+    sourceCodeSignature: "int compareTo(MinorVersion other)"
+    returnType: "int"
+    parameters:
+    - name: "other"
+      type: "org.elasticsearch.gradle.internal.release.MinorVersion"
+    instructionFingerprint: "6D31DDD9BF04DEA1F0303BC4A3BE0308"
+  paths:
+  - testPathName: "compareToTest"
+    constructorSignature: "<init>(int,int) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator2"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "int3"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "comparator2"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 0
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "targetClassObject"
+- method:
+    name: "isBefore"
+    sourceCodeSignature: "boolean isBefore(MinorVersion other)"
+    returnType: "boolean"
+    parameters:
+    - name: "other"
+      type: "org.elasticsearch.gradle.internal.release.MinorVersion"
+    instructionFingerprint: "966C07CD97C4FF399E0CCD83585ACD0E"
+  paths:
+  - testPathName: "isBeforeWhenThisCompareToOtherLessThan0"
+    constructorSignature: "<init>(int,int) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator2"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "comparator2"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: -2147483648
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "targetClassObject"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: true
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 46
+      expression: "this.compareTo(other) < 0"
+      range: "(46,16)-(46,40)"
+      evaluatedAs: true
+  - testPathName: "isBeforeWhenThisCompareToOtherNotLessThan0"
+    constructorSignature: "<init>(int,int) : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "other"
+      valueUuid: "other"
+    - type: "FIELD"
+      name: "COMPARATOR"
+      valueUuid: "comparator2"
+      methodExercised:
+        expression: "compare(targetClassObject,other):int3"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "expectedResult"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.release.MinorVersion"
+        parameters:
+        - name: "major"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "major"
+        - name: "minor"
+          value:
+            sapientType: "BASIC"
+            content: !<regular>
+              value: 0
+            valueType: "int"
+            uuid: "minor"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "other"
+    - sapientType: "MOCK"
+      valueType: "java.util.Comparator"
+      genericValueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "comparator2"
+      nameForMock: "COMPARATOR"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: 1
+      valueType: "int"
+      uuid: "int3"
+    - sapientType: "THIS"
+      valueType: "org.elasticsearch.gradle.internal.release.MinorVersion"
+      uuid: "targetClassObject"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: false
+      valueType: "boolean"
+      uuid: "expectedResult"
+    branches:
+    - lineNumber: 46
+      expression: "this.compareTo(other) < 0"
+      range: "(46,16)-(46,40)"
+      evaluatedAs: false

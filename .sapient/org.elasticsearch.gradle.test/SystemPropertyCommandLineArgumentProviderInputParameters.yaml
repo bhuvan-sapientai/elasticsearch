@@ -1,0 +1,209 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+methods:
+- method:
+    name: "systemProperty"
+    sourceCodeSignature: "void systemProperty(String key, Provider<Object> value)"
+    returnType: "void"
+    parameters:
+    - name: "key"
+      type: "java.lang.String"
+    - name: "value"
+      type: "org.gradle.api.provider.Provider"
+      genericType: "java.lang.Object"
+    instructionFingerprint: "38DEB5F355D4B30BA3C68EFC447B66E6"
+  paths:
+  - testPathName: "systemPropertyTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "key"
+      valueUuid: "key"
+    - type: "INPUT"
+      name: "value"
+      valueUuid: "value"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "key1"
+      valueType: "java.lang.String"
+      uuid: "key"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.provider.Provider"
+      genericValueType: "java.lang.Object"
+      uuid: "value"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "systemProperty"
+    sourceCodeSignature: "void systemProperty(String key, Supplier<String> value)"
+    returnType: "void"
+    parameters:
+    - name: "key"
+      type: "java.lang.String"
+    - name: "value"
+      type: "java.util.function.Supplier"
+      genericType: "java.lang.String"
+    instructionFingerprint: "7BDFFA4DF43EDDBBE0AC7BB732DC0C0A"
+  paths:
+  - testPathName: "systemProperty1Test"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "key"
+      valueUuid: "key"
+    - type: "INPUT"
+      name: "value"
+      valueUuid: "value"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "key1"
+      valueType: "java.lang.String"
+      uuid: "key"
+    - sapientType: "MOCK"
+      valueType: "java.util.function.Supplier"
+      uuid: "value"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "systemProperty"
+    sourceCodeSignature: "void systemProperty(String key, Object value)"
+    returnType: "void"
+    parameters:
+    - name: "key"
+      type: "java.lang.String"
+    - name: "value"
+      type: "java.lang.Object"
+    instructionFingerprint: "0C62BE89E68C8182E7593DD9860B204F"
+  paths:
+  - testPathName: "systemProperty2Test"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "key"
+      valueUuid: "key"
+    - type: "INPUT"
+      name: "value"
+      valueUuid: "value"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "void"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "key1"
+      valueType: "java.lang.String"
+      uuid: "key"
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "java.lang.Object"
+        parameters: []
+      valueType: "java.lang.Object"
+      uuid: "value"
+    - sapientType: "VOID"
+      uuid: "void"
+- method:
+    name: "asArguments"
+    sourceCodeSignature: "Iterable<String> asArguments()"
+    returnType: "java.lang.Iterable"
+    genericReturnType: "java.lang.String"
+    instructionFingerprint: "77EEFE8A37F9E7BDB87DE4F94FF72E8B"
+  paths:
+  - testPathName: "asArgumentsTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "object"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.List"
+      genericValueType: "java.lang.String"
+      uuid: "object"
+- method:
+    name: "getPropertyNames"
+    sourceCodeSignature: "Iterable<String> getPropertyNames()"
+    returnType: "java.lang.Iterable"
+    genericReturnType: "java.lang.String"
+    instructionFingerprint: "90ACDDE0E7E7DA5E04BB4EEA86818A10"
+  paths:
+  - testPathName: "getPropertyNamesTest"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: true
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "set"
+    disabled: false
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider"
+      uuid: "target"
+    - sapientType: "COLLECTION"
+      content: !<collection>
+        parameters: []
+        values: []
+      valueType: "java.util.Set"
+      genericValueType: "java.lang.String"
+      uuid: "set"

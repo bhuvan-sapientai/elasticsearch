@@ -1,0 +1,284 @@
+---
+targetClass:
+  fullClassName: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesPrecommitPlugin"
+methods:
+- method:
+    name: "createTask"
+    sourceCodeSignature: "TaskProvider<? extends Task> createTask(Project project)"
+    returnType: "org.gradle.api.tasks.TaskProvider"
+    genericReturnType: "? extends org.gradle.api.Task"
+    parameters:
+    - name: "project"
+      type: "org.gradle.api.Project"
+    instructionFingerprint: "FC561D3078AB22C89A9DF3FA16C10099"
+  paths:
+  - testPathName: "createTaskWhenDefaultBranch"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "configurationContainer"
+      methodExercised:
+        expression: "getByName(name2):configuration"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.UnknownConfigurationException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "configurationContainer2"
+      methodExercised:
+        expression: "getByName(name3):configuration2"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.UnknownConfigurationException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-CompileOnlyResolvePlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getConfigurations():configurationContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getConfigurations():configurationContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name,class-DependencyLicensesTask,configurationAction-any):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "taskProvider"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesPrecommitPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesPrecommitPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ConfigurationContainer"
+      uuid: "configurationContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "runtimeClasspath"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ConfigurationContainer"
+      uuid: "configurationContainer2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "resolveableCompileOnly"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin"
+      uuid: "class-CompileOnlyResolvePlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "dependencyLicenses"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      uuid: "class-DependencyLicensesTask"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configurationAction-any"
+    branches:
+    - lineNumber: 23
+      expression: "branch expression (line 23)"
+      range: "(23,1)-(23,200)"
+      evaluatedAs: true
+      internalMethodName: "lambda$static$0"
+    - lineNumber: 24
+      expression: "branch expression (line 24)"
+      range: "(24,1)-(24,200)"
+      evaluatedAs: true
+      internalMethodName: "lambda$static$0"
+  - testPathName: "createTaskWhenDefaultBranchAndDefaultBranch"
+    constructorSignature: "<init>() : void"
+    problemWasSolvedByProver: false
+    inputParameters:
+    - type: "CONSTRUCTOR"
+      name: "constructor"
+      valueUuid: "target"
+    - type: "INPUT"
+      name: "project"
+      valueUuid: "project"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "configurationContainer"
+      methodExercised:
+        expression: "getByName(name2):configuration"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.UnknownConfigurationException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "configurationContainer2"
+      methodExercised:
+        expression: "getByName(name3):configuration2"
+        throwsExceptions:
+        - "org.gradle.api.artifacts.UnknownConfigurationException"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "pluginContainer"
+      methodExercised:
+        expression: "apply(class-CompileOnlyResolvePlugin):plugin"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getPlugins():pluginContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getTasks():taskContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getConfigurations():configurationContainer"
+    - type: "LOCAL_VARIABLE"
+      name: "project"
+      valueUuid: "project"
+      methodExercised:
+        expression: "getConfigurations():configurationContainer2"
+    - type: "LOCAL_VARIABLE"
+      valueUuid: "taskContainer"
+      methodExercised:
+        expression: "register(name,class-DependencyLicensesTask,configurationAction-any):taskProvider"
+        throwsExceptions:
+        - "org.gradle.api.InvalidUserDataException"
+    - type: "RESULT"
+      name: "result"
+      valueUuid: "taskProvider"
+    disabled: true
+    failureReason:
+      reason: "UNKNOWN_REASON"
+    disabledStatusUpdatedBy: "SYSTEM"
+    allValues:
+    - sapientType: "OBJECT"
+      content: !<new>
+        target: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesPrecommitPlugin"
+        parameters: []
+      valueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesPrecommitPlugin"
+      uuid: "target"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Project"
+      uuid: "project"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ConfigurationContainer"
+      uuid: "configurationContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "runtimeClasspath"
+      valueType: "java.lang.String"
+      uuid: "name2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.ConfigurationContainer"
+      uuid: "configurationContainer2"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.artifacts.Configuration"
+      uuid: "configuration2"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "resolveableCompileOnly"
+      valueType: "java.lang.String"
+      uuid: "name3"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.plugins.PluginContainer"
+      uuid: "pluginContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.Plugin"
+      uuid: "plugin"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin"
+      uuid: "class-CompileOnlyResolvePlugin"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskContainer"
+      uuid: "taskContainer"
+    - sapientType: "MOCK"
+      valueType: "org.gradle.api.tasks.TaskProvider"
+      genericValueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      uuid: "taskProvider"
+    - sapientType: "BASIC"
+      content: !<regular>
+        value: "dependencyLicenses"
+      valueType: "java.lang.String"
+      uuid: "name"
+    - sapientType: "CLASS"
+      content: !<regular>
+        value: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      valueType: "java.lang.Class"
+      genericValueType: "org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask"
+      uuid: "class-DependencyLicensesTask"
+    - sapientType: "ANY"
+      valueType: "org.gradle.api.Action"
+      uuid: "configurationAction-any"
+    branches:
+    - lineNumber: 23
+      expression: "branch expression (line 23)"
+      range: "(23,1)-(23,200)"
+      evaluatedAs: true
+      internalMethodName: "lambda$static$0"
+    - lineNumber: 24
+      expression: "branch expression (line 24)"
+      range: "(24,1)-(24,200)"
+      evaluatedAs: false
+      internalMethodName: "lambda$static$0"
