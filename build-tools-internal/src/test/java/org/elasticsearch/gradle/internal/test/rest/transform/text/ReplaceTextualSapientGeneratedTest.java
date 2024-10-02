@@ -1,136 +1,132 @@
 package org.elasticsearch.gradle.internal.test.rest.transform.text;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.TextNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import java.math.BigInteger;
-import com.fasterxml.jackson.databind.node.BigIntegerNode;
-import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.verify;
+import org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
+
+import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import static org.mockito.Mockito.doReturn;
-import org.junit.jupiter.api.Disabled;
+
+import com.fasterxml.jackson.databind.node.BigIntegerNode;
+
+import java.math.BigInteger;
+
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
+
+import static org.mockito.Mockito.mock;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class ReplaceTextualSapientGeneratedTest {
 
     private final RestTestContext testContextMock = mock(RestTestContext.class);
 
-    //Sapient generated method id: ${requiredChildKeyTest}, hash: 5339033A53E0E714014EE82A5E995170
-    @Test()
+    @Test
     void requiredChildKeyTest() {
-        //Arrange Statement(s)
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
-        //Act Statement(s)
         String result = target.requiredChildKey();
-        //Assert statement(s)
         assertAll("result", () -> assertThat(result, equalTo("valueToBeReplaced1")));
     }
 
-    //Sapient generated method id: ${shouldApplyWhenTestContextTestNameEqualsTestName}, hash: 5D070E112628F50F7D098EEB2E7D2E69
-    @Test()
+    @Test
     void shouldApplyWhenTestContextTestNameEqualsTestName() {
-        /* Branches:
-         * (testName == null) : false
-         * (testContext.testName().equals(testName)) : true
-         */
-        //Arrange Statement(s)
         doReturn("A").when(testContextMock).testName();
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "A");
-        //Act Statement(s)
         boolean result = target.shouldApply(testContextMock);
-        //Assert statement(s)
         assertAll("result", () -> {
             assertThat(result, equalTo(Boolean.TRUE));
             verify(testContextMock).testName();
         });
     }
 
-    //Sapient generated method id: ${shouldApplyWhenTestContextTestNameNotEqualsTestName}, hash: CBEFAA9BFE37EDEEABA9CED45EAFB427
-    @Test()
+    @Test
     void shouldApplyWhenTestContextTestNameNotEqualsTestName() {
-        /* Branches:
-         * (testName == null) : false
-         * (testContext.testName().equals(testName)) : false
-         */
-        //Arrange Statement(s)
         doReturn("A").when(testContextMock).testName();
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "B");
-        //Act Statement(s)
         boolean result = target.shouldApply(testContextMock);
-        //Assert statement(s)
         assertAll("result", () -> {
             assertThat(result, equalTo(Boolean.FALSE));
             verify(testContextMock).testName();
         });
     }
 
-    //Sapient generated method id: ${transformTestTest}, hash: DB0FE3A932EA2793BF107551A522BF85
-    @Test()
+    @Test
     void transformTestTest() {
-        //Arrange Statement(s)
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
         ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
         target.transformTest(objectNode);
+        assertThat(objectNode.get("keyToReplaceName1"), equalTo(textNode));
     }
 
-    //Sapient generated method id: ${getReplacementNodeTest}, hash: D5ADCF0D1707C392D6A6541E3A25E8A4
-    @Test()
+    @Test
     void getReplacementNodeTest() {
-        //Arrange Statement(s)
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
-        //Act Statement(s)
         JsonNode result = target.getReplacementNode();
-        //Assert statement(s)
         assertAll("result", () -> assertThat(result, equalTo(textNode)));
     }
 
-    //Sapient generated method id: ${matchesWhenChildAsTextEqualsRequiredChildKey}, hash: 3FAD4CA1CD0146D8630C7E46B44218D0
-    @Disabled()
-    @Test()
-    void matchesWhenChildAsTextEqualsRequiredChildKey() {
-        /* Branches:
-         * (child.asText().equals(requiredChildKey())) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @ParameterizedTest
+    @CsvSource({"A,A,true", "A,B,false", "123,123,true", "123,456,false"})
+    void matchesTest(String childValue, String requiredValue, boolean expected) {
         TextNode textNode = new TextNode("v1");
-        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "A", textNode, "testName1");
-        BigIntegerNode bigIntegerNode = new BigIntegerNode(new BigInteger("0"));
-        //Act Statement(s)
-        boolean result = target.matches(bigIntegerNode);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", requiredValue, textNode, "testName1");
+        TextNode childNode = new TextNode(childValue);
+        boolean result = target.matches(childNode);
+        assertThat(result, equalTo(expected));
     }
 
-    //Sapient generated method id: ${matchesWhenChildAsTextNotEqualsRequiredChildKey}, hash: 7284AA563A081A6D0565403BDAE910DE
-    @Test()
-    void matchesWhenChildAsTextNotEqualsRequiredChildKey() {
-        /* Branches:
-         * (child.asText().equals(requiredChildKey())) : false
-         */
-        //Arrange Statement(s)
+    @Test
+    void getKeyToFindTest() {
         TextNode textNode = new TextNode("v1");
-        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "B", textNode, "testName1");
-        BigIntegerNode bigIntegerNode = new BigIntegerNode(new BigInteger("0"));
-        //Act Statement(s)
-        boolean result = target.matches(bigIntegerNode);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.FALSE)));
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
+        String result = target.getKeyToFind();
+        assertThat(result, equalTo("keyToReplaceName1"));
+    }
+
+    @Test
+    void getValueToBeReplacedTest() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
+        String result = target.getValueToBeReplaced();
+        assertThat(result, equalTo("valueToBeReplaced1"));
+    }
+
+    @Test
+    void getTestNameTest() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
+        String result = target.getTestName();
+        assertThat(result, equalTo("testName1"));
+    }
+
+    @Test
+    void shouldApplyWhenTestNameIsNull() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode);
+        boolean result = target.shouldApply(testContextMock);
+        assertThat(result, equalTo(true));
     }
 }

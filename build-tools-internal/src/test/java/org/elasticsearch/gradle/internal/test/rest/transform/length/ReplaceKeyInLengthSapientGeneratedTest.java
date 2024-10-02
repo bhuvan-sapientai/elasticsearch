@@ -1,45 +1,82 @@
 package org.elasticsearch.gradle.internal.test.rest.transform.length;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceKeyInLength;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+import org.gradle.api.tasks.Internal;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Timeout;
+
+import static org.hamcrest.Matchers.notNullValue;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.ReplaceByKey;
+
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class ReplaceKeyInLengthSapientGeneratedTest {
 
-    //Sapient generated method id: ${getKeyToFindTest}, hash: 6BF4934337CBBC8E6863197C4553CC2E
-    @Test()
+    @Test
     void getKeyToFindTest() {
-        //Arrange Statement(s)
         ReplaceKeyInLength target = new ReplaceKeyInLength("replaceKey1", "newKeyName1", "testName1");
-        
-        //Act Statement(s)
         String result = target.getKeyToFind();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("length")));
+        assertThat(result, equalTo("length"));
     }
 
-    //Sapient generated method id: ${transformTestTest}, hash: A1812663241F2A7AC5231141AEF01BA4
-    @Test()
+    @Test
     void transformTestTest() {
-        //Arrange Statement(s)
-        ReplaceKeyInLength target = new ReplaceKeyInLength("replaceKey1", "newKeyName1", "testName1");
+        ReplaceKeyInLength target = new ReplaceKeyInLength("oldKey", "newKey", "testName");
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        final NullPointerException result = assertThrows(NullPointerException.class, () -> {
-            target.transformTest(objectNode);
+        ObjectNode lengthParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode lengthNode = new ObjectNode(jsonNodeFactory);
+        lengthNode.set("oldKey", new TextNode("value"));
+        lengthParent.set("length", lengthNode);
+        target.transformTest(lengthParent);
+        assertAll(() -> assertThat(lengthParent.has("length"), is(true)), () -> assertThat(lengthParent.get("length").has("oldKey"), is(false)), () -> assertThat(lengthParent.get("length").has("newKey"), is(true)), () -> assertThat(lengthParent.get("length").get("newKey").asText(), equalTo("value")));
+    }
+
+    @Test
+    void transformTestWithMissingLengthNodeTest() {
+        ReplaceKeyInLength target = new ReplaceKeyInLength("oldKey", "newKey", "testName");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode lengthParent = new ObjectNode(jsonNodeFactory);
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+            target.transformTest(lengthParent);
         });
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(notNullValue())));
+        assertThat(exception, is(notNullValue()));
+    }
+
+    @Test
+    void transformTestWithMissingRequiredChildKeyTest() {
+        ReplaceKeyInLength target = new ReplaceKeyInLength("oldKey", "newKey", "testName");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode lengthParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode lengthNode = new ObjectNode(jsonNodeFactory);
+        lengthParent.set("length", lengthNode);
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+            target.transformTest(lengthParent);
+        });
+        assertThat(exception, is(notNullValue()));
+    }
+
+    @Test
+    void constructorTest() {
+        ReplaceKeyInLength target = new ReplaceKeyInLength("oldKey", "newKey", "testName");
+        assertAll(() -> assertThat(target.requiredChildKey(), equalTo("oldKey")), () -> assertThat(target.getNewChildKey(), equalTo("newKey")), () -> assertThat(target.getTestName(), equalTo("testName")));
     }
 }

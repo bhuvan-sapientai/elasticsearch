@@ -1,61 +1,108 @@
 package org.elasticsearch.gradle;
 
-import org.junit.jupiter.api.Timeout;
-import org.mockito.InjectMocks;
+import org.elasticsearch.gradle.LazyFileOutputStream;
+import java.nio.file.Files;
+import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.api.BeforeEach;
+import java.nio.file.Path;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
-import org.mockito.MockitoAnnotations;
+import java.io.IOException;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Disabled;
 
-@Timeout(value = 5)
 class LazyFileOutputStreamSapientGeneratedTest {
 
-    private AutoCloseable autoCloseableMocks;
+    @TempDir
+    Path tempDir;
 
-    @InjectMocks()
-    private LazyFileOutputStream target;
+    private LazyFileOutputStream outputStream;
 
-    @AfterEach()
-    public void afterTest() throws Exception {
-        if (autoCloseableMocks != null)
-            autoCloseableMocks.close();
+    private File file;
+
+    @BeforeEach
+    void setUp() {
+        file = tempDir.resolve("test.txt").toFile();
+        outputStream = new LazyFileOutputStream(file);
     }
 
-    //Sapient generated method id: ${writeTest}, hash: 4297C9200AB898123EBD6C9CFAEDC816
+    @AfterEach
+    void tearDown() throws IOException {
+        if (outputStream != null) {
+            outputStream.close();
+        }
+    }
+
+    @Test
+    void testWriteInt() throws IOException {
+        // ASCII 'A'
+        outputStream.write(65);
+        outputStream.close();
+        String content = Files.readString(file.toPath());
+        assertEquals("A", content);
+    }
+
+    @Test
+    void testWriteByteArray() throws IOException {
+        byte[] data = "Hello, World!".getBytes();
+        outputStream.write(data, 0, data.length);
+        outputStream.close();
+        String content = Files.readString(file.toPath());
+        assertEquals("Hello, World!", content);
+    }
+
+    @Test
+    void testLazyFileCreation() {
+        assertFalse(file.exists(), "File should not be created until first write");
+    }
+
+    @Test
+    void testFileCreationOnWrite() throws IOException {
+        outputStream.write(65);
+        assertTrue(file.exists(), "File should be created after first write");
+    }
+
+    @Test
+    void testMultipleWrites() throws IOException {
+        outputStream.write("First ".getBytes());
+        outputStream.write("Second".getBytes());
+        outputStream.close();
+        String content = Files.readString(file.toPath());
+        assertEquals("First Second", content);
+    }
+
+    @Test
+    void testWriteToNonExistentDirectory() throws IOException {
+        File newDir = new File(tempDir.toFile(), "newDir");
+        File newFile = new File(newDir, "newFile.txt");
+        LazyFileOutputStream newOutputStream = new LazyFileOutputStream(newFile);
+        newOutputStream.write("Test".getBytes());
+        newOutputStream.close();
+        assertTrue(newDir.exists(), "Parent directory should be created");
+        assertTrue(newFile.exists(), "File should be created");
+        assertEquals("Test", Files.readString(newFile.toPath()));
+    }
+
+    @Test
+    void testCloseWithoutWrite() throws IOException {
+        outputStream.close();
+        assertFalse(file.exists(), "File should not be created if no write occurs");
+    }
+
     @Disabled()
-    @Test()
-    void writeTest() throws IOException {
-        //Arrange Statement(s)
-        File file = new File("pathname1");
-        target = new LazyFileOutputStream(file);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
-        target.write(0);
+    @Test
+    void testWriteAfterClose() throws IOException {
+        outputStream.close();
+        assertThrows(IOException.class, () -> outputStream.write(65));
     }
 
-    //Sapient generated method id: ${write1Test}, hash: F086F80733CB1C1511ABF2546A3CED2A
     @Disabled()
-    @Test()
-    void write1Test() throws IOException {
-        //Arrange Statement(s)
-        File file = new File("pathname1");
-        target = new LazyFileOutputStream(file);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        byte[] byteArray = new byte[] {};
-        //Act Statement(s)
-        target.write(byteArray, 0, 0);
-    }
-
-    //Sapient generated method id: ${closeTest}, hash: DA87030B99265EA4342E4AE7AD7A2818
-    @Test()
-    void closeTest() throws IOException {
-        //Arrange Statement(s)
-        File file = new File("pathname1");
-        target = new LazyFileOutputStream(file);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
-        target.close();
+    @Test
+    void testWriteByteArrayAfterClose() throws IOException {
+        outputStream.close();
+        byte[] data = "Test".getBytes();
+        assertThrows(IOException.class, () -> outputStream.write(data, 0, data.length));
     }
 }

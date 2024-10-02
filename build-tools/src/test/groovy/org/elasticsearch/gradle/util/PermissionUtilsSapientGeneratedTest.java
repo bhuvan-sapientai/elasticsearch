@@ -4,12 +4,15 @@ import org.elasticsearch.gradle.util.PermissionUtils;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.nio.file.Files;
 import org.junit.jupiter.api.BeforeEach;
+import static org.mockito.ArgumentMatchers.any;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.eq;
 import org.junit.jupiter.params.ParameterizedTest;
 import java.nio.file.attribute.PosixFilePermission;
 import java.util.Set;
 import java.nio.file.attribute.PosixFileAttributeView;
+import org.elasticsearch.gradle.util.PermissionUtils;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,10 +61,9 @@ class PermissionUtilsSapientGeneratedTest {
     @Test
     void testChmodWithNullPosixFileAttributeView() throws IOException {
         Path mockPath = mock(Path.class);
-        PosixFileAttributeView mockView = null;
-        when(mockPath.getFileSystem().provider().getFileAttributeView(any(Path.class), eq(PosixFileAttributeView.class))).thenReturn(mockView);
+        when(mockPath.getFileSystem().provider().getFileAttributeView(any(Path.class), eq(PosixFileAttributeView.class))).thenReturn(null);
         PermissionUtils.chmod(mockPath, 0755);
-        verify(mockPath, never()).getFileSystem();
+        verify(mockPath, times(1)).getFileSystem();
     }
 
     @Disabled()
@@ -100,5 +102,36 @@ class PermissionUtilsSapientGeneratedTest {
         java.lang.reflect.Method permissionsMethod = PermissionUtils.class.getDeclaredMethod("permissions", int.class);
         permissionsMethod.setAccessible(true);
         assertThrows(IllegalArgumentException.class, () -> permissionsMethod.invoke(null, invalidPermission));
+    }
+
+    @Test
+    void testChmodWithNonExistentFile() {
+        Path nonExistentFile = tempDir.resolve("nonExistentFile.txt");
+        assertThrows(IOException.class, () -> PermissionUtils.chmod(nonExistentFile, 0755));
+    }
+
+    @Test
+    void testPermissionsFromIntWithAllPermissions() throws Exception {
+        java.lang.reflect.Method permissionsFromIntMethod = PermissionUtils.class.getDeclaredMethod("permissionsFromInt", int.class);
+        permissionsFromIntMethod.setAccessible(true);
+        Set<PosixFilePermission> permissions = (Set<PosixFilePermission>) permissionsFromIntMethod.invoke(null, 0777);
+        assertEquals(9, permissions.size());
+        assertTrue(permissions.contains(PosixFilePermission.OWNER_READ));
+        assertTrue(permissions.contains(PosixFilePermission.OWNER_WRITE));
+        assertTrue(permissions.contains(PosixFilePermission.OWNER_EXECUTE));
+        assertTrue(permissions.contains(PosixFilePermission.GROUP_READ));
+        assertTrue(permissions.contains(PosixFilePermission.GROUP_WRITE));
+        assertTrue(permissions.contains(PosixFilePermission.GROUP_EXECUTE));
+        assertTrue(permissions.contains(PosixFilePermission.OTHERS_READ));
+        assertTrue(permissions.contains(PosixFilePermission.OTHERS_WRITE));
+        assertTrue(permissions.contains(PosixFilePermission.OTHERS_EXECUTE));
+    }
+
+    @Test
+    void testPermissionsFromIntWithNoPermissions() throws Exception {
+        java.lang.reflect.Method permissionsFromIntMethod = PermissionUtils.class.getDeclaredMethod("permissionsFromInt", int.class);
+        permissionsFromIntMethod.setAccessible(true);
+        Set<PosixFilePermission> permissions = (Set<PosixFilePermission>) permissionsFromIntMethod.invoke(null, 0000);
+        assertTrue(permissions.isEmpty());
     }
 }

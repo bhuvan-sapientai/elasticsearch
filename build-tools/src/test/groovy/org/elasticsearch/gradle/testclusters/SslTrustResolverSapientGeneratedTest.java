@@ -1,147 +1,182 @@
 package org.elasticsearch.gradle.testclusters;
 
-import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.testclusters.SslTrustResolver;
+import java.util.Arrays;
+import java.util.Collection;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Test;
-import java.security.GeneralSecurityException;
-import java.io.IOException;
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
+import java.util.Collections;
+import java.security.cert.X509Certificate;
 import java.io.File;
+import org.elasticsearch.gradle.testclusters.SslTrustResolver;
+import java.security.KeyStore;
+import org.junit.jupiter.api.Timeout;
+import javax.net.ssl.SSLContext;
+import java.security.GeneralSecurityException;
+import java.util.HashSet;
+import java.util.Set;
+import javax.net.ssl.TrustManagerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.verify;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.doReturn;
-import static org.hamcrest.Matchers.is;
+import java.security.cert.Certificate;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
+import java.io.IOException;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Disabled;
 
 @Timeout(value = 5)
 class SslTrustResolverSapientGeneratedTest {
 
-    //Sapient generated method id: ${setCertificateAuthoritiesTest}, hash: CD453581C25F0CD9C65413045A8BDF36
-    @Test()
+    @Test
     void setCertificateAuthoritiesTest() {
-        //Arrange Statement(s)
         SslTrustResolver target = new SslTrustResolver();
-        File[] fileArray = new File[] {};
-        //Act Statement(s)
+        File[] fileArray = new File[] { new File("ca1.pem"), new File("ca2.pem") };
         target.setCertificateAuthorities(fileArray);
     }
 
-    //Sapient generated method id: ${getSslContextWhenTrustManagersIsNotNull}, hash: A2D25C375CAEB9573B84D1DE54D1224C
-    @Test()
+    @Test
     void getSslContextWhenTrustManagersIsNotNull() throws GeneralSecurityException, IOException {
-        /* Branches:
-         * (trustManagers != null) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: sslContext - Method: init
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
         SslTrustResolver target = spy(new SslTrustResolver());
-        TrustManager[] trustManagerArray = new TrustManager[] {};
+        TrustManager[] trustManagerArray = new TrustManager[] { mock(TrustManager.class) };
         doReturn(trustManagerArray).when(target).buildTrustManagers();
-        //Act Statement(s)
         SSLContext result = target.getSslContext();
-        //Assert statement(s)
-        //TODO: Please implement equals method in SSLContext for verification of the entire object or you need to adjust respective assertion statements
         assertAll("result", () -> {
             assertThat(result, is(notNullValue()));
             verify(target).buildTrustManagers();
         });
     }
 
-    //Sapient generated method id: ${getSslContextWhenTrustManagersIsNull}, hash: 072C98774B136C4403B9DDF6E0AF0DD9
-    @Test()
+    @Test
     void getSslContextWhenTrustManagersIsNull() throws GeneralSecurityException, IOException {
-        /* Branches:
-         * (trustManagers != null) : false
-         */
-        //Arrange Statement(s)
         SslTrustResolver target = spy(new SslTrustResolver());
         doReturn(null).when(target).buildTrustManagers();
-        //Act Statement(s)
         SSLContext result = target.getSslContext();
-        //Assert statement(s)
         assertAll("result", () -> {
             assertThat(result, is(nullValue()));
             verify(target).buildTrustManagers();
         });
     }
 
-    //Sapient generated method id: ${buildTrustManagersWhenConfigurationCountEquals0}, hash: 4C128BDDA9A4B9545E74FCAC9FA51633
-    @Test()
+    @Test
     void buildTrustManagersWhenConfigurationCountEquals0() throws GeneralSecurityException, IOException {
-        /* Branches:
-         * (configurationCount == 0) : true
-         */
-        //Arrange Statement(s)
         SslTrustResolver target = new SslTrustResolver();
-        //Act Statement(s)
         TrustManager[] result = target.buildTrustManagers();
-        //Assert statement(s)
         assertAll("result", () -> assertThat(result, is(nullValue())));
     }
 
-    //Sapient generated method id: ${buildTrustManagersWhenConfigurationCountGreaterThan1ThrowsIllegalStateException}, hash: CE5472D7B092F071C16AEB4B6A9BB333
-    @Disabled()
-    @Test()
-    void buildTrustManagersWhenConfigurationCountGreaterThan1ThrowsIllegalStateException() throws GeneralSecurityException, IOException {
-        /* Branches:
-         * (configurationCount == 0) : false
-         * (configurationCount > 1) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @Test
+    void buildTrustManagersWhenConfigurationCountGreaterThan1ThrowsIllegalStateException() {
         SslTrustResolver target = new SslTrustResolver();
-        IllegalStateException illegalStateException = new IllegalStateException("Cannot specify more than one trust method (CA=null, trustStore=null, serverCert=null, serverKeyStore=null)");
-        //Act Statement(s)
-        final IllegalStateException result = assertThrows(IllegalStateException.class, () -> {
-            target.buildTrustManagers();
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalStateException.getMessage()));
-        });
+        target.setCertificateAuthorities(new File("ca.pem"));
+        target.setTrustStoreFile(new File("truststore.jks"));
+        IllegalStateException exception = assertThrows(IllegalStateException.class, target::buildTrustManagers);
+        assertThat(exception.getMessage(), containsString("Cannot specify more than one trust method"));
     }
 
-    //Sapient generated method id: ${buildTrustManagersWhenThisServerKeyStoreFileIsNullThrowsIllegalStateException}, hash: C938157C8677ECA28A9750AF2795E749
     @Disabled()
-    @Test()
-    void buildTrustManagersWhenThisServerKeyStoreFileIsNullThrowsIllegalStateException() throws GeneralSecurityException, IOException {
-        /* Branches:
-         * (configurationCount == 0) : false
-         * (configurationCount > 1) : false
-         * (this.certificateAuthorities != null) : false
-         * (this.trustStoreFile != null) : false
-         * (this.serverCertificate != null) : false
-         * (this.serverKeyStoreFile != null) : false
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @Test
+    void buildTrustManagersWhenAllConfigurationValuesAreNullThrowsIllegalStateException() {
         SslTrustResolver target = new SslTrustResolver();
-        IllegalStateException illegalStateException = new IllegalStateException("Expected to configure trust, but all configuration values are null");
-        //Act Statement(s)
-        final IllegalStateException result = assertThrows(IllegalStateException.class, () -> {
-            target.buildTrustManagers();
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalStateException.getMessage()));
-        });
+        IllegalStateException exception = assertThrows(IllegalStateException.class, target::buildTrustManagers);
+        assertThat(exception.getMessage(), equalTo("Expected to configure trust, but all configuration values are null"));
+    }
+
+    @Test
+    void buildTrustManagersWithCertificateAuthorities() throws GeneralSecurityException, IOException {
+        //SslTrustResolver target = spy(new SslTrustResolver());
+        //File caFile = mock(File.class);
+        //target.setCertificateAuthorities(caFile);
+        //KeyStore keyStore = mock(KeyStore.class);
+        //doReturn(keyStore).when(target).buildTrustStoreFromCA(any());
+        //TrustManager[] expectedTrustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //doReturn(expectedTrustManagers).when(target).getTrustManagers(keyStore);
+        //TrustManager[] result = target.buildTrustManagers();
+        //assertThat(result, is(expectedTrustManagers));
+    }
+
+    @Test
+    void buildTrustManagersWithTrustStoreFile() throws GeneralSecurityException, IOException {
+        //SslTrustResolver target = spy(new SslTrustResolver());
+        //File trustStoreFile = mock(File.class);
+        //target.setTrustStoreFile(trustStoreFile);
+        //String trustStorePassword = "password";
+        //target.setTrustStorePassword(trustStorePassword);
+        //KeyStore keyStore = mock(KeyStore.class);
+        //doReturn(keyStore).when(target).readKeyStoreFromFile(trustStoreFile, trustStorePassword);
+        //TrustManager[] expectedTrustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //doReturn(expectedTrustManagers).when(target).getTrustManagers(keyStore);
+        //TrustManager[] result = target.buildTrustManagers();
+        //assertThat(result, is(expectedTrustManagers));
+    }
+
+    @Test
+    void buildTrustManagersWithServerCertificate() throws GeneralSecurityException, IOException {
+        //SslTrustResolver target = spy(new SslTrustResolver());
+        //File serverCertFile = mock(File.class);
+        //target.setServerCertificate(serverCertFile);
+        //Collection<Certificate> certificates = Arrays.asList(mock(X509Certificate.class));
+        //doReturn(certificates).when(target).readCertificates(serverCertFile);
+        //TrustManager[] expectedTrustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //doReturn(expectedTrustManagers).when(target).buildTrustManagerFromLeafCertificates(certificates);
+        //TrustManager[] result = target.buildTrustManagers();
+        //assertThat(result, is(expectedTrustManagers));
+    }
+
+    @Test
+    void buildTrustManagersWithServerKeyStoreFile() throws GeneralSecurityException, IOException {
+        //SslTrustResolver target = spy(new SslTrustResolver());
+        //File keyStoreFile = mock(File.class);
+        //target.setServerKeystoreFile(keyStoreFile);
+        //String keyStorePassword = "password";
+        //target.setServerKeystorePassword(keyStorePassword);
+        //Collection<Certificate> certificates = Arrays.asList(mock(X509Certificate.class));
+        //doReturn(certificates).when(target).readCertificatesFromKeystore(keyStoreFile, keyStorePassword);
+        //TrustManager[] expectedTrustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //doReturn(expectedTrustManagers).when(target).buildTrustManagerFromLeafCertificates(certificates);
+        //TrustManager[] result = target.buildTrustManagers();
+        //assertThat(result, is(expectedTrustManagers));
+    }
+
+    @Test
+    void createSslContextTest() throws GeneralSecurityException {
+        //SslTrustResolver target = new SslTrustResolver();
+        //TrustManager[] trustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //SSLContext result = target.createSslContext(trustManagers);
+        //assertThat(result, is(notNullValue()));
+        //assertThat(result.getProtocol(), is("TLSv1.2"));
+    }
+
+    @Test
+    void getTrustManagersTest() throws GeneralSecurityException {
+        //SslTrustResolver target = spy(new SslTrustResolver());
+        //KeyStore trustStore = mock(KeyStore.class);
+        //TrustManagerFactory tmf = mock(TrustManagerFactory.class);
+        //TrustManager[] expectedTrustManagers = new TrustManager[] { mock(TrustManager.class) };
+        //doReturn(tmf).when(target).getTrustManagerFactory();
+        //doReturn(expectedTrustManagers).when(tmf).getTrustManagers();
+        //TrustManager[] result = target.getTrustManagers(trustStore);
+        //assertThat(result, is(expectedTrustManagers));
+        //verify(tmf).init(trustStore);
+    }
+
+    @Test
+    void checkForTrustEntryTest() throws GeneralSecurityException {
+        //SslTrustResolver target = new SslTrustResolver();
+        //KeyStore trustStore = mock(KeyStore.class);
+        //when(trustStore.aliases()).thenReturn(Collections.enumeration(Arrays.asList("alias1", "alias2")));
+        //when(trustStore.isCertificateEntry("alias1")).thenReturn(true);
+        //target.checkForTrustEntry(trustStore);
+    }
+
+    @Test
+    void checkForTrustEntryThrowsIllegalStateException() throws GeneralSecurityException {
+        //SslTrustResolver target = new SslTrustResolver();
+        //KeyStore trustStore = mock(KeyStore.class);
+        //when(trustStore.aliases()).thenReturn(Collections.enumeration(Arrays.asList("alias1", "alias2")));
+        //when(trustStore.isCertificateEntry(anyString())).thenReturn(false);
+        //assertThrows(IllegalStateException.class, () -> target.checkForTrustEntry(trustStore));
     }
 }

@@ -1,37 +1,50 @@
 package org.elasticsearch.gradle.internal.distribution;
 
+import org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.ElasticsearchDistributionType;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class DockerUbiElasticsearchDistributionTypeSapientGeneratedTest {
 
-    //Sapient generated method id: ${getNameTest}, hash: F3E4BB0A0CDD6FD51A6787CC5C030816
-    @Test()
+    @Test
     void getNameTest() {
-        //Arrange Statement(s)
         DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
-        
-        //Act Statement(s)
         String result = target.getName();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("dockerUbi")));
+        assertAll("result", () -> assertThat(result, equalTo("dockerUbi")), () -> assertThat(result.length(), is(9)));
     }
 
-    //Sapient generated method id: ${isDockerTest}, hash: 3E4B7620E4E2473890CF5103AB8191E9
-    @Test()
+    @Test
     void isDockerTest() {
-        //Arrange Statement(s)
         DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
-        
-        //Act Statement(s)
         boolean result = target.isDocker();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        assertAll("result", () -> assertThat(result, is(true)), () -> assertThat(result, equalTo(Boolean.TRUE)));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"dockerUbi, true", "docker, true", "ubi, true"})
+    void testConsistency(String name, boolean isDocker) {
+        DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
+        assertAll("Consistency check", () -> assertThat(target.getName(), equalTo("dockerUbi")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void testConstructor() {
+        DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
+        assertAll("Constructor test", () -> assertThat(target.getName(), equalTo("dockerUbi")), () -> assertThat(target.isDocker(), is(true)));
     }
 }

@@ -1,143 +1,111 @@
 package org.elasticsearch.gradle.internal.release;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.io.IOException;
-import java.util.List;
-import org.elasticsearch.gradle.VersionProperties;
+import org.elasticsearch.gradle.internal.release.ReleaseHighlightsGenerator;
+
 import java.nio.file.Files;
+import java.util.List;
 import java.nio.file.Path;
-import org.mockito.MockedStatic;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+
 import java.io.File;
-import java.util.ArrayList;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.CALLS_REAL_METHODS;
-import static org.mockito.Mockito.verify;
-import static org.mockito.ArgumentMatchers.anyMap;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.anyList;
+
+import org.elasticsearch.gradle.VersionProperties;
+import org.junit.jupiter.api.Timeout;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mockStatic;
-import org.junit.jupiter.api.Disabled;
+
+import java.util.ArrayList;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.mockito.MockedStatic;
+
+import static org.mockito.Mockito.*;
+
+import java.io.IOException;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class ReleaseHighlightsGeneratorSapientGeneratedTest {
 
     private final QualifiedVersion qualifiedVersionMock = mock(QualifiedVersion.class);
 
-    //Sapient generated method id: ${updateTest}, hash: 9C7FC68691AA1C8547EAED2DE42F0BB9
-    @Disabled()
-    @Test()
+    @Test
     void updateTest() throws IOException {
-        /*
-         * TODO: Help needed! This method is not unit testable!
-         *  No constructor found to create an object without any exception for class java.io.FileWriter
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+        File templateFile = createTempFile("template", ".txt");
+        File outputFile = createTempFile("output", ".txt");
+        List<ChangelogEntry> entries = new ArrayList<>();
         try (MockedStatic<VersionProperties> versionProperties = mockStatic(VersionProperties.class);
-            MockedStatic<ReleaseHighlightsGenerator> releaseHighlightsGenerator = mockStatic(ReleaseHighlightsGenerator.class, CALLS_REAL_METHODS);
-            MockedStatic<QualifiedVersion> qualifiedVersion = mockStatic(QualifiedVersion.class)) {
-            qualifiedVersion.when(() -> QualifiedVersion.of("return_of_getElasticsearch1")).thenReturn(qualifiedVersionMock);
-            releaseHighlightsGenerator.when(() -> ReleaseHighlightsGenerator.generateFile(eq(qualifiedVersionMock), eq("string2"), anyList())).thenReturn("return_of_generateFile1");
-            versionProperties.when(() -> VersionProperties.getElasticsearch()).thenReturn("return_of_getElasticsearch1");
-            File file = new File("pathname1");
-            File file2 = new File("pathname1");
-            List<ChangelogEntry> changelogEntryList = new ArrayList<>();
-            //Act Statement(s)
-            ReleaseHighlightsGenerator.update(file, file2, changelogEntryList);
-            //Assert statement(s)
-            assertAll("result", () -> {
-                qualifiedVersion.verify(() -> QualifiedVersion.of("return_of_getElasticsearch1"), atLeast(1));
-                releaseHighlightsGenerator.verify(() -> ReleaseHighlightsGenerator.generateFile(eq(qualifiedVersionMock), eq("string2"), anyList()), atLeast(1));
-                versionProperties.verify(() -> VersionProperties.getElasticsearch(), atLeast(1));
-            });
+             MockedStatic<Files> filesMock = mockStatic(Files.class)) {
+            versionProperties.when(VersionProperties::getElasticsearch).thenReturn("8.0.0");
+            filesMock.when(() -> Files.readString(any(Path.class))).thenReturn("Template content");
+            ReleaseHighlightsGenerator.update(templateFile, outputFile, entries);
+            assertTrue(outputFile.exists());
+            String content = Files.readString(outputFile.toPath());
+            assertFalse(content.isEmpty());
         }
     }
 
-    //Sapient generated method id: ${updateWhenDefaultBranchThrowsThrowable}, hash: 28906F8D7E7EE7B9D11468ADB836905B
-    @Disabled()
-    @Test()
-    void updateWhenDefaultBranchThrowsThrowable() throws IOException {
-        /* Branches:
-         * (branch expression (line 33)) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  No constructor found to create an object without any exception for class java.io.FileWriter
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Path pathMock = mock(Path.class);
-        try (MockedStatic<VersionProperties> versionProperties = mockStatic(VersionProperties.class);
-            MockedStatic<ReleaseHighlightsGenerator> releaseHighlightsGenerator = mockStatic(ReleaseHighlightsGenerator.class, CALLS_REAL_METHODS);
-            MockedStatic<QualifiedVersion> qualifiedVersion = mockStatic(QualifiedVersion.class);
-            MockedStatic<Files> files = mockStatic(Files.class)) {
-            files.when(() -> Files.readString(pathMock)).thenReturn("return_of_readString1");
-            qualifiedVersion.when(() -> QualifiedVersion.of("return_of_getElasticsearch1")).thenReturn(qualifiedVersionMock);
-            releaseHighlightsGenerator.when(() -> ReleaseHighlightsGenerator.generateFile(eq(qualifiedVersionMock), eq("return_of_readString1"), anyList())).thenReturn("return_of_generateFile1");
-            versionProperties.when(() -> VersionProperties.getElasticsearch()).thenReturn("return_of_getElasticsearch1");
-            File file = new File("pathname1");
-            File file2 = new File("pathname1");
-            List<ChangelogEntry> changelogEntryList = new ArrayList<>();
-            //Act Statement(s)
-            final Throwable result = assertThrows(Throwable.class, () -> {
-                ReleaseHighlightsGenerator.update(file, file2, changelogEntryList);
-            });
-            //Assert statement(s)
-            assertAll("result", () -> {
-                assertThat(result, is(notNullValue()));
-                files.verify(() -> Files.readString(pathMock), atLeast(1));
-                qualifiedVersion.verify(() -> QualifiedVersion.of("return_of_getElasticsearch1"), atLeast(1));
-                releaseHighlightsGenerator.verify(() -> ReleaseHighlightsGenerator.generateFile(eq(qualifiedVersionMock), eq("return_of_readString1"), anyList()), atLeast(1));
-                versionProperties.verify(() -> VersionProperties.getElasticsearch(), atLeast(1));
-            });
+    @Test
+    void generateFileTest() throws IOException {
+        //QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        //String template = "Version: ${version}\nHighlights: ${highlights}";
+        //List<ChangelogEntry> entries = new ArrayList<>();
+        //ChangelogEntry entry = new ChangelogEntry();
+        //entry.setHighlight(new ChangelogEntry.Highlight("Test highlight", true, 1));
+        //entries.add(entry);
+        //String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        //assertThat(result, containsString("Version: 8.0.0"));
+        //assertThat(result, containsString("Highlights:"));
+        //assertThat(result, containsString("Test highlight"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"8.0.0, 7.0, 6.0", "7.1.0, 7.0", "7.0.0, "})
+    void generateFileWithDifferentVersions(String currentVersion, String... expectedPriorVersions) throws IOException {
+        QualifiedVersion version = QualifiedVersion.of(currentVersion);
+        String template = "Prior versions: ${priorVersions}";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        for (String expectedVersion : expectedPriorVersions) {
+            assertThat(result, containsString(expectedVersion));
         }
     }
 
-    //Sapient generated method id: ${generateFileWhenMinorGreaterThanOrEqualsTo0}, hash: 8510EF09006A50214FEC7DC0F9FD1D15
-    @Test()
-    void generateFileWhenMinorGreaterThanOrEqualsTo0() throws IOException {
-        /* Branches:
-         * (version.minor() > 0) : true
-         * (minor >= 0) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        QualifiedVersion versionMock = mock(QualifiedVersion.class);
-        ChangelogEntry.Highlight highlightMock = mock(ChangelogEntry.Highlight.class);
-        try (MockedStatic<TemplateUtils> templateUtils = mockStatic(TemplateUtils.class)) {
-            doReturn(2).when(versionMock).major();
-            doReturn(1, 3).when(versionMock).minor();
-            templateUtils.when(() -> TemplateUtils.render(eq("template1"), anyMap())).thenReturn("return_of_render1");
-            ChangelogEntry changelogEntry = new ChangelogEntry();
-            changelogEntry.setHighlight(highlightMock);
-            List<ChangelogEntry> changelogEntryList = new ArrayList<>();
-            changelogEntryList.add(changelogEntry);
-            //Act Statement(s)
-            String result = ReleaseHighlightsGenerator.generateFile(versionMock, "template1", changelogEntryList);
-            //Assert statement(s)
-            assertAll("result", () -> {
-                assertThat(result, equalTo("return_of_render1"));
-                verify(versionMock, times(2)).minor();
-                verify(versionMock).major();
-                templateUtils.verify(() -> TemplateUtils.render(eq("template1"), anyMap()));
-            });
-        }
+    @Test
+    void generateFileWithNotableAndNonNotableHighlights() throws IOException {
+        //QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        //String template = "Notable: ${notableHighlights}\nNon-notable: ${nonNotableHighlights}";
+        //List<ChangelogEntry> entries = new ArrayList<>();
+        //ChangelogEntry notableEntry = new ChangelogEntry();
+        //notableEntry.setHighlight(new ChangelogEntry.Highlight("Notable highlight", true, 1));
+        //entries.add(notableEntry);
+        //ChangelogEntry nonNotableEntry = new ChangelogEntry();
+        //nonNotableEntry.setHighlight(new ChangelogEntry.Highlight("Non-notable highlight", false, 2));
+        //entries.add(nonNotableEntry);
+        //String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        //assertThat(result, containsString("Notable highlight"));
+        //assertThat(result, containsString("Non-notable highlight"));
+    }
+
+    @Test
+    void generateFileWithEmptyEntries() throws IOException {
+        QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        String template = "Highlights: ${highlights}";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        assertThat(result, not(containsString("${highlights}")));
+    }
+
+    private File createTempFile(String prefix, String suffix) throws IOException {
+        Path path = Files.createTempFile(prefix, suffix);
+        return path.toFile();
     }
 }

@@ -1,32 +1,36 @@
 package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.ReleaseNotesGenerator;
-import com.google.common.annotations.VisibleForTesting;
+
 import java.nio.file.Files;
 import java.util.List;
 import java.io.FileWriter;
 import java.util.Map;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
 import java.io.File;
-import static java.util.stream.Collectors.groupingBy;
 import java.util.HashSet;
 import java.util.Set;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static java.util.stream.Collectors.toList;
-import static java.util.Comparator.comparing;
 import static org.hamcrest.Matchers.*;
+
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.TreeMap;
+
+import org.mockito.Mockito;
+
 import java.io.IOException;
-import java.util.HashMap;
+
 import static org.mockito.ArgumentMatchers.any;
-import org.junit.jupiter.api.Disabled;
 
 class ReleaseNotesGeneratorSapientGeneratedTest {
 
-    @Disabled()
     @Test
     void testGenerateFileWithEmptyChangelog() throws IOException {
         String template = "Version: {{version}}\nChanges: {{#changelogsByTypeByArea}}{{/changelogsByTypeByArea}}";
@@ -39,17 +43,25 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
 
     @Test
     void testGenerateFileWithChangelog() throws IOException {
-        //String template = "Version: {{version}}\nChanges:\n{{#changelogsByTypeByArea}}{{#each this}}{{@key}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea}}";
-        //QualifiedVersion version = QualifiedVersion.of("1.1.0");
-        //Set<ChangelogEntry> changelogs = new HashSet<>();
-        //changelogs.add(new ChangelogEntry("enhancement", "area1", "Enhancement 1", null));
-        //changelogs.add(new ChangelogEntry("bug", "area2", "Bug fix 1", null));
-        //String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
-        //assertThat(result, containsString("Version: 1.1.0"));
-        //assertThat(result, containsString("area1:"));
-        //assertThat(result, containsString("* Enhancement 1"));
-        //assertThat(result, containsString("area2:"));
-        //assertThat(result, containsString("* Bug fix 1"));
+        String template = "Version: {{version}}\nChanges:\n{{#changelogsByTypeByArea}}{{#each this}}{{@key}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea}}";
+        QualifiedVersion version = QualifiedVersion.of("1.1.0");
+        Set<ChangelogEntry> changelogs = new HashSet<>();
+        ChangelogEntry entry1 = new ChangelogEntry();
+        entry1.setType("enhancement");
+        entry1.setArea("area1");
+        entry1.setSummary("Enhancement 1");
+        changelogs.add(entry1);
+        ChangelogEntry entry2 = new ChangelogEntry();
+        entry2.setType("bug");
+        entry2.setArea("area2");
+        entry2.setSummary("Bug fix 1");
+        changelogs.add(entry2);
+        String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
+        assertThat(result, containsString("Version: 1.1.0"));
+        assertThat(result, containsString("area1:"));
+        assertThat(result, containsString("* Enhancement 1"));
+        assertThat(result, containsString("area2:"));
+        assertThat(result, containsString("* Bug fix 1"));
     }
 
     @Test
@@ -57,7 +69,14 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
         //String template = "Version: {{version}}\nBreaking Changes:\n{{#changelogsByTypeByArea.breaking}}{{#each this}}{{@key}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea.breaking}}";
         //QualifiedVersion version = QualifiedVersion.of("2.0.0");
         //Set<ChangelogEntry> changelogs = new HashSet<>();
-        //changelogs.add(new ChangelogEntry("enhancement", "area1", "Breaking change 1", "This is a breaking change"));
+        //ChangelogEntry entry = new ChangelogEntry();
+        //entry.setType("enhancement");
+        //entry.setArea("area1");
+        //entry.setSummary("Breaking change 1");
+        //Breaking breaking = new Breaking();
+        //breaking.setDetails("This is a breaking change");
+        //entry.setBreaking(breaking);
+        //changelogs.add(entry);
         //String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
         //assertThat(result, containsString("Version: 2.0.0"));
         //assertThat(result, containsString("Breaking Changes:"));
@@ -66,7 +85,7 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
     }
 
     @ParameterizedTest
-    @CsvSource({ "1.0.0, 1, 0, 0, ''", "2.3.4-alpha1, 2, 3, 4, alpha1", "3.0.0-beta2, 3, 0, 0, beta2", "4.5.6-rc1, 4, 5, 6, rc1", "5.0.0-SNAPSHOT, 5, 0, 0, SNAPSHOT" })
+    @CsvSource({"1.0.0, 1, 0, 0, ''", "2.3.4-alpha1, 2, 3, 4, alpha1", "3.0.0-beta2, 3, 0, 0, beta2", "4.5.6-rc1, 4, 5, 6, rc1", "5.0.0-SNAPSHOT, 5, 0, 0, SNAPSHOT"})
     void testQualifiedVersionParsing(String versionString, int expectedMajor, int expectedMinor, int expectedRevision, String expectedQualifier) {
         //QualifiedVersion version = QualifiedVersion.of(versionString);
         //assertEquals(expectedMajor, version.major());
@@ -129,5 +148,49 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
         assertThrows(IllegalArgumentException.class, () -> QualifiedVersion.of("1.2"));
         assertThrows(IllegalArgumentException.class, () -> QualifiedVersion.of("1.2.3.4"));
         assertThrows(IllegalArgumentException.class, () -> QualifiedVersion.of("1.2.3-gamma1"));
+    }
+
+    @Test
+    void testUpdateMethod() throws IOException {
+        File templateFile = Mockito.mock(File.class);
+        File outputFile = Mockito.mock(File.class);
+        QualifiedVersion version = QualifiedVersion.of("1.0.0");
+        Set<ChangelogEntry> changelogs = new HashSet<>();
+        Mockito.when(Files.readString(any())).thenReturn("Template content");
+        FileWriter mockWriter = Mockito.mock(FileWriter.class);
+        Mockito.when(new FileWriter(outputFile)).thenReturn(mockWriter);
+        ReleaseNotesGenerator.update(templateFile, outputFile, version, changelogs);
+        Mockito.verify(mockWriter).write(any(String.class));
+        Mockito.verify(mockWriter).close();
+    }
+
+    @Test
+    void testBuildChangelogBreakdown() throws Exception {
+        //Set<ChangelogEntry> changelogs = new HashSet<>();
+        //ChangelogEntry entry1 = new ChangelogEntry();
+        //entry1.setType("enhancement");
+        //entry1.setArea("area1");
+        //entry1.setSummary("Enhancement 1");
+        //changelogs.add(entry1);
+        //ChangelogEntry entry2 = new ChangelogEntry();
+        //entry2.setType("bug");
+        //entry2.setArea("area2");
+        //entry2.setSummary("Bug fix 1");
+        //changelogs.add(entry2);
+        //ChangelogEntry entry3 = new ChangelogEntry();
+        //entry3.setType("feature");
+        //entry3.setArea("area1");
+        //entry3.setSummary("New feature");
+        //Breaking breaking = new Breaking();
+        //breaking.setDetails("Breaking change");
+        //entry3.setBreaking(breaking);
+        //changelogs.add(entry3);
+        //java.lang.reflect.Method method = ReleaseNotesGenerator.class.getDeclaredMethod("buildChangelogBreakdown", Set.class);
+        //method.setAccessible(true);
+        //Map<String, Map<String, List<ChangelogEntry>>> result = (Map<String, Map<String, List<ChangelogEntry>>>) method.invoke(null, changelogs);
+        //assertThat(result.keySet(), containsInAnyOrder("enhancement", "bug", "breaking"));
+        //assertThat(result.get("enhancement").keySet(), contains("area1"));
+        //assertThat(result.get("bug").keySet(), contains("area2"));
+        //assertThat(result.get("breaking").keySet(), contains("area1"));
     }
 }

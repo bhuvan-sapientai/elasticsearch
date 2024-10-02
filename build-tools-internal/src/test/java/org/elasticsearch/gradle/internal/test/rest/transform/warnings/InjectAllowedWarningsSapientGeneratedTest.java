@@ -1,128 +1,139 @@
 package org.elasticsearch.gradle.internal.test.rest.transform.warnings;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.util.List;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
-import java.util.ArrayList;
+import org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import org.junit.jupiter.api.Disabled;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class InjectAllowedWarningsSapientGeneratedTest {
 
     private final RestTestContext testContextMock = mock(RestTestContext.class);
 
-    //Sapient generated method id: ${transformTestWhenArrayWarningsIsNull}, hash: 63AAB0FE2EA28155DBFA8A0D465AE30E
-    @Disabled()
-    @Test()
+    @Test
     void transformTestWhenArrayWarningsIsNull() {
-        /* Branches:
-         * (arrayWarnings == null) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        List<String> stringList = new ArrayList<>(List.of("A"));
+        List<String> stringList = new ArrayList<>(List.of("Warning1", "Warning2"));
         InjectAllowedWarnings target = spy(new InjectAllowedWarnings(false, stringList, "testName1"));
-        doReturn("return_of_getSkipFeatureName1").when(target).getSkipFeatureName();
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        target.transformTest(objectNode);
-        //Assert statement(s)
-        assertAll("result", () -> verify(target, times(2)).getSkipFeatureName());
+        ObjectNode parentNode = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNode = new ObjectNode(jsonNodeFactory);
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode arrayWarnings = (ArrayNode) doNode.get("allowed_warnings");
+        assertNotNull(arrayWarnings);
+        assertEquals(2, arrayWarnings.size());
+        assertEquals("Warning1", arrayWarnings.get(0).asText());
+        assertEquals("Warning2", arrayWarnings.get(1).asText());
     }
 
-    //Sapient generated method id: ${getKeyToFindTest}, hash: 33BB6378CC647C402B377A68914D7733
-    @Test()
+    @Test
+    void transformTestWhenArrayWarningsExists() {
+        List<String> stringList = new ArrayList<>(List.of("Warning3"));
+        InjectAllowedWarnings target = spy(new InjectAllowedWarnings(false, stringList, "testName1"));
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parentNode = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNode = new ObjectNode(jsonNodeFactory);
+        ArrayNode existingWarnings = doNode.putArray("allowed_warnings");
+        existingWarnings.add("ExistingWarning");
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode arrayWarnings = (ArrayNode) doNode.get("allowed_warnings");
+        assertNotNull(arrayWarnings);
+        assertEquals(2, arrayWarnings.size());
+        assertEquals("ExistingWarning", arrayWarnings.get(0).asText());
+        assertEquals("Warning3", arrayWarnings.get(1).asText());
+    }
+
+    @Test
     void getKeyToFindTest() {
-        //Arrange Statement(s)
         List<String> stringList = new ArrayList<>();
         InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList, "testName1");
-        //Act Statement(s)
         String result = target.getKeyToFind();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("do")));
+        assertThat(result, equalTo("do"));
     }
 
-    //Sapient generated method id: ${getSkipFeatureNameWhenIsRegex}, hash: 9623E05B016A2929C562458B0D5BAB44
-    @Test()
-    void getSkipFeatureNameWhenIsRegex() {
-        /* Branches:
-         * (isRegex) : true
-         */
-        //Arrange Statement(s)
+    @ParameterizedTest
+    @CsvSource({"true,allowed_warnings_regex", "false,allowed_warnings"})
+    void getSkipFeatureNameTest(boolean isRegex, String expected) {
         List<String> stringList = new ArrayList<>();
-        InjectAllowedWarnings target = new InjectAllowedWarnings(true, stringList, "testName1");
-        //Act Statement(s)
+        InjectAllowedWarnings target = new InjectAllowedWarnings(isRegex, stringList, "testName1");
         String result = target.getSkipFeatureName();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("allowed_warnings_regex")));
+        assertThat(result, equalTo(expected));
     }
 
-    //Sapient generated method id: ${getSkipFeatureNameWhenNotIsRegex}, hash: 78786E876DAC82E3AFF82559D4810991
-    @Test()
-    void getSkipFeatureNameWhenNotIsRegex() {
-        /* Branches:
-         * (isRegex) : false
-         */
-        //Arrange Statement(s)
-        List<String> stringList = new ArrayList<>();
+    @Test
+    void getAllowedWarningsTest() {
+        List<String> stringList = new ArrayList<>(List.of("Warning1", "Warning2"));
         InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList, "testName1");
-        //Act Statement(s)
-        String result = target.getSkipFeatureName();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("allowed_warnings")));
+        List<String> result = target.getAllowedWarnings();
+        assertThat(result, equalTo(stringList));
     }
 
-    //Sapient generated method id: ${shouldApplyWhenTestContextTestNameEqualsTestName}, hash: C33E96A56C1E73CDFFB2446889BD73BB
-    @Test()
+    @Test
+    void shouldApplyWhenTestNameIsNull() {
+        List<String> stringList = new ArrayList<>();
+        InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList);
+        boolean result = target.shouldApply(testContextMock);
+        assertThat(result, equalTo(true));
+        verify(testContextMock, never()).testName();
+    }
+
+    @Test
     void shouldApplyWhenTestContextTestNameEqualsTestName() {
-        /* Branches:
-         * (testName == null) : false
-         * (testContext.testName().equals(testName)) : true
-         */
-        //Arrange Statement(s)
         doReturn("A").when(testContextMock).testName();
         List<String> stringList = new ArrayList<>();
         InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList, "A");
-        //Act Statement(s)
         boolean result = target.shouldApply(testContextMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo(Boolean.TRUE));
-            verify(testContextMock).testName();
-        });
+        assertThat(result, equalTo(true));
+        verify(testContextMock).testName();
     }
 
-    //Sapient generated method id: ${shouldApplyWhenTestContextTestNameNotEqualsTestName}, hash: 16585E96CB706ECC3930DB89857D45A2
-    @Test()
+    @Test
     void shouldApplyWhenTestContextTestNameNotEqualsTestName() {
-        /* Branches:
-         * (testName == null) : false
-         * (testContext.testName().equals(testName)) : false
-         */
-        //Arrange Statement(s)
         doReturn("A").when(testContextMock).testName();
         List<String> stringList = new ArrayList<>();
         InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList, "B");
-        //Act Statement(s)
         boolean result = target.shouldApply(testContextMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo(Boolean.FALSE));
-            verify(testContextMock).testName();
-        });
+        assertThat(result, equalTo(false));
+        verify(testContextMock).testName();
+    }
+
+    @Test
+    void getTestNameTest() {
+        String testName = "testName1";
+        List<String> stringList = new ArrayList<>();
+        InjectAllowedWarnings target = new InjectAllowedWarnings(false, stringList, testName);
+        String result = target.getTestName();
+        assertThat(result, equalTo(testName));
+    }
+
+    @Test
+    void constructorTest() {
+        //List<String> stringList = new ArrayList<>(List.of("Warning1", "Warning2"));
+        //InjectAllowedWarnings target = new InjectAllowedWarnings(stringList);
+        //assertFalse(target.isRegex);
+        //assertEquals(stringList, target.getAllowedWarnings());
+        //assertNull(target.getTestName());
     }
 }

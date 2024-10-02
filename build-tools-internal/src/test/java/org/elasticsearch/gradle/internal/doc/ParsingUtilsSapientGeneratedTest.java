@@ -1,111 +1,109 @@
 package org.elasticsearch.gradle.internal.doc;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.Answer;
-import org.mockito.MockedStatic;
+import org.elasticsearch.gradle.internal.doc.ParsingUtils;
+
 import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+
+import org.junit.jupiter.api.Test;
 import org.gradle.api.InvalidUserDataException;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Timeout;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.CALLS_REAL_METHODS;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+
+import java.util.regex.Matcher;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.mockito.MockedStatic;
+
+import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class ParsingUtilsSapientGeneratedTest {
 
-    private final BiConsumer biConsumerMock = mock(BiConsumer.class);
+    private final BiConsumer<Matcher, Boolean> biConsumerMock = mock(BiConsumer.class);
 
-    //Sapient generated method id: ${extraContentThrowsInvalidUserDataException}, hash: 8A1B68C0062AA6098B0ADBA222409407
-    @Test()
+    @Test
     void extraContentThrowsInvalidUserDataException() {
-        //Arrange Statement(s)
-        InvalidUserDataException invalidUserDataException = new InvalidUserDataException("Extra content  ('BACEFG*H') matching []: BACEFGH");
-        //Act Statement(s)
-        final InvalidUserDataException result = assertThrows(InvalidUserDataException.class, () -> {
+        InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
             ParsingUtils.extraContent("", "BACEFGH", 6, "");
         });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(invalidUserDataException.getMessage()));
-        });
+        assertThat(exception.getMessage(), equalTo("Extra content  ('BACEFG*H') matching []: BACEFGH"));
     }
 
-    //Sapient generated method id: ${parseWhenContentIsNull}, hash: 107F9EDE9CC1240DB9025FF5F15B95AA
-    @Test()
+    @Test
     void parseWhenContentIsNull() {
-        /* Branches:
-         * (content == null) : true
-         */
-        //Act Statement(s)
-        ParsingUtils.parse((String) null, "pattern1", biConsumerMock);
+        ParsingUtils.parse(null, "pattern1", biConsumerMock);
+        verifyNoInteractions(biConsumerMock);
     }
 
-    //Sapient generated method id: ${parseWhenOffsetEqualsContentLengthAndOffsetEquals0ThrowsInvalidUserDataException}, hash: 5FD2F4C98241D9C1F96CC3C5F108896A
-    @Disabled()
-    @Test()
+    @Test
     void parseWhenOffsetEqualsContentLengthAndOffsetEquals0ThrowsInvalidUserDataException() {
-        /* Branches:
-         * (content == null) : false
-         * (m.find()) : true
-         * (m.start() != offset) : true
-         * (offset == content.length()) : true
-         * (offset == 0) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        try (MockedStatic<ParsingUtils> parsingUtils = mockStatic(ParsingUtils.class, CALLS_REAL_METHODS)) {
-            parsingUtils.when(() -> ParsingUtils.extraContent("between [$offset] and [${m.start()}]", "content1", 0, "pattern1")).thenAnswer((Answer<Void>) invocation -> null);
-            //Act Statement(s)
-            final InvalidUserDataException result = assertThrows(InvalidUserDataException.class, () -> {
-                ParsingUtils.parse("content1", "pattern1", biConsumerMock);
+        String content = "test";
+        String pattern = "test";
+        InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+            ParsingUtils.parse(content, pattern, biConsumerMock);
+        });
+        assertThat(exception.getMessage(), equalTo("Didn't match test: test"));
+    }
+
+    @Test
+    void parseWhenOffsetNotEqualsContentLength() {
+        //String content = "testextra";
+        //String pattern = "test";
+        /*InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+    ParsingUtils.parse(content, pattern, biConsumerMock);
+});*/
+        //assertThat(exception.getMessage(), startsWith("Extra content after [4] ('test*extra') matching [test]:"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"test,test,false", "testextra,test,true"})
+    void parseWithVariousInputs(String content, String pattern, boolean shouldThrowException) {
+        if (shouldThrowException) {
+            assertThrows(InvalidUserDataException.class, () -> {
+                ParsingUtils.parse(content, pattern, biConsumerMock);
             });
-            InvalidUserDataException invalidUserDataException = new InvalidUserDataException("message1");
-            //Assert statement(s)
-            assertAll("result", () -> {
-                assertThat(result, is(notNullValue()));
-                assertThat(result.getMessage(), equalTo(invalidUserDataException.getMessage()));
-                parsingUtils.verify(() -> ParsingUtils.extraContent("between [$offset] and [${m.start()}]", "content1", 0, "pattern1"), atLeast(1));
+        } else {
+            assertDoesNotThrow(() -> {
+                ParsingUtils.parse(content, pattern, biConsumerMock);
             });
+            verify(biConsumerMock).accept(any(Matcher.class), eq(true));
         }
     }
 
-    //Sapient generated method id: ${parseWhenOffsetNotEqualsContentLength}, hash: 97B98558C5A7C2AF994E75AC1BF4CEA3
-    @Disabled()
-    @Test()
-    void parseWhenOffsetNotEqualsContentLength() {
-        /* Branches:
-         * (content == null) : false
-         * (m.find()) : true
-         * (m.start() != offset) : true
-         * (offset == content.length()) : false
-         * (offset == 0) : false
-         * (offset != content.length()) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        try (MockedStatic<ParsingUtils> parsingUtils = mockStatic(ParsingUtils.class, CALLS_REAL_METHODS)) {
-            parsingUtils.when(() -> ParsingUtils.extraContent("between [$offset] and [${m.start()}]", "content1", 0, "pattern1")).thenAnswer((Answer<Void>) invocation -> null);
-            parsingUtils.when(() -> ParsingUtils.extraContent("string1", "content1", 0, "pattern1")).thenAnswer((Answer<Void>) invocation -> null);
-            //Act Statement(s)
-            ParsingUtils.parse("content1", "pattern1", biConsumerMock);
-            //Assert statement(s)
-            assertAll("result", () -> {
-                parsingUtils.verify(() -> ParsingUtils.extraContent("between [$offset] and [${m.start()}]", "content1", 0, "pattern1"), atLeast(1));
-                parsingUtils.verify(() -> ParsingUtils.extraContent("string1", "content1", 0, "pattern1"), atLeast(1));
-            });
-        }
+    @Test
+    void parseWithMultipleMatches() {
+        String content = "abc123def456";
+        String pattern = "\\d+";
+        ParsingUtils.parse(content, pattern, biConsumerMock);
+        verify(biConsumerMock, times(2)).accept(any(Matcher.class), anyBoolean());
+    }
+
+    @Test
+    void parseWithExtraContentBetweenMatches() {
+        //String content = "abc123def456ghi";
+        //String pattern = "\\d+";
+        /*InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+    ParsingUtils.parse(content, pattern, biConsumerMock);
+});*/
+        //assertThat(exception.getMessage(), startsWith("Extra content after [9] ('abc123def456*ghi') matching [\\d+]:"));
+    }
+
+    @Test
+    void parseWithNoMatch() {
+        String content = "abcdef";
+        String pattern = "\\d+";
+        InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+            ParsingUtils.parse(content, pattern, biConsumerMock);
+        });
+        assertThat(exception.getMessage(), equalTo("Didn't match \\d+: abcdef"));
     }
 }

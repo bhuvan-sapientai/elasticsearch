@@ -1,40 +1,44 @@
 package org.elasticsearch.gradle.internal.test.rest;
 
-import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.test.rest.InternalYamlRestTestPlugin;
+
+import org.gradle.api.plugins.PluginManager;
 import org.junit.jupiter.api.Test;
-import org.gradle.api.UnknownDomainObjectException;
 import org.gradle.api.InvalidUserDataException;
+import org.gradle.api.Project;
+
+import java.io.File;
+
+import org.gradle.api.tasks.SourceSetContainer;
+import org.gradle.api.Action;
+import org.gradle.api.plugins.ExtensionContainer;
+import org.mockito.MockedStatic;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.tasks.SourceSetOutput;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+import org.gradle.api.tasks.SourceSet;
+import org.gradle.api.file.SourceDirectorySet;
+import org.junit.jupiter.api.Timeout;
+import org.gradle.api.tasks.TaskContainer;
+import org.gradle.api.tasks.TaskCollection;
 import org.gradle.api.UnknownTaskException;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.gradle.api.UnknownDomainObjectException;
+import org.mockito.stubbing.Answer;
+import org.elasticsearch.gradle.util.GradleUtils;
+import org.elasticsearch.gradle.internal.test.RestIntegTestTask;
+import org.gradle.api.tasks.TaskProvider;
 import org.gradle.api.Transformer;
 import org.gradle.api.provider.Provider;
-import org.elasticsearch.gradle.util.GradleUtils;
-import java.util.HashSet;
-import org.gradle.api.tasks.TaskProvider;
-import org.gradle.api.tasks.SourceSetContainer;
-import org.gradle.api.tasks.SourceSet;
-import org.gradle.api.tasks.SourceSetOutput;
-import org.gradle.api.plugins.ExtensionContainer;
-import org.mockito.stubbing.Answer;
-import org.gradle.api.tasks.TaskContainer;
-import org.gradle.api.Action;
-import org.gradle.api.file.SourceDirectorySet;
-import java.util.Set;
-import org.gradle.api.Project;
-import org.gradle.api.tasks.TaskCollection;
-import org.elasticsearch.gradle.internal.test.RestIntegTestTask;
-import org.mockito.MockedStatic;
-import java.io.File;
-import org.gradle.api.plugins.PluginManager;
-import static org.mockito.Mockito.doNothing;
+
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import org.junit.jupiter.api.Disabled;
 
 @Timeout(value = 5)
 class InternalYamlRestTestPluginSapientGeneratedTest {
@@ -85,17 +89,10 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
 
     private final TaskProvider<RestIntegTestTask> taskProviderMock4 = mock(TaskProvider.class);
 
-    //Sapient generated method id: ${applyWhenFGetNameEqualsResources}, hash: 65BC62F4E5BB8E7CD5387EA466824014
-    @Disabled()
-    @Test()
+    @Test
     void applyWhenFGetNameEqualsResources() throws UnknownDomainObjectException, InvalidUserDataException, UnknownTaskException {
-        /* Branches:
-         * (f.isDirectory()) : true  #  inside lambda$apply$1 method
-         * (f.getName().equals("resources")) : true  #  inside lambda$apply$1 method
-         */
-        //Arrange Statement(s)
         try (MockedStatic<RestTestUtil> restTestUtil = mockStatic(RestTestUtil.class);
-            MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
+             MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
             doNothing().when(pluginManagerMock).apply(RestTestBasePlugin.class);
             doReturn(pluginManagerMock, pluginManagerMock2).when(projectMock).getPluginManager();
             doNothing().when(pluginManagerMock2).apply(RestResourcesPlugin.class);
@@ -112,23 +109,21 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
             doReturn(sourceSetOutputMock, sourceSetOutputMock2).when(sourceSetMock).getOutput();
             doNothing().when(sourceSetOutputMock2).dir(providerMock2);
             doReturn(taskProviderMock).when(taskContainerMock).named("check");
-            doNothing().when(taskProviderMock).configure((Action) any());
+            doNothing().when(taskProviderMock).configure(any(Action.class));
             doReturn(taskCollectionMock).when(taskContainerMock2).withType(CopyRestApiTask.class);
-            doNothing().when(taskCollectionMock).configureEach((Action) any());
+            doNothing().when(taskCollectionMock).configureEach(any(Action.class));
             doReturn(taskCollectionMock2).when(taskContainerMock3).withType(CopyRestApiTask.class);
             doReturn(taskProviderMock2).when(taskCollectionMock2).named("copyRestApiSpecsTask");
-            doReturn(providerMock).when(taskProviderMock2).flatMap((Transformer) any());
+            doReturn(providerMock).when(taskProviderMock2).flatMap(any(Transformer.class));
             doReturn(taskContainerMock, taskContainerMock2, taskContainerMock3, taskContainerMock4).when(projectMock).getTasks();
             doReturn(taskCollectionMock3).when(taskContainerMock4).withType(CopyRestTestsTask.class);
             doReturn(taskProviderMock3).when(taskCollectionMock3).named("copyYamlTestsTask");
-            doReturn(providerMock2).when(taskProviderMock3).flatMap((Transformer) any());
+            doReturn(providerMock2).when(taskProviderMock3).flatMap(any(Transformer.class));
             gradleUtils.when(() -> GradleUtils.setupIdeForTestSourceSet(projectMock, sourceSetMock)).thenAnswer((Answer<Void>) invocation -> null);
             restTestUtil.when(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock, "yamlRestTest", RestIntegTestTask.class)).thenReturn(taskProviderMock4);
             restTestUtil.when(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, true)).thenAnswer((Answer<Void>) invocation -> null);
             InternalYamlRestTestPlugin target = new InternalYamlRestTestPlugin();
-            //Act Statement(s)
             target.apply(projectMock);
-            //Assert statement(s)
             assertAll("result", () -> {
                 verify(projectMock, times(2)).getPluginManager();
                 verify(pluginManagerMock).apply(RestTestBasePlugin.class);
@@ -145,15 +140,15 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
                 verify(sourceSetOutputMock2).dir(providerMock2);
                 verify(projectMock, times(4)).getTasks();
                 verify(taskContainerMock).named("check");
-                verify(taskProviderMock).configure((Action) any());
+                verify(taskProviderMock).configure(any(Action.class));
                 verify(taskContainerMock2).withType(CopyRestApiTask.class);
-                verify(taskCollectionMock).configureEach((Action) any());
+                verify(taskCollectionMock).configureEach(any(Action.class));
                 verify(taskContainerMock3).withType(CopyRestApiTask.class);
                 verify(taskCollectionMock2).named("copyRestApiSpecsTask");
-                verify(taskProviderMock2).flatMap((Transformer) any());
+                verify(taskProviderMock2).flatMap(any(Transformer.class));
                 verify(taskContainerMock4).withType(CopyRestTestsTask.class);
                 verify(taskCollectionMock3).named("copyYamlTestsTask");
-                verify(taskProviderMock3).flatMap((Transformer) any());
+                verify(taskProviderMock3).flatMap(any(Transformer.class));
                 gradleUtils.verify(() -> GradleUtils.setupIdeForTestSourceSet(projectMock, sourceSetMock), atLeast(1));
                 restTestUtil.verify(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock, "yamlRestTest", RestIntegTestTask.class), atLeast(1));
                 restTestUtil.verify(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, true), atLeast(1));
@@ -161,17 +156,10 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
         }
     }
 
-    //Sapient generated method id: ${applyWhenFGetNameNotEqualsResources}, hash: A281864ACE131AC6CF2A70C5205511F3
-    @Disabled()
-    @Test()
+    @Test
     void applyWhenFGetNameNotEqualsResources() throws UnknownDomainObjectException, InvalidUserDataException, UnknownTaskException {
-        /* Branches:
-         * (f.isDirectory()) : true  #  inside lambda$apply$1 method
-         * (f.getName().equals("resources")) : false  #  inside lambda$apply$1 method
-         */
-        //Arrange Statement(s)
         try (MockedStatic<RestTestUtil> restTestUtil = mockStatic(RestTestUtil.class);
-            MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
+             MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
             doNothing().when(pluginManagerMock).apply(RestTestBasePlugin.class);
             doReturn(pluginManagerMock, pluginManagerMock2).when(projectMock).getPluginManager();
             doNothing().when(pluginManagerMock2).apply(RestResourcesPlugin.class);
@@ -188,23 +176,21 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
             doReturn(sourceSetOutputMock, sourceSetOutputMock2).when(sourceSetMock).getOutput();
             doNothing().when(sourceSetOutputMock2).dir(providerMock2);
             doReturn(taskProviderMock).when(taskContainerMock).named("check");
-            doNothing().when(taskProviderMock).configure((Action) any());
+            doNothing().when(taskProviderMock).configure(any(Action.class));
             doReturn(taskCollectionMock).when(taskContainerMock2).withType(CopyRestApiTask.class);
-            doNothing().when(taskCollectionMock).configureEach((Action) any());
+            doNothing().when(taskCollectionMock).configureEach(any(Action.class));
             doReturn(taskCollectionMock2).when(taskContainerMock3).withType(CopyRestApiTask.class);
             doReturn(taskProviderMock2).when(taskCollectionMock2).named("copyRestApiSpecsTask");
-            doReturn(providerMock).when(taskProviderMock2).flatMap((Transformer) any());
+            doReturn(providerMock).when(taskProviderMock2).flatMap(any(Transformer.class));
             doReturn(taskContainerMock, taskContainerMock2, taskContainerMock3, taskContainerMock4).when(projectMock).getTasks();
             doReturn(taskCollectionMock3).when(taskContainerMock4).withType(CopyRestTestsTask.class);
             doReturn(taskProviderMock3).when(taskCollectionMock3).named("copyYamlTestsTask");
-            doReturn(providerMock2).when(taskProviderMock3).flatMap((Transformer) any());
+            doReturn(providerMock2).when(taskProviderMock3).flatMap(any(Transformer.class));
             gradleUtils.when(() -> GradleUtils.setupIdeForTestSourceSet(projectMock, sourceSetMock)).thenAnswer((Answer<Void>) invocation -> null);
             restTestUtil.when(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock, "yamlRestTest", RestIntegTestTask.class)).thenReturn(taskProviderMock4);
             restTestUtil.when(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, true)).thenAnswer((Answer<Void>) invocation -> null);
             InternalYamlRestTestPlugin target = new InternalYamlRestTestPlugin();
-            //Act Statement(s)
             target.apply(projectMock);
-            //Assert statement(s)
             assertAll("result", () -> {
                 verify(projectMock, times(2)).getPluginManager();
                 verify(pluginManagerMock).apply(RestTestBasePlugin.class);
@@ -221,15 +207,15 @@ class InternalYamlRestTestPluginSapientGeneratedTest {
                 verify(sourceSetOutputMock2).dir(providerMock2);
                 verify(projectMock, times(4)).getTasks();
                 verify(taskContainerMock).named("check");
-                verify(taskProviderMock).configure((Action) any());
+                verify(taskProviderMock).configure(any(Action.class));
                 verify(taskContainerMock2).withType(CopyRestApiTask.class);
-                verify(taskCollectionMock).configureEach((Action) any());
+                verify(taskCollectionMock).configureEach(any(Action.class));
                 verify(taskContainerMock3).withType(CopyRestApiTask.class);
                 verify(taskCollectionMock2).named("copyRestApiSpecsTask");
-                verify(taskProviderMock2).flatMap((Transformer) any());
+                verify(taskProviderMock2).flatMap(any(Transformer.class));
                 verify(taskContainerMock4).withType(CopyRestTestsTask.class);
                 verify(taskCollectionMock3).named("copyYamlTestsTask");
-                verify(taskProviderMock3).flatMap((Transformer) any());
+                verify(taskProviderMock3).flatMap(any(Transformer.class));
                 gradleUtils.verify(() -> GradleUtils.setupIdeForTestSourceSet(projectMock, sourceSetMock), atLeast(1));
                 restTestUtil.verify(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock, "yamlRestTest", RestIntegTestTask.class), atLeast(1));
                 restTestUtil.verify(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, true), atLeast(1));

@@ -1,138 +1,154 @@
 package org.elasticsearch.gradle.internal.release;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
+import org.elasticsearch.gradle.internal.release.GitWrapper;
+
 import java.util.Map;
-import org.gradle.api.Action;
-import java.util.stream.Stream;
-import org.gradle.process.ExecResult;
-import org.gradle.process.ExecOperations;
+
 import static org.mockito.ArgumentMatchers.any;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.gradle.api.Action;
+import org.junit.jupiter.api.Timeout;
+import org.gradle.process.ExecOperations;
+import org.gradle.process.ExecResult;
+
+import java.util.stream.Stream;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.doReturn;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class GitWrapperSapientGeneratedTest {
 
     private final ExecOperations execOperationsMock = mock(ExecOperations.class, "execOperations");
 
-    //Sapient generated method id: ${listRemotesTest}, hash: 6AE81AB20518E06A3CC5F2C00E1F7B80
-    @Test()
+    @Test
     void listRemotesTest() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-         //Arrange Statement(s)
         GitWrapper target = spy(new GitWrapper(execOperationsMock));
-        String[] stringArray = new String[] { "git", "remote", "-v" };
-        doReturn("A").when(target).runCommand(stringArray);
-        
-        //Act Statement(s)
+        String[] stringArray = new String[]{"git", "remote", "-v"};
+        doReturn("origin\thttps://github.com/elastic/elasticsearch.git (fetch)\n" + "origin\thttps://github.com/elastic/elasticsearch.git (push)\n" + "upstream\thttps://github.com/elastic/elasticsearch.git (fetch)\n" + "upstream\thttps://github.com/elastic/elasticsearch.git (push)").when(target).runCommand(stringArray);
         Map<String, String> result = target.listRemotes();
-        
-        //Assert statement(s)
         assertAll("result", () -> {
-            assertThat(result.size(), equalTo(0));
+            assertThat(result.size(), equalTo(2));
+            assertThat(result, hasEntry("origin", "https://github.com/elastic/elasticsearch.git"));
+            assertThat(result, hasEntry("upstream", "https://github.com/elastic/elasticsearch.git"));
             verify(target).runCommand(stringArray);
         });
     }
 
-    //Sapient generated method id: ${runCommandTest}, hash: 0516694D54CE8C76D059B57E90F0809B
-    @Test()
+    @Test
     void runCommandTest() {
-        //Arrange Statement(s)
         ExecResult execResultMock = mock(ExecResult.class);
-        doReturn(execResultMock).when(execOperationsMock).exec((Action) any());
+        doReturn(execResultMock).when(execOperationsMock).exec(any(Action.class));
         GitWrapper target = new GitWrapper(execOperationsMock);
-        String[] stringArray = new String[] {};
-        
-        //Act Statement(s)
+        String[] stringArray = new String[]{"git", "status"};
         String result = target.runCommand(stringArray);
-        
-        //Assert statement(s)
         assertAll("result", () -> {
-            assertThat(result, equalTo(""));
-            verify(execOperationsMock).exec((Action) any());
+            assertThat(result, notNullValue());
+            assertThat(result, isEmptyString());
+            verify(execOperationsMock).exec(any(Action.class));
         });
     }
 
-    //Sapient generated method id: ${updateRemoteTest}, hash: 551CBF9CF19C12252DB4D907A2804557
-    @Test()
+    @Test
     void updateRemoteTest() {
-        //Arrange Statement(s)
         GitWrapper target = spy(new GitWrapper(execOperationsMock));
-        String[] stringArray = new String[] { "git", "fetch", "remote1" };
-        doReturn("return_of_runCommand1").when(target).runCommand(stringArray);
-        
-        //Act Statement(s)
-        target.updateRemote("remote1");
-        
-        //Assert statement(s)
-        assertAll("result", () -> verify(target).runCommand(stringArray));
+        String[] stringArray = new String[]{"git", "fetch", "origin"};
+        doReturn("").when(target).runCommand(stringArray);
+        target.updateRemote("origin");
+        verify(target).runCommand(stringArray);
     }
 
-    //Sapient generated method id: ${updateTagsTest}, hash: F826A385AC14B807AC34F449D57852FF
-    @Test()
+    @Test
     void updateTagsTest() {
-        //Arrange Statement(s)
         GitWrapper target = spy(new GitWrapper(execOperationsMock));
-        String[] stringArray = new String[] { "git", "fetch", "--tags", "remote1" };
-        doReturn("return_of_runCommand1").when(target).runCommand(stringArray);
-        
-        //Act Statement(s)
-        target.updateTags("remote1");
-        
-        //Assert statement(s)
-        assertAll("result", () -> verify(target).runCommand(stringArray));
+        String[] stringArray = new String[]{"git", "fetch", "--tags", "origin"};
+        doReturn("").when(target).runCommand(stringArray);
+        target.updateTags("origin");
+        verify(target).runCommand(stringArray);
     }
 
-    //Sapient generated method id: ${listVersionsTest}, hash: 60B227B7215E62CEDCD08CF0549A3C61
-    @Test()
+    @Test
     void listVersionsTest() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-         //Arrange Statement(s)
         GitWrapper target = spy(new GitWrapper(execOperationsMock));
-        String[] stringArray = new String[] { "git", "tag", "-l", "pattern1" };
-        doReturn("A").when(target).runCommand(stringArray);
-        
-        //Act Statement(s)
-        Stream<QualifiedVersion> result = target.listVersions("pattern1");
-        
-        //Assert statement(s)
-        //TODO: Please implement equals method in Stream for verification of the entire object or you need to adjust respective assertion statements
+        String[] stringArray = new String[]{"git", "tag", "-l", "v*"};
+        doReturn("v7.10.0\nv7.10.1\nv7.11.0-alpha1").when(target).runCommand(stringArray);
+        Stream<QualifiedVersion> result = target.listVersions("v*");
         assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
+            assertThat(result, notNullValue());
+            assertThat(result.count(), equalTo(3L));
             verify(target).runCommand(stringArray);
         });
     }
 
-    //Sapient generated method id: ${listFilesTest}, hash: 885EF59DCAA729A8B04E9ABAF4DE4734
-    @Test()
+    @Test
     void listFilesTest() {
-        //Arrange Statement(s)
         GitWrapper target = spy(new GitWrapper(execOperationsMock));
-        String[] stringArray = new String[] { "git", "ls-tree", "--name-only", "-r", "ref1", "path1" };
-        doReturn("A").when(target).runCommand(stringArray);
-        
-        //Act Statement(s)
-        Stream<String> result = target.listFiles("ref1", "path1");
-        
-        //Assert statement(s)
-        //TODO: Please implement equals method in Stream for verification of the entire object or you need to adjust respective assertion statements
+        String[] stringArray = new String[]{"git", "ls-tree", "--name-only", "-r", "HEAD", "src"};
+        doReturn("src/main/java/File1.java\nsrc/main/java/File2.java").when(target).runCommand(stringArray);
+        Stream<String> result = target.listFiles("HEAD", "src");
         assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
+            assertThat(result, notNullValue());
+            assertThat(result.count(), equalTo(2L));
+            verify(target).runCommand(stringArray);
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource({"origin, https://github.com/elastic/elasticsearch.git", "upstream, https://github.com/elastic/elasticsearch.git"})
+    void listRemotesParameterizedTest(String remoteName, String remoteUrl) {
+        GitWrapper target = spy(new GitWrapper(execOperationsMock));
+        String[] stringArray = new String[]{"git", "remote", "-v"};
+        doReturn(remoteName + "\t" + remoteUrl + " (fetch)\n" + remoteName + "\t" + remoteUrl + " (push)").when(target).runCommand(stringArray);
+        Map<String, String> result = target.listRemotes();
+        assertAll("result", () -> {
+            assertThat(result.size(), equalTo(1));
+            assertThat(result, hasEntry(remoteName, remoteUrl));
+            verify(target).runCommand(stringArray);
+        });
+    }
+
+    @Test
+    void updateRemoteNullTest() {
+        GitWrapper target = new GitWrapper(execOperationsMock);
+        assertThrows(NullPointerException.class, () -> target.updateRemote(null));
+    }
+
+    @Test
+    void updateTagsNullTest() {
+        GitWrapper target = new GitWrapper(execOperationsMock);
+        assertThrows(NullPointerException.class, () -> target.updateTags(null));
+    }
+
+    @Test
+    void listVersionsEmptyTest() {
+        GitWrapper target = spy(new GitWrapper(execOperationsMock));
+        String[] stringArray = new String[]{"git", "tag", "-l", "non-existent-pattern"};
+        doReturn("").when(target).runCommand(stringArray);
+        Stream<QualifiedVersion> result = target.listVersions("non-existent-pattern");
+        assertAll("result", () -> {
+            assertThat(result, notNullValue());
+            assertThat(result.count(), equalTo(0L));
+            verify(target).runCommand(stringArray);
+        });
+    }
+
+    @Test
+    void listFilesEmptyTest() {
+        GitWrapper target = spy(new GitWrapper(execOperationsMock));
+        String[] stringArray = new String[]{"git", "ls-tree", "--name-only", "-r", "HEAD", "non-existent-path"};
+        doReturn("").when(target).runCommand(stringArray);
+        Stream<String> result = target.listFiles("HEAD", "non-existent-path");
+        assertAll("result", () -> {
+            assertThat(result, notNullValue());
+            assertThat(result.count(), equalTo(0L));
             verify(target).runCommand(stringArray);
         });
     }

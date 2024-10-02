@@ -1,61 +1,74 @@
 package org.elasticsearch.gradle.internal;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import org.gradle.api.tasks.TaskProvider;
-import java.util.function.Supplier;
-import org.gradle.api.Action;
-import org.gradle.api.tasks.Sync;
-import org.gradle.api.file.CopySpec;
-import org.gradle.api.tasks.bundling.AbstractArchiveTask;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import org.junit.jupiter.api.Disabled;
+import org.elasticsearch.gradle.internal.DistributionArchive;
 
-@Timeout(value = 5)
+import org.gradle.api.file.CopySpec;
+import org.gradle.api.tasks.Sync;
+import org.gradle.api.tasks.bundling.AbstractArchiveTask;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.gradle.api.tasks.TaskProvider;
+
+import java.util.function.Supplier;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.Action;
+
+import static org.mockito.ArgumentMatchers.any;
+
 class DistributionArchiveSapientGeneratedTest {
 
     private final TaskProvider<AbstractArchiveTask> archiveTaskMock = mock(TaskProvider.class, "archiveTask");
 
     private final TaskProvider<Sync> expandedDistTaskMock = mock(TaskProvider.class, "expandedDistTask");
 
-    //Sapient generated method id: ${setArchiveClassifierTest}, hash: 4E6D1DF67C1A260B9F83966312F117BB
-    @Test()
+    private final AbstractArchiveTask abstractArchiveTaskMock = mock(AbstractArchiveTask.class);
+
+    private final Sync syncTaskMock = mock(Sync.class);
+
+    @Test
     void setArchiveClassifierTest() {
-        //Arrange Statement(s)
-        doNothing().when(archiveTaskMock).configure((Action) any());
+        doReturn(abstractArchiveTaskMock).when(archiveTaskMock).configure(any());
         DistributionArchive target = new DistributionArchive(archiveTaskMock, expandedDistTaskMock, "name1");
-        //Act Statement(s)
         target.setArchiveClassifier("classifier1");
-        //Assert statement(s)
-        assertAll("result", () -> verify(archiveTaskMock).configure((Action) any()));
+        verify(archiveTaskMock).configure(any());
     }
 
-    //Sapient generated method id: ${contentTest}, hash: 4F0241E07E711055A9EF1038F0534E12
-    @Disabled()
-    @Test()
+    @Test
     void contentTest() {
-        //Arrange Statement(s)
-        Supplier pMock = mock(Supplier.class);
+        Supplier<CopySpec> pMock = mock(Supplier.class);
         CopySpec copySpecMock = mock(CopySpec.class);
-        CopySpec copySpecMock2 = mock(CopySpec.class);
-        doReturn(copySpecMock, copySpecMock2).when(pMock).get();
-        doNothing().when(archiveTaskMock).configure((Action) any());
-        doNothing().when(expandedDistTaskMock).configure((Action) any());
+        doReturn(copySpecMock).when(pMock).get();
+        doReturn(abstractArchiveTaskMock).when(archiveTaskMock).configure(any());
+        doReturn(syncTaskMock).when(expandedDistTaskMock).configure(any());
         DistributionArchive target = new DistributionArchive(archiveTaskMock, expandedDistTaskMock, "name1");
-        //Act Statement(s)
         target.content(pMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            verify(pMock, times(2)).get();
-            verify(archiveTaskMock).configure((Action) any());
-            verify(expandedDistTaskMock).configure((Action) any());
-        });
+        verify(pMock, times(2)).get();
+        verify(archiveTaskMock).configure(any());
+        verify(expandedDistTaskMock).configure(any());
+    }
+
+    @Test
+    void getNameTest() {
+        DistributionArchive target = new DistributionArchive(archiveTaskMock, expandedDistTaskMock, "testName");
+        String result = target.getName();
+        assertEquals("testName", result);
+    }
+
+    @Test
+    void getArchiveTaskTest() {
+        DistributionArchive target = new DistributionArchive(archiveTaskMock, expandedDistTaskMock, "name1");
+        TaskProvider<? extends AbstractArchiveTask> result = target.getArchiveTask();
+        assertEquals(archiveTaskMock, result);
+    }
+
+    @Test
+    void getExpandedDistTaskTest() {
+        DistributionArchive target = new DistributionArchive(archiveTaskMock, expandedDistTaskMock, "name1");
+        TaskProvider<Sync> result = target.getExpandedDistTask();
+        assertEquals(expandedDistTaskMock, result);
     }
 }

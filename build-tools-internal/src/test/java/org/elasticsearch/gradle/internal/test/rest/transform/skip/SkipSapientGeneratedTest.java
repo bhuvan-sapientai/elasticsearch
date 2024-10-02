@@ -1,111 +1,109 @@
 package org.elasticsearch.gradle.internal.test.rest.transform.skip;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformByParentObject;
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransform;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.junit.jupiter.api.Timeout;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.Iterator;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+import static org.hamcrest.Matchers.*;
+
+import org.gradle.api.tasks.Input;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformGlobalSetup;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class SkipSapientGeneratedTest {
 
-    //Sapient generated method id: ${transformSetupWhenFoundEqualsFalse}, hash: 9967704F698C9CC389D53A1FA989B8C1
-    @Test()
-    void transformSetupWhenFoundEqualsFalse() {
-        /* Branches:
-         * (testName.isBlank()) : true
-         * (setupNodeParent == null) : false
-         * (skipParentIt.hasNext()) : false  #  inside addSkip method
-         * (found == false) : true  #  inside addSkip method
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @Test
+    void transformSetupWhenTestNameIsBlank() {
+        Skip target = new Skip("skipReason1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode setupNodeParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode result = target.transformSetup(setupNodeParent);
+        assertAll(() -> assertThat(result, notNullValue()), () -> assertThat(result.has("setup"), is(true)), () -> assertThat(result.get("setup"), instanceOf(ArrayNode.class)), () -> assertThat(result.get("setup").size(), is(1)), () -> assertThat(result.get("setup").get(0).has("skip"), is(true)), () -> assertThat(result.get("setup").get(0).get("skip").get("awaits_fix").asText(), is("skipReason1")));
+    }
+
+    @Test
+    void transformSetupWhenTestNameIsNotBlank() {
         Skip target = new Skip("testName1", "skipReason1");
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        ObjectNode result = target.transformSetup(objectNode);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(objectNode)));
+        ObjectNode setupNodeParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode result = target.transformSetup(setupNodeParent);
+        assertThat(result, equalTo(setupNodeParent));
     }
 
-    //Sapient generated method id: ${transformSetupWhenFoundNotEqualsFalse}, hash: 11BBE476C55480F30095750ED5A4154D
-    @Disabled()
-    @Test()
-    void transformSetupWhenFoundNotEqualsFalse() {
-        /* Branches:
-         * (testName.isBlank()) : true
-         * (setupNodeParent == null) : true
-         * (skipParentIt.hasNext()) : true  #  inside addSkip method
-         * (arrayEntry.isObject()) : true  #  inside addSkip method
-         * (skipCandidate.get("skip") != null) : true  #  inside addSkip method
-         * (found == false) : false  #  inside addSkip method
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: skipParentIt - Method: hasNext
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @Test
+    void transformSetupWhenSetupNodeParentIsNull() {
+        Skip target = new Skip("skipReason1");
+        ObjectNode result = target.transformSetup(null);
+        assertAll(() -> assertThat(result, notNullValue()), () -> assertThat(result.has("setup"), is(true)), () -> assertThat(result.get("setup"), instanceOf(ArrayNode.class)), () -> assertThat(result.get("setup").size(), is(1)), () -> assertThat(result.get("setup").get(0).has("skip"), is(true)), () -> assertThat(result.get("setup").get(0).get("skip").get("awaits_fix").asText(), is("skipReason1")));
+    }
+
+    @Test
+    void transformSetupWhenSkipAlreadyExists() {
+        Skip target = new Skip("skipReason1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode setupNodeParent = new ObjectNode(jsonNodeFactory);
+        ArrayNode setupNode = setupNodeParent.putArray("setup");
+        ObjectNode existingSkip = setupNode.addObject();
+        existingSkip.putObject("skip").put("awaits_fix", "oldReason");
+        ObjectNode result = target.transformSetup(setupNodeParent);
+        assertAll(() -> assertThat(result, notNullValue()), () -> assertThat(result.has("setup"), is(true)), () -> assertThat(result.get("setup"), instanceOf(ArrayNode.class)), () -> assertThat(result.get("setup").size(), is(1)), () -> assertThat(result.get("setup").get(0).has("skip"), is(true)), () -> assertThat(result.get("setup").get(0).get("skip").get("awaits_fix").asText(), is("skipReason1")));
+    }
+
+    @Test
+    void transformTestWhenTestNameIsNotBlank() {
         Skip target = new Skip("testName1", "skipReason1");
-        ObjectNode objectNode = null;
-        //Act Statement(s)
-        ObjectNode result = target.transformSetup(objectNode);
-        JsonNodeFactory jsonNodeFactory = JsonNodeFactory.withExactBigDecimals(false);
-        ObjectNode objectNode2 = new ObjectNode(jsonNodeFactory);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(objectNode2)));
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parent = new ObjectNode(jsonNodeFactory);
+        parent.set("testName1", new ArrayNode(jsonNodeFactory));
+        target.transformTest(parent);
+        assertAll(() -> assertThat(parent.has("testName1"), is(true)), () -> assertThat(parent.get("testName1"), instanceOf(ArrayNode.class)), () -> assertThat(parent.get("testName1").size(), is(1)), () -> assertThat(parent.get("testName1").get(0).has("skip"), is(true)), () -> assertThat(parent.get("testName1").get(0).get("skip").get("awaits_fix").asText(), is("skipReason1")));
     }
 
-    //Sapient generated method id: ${transformTestWhenDefaultBranchThrowsAssertionError}, hash: C33727396701257C4F4414E424E22E85
-    @Test()
-    void transformTestWhenDefaultBranchThrowsAssertionError() {
-        /* Branches:
-         * (testName.isBlank() == false) : true
-         * (branch expression (line 90)) : false
-         */
-        //Arrange Statement(s)
-        Skip target = new Skip("A", "skipReason1");
+    @Test
+    void transformTestWhenTestNameIsBlank() {
+        Skip target = new Skip("skipReason1");
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        final AssertionError result = assertThrows(AssertionError.class, () -> {
-            target.transformTest(objectNode);
-        });
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(notNullValue())));
+        ObjectNode parent = new ObjectNode(jsonNodeFactory);
+        target.transformTest(parent);
+        assertThat(parent.size(), is(0));
     }
 
-    //Sapient generated method id: ${transformTestWhenFoundNotEqualsFalse}, hash: C95F8A9E1FCEEDEAED4D7056F4C35A74
-    @Disabled()
-    @Test()
-    void transformTestWhenFoundNotEqualsFalse() {
-        /* Branches:
-         * (testName.isBlank() == false) : true
-         * (branch expression (line 90)) : false
-         * (skipParentIt.hasNext()) : true  #  inside addSkip method
-         * (arrayEntry.isObject()) : true  #  inside addSkip method
-         * (skipCandidate.get("skip") != null) : true  #  inside addSkip method
-         * (found == false) : false  #  inside addSkip method
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Skip target = new Skip("A", "B");
+    @Test
+    void transformTestWhenParentDoesNotContainTestName() {
+        Skip target = new Skip("testName1", "skipReason1");
         JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        target.transformTest(objectNode);
+        ObjectNode parent = new ObjectNode(jsonNodeFactory);
+        assertThrows(AssertionError.class, () -> target.transformTest(parent));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"testName1,skipReason1", ",skipReason2"})
+    void gettersTest(String testName, String skipReason) {
+        Skip target = new Skip(testName, skipReason);
+        assertAll(() -> assertThat(target.getTestName(), is(testName == null ? "" : testName)), () -> assertThat(target.getSkipReason(), is(skipReason)));
+    }
+
+    @Test
+    void getKeyToFindTest() {
+        Skip target = new Skip("testName1", "skipReason1");
+        assertThat(target.getKeyToFind(), is("testName1"));
     }
 }

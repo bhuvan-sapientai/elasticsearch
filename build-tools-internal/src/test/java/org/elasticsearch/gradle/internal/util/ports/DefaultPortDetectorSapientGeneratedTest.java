@@ -1,41 +1,75 @@
 package org.elasticsearch.gradle.internal.util.ports;
 
+import org.elasticsearch.gradle.internal.util.ports.DefaultPortDetector;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
-import org.junit.jupiter.api.Disabled;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.net.DatagramSocket;
+
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.net.ServerSocket;
+import java.io.IOException;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class DefaultPortDetectorSapientGeneratedTest {
 
-    //Sapient generated method id: ${isAvailableTest}, hash: 2AE26835D53FB0413D4CCF1F45650330
-    @Test()
+    @Test
     void isAvailableTest() {
-        //Arrange Statement(s)
         DefaultPortDetector target = new DefaultPortDetector();
-        //Act Statement(s)
         boolean result = target.isAvailable(0);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        assertAll("result", () -> assertThat(result, equalTo(true)));
     }
 
-    //Sapient generated method id: ${isAvailableWhenCaughtIOException}, hash: F689755ACB42454875FF32BD6AF19FBC
-    @Disabled()
-    @Test()
-    void isAvailableWhenCaughtIOException() {
-        /* Branches:
-         * (catch-exception (IOException)) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
+    @ParameterizedTest
+    @ValueSource(ints = {1024, 8080, 65535})
+    void isAvailableWithValidPorts(int port) {
         DefaultPortDetector target = new DefaultPortDetector();
-        //Act Statement(s)
-        boolean result = target.isAvailable(0);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.FALSE)));
+        boolean result = target.isAvailable(port);
+        assertAll("result", () -> assertThat(result, equalTo(true)));
+    }
+
+    @Test
+    void isAvailableWhenPortIsOccupied() throws IOException {
+        DefaultPortDetector target = new DefaultPortDetector();
+        int port = 12345;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            boolean result = target.isAvailable(port);
+            assertAll("result", () -> assertThat(result, equalTo(false)));
+        }
+    }
+
+    @Test
+    void isAvailableWhenDatagramPortIsOccupied() throws IOException {
+        DefaultPortDetector target = new DefaultPortDetector();
+        int port = 12346;
+        try (DatagramSocket datagramSocket = new DatagramSocket(port)) {
+            boolean result = target.isAvailable(port);
+            assertAll("result", () -> assertThat(result, equalTo(false)));
+        }
+    }
+
+    @Test
+    void isAvailableWithInvalidPort() {
+        DefaultPortDetector target = new DefaultPortDetector();
+        boolean result = target.isAvailable(-1);
+        assertAll("result", () -> assertThat(result, equalTo(false)));
+    }
+
+    @Test
+    void isAvailableWithMaxPort() {
+        DefaultPortDetector target = new DefaultPortDetector();
+        boolean result = target.isAvailable(65536);
+        assertAll("result", () -> assertThat(result, equalTo(false)));
     }
 }

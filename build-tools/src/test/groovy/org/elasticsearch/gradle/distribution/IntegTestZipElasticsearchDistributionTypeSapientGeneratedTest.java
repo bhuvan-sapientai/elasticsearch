@@ -1,37 +1,51 @@
 package org.elasticsearch.gradle.distribution;
 
+import org.elasticsearch.gradle.distribution.IntegTestZipElasticsearchDistributionType;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.ElasticsearchDistributionType;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class IntegTestZipElasticsearchDistributionTypeSapientGeneratedTest {
 
-    //Sapient generated method id: ${getNameTest}, hash: F41376146AFCE48CA9A71A705EAF1613
-    @Test()
+    @Test
     void getNameTest() {
-        //Arrange Statement(s)
         IntegTestZipElasticsearchDistributionType target = new IntegTestZipElasticsearchDistributionType();
-        
-        //Act Statement(s)
         String result = target.getName();
-        
-        //Assert statement(s)
         assertAll("result", () -> assertThat(result, equalTo("integ-test-zip")));
     }
 
-    //Sapient generated method id: ${shouldExtractTest}, hash: FE6283E69C29163BE71F4FE8ABEA29DD
-    @Test()
+    @Test
     void shouldExtractTest() {
-        //Arrange Statement(s)
         IntegTestZipElasticsearchDistributionType target = new IntegTestZipElasticsearchDistributionType();
-        
-        //Act Statement(s)
         boolean result = target.shouldExtract();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        assertAll("result", () -> assertThat(result, is(true)));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"integ-test-zip, true", "integ-test-zip, false"})
+    void testConstructorAndMethods(String expectedName, boolean expectedShouldExtract) {
+        IntegTestZipElasticsearchDistributionType target = new IntegTestZipElasticsearchDistributionType();
+        assertAll(() -> assertThat(target.getName(), equalTo(expectedName)), () -> assertThat(target.shouldExtract(), is(true)));
+    }
+
+    @Test
+    void testMultipleInstances() {
+        IntegTestZipElasticsearchDistributionType instance1 = new IntegTestZipElasticsearchDistributionType();
+        IntegTestZipElasticsearchDistributionType instance2 = new IntegTestZipElasticsearchDistributionType();
+        assertAll(() -> assertThat(instance1.getName(), equalTo(instance2.getName())), () -> assertThat(instance1.shouldExtract(), is(instance2.shouldExtract())));
     }
 }

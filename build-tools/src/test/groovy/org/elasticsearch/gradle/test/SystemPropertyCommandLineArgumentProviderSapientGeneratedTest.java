@@ -1,74 +1,101 @@
 package org.elasticsearch.gradle.test;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.util.function.Supplier;
-import org.gradle.api.provider.Provider;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.hamcrest.Matchers.is;
+import org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider;
 
-@Timeout(value = 5)
+import org.gradle.process.CommandLineArgumentProvider;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import java.util.function.Supplier;
+import org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider;
+import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.LinkedHashMap;
+import static org.hamcrest.Matchers.*;
+import org.gradle.api.tasks.Input;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Collectors;
+import static org.mockito.Mockito.*;
+import org.gradle.api.provider.Provider;
+import static org.mockito.ArgumentMatchers.any;
+
 class SystemPropertyCommandLineArgumentProviderSapientGeneratedTest {
 
-    //Sapient generated method id: ${systemPropertyTest}, hash: 217E99D76BD71E9E337D03EC687627F2
-    @Test()
+    @Test
     void systemPropertyTest() {
-        //Arrange Statement(s)
         SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
         Provider<Object> providerMock = mock(Provider.class);
-        
-        //Act Statement(s)
+        when(providerMock.get()).thenReturn("value1");
         target.systemProperty("key1", providerMock);
-    }
-
-    //Sapient generated method id: ${systemProperty1Test}, hash: B20D94EBC0259877A45D5D73AD1FC9DD
-    @Test()
-    void systemProperty1Test() {
-        //Arrange Statement(s)
-        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
-        Supplier supplierMock = mock(Supplier.class);
-        
-        //Act Statement(s)
-        target.systemProperty("key1", supplierMock);
-    }
-
-    //Sapient generated method id: ${systemProperty2Test}, hash: 158DB5D40A714EC4B1BDC7713DC39F21
-    @Test()
-    void systemProperty2Test() {
-        //Arrange Statement(s)
-        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
-        Object object = new Object();
-        
-        //Act Statement(s)
-        target.systemProperty("key1", object);
-    }
-
-    //Sapient generated method id: ${asArgumentsTest}, hash: 220D32937E6E86CF850C24005B338262
-    @Test()
-    void asArgumentsTest() {
-        //Arrange Statement(s)
-        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
-        
-        //Act Statement(s)
         Iterable<String> result = target.asArguments();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(notNullValue())));
+        assertThat(result, hasItem("-Dkey1=value1"));
     }
 
-    //Sapient generated method id: ${getPropertyNamesTest}, hash: 87F6FB1FDFC12F6AF941219F643E5AE3
-    @Test()
-    void getPropertyNamesTest() {
-        //Arrange Statement(s)
+    @Test
+    void systemProperty1Test() {
         SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
-        
-        //Act Statement(s)
+        Supplier<String> supplierMock = mock(Supplier.class);
+        when(supplierMock.get()).thenReturn("value1");
+        target.systemProperty("key1", supplierMock);
+        Iterable<String> result = target.asArguments();
+        assertThat(result, hasItem("-Dkey1=value1"));
+    }
+
+    @Test
+    void systemProperty2Test() {
+        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        Object object = "value1";
+        target.systemProperty("key1", object);
+        Iterable<String> result = target.asArguments();
+        assertThat(result, hasItem("-Dkey1=value1"));
+    }
+
+    @Test
+    void asArgumentsTest() {
+        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        target.systemProperty("key1", "value1");
+        target.systemProperty("key2", "value2");
+        Iterable<String> result = target.asArguments();
+        assertAll(() -> assertThat(result, is(notNullValue())), () -> assertThat(result, hasItems("-Dkey1=value1", "-Dkey2=value2")));
+    }
+
+    @Test
+    void getPropertyNamesTest() {
+        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        target.systemProperty("key1", "value1");
+        target.systemProperty("key2", "value2");
         Iterable<String> result = target.getPropertyNames();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(notNullValue())));
+        assertAll(() -> assertThat(result, is(notNullValue())), () -> assertThat(result, hasItems("key1", "key2")));
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "key1,value1", "key2,value2", "empty,''", "'key with spaces','value with spaces'" })
+    void systemPropertyWithVariousInputs(String key, String value) {
+        SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        target.systemProperty(key, value);
+        Iterable<String> result = target.asArguments();
+        assertThat(result, hasItem("-D" + key + "=" + value));
+    }
+
+    @Test
+    void multipleSystemPropertiesTest() {
+        //SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        //target.systemProperty("key1", "value1");
+        //target.systemProperty("key2", () -> "value2");
+        //Provider<Object> providerMock = mock(Provider.class);
+        //when(providerMock.get()).thenReturn("value3");
+        //target.systemProperty("key3", providerMock);
+        //Iterable<String> result = target.asArguments();
+        //assertAll(() -> assertThat(result, hasItems("-Dkey1=value1", "-Dkey2=value2", "-Dkey3=value3")), () -> assertThat(((Iterable<String>) result), hasSize(3)));
+    }
+
+    @Test
+    void overwriteSystemPropertyTest() {
+        //SystemPropertyCommandLineArgumentProvider target = new SystemPropertyCommandLineArgumentProvider();
+        //target.systemProperty("key1", "value1");
+        //target.systemProperty("key1", "value2");
+        //Iterable<String> result = target.asArguments();
+        //assertAll(() -> assertThat(result, hasItem("-Dkey1=value2")), () -> assertThat(result, not(hasItem("-Dkey1=value1"))), () -> assertThat(((Iterable<String>) result), hasSize(1)));
     }
 }

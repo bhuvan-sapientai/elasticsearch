@@ -1,25 +1,39 @@
 package org.elasticsearch.gradle.internal.test.rest.transform;
 
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformer;
+
 import java.util.LinkedList;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
+
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
+
 import java.util.Map;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.JsonNode;
+
 import java.util.Iterator;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.stream.Collectors;
+
 import org.mockito.Mockito;
+
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
-import org.junit.jupiter.api.Disabled;
 
 class RestTestTransformerSapientGeneratedTest {
 
@@ -45,14 +59,14 @@ class RestTestTransformerSapientGeneratedTest {
     void testTransformRestTestsWithSetupAndTeardown() {
         //LinkedList<ObjectNode> tests = new LinkedList<>();
         //ObjectNode setupNode = objectMapper.createObjectNode();
-        //setupNode.put("setup", "setup value");
-        //tests.add(setupNode);
+        //setupNode.set("setup", objectMapper.createObjectNode());
         //ObjectNode teardownNode = objectMapper.createObjectNode();
-        //teardownNode.put("teardown", "teardown value");
+        //teardownNode.set("teardown", objectMapper.createObjectNode());
+        //tests.add(setupNode);
         //tests.add(teardownNode);
         //RestTestTransformGlobalSetup setupTransform = mock(RestTestTransformGlobalSetup.class);
-        //when(setupTransform.transformSetup(any())).thenReturn(setupNode);
         //RestTestTransformGlobalTeardown teardownTransform = mock(RestTestTransformGlobalTeardown.class);
+        //when(setupTransform.transformSetup(any())).thenReturn(setupNode);
         //when(teardownTransform.transformTeardown(any())).thenReturn(teardownNode);
         //List<RestTestTransform<?>> transformations = List.of(setupTransform, teardownTransform);
         //List<ObjectNode> result = transformer.transformRestTests(tests, transformations);
@@ -96,26 +110,25 @@ class RestTestTransformerSapientGeneratedTest {
     }
 
     @ParameterizedTest
-    @CsvSource({ "setup, true, false", "teardown, false, true", "other, false, false" })
+    @CsvSource({"setup, true, false", "teardown, false, true", "other, false, false"})
     void testSetupAndTeardownSectionDetection(String sectionName, boolean isSetup, boolean isTeardown) {
         //LinkedList<ObjectNode> tests = new LinkedList<>();
         //ObjectNode testNode = objectMapper.createObjectNode();
-        //testNode.put(sectionName, "value");
+        //testNode.set(sectionName, objectMapper.createObjectNode());
         //tests.add(testNode);
-        //List<RestTestTransform<?>> transformations = List.of();
+        //RestTestTransformGlobalSetup setupTransform = mock(RestTestTransformGlobalSetup.class);
+        //RestTestTransformGlobalTeardown teardownTransform = mock(RestTestTransformGlobalTeardown.class);
+        //List<RestTestTransform<?>> transformations = List.of(setupTransform, teardownTransform);
         //transformer.transformRestTests(tests, transformations);
-        // We can't directly test private fields, so we'll check the behavior indirectly
         /*if (isSetup) {
-    RestTestTransformGlobalSetup setupTransform = mock(RestTestTransformGlobalSetup.class);
-    when(setupTransform.transformSetup(any())).thenReturn(testNode);
-    transformer.transformRestTests(tests, List.of(setupTransform));
     verify(setupTransform).transformSetup(testNode);
+} else {
+    verify(setupTransform, never()).transformSetup(any());
 }*/
         /*if (isTeardown) {
-    RestTestTransformGlobalTeardown teardownTransform = mock(RestTestTransformGlobalTeardown.class);
-    when(teardownTransform.transformTeardown(any())).thenReturn(testNode);
-    transformer.transformRestTests(tests, List.of(teardownTransform));
     verify(teardownTransform).transformTeardown(testNode);
+} else {
+    verify(teardownTransform, never()).transformTeardown(any());
 }*/
     }
 
@@ -161,7 +174,6 @@ class RestTestTransformerSapientGeneratedTest {
         verify(textTransform).transformTest(any(ObjectNode.class));
     }
 
-    @Disabled()
     @Test
     void testTransformRestTestsWithMultipleTransformations() {
         LinkedList<ObjectNode> tests = new LinkedList<>();
@@ -191,10 +203,36 @@ class RestTestTransformerSapientGeneratedTest {
         tests.add(testNode);
         RestTestTransformByParentObject transform = mock(RestTestTransformByParentObject.class);
         when(transform.getKeyToFind()).thenReturn("key");
-        // This should prevent the transformation
         when(transform.shouldApply(any())).thenReturn(false);
         List<RestTestTransform<?>> transformations = List.of(transform);
         transformer.transformRestTests(tests, transformations);
         verify(transform, never()).transformTest(any(ObjectNode.class));
+    }
+
+    @Test
+    void testTransformRestTestsWithEmptyTransformations() {
+        LinkedList<ObjectNode> tests = new LinkedList<>();
+        ObjectNode testNode = objectMapper.createObjectNode();
+        testNode.put("key", "value");
+        tests.add(testNode);
+        List<RestTestTransform<?>> transformations = List.of();
+        List<ObjectNode> result = transformer.transformRestTests(tests, transformations);
+        assertEquals(1, result.size());
+        assertEquals(testNode, result.get(0));
+    }
+
+    @Test
+    void testTransformRestTestsWithNullValues() {
+        LinkedList<ObjectNode> tests = new LinkedList<>();
+        ObjectNode testNode = objectMapper.createObjectNode();
+        testNode.putNull("nullKey");
+        tests.add(testNode);
+        RestTestTransformByParentObject transform = mock(RestTestTransformByParentObject.class);
+        when(transform.getKeyToFind()).thenReturn("nullKey");
+        when(transform.shouldApply(any())).thenReturn(true);
+        when(transform.requiredChildKey()).thenReturn(null);
+        List<RestTestTransform<?>> transformations = List.of(transform);
+        transformer.transformRestTests(tests, transformations);
+        verify(transform).transformTest(any(ObjectNode.class));
     }
 }

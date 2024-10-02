@@ -1,60 +1,59 @@
 package org.elasticsearch.gradle.internal.precommit;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import org.gradle.api.UnknownTaskException;
-import org.elasticsearch.gradle.jarhell.JarHellTask;
-import org.gradle.api.artifacts.Dependency;
-import org.gradle.api.tasks.TaskContainer;
-import org.elasticsearch.gradle.jarhell.JarHellPlugin;
-import org.gradle.api.Project;
-import org.gradle.api.tasks.TaskCollection;
-import org.gradle.api.artifacts.dsl.DependencyHandler;
-import org.gradle.api.tasks.TaskProvider;
-import org.gradle.api.Task;
-import org.gradle.api.plugins.PluginManager;
-import static org.mockito.Mockito.doNothing;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.verify;
+import org.elasticsearch.gradle.internal.precommit.JarHellPrecommitPlugin;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
+
+import org.elasticsearch.gradle.jarhell.JarHellTask;
+import org.gradle.api.plugins.PluginManager;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.gradle.api.Project;
+import org.junit.jupiter.api.Timeout;
+import org.gradle.api.tasks.TaskCollection;
+import org.gradle.api.tasks.TaskContainer;
+import org.gradle.api.UnknownTaskException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.gradle.api.artifacts.dsl.DependencyHandler;
+import org.gradle.api.artifacts.Dependency;
+import org.gradle.api.tasks.TaskProvider;
+import org.elasticsearch.gradle.jarhell.JarHellPlugin;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.Task;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class JarHellPrecommitPluginSapientGeneratedTest {
 
-    //Sapient generated method id: ${createTaskWhenElasticsearchCoreProjectIsNotNull}, hash: B3E3410129DDEDD7D8E1D86FBF09978F
-    @Test()
+    @Test
     void createTaskWhenElasticsearchCoreProjectIsNotNull() throws UnknownTaskException {
-        /* Branches:
-         * (project.getPath().equals(":libs:elasticsearch-core") == false) : true
-         * (elasticsearchCoreProject != null) : true
-         */
-         //Arrange Statement(s)
+        // Arrange
         Project projectMock = mock(Project.class);
         PluginManager pluginManagerMock = mock(PluginManager.class);
-        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
-        doNothing().when(pluginManagerMock).apply(JarHellPlugin.class);
-        doReturn("A").when(projectMock).getPath();
-        Project projectMock2 = mock(Project.class);
-        doReturn(projectMock2).when(projectMock).findProject(":libs:elasticsearch-core");
         DependencyHandler dependencyHandlerMock = mock(DependencyHandler.class);
-        doReturn(dependencyHandlerMock).when(projectMock).getDependencies();
-        Dependency dependencyMock = mock(Dependency.class);
-        doReturn(dependencyMock).when(dependencyHandlerMock).add("jarHell", projectMock2);
         TaskContainer taskContainerMock = mock(TaskContainer.class);
+        TaskCollection<JarHellTask> taskCollectionMock = mock(TaskCollection.class);
+        TaskProvider<JarHellTask> taskProviderMock = mock(TaskProvider.class);
+        Project elasticsearchCoreProjectMock = mock(Project.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doReturn("A").when(projectMock).getPath();
+        doReturn(elasticsearchCoreProjectMock).when(projectMock).findProject(":libs:elasticsearch-core");
+        doReturn(dependencyHandlerMock).when(projectMock).getDependencies();
         doReturn(taskContainerMock).when(projectMock).getTasks();
-        TaskCollection taskCollectionMock = mock(TaskCollection.class);
         doReturn(taskCollectionMock).when(taskContainerMock).withType(JarHellTask.class);
-        TaskProvider<Task> taskProviderMock = mock(TaskProvider.class);
         doReturn(taskProviderMock).when(taskCollectionMock).named("jarHell");
         JarHellPrecommitPlugin target = new JarHellPrecommitPlugin();
-        
-        //Act Statement(s)
+        // Act
         TaskProvider<? extends Task> result = target.createTask(projectMock);
-        
-        //Assert statement(s)
+        // Assert
         assertAll("result", () -> {
             assertThat(result, equalTo(taskProviderMock));
             verify(projectMock).getPluginManager();
@@ -62,10 +61,88 @@ class JarHellPrecommitPluginSapientGeneratedTest {
             verify(projectMock).getPath();
             verify(projectMock).findProject(":libs:elasticsearch-core");
             verify(projectMock).getDependencies();
-            verify(dependencyHandlerMock).add("jarHell", projectMock2);
+            verify(dependencyHandlerMock).add("jarHell", elasticsearchCoreProjectMock);
             verify(projectMock).getTasks();
             verify(taskContainerMock).withType(JarHellTask.class);
             verify(taskCollectionMock).named("jarHell");
         });
+    }
+
+    @Test
+    void createTaskWhenElasticsearchCoreProjectIsNull() throws UnknownTaskException {
+        // Arrange
+        Project projectMock = mock(Project.class);
+        PluginManager pluginManagerMock = mock(PluginManager.class);
+        TaskContainer taskContainerMock = mock(TaskContainer.class);
+        TaskCollection<JarHellTask> taskCollectionMock = mock(TaskCollection.class);
+        TaskProvider<JarHellTask> taskProviderMock = mock(TaskProvider.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doReturn("A").when(projectMock).getPath();
+        doReturn(null).when(projectMock).findProject(":libs:elasticsearch-core");
+        doReturn(taskContainerMock).when(projectMock).getTasks();
+        doReturn(taskCollectionMock).when(taskContainerMock).withType(JarHellTask.class);
+        doReturn(taskProviderMock).when(taskCollectionMock).named("jarHell");
+        JarHellPrecommitPlugin target = new JarHellPrecommitPlugin();
+        // Act
+        TaskProvider<? extends Task> result = target.createTask(projectMock);
+        // Assert
+        assertAll("result", () -> {
+            assertThat(result, equalTo(taskProviderMock));
+            verify(projectMock).getPluginManager();
+            verify(pluginManagerMock).apply(JarHellPlugin.class);
+            verify(projectMock).getPath();
+            verify(projectMock).findProject(":libs:elasticsearch-core");
+            verify(projectMock, never()).getDependencies();
+            verify(projectMock).getTasks();
+            verify(taskContainerMock).withType(JarHellTask.class);
+            verify(taskCollectionMock).named("jarHell");
+        });
+    }
+
+    @Test
+    void createTaskWhenProjectPathIsElasticsearchCore() throws UnknownTaskException {
+        // Arrange
+        Project projectMock = mock(Project.class);
+        PluginManager pluginManagerMock = mock(PluginManager.class);
+        TaskContainer taskContainerMock = mock(TaskContainer.class);
+        TaskCollection<JarHellTask> taskCollectionMock = mock(TaskCollection.class);
+        TaskProvider<JarHellTask> taskProviderMock = mock(TaskProvider.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doReturn(":libs:elasticsearch-core").when(projectMock).getPath();
+        doReturn(taskContainerMock).when(projectMock).getTasks();
+        doReturn(taskCollectionMock).when(taskContainerMock).withType(JarHellTask.class);
+        doReturn(taskProviderMock).when(taskCollectionMock).named("jarHell");
+        JarHellPrecommitPlugin target = new JarHellPrecommitPlugin();
+        // Act
+        TaskProvider<? extends Task> result = target.createTask(projectMock);
+        // Assert
+        assertAll("result", () -> {
+            assertThat(result, equalTo(taskProviderMock));
+            verify(projectMock).getPluginManager();
+            verify(pluginManagerMock).apply(JarHellPlugin.class);
+            verify(projectMock).getPath();
+            verify(projectMock, never()).findProject(":libs:elasticsearch-core");
+            verify(projectMock, never()).getDependencies();
+            verify(projectMock).getTasks();
+            verify(taskContainerMock).withType(JarHellTask.class);
+            verify(taskCollectionMock).named("jarHell");
+        });
+    }
+
+    @Test
+    void createTaskThrowsUnknownTaskException() {
+        // Arrange
+        Project projectMock = mock(Project.class);
+        PluginManager pluginManagerMock = mock(PluginManager.class);
+        TaskContainer taskContainerMock = mock(TaskContainer.class);
+        TaskCollection<JarHellTask> taskCollectionMock = mock(TaskCollection.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doReturn("A").when(projectMock).getPath();
+        doReturn(taskContainerMock).when(projectMock).getTasks();
+        doReturn(taskCollectionMock).when(taskContainerMock).withType(JarHellTask.class);
+        doThrow(new UnknownTaskException("Task with name 'jarHell' not found")).when(taskCollectionMock).named("jarHell");
+        JarHellPrecommitPlugin target = new JarHellPrecommitPlugin();
+        // Act & Assert
+        assertThrows(UnknownTaskException.class, () -> target.createTask(projectMock));
     }
 }

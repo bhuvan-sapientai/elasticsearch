@@ -1,67 +1,98 @@
 package org.elasticsearch.gradle.internal.release;
 
+import org.elasticsearch.gradle.internal.release.TemplateUtils;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.io.IOException;
-import java.util.Map;
-import java.util.HashMap;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+
+import java.util.Map;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class TemplateUtilsSapientGeneratedTest {
 
-    //Sapient generated method id: ${renderTest}, hash: B8906781D6AAF812FF979231841EDBEE
-    @Disabled()
-    @Test()
+    @Test
     void renderTest() throws IOException {
-        /*
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: engine - Method: createTemplate
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        //Act Statement(s)
-        String result = TemplateUtils.render("template1", stringObjectMap);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("")));
+        // Arrange
+        String template = "Hello ${name}!";
+        Map<String, Object> bindings = new HashMap<>();
+        bindings.put("name", "World");
+        // Act
+        String result = TemplateUtils.render(template, bindings);
+        // Assert
+        assertThat(result, equalTo("Hello World!"));
     }
 
-    //Sapient generated method id: ${renderWhenCaughtClassNotFoundExceptionThrowsRuntimeException}, hash: 4C3C3990F5A3B8DD1D68D8AF696C486F
-    @Disabled()
-    @Test()
-    void renderWhenCaughtClassNotFoundExceptionThrowsRuntimeException() throws IOException {
-        /* Branches:
-         * (catch-exception (ClassNotFoundException)) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: engine - Method: createTemplate
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        ClassNotFoundException classNotFoundException = new ClassNotFoundException();
-        //Act Statement(s)
-        final RuntimeException result = assertThrows(RuntimeException.class, () -> {
-            TemplateUtils.render("template1", stringObjectMap);
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getCause(), is(instanceOf(classNotFoundException.getClass())));
-        });
+    @Test
+    void renderTestWithEmptyTemplate() throws IOException {
+        // Arrange
+        String template = "";
+        Map<String, Object> bindings = new HashMap<>();
+        // Act
+        String result = TemplateUtils.render(template, bindings);
+        // Assert
+        assertThat(result, equalTo(""));
+    }
+
+    @Test
+    void renderTestWithNullBindings() throws IOException {
+        // Arrange
+        String template = "Hello ${name}!";
+        Map<String, Object> bindings = null;
+        // Act & Assert
+        assertThrows(NullPointerException.class, () -> TemplateUtils.render(template, bindings));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"Hello ${name}!, John, Hello John!", "${greeting} ${name}!, Good morning;Alice, Good morning Alice!", "Value: ${value}, 42, Value: 42"})
+    void renderTestWithVariousTemplates(String template, String bindingValue, String expected) throws IOException {
+        // Arrange
+        Map<String, Object> bindings = new HashMap<>();
+        String[] bindingParts = bindingValue.split(";");
+        for (int i = 0; i < bindingParts.length; i++) {
+            bindings.put(i == 0 ? "name" : "greeting", bindingParts[i]);
+        }
+        if (bindingParts.length == 1 && "42".equals(bindingParts[0])) {
+            bindings.put("value", 42);
+        }
+        // Act
+        String result = TemplateUtils.render(template, bindings);
+        // Assert
+        assertThat(result, equalTo(expected));
+    }
+
+    @Test
+    void renderWhenCaughtClassNotFoundExceptionThrowsRuntimeException() {
+        // Arrange
+        String template = "This will throw an exception";
+        Map<String, Object> bindings = new HashMap<>();
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> TemplateUtils.render(template, bindings));
+        assertThat(exception.getCause(), instanceOf(ClassNotFoundException.class));
+    }
+
+    @Test
+    void renderRemovesCarriageReturns() throws IOException {
+        // Arrange
+        String template = "Line 1\r\nLine 2\r\nLine 3";
+        Map<String, Object> bindings = new HashMap<>();
+        // Act
+        String result = TemplateUtils.render(template, bindings);
+        // Assert
+        assertThat(result, equalTo("Line 1\nLine 2\nLine 3"));
     }
 }

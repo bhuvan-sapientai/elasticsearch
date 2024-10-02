@@ -1,146 +1,132 @@
 package org.elasticsearch.gradle.internal.test;
 
-import org.junit.jupiter.api.Timeout;
-import groovy.lang.MissingPropertyException;
-import java.util.List;
-import org.gradle.api.Action;
-import org.gradle.api.tasks.TaskContainer;
-import org.gradle.api.invocation.Gradle;
-import org.gradle.api.provider.Provider;
-import org.gradle.api.Project;
-import org.gradle.api.tasks.testing.Test;
-import org.gradle.api.tasks.TaskCollection;
-import org.mockito.MockedStatic;
-import java.io.File;
-import java.util.ArrayList;
-import org.elasticsearch.gradle.internal.info.BuildParams;
-import org.gradle.api.services.BuildServiceRegistry;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.doReturn;
-import org.junit.jupiter.api.Disabled;
+// import org.elasticsearch.gradle.internal.test.MutedTestPlugin;
+// import org.gradle.api.invocation.Gradle;
+// import org.junit.jupiter.api.Test;
+// import org.gradle.api.Project;
+// import java.io.File;
+// import org.gradle.api.Action;
+// import org.gradle.api.file.ProjectLayout;
+// import org.junit.jupiter.params.provider.CsvSource;
+// import org.mockito.MockedStatic;
+// import static org.mockito.Mockito.*;
+// import java.util.Arrays;
+// import java.util.List;
+// import org.junit.jupiter.api.BeforeEach;
+// import groovy.lang.MissingPropertyException;
+// import org.junit.jupiter.params.ParameterizedTest;
+// import org.gradle.api.file.RegularFile;
+// import org.elasticsearch.gradle.internal.info.BuildParams;
+// import org.junit.jupiter.api.Timeout;
+// import org.gradle.api.tasks.TaskContainer;
+// import org.gradle.api.tasks.TaskCollection;
+// import org.gradle.api.tasks.testing.Test;
+// import java.util.ArrayList;
+// import org.gradle.api.file.Directory;
+// import static org.junit.jupiter.api.Assertions.*;
+// import org.gradle.api.services.BuildServiceRegistry;
+// import org.gradle.api.provider.Provider;
+// import static org.mockito.ArgumentMatchers.any;
 
-@Timeout(value = 5)
+// @Timeout(value = 5)
 class MutedTestPluginSapientGeneratedTest {
 
-    private final BuildServiceRegistry buildServiceRegistryMock = mock(BuildServiceRegistry.class);
+//     private BuildServiceRegistry buildServiceRegistryMock;
 
-    private final Gradle gradleMock = mock(Gradle.class);
+//     private Gradle gradleMock;
 
-    private final MutedTestsBuildService mutedTestsBuildServiceMock = mock(MutedTestsBuildService.class);
+//     private MutedTestsBuildService mutedTestsBuildServiceMock;
 
-    private final Project projectMock = mock(Project.class);
+//     private Project projectMock;
 
-    private final Project projectMock2 = mock(Project.class);
+//     private Project rootProjectMock;
 
-    private final Provider<MutedTestsBuildService> providerMock = mock(Provider.class);
+//     private Provider<MutedTestsBuildService> providerMock;
 
-    private final TaskCollection taskCollectionMock = mock(TaskCollection.class);
+//     private TaskCollection taskCollectionMock;
 
-    private final TaskContainer taskContainerMock = mock(TaskContainer.class);
+//     private TaskContainer taskContainerMock;
 
-    //Sapient generated method id: ${applyWhenBuildParamsIsCiEqualsFalse}, hash: 796F20EEC3E93A8D5C6E7DE685BA5B9F
-    @Disabled()
-    @org.junit.jupiter.api.Test()
-    void applyWhenBuildParamsIsCiEqualsFalse() throws MissingPropertyException {
-        /* Branches:
-         * (project.hasProperty(ADDITIONAL_FILES_PROPERTY)) : true
-         * (for-each(mutedTestsProvider.get().getExcludePatterns())) : true  #  inside lambda$apply$3 method
-         * (BuildParams.isCi() == false) : true  #  inside lambda$apply$3 method
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object objectMock = mock(Object.class, "object");
-        try (MockedStatic<BuildParams> buildParams = mockStatic(BuildParams.class)) {
-            doReturn(true).when(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
-            doReturn(objectMock).when(projectMock).property("org.elasticsearch.additional.muted.tests");
-            doReturn(gradleMock).when(projectMock).getGradle();
-            doReturn(buildServiceRegistryMock).when(gradleMock).getSharedServices();
-            doReturn(providerMock).when(buildServiceRegistryMock).registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), (Action) any());
-            doReturn(mutedTestsBuildServiceMock).when(providerMock).get();
-            List<String> stringList = new ArrayList<>(List.of("return_of_getExcludePatternsItem1"));
-            doReturn(stringList).when(mutedTestsBuildServiceMock).getExcludePatterns();
-            doReturn(projectMock2).when(projectMock).getRootProject();
-            File file = new File("pathname1");
-            doReturn(file).when(projectMock2).getProjectDir();
-            doReturn(taskContainerMock).when(projectMock).getTasks();
-            doReturn(taskCollectionMock).when(taskContainerMock).withType(Test.class);
-            doNothing().when(taskCollectionMock).configureEach((Action) any());
-            buildParams.when(() -> BuildParams.isCi()).thenReturn(false);
-            MutedTestPlugin target = new MutedTestPlugin();
-            //Act Statement(s)
-            target.apply(projectMock);
-            //Assert statement(s)
-            assertAll("result", () -> {
-                verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
-                verify(projectMock).property("org.elasticsearch.additional.muted.tests");
-                verify(projectMock).getGradle();
-                verify(gradleMock).getSharedServices();
-                verify(buildServiceRegistryMock).registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), (Action) any());
-                verify(providerMock, atLeast(1)).get();
-                verify(mutedTestsBuildServiceMock).getExcludePatterns();
-                verify(projectMock).getRootProject();
-                verify(projectMock2).getProjectDir();
-                verify(projectMock).getTasks();
-                verify(taskContainerMock).withType(Test.class);
-                verify(taskCollectionMock).configureEach((Action) any());
-                buildParams.verify(() -> BuildParams.isCi(), atLeast(1));
-            });
-        }
-    }
+//     private ProjectLayout projectLayoutMock;
 
-    //Sapient generated method id: ${applyWhenPIsEmptyNotEqualsFalseAndMutedTestsProviderGetGetExcludePatternsIsEmptyAndBuildParamsIsCiNotEqualsFalse}, hash: 44E754AA8F4171C34CABC39B61DEE5A3
-    @Disabled()
-    @org.junit.jupiter.api.Test()
-    void applyWhenPIsEmptyNotEqualsFalseAndMutedTestsProviderGetGetExcludePatternsIsEmptyAndBuildParamsIsCiNotEqualsFalse() {
-        /* Branches:
-         * (project.hasProperty(ADDITIONAL_FILES_PROPERTY)) : false
-         * (p.isEmpty() == false) : false  #  inside lambda$apply$0 method
-         * (for-each(mutedTestsProvider.get().getExcludePatterns())) : false  #  inside lambda$apply$3 method
-         * (BuildParams.isCi() == false) : false  #  inside lambda$apply$3 method
-         */
-        //Arrange Statement(s)
-        try (MockedStatic<BuildParams> buildParams = mockStatic(BuildParams.class)) {
-            doReturn(false).when(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
-            doReturn(gradleMock).when(projectMock).getGradle();
-            doReturn(buildServiceRegistryMock).when(gradleMock).getSharedServices();
-            doReturn(providerMock).when(buildServiceRegistryMock).registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), (Action) any());
-            doReturn(mutedTestsBuildServiceMock).when(providerMock).get();
-            List<String> stringList = new ArrayList<>();
-            doReturn(stringList).when(mutedTestsBuildServiceMock).getExcludePatterns();
-            doReturn(projectMock2).when(projectMock).getRootProject();
-            File file = new File("pathname1");
-            doReturn(file).when(projectMock2).getProjectDir();
-            doReturn(taskContainerMock).when(projectMock).getTasks();
-            doReturn(taskCollectionMock).when(taskContainerMock).withType(Test.class);
-            doNothing().when(taskCollectionMock).configureEach((Action) any());
-            buildParams.when(() -> BuildParams.isCi()).thenReturn(true);
-            MutedTestPlugin target = new MutedTestPlugin();
-            //Act Statement(s)
-            target.apply(projectMock);
-            //Assert statement(s)
-            assertAll("result", () -> {
-                verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
-                verify(projectMock).getGradle();
-                verify(gradleMock).getSharedServices();
-                verify(buildServiceRegistryMock).registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), (Action) any());
-                verify(providerMock, atLeast(1)).get();
-                verify(mutedTestsBuildServiceMock).getExcludePatterns();
-                verify(projectMock).getRootProject();
-                verify(projectMock2).getProjectDir();
-                verify(projectMock).getTasks();
-                verify(taskContainerMock).withType(Test.class);
-                verify(taskCollectionMock).configureEach((Action) any());
-                buildParams.verify(() -> BuildParams.isCi(), atLeast(1));
-            });
-        }
-    }
+//     private Directory projectDirectoryMock;
+
+//     @BeforeEach
+//     void setUp() {
+//         buildServiceRegistryMock = mock(BuildServiceRegistry.class);
+//         gradleMock = mock(Gradle.class);
+//         mutedTestsBuildServiceMock = mock(MutedTestsBuildService.class);
+//         projectMock = mock(Project.class);
+//         rootProjectMock = mock(Project.class);
+//         providerMock = mock(Provider.class);
+//         taskCollectionMock = mock(TaskCollection.class);
+//         taskContainerMock = mock(TaskContainer.class);
+//         projectLayoutMock = mock(ProjectLayout.class);
+//         projectDirectoryMock = mock(Directory.class);
+//         when(projectMock.getGradle()).thenReturn(gradleMock);
+//         when(gradleMock.getSharedServices()).thenReturn(buildServiceRegistryMock);
+//         when(buildServiceRegistryMock.registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), any(Action.class))).thenReturn(providerMock);
+//         when(providerMock.get()).thenReturn(mutedTestsBuildServiceMock);
+//         when(projectMock.getRootProject()).thenReturn(rootProjectMock);
+//         when(rootProjectMock.getProjectDir()).thenReturn(new File("rootProjectDir"));
+//         when(projectMock.getTasks()).thenReturn(taskContainerMock);
+//         when(taskContainerMock.withType(Test.class)).thenReturn(taskCollectionMock);
+//         when(rootProjectMock.getLayout()).thenReturn(projectLayoutMock);
+//         when(projectLayoutMock.getProjectDirectory()).thenReturn(projectDirectoryMock);
+//     }
+
+//     @Test
+//     void applyWhenProjectHasAdditionalFilesProperty() {
+//         when(projectMock.hasProperty("org.elasticsearch.additional.muted.tests")).thenReturn(true);
+//         when(projectMock.property("org.elasticsearch.additional.muted.tests")).thenReturn("file1.txt,file2.txt");
+//         when(projectDirectoryMock.file(anyString())).thenReturn(mock(RegularFile.class));
+//         when(mutedTestsBuildServiceMock.getExcludePatterns()).thenReturn(Arrays.asList("pattern1", "pattern2"));
+//         try (MockedStatic<BuildParams> buildParams = mockStatic(BuildParams.class)) {
+//             buildParams.when(BuildParams::isCi).thenReturn(false);
+//             MutedTestPlugin plugin = new MutedTestPlugin();
+//             plugin.apply(projectMock);
+//             verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
+//             verify(projectMock).property("org.elasticsearch.additional.muted.tests");
+//             verify(projectDirectoryMock, times(2)).file(anyString());
+//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             buildParams.verify(BuildParams::isCi, times(1));
+//         }
+//     }
+
+//     @ParameterizedTest
+//     @CsvSource({ "true,true", "true,false", "false,true", "false,false" })
+//     void applyWithDifferentBuildParamsAndAdditionalFilesProperty(boolean hasAdditionalFiles, boolean isCi) {
+//         when(projectMock.hasProperty("org.elasticsearch.additional.muted.tests")).thenReturn(hasAdditionalFiles);
+//         if (hasAdditionalFiles) {
+//             when(projectMock.property("org.elasticsearch.additional.muted.tests")).thenReturn("file1.txt");
+//             when(projectDirectoryMock.file(anyString())).thenReturn(mock(RegularFile.class));
+//         }
+//         when(mutedTestsBuildServiceMock.getExcludePatterns()).thenReturn(Arrays.asList("pattern1"));
+//         try (MockedStatic<BuildParams> buildParams = mockStatic(BuildParams.class)) {
+//             buildParams.when(BuildParams::isCi).thenReturn(isCi);
+//             MutedTestPlugin plugin = new MutedTestPlugin();
+//             plugin.apply(projectMock);
+//             verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
+//             if (hasAdditionalFiles) {
+//                 verify(projectMock).property("org.elasticsearch.additional.muted.tests");
+//                 verify(projectDirectoryMock).file(anyString());
+//             }
+//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             buildParams.verify(BuildParams::isCi, times(1));
+//         }
+//     }
+
+//     @Test
+//     void applyWhenNoExcludePatterns() {
+//         when(projectMock.hasProperty("org.elasticsearch.additional.muted.tests")).thenReturn(false);
+//         when(mutedTestsBuildServiceMock.getExcludePatterns()).thenReturn(new ArrayList<>());
+//         try (MockedStatic<BuildParams> buildParams = mockStatic(BuildParams.class)) {
+//             buildParams.when(BuildParams::isCi).thenReturn(true);
+//             MutedTestPlugin plugin = new MutedTestPlugin();
+//             plugin.apply(projectMock);
+//             verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
+//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             buildParams.verify(BuildParams::isCi, times(1));
+//         }
+//     }
 }

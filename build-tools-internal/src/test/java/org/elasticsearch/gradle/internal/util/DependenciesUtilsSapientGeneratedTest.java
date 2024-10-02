@@ -1,29 +1,44 @@
 package org.elasticsearch.gradle.internal.util;
 
-import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.util.DependenciesUtils;
+
+import org.gradle.api.artifacts.ArtifactView;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+import org.gradle.api.artifacts.result.ResolvedDependencyResult;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.gradle.api.artifacts.result.ResolvedComponentResult;
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
 import org.gradle.api.artifacts.Configuration;
-import org.gradle.api.Transformer;
+import org.gradle.api.specs.AndSpec;
 import org.gradle.api.artifacts.ResolvableDependencies;
 import org.gradle.api.artifacts.component.ComponentIdentifier;
 import org.gradle.api.Action;
-import org.gradle.api.file.FileCollection;
-import org.gradle.api.artifacts.ArtifactView;
-import org.gradle.api.provider.Provider;
-import java.util.Set;
+import org.junit.jupiter.api.Timeout;
 import org.gradle.api.specs.Spec;
+
+import java.util.Set;
 import java.util.HashSet;
-import org.gradle.api.artifacts.result.ResolvedComponentResult;
-import org.gradle.api.artifacts.result.ResolutionResult;
-import static org.mockito.ArgumentMatchers.any;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
-import org.junit.jupiter.api.Disabled;
+
+import java.util.stream.Collectors;
+
+import org.gradle.api.file.FileCollection;
+import org.gradle.api.Transformer;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.artifacts.result.ResolutionResult;
+import org.gradle.api.provider.Provider;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class DependenciesUtilsSapientGeneratedTest {
@@ -44,69 +59,99 @@ class DependenciesUtilsSapientGeneratedTest {
 
     private final Spec<ComponentIdentifier> specMock = mock(Spec.class);
 
-    //Sapient generated method id: ${createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranch}, hash: 61CDA70C654F61520DC0CBC54B36C863
-    @Disabled()
-    @Test()
-    void createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranch() {
-        /* Branches:
-         * (branch expression (line 37)) : true
-         * (branch expression (line 45)) : true
-         */
-        //Arrange Statement(s)
+    private final ResolvedComponentResult rootComponentMock = mock(ResolvedComponentResult.class);
+
+    private final Set<ResolvedDependencyResult> dependenciesMock = mock(Set.class);
+
+    @Test
+    void createFileCollectionFromNonTransitiveArtifactsViewWhenAllDependenciesResolved() {
+        // Arrange
         doReturn(resolvableDependenciesMock).when(configurationMock).getIncoming();
         doReturn(resolutionResultMock).when(resolvableDependenciesMock).getResolutionResult();
         doReturn(providerMock).when(resolutionResultMock).getRootComponent();
-        doReturn(providerMock2).when(providerMock).map((Transformer) any());
-        ComponentIdentifier componentIdentifierMock = mock(ComponentIdentifier.class);
-        Set set = new HashSet<>();
-        set.add(componentIdentifierMock);
-        doReturn(set).when(providerMock2).get();
-        doReturn(artifactViewMock).when(resolvableDependenciesMock).artifactView((Action) any());
+        doReturn(rootComponentMock).when(providerMock).get();
+        doReturn(dependenciesMock).when(rootComponentMock).getDependencies();
+        ResolvedDependencyResult resolvedDependencyResult = mock(ResolvedDependencyResult.class);
+        ResolvedComponentResult resolvedComponentResult = mock(ResolvedComponentResult.class);
+        ComponentIdentifier componentIdentifier = mock(ComponentIdentifier.class);
+        doReturn(true).when(resolvedDependencyResult).getSelected();
+        doReturn(resolvedComponentResult).when(resolvedDependencyResult).getSelected();
+        doReturn(componentIdentifier).when(resolvedComponentResult).getId();
+        Set<ResolvedDependencyResult> resolvedDependencies = new HashSet<>();
+        resolvedDependencies.add(resolvedDependencyResult);
+        doReturn(resolvedDependencies).when(dependenciesMock).stream();
+        doReturn(artifactViewMock).when(resolvableDependenciesMock).artifactView(any());
         doReturn(fileCollectionMock).when(artifactViewMock).getFiles();
-        //Act Statement(s)
+        // Act
         FileCollection result = DependenciesUtils.createFileCollectionFromNonTransitiveArtifactsView(configurationMock, specMock);
-        //Assert statement(s)
+        // Assert
         assertAll("result", () -> {
             assertThat(result, equalTo(fileCollectionMock));
             verify(configurationMock).getIncoming();
             verify(resolvableDependenciesMock).getResolutionResult();
             verify(resolutionResultMock).getRootComponent();
-            verify(providerMock).map((Transformer) any());
-            verify(providerMock2, atLeast(1)).get();
-            verify(resolvableDependenciesMock).artifactView((Action) any());
-            verify(artifactViewMock, atLeast(1)).getFiles();
+            verify(rootComponentMock).getDependencies();
+            verify(resolvableDependenciesMock).artifactView(any());
+            verify(artifactViewMock).getFiles();
         });
     }
 
-    //Sapient generated method id: ${createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranchAndDefaultBranch2}, hash: 221FD48F61A391D81641BBCD0DEDD870
-    @Disabled()
-    @Test()
-    void createFileCollectionFromNonTransitiveArtifactsViewWhenDefaultBranchAndDefaultBranch2() {
-        /* Branches:
-         * (branch expression (line 37)) : false
-         * (branch expression (line 45)) : false
-         */
-        //Arrange Statement(s)
+    @Test
+    void createFileCollectionFromNonTransitiveArtifactsViewWhenNoDependenciesResolved() {
+        // Arrange
         doReturn(resolvableDependenciesMock).when(configurationMock).getIncoming();
         doReturn(resolutionResultMock).when(resolvableDependenciesMock).getResolutionResult();
         doReturn(providerMock).when(resolutionResultMock).getRootComponent();
-        doReturn(providerMock2).when(providerMock).map((Transformer) any());
-        Set set = new HashSet<>();
-        doReturn(set).when(providerMock2).get();
-        doReturn(artifactViewMock).when(resolvableDependenciesMock).artifactView((Action) any());
+        doReturn(rootComponentMock).when(providerMock).get();
+        doReturn(dependenciesMock).when(rootComponentMock).getDependencies();
+        Set<ResolvedDependencyResult> emptyDependencies = new HashSet<>();
+        doReturn(emptyDependencies).when(dependenciesMock).stream();
+        doReturn(artifactViewMock).when(resolvableDependenciesMock).artifactView(any());
         doReturn(fileCollectionMock).when(artifactViewMock).getFiles();
-        //Act Statement(s)
+        // Act
         FileCollection result = DependenciesUtils.createFileCollectionFromNonTransitiveArtifactsView(configurationMock, specMock);
-        //Assert statement(s)
+        // Assert
         assertAll("result", () -> {
             assertThat(result, equalTo(fileCollectionMock));
             verify(configurationMock).getIncoming();
             verify(resolvableDependenciesMock).getResolutionResult();
             verify(resolutionResultMock).getRootComponent();
-            verify(providerMock).map((Transformer) any());
-            verify(providerMock2, atLeast(1)).get();
-            verify(resolvableDependenciesMock).artifactView((Action) any());
-            verify(artifactViewMock, atLeast(1)).getFiles();
+            verify(rootComponentMock).getDependencies();
+            verify(resolvableDependenciesMock).artifactView(any());
+            verify(artifactViewMock).getFiles();
+        });
+    }
+
+    @Test
+    void createFileCollectionFromNonTransitiveArtifactsViewWhenComponentFilterIsNull() {
+        // Arrange
+        doReturn(resolvableDependenciesMock).when(configurationMock).getIncoming();
+        doReturn(resolutionResultMock).when(resolvableDependenciesMock).getResolutionResult();
+        doReturn(providerMock).when(resolutionResultMock).getRootComponent();
+        doReturn(rootComponentMock).when(providerMock).get();
+        doReturn(dependenciesMock).when(rootComponentMock).getDependencies();
+        ResolvedDependencyResult resolvedDependencyResult = mock(ResolvedDependencyResult.class);
+        ResolvedComponentResult resolvedComponentResult = mock(ResolvedComponentResult.class);
+        ComponentIdentifier componentIdentifier = mock(ComponentIdentifier.class);
+        doReturn(true).when(resolvedDependencyResult).getSelected();
+        doReturn(resolvedComponentResult).when(resolvedDependencyResult).getSelected();
+        doReturn(componentIdentifier).when(resolvedComponentResult).getId();
+        Set<ResolvedDependencyResult> resolvedDependencies = new HashSet<>();
+        resolvedDependencies.add(resolvedDependencyResult);
+        doReturn(resolvedDependencies).when(dependenciesMock).stream();
+        doReturn(artifactViewMock).when(resolvableDependenciesMock).artifactView(any());
+        doReturn(fileCollectionMock).when(artifactViewMock).getFiles();
+        // Act
+        FileCollection result = DependenciesUtils.createFileCollectionFromNonTransitiveArtifactsView(configurationMock, null);
+        // Assert
+        assertAll("result", () -> {
+            assertThat(result, equalTo(fileCollectionMock));
+            verify(configurationMock).getIncoming();
+            verify(resolvableDependenciesMock).getResolutionResult();
+            verify(resolutionResultMock).getRootComponent();
+            verify(rootComponentMock).getDependencies();
+            verify(resolvableDependenciesMock).artifactView(any());
+            verify(artifactViewMock).getFiles();
         });
     }
 }

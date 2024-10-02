@@ -1,43 +1,61 @@
 package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.InternalDistributionModuleCheckTaskProvider;
+
 import java.util.jar.JarEntry;
 import java.nio.file.Files;
 import java.util.zip.ZipEntry;
 import java.io.UncheckedIOException;
 import java.lang.module.ModuleFinder;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.Project;
 import org.gradle.api.Action;
 import org.gradle.api.tasks.Copy;
 import org.junit.jupiter.api.io.TempDir;
+
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.util.jar.JarOutputStream;
+
 import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.api.GradleException;
 import org.gradle.testfixtures.ProjectBuilder;
+
 import static org.mockito.Mockito.*;
+
 import java.io.IOException;
 import java.util.jar.JarFile;
 import java.util.Arrays;
 import java.lang.module.ModuleReference;
+
 import static java.util.stream.Collectors.joining;
+
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
+
 import java.nio.file.Path;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.elasticsearch.gradle.VersionProperties;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.gradle.api.logging.Logger;
+import org.elasticsearch.gradle.internal.InternalDistributionModuleCheckTaskProvider;
+
 import java.util.function.Predicate;
 import java.util.function.Function;
+
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.gradle.api.logging.Logging;
 import org.gradle.api.tasks.TaskProvider;
 import org.gradle.api.Task;
+
 import static org.mockito.ArgumentMatchers.any;
-import org.junit.jupiter.api.Disabled;
 
 class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
 
@@ -62,7 +80,6 @@ class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
         assertTrue(checkModulesTask.get().getDependsOn().contains(checkExtraction));
     }
 
-    @Disabled()
     @Test
     void testAssertAllESJarsAreModular() throws IOException {
         Path libPath = tempDir.resolve("elasticsearch-" + VersionProperties.getElasticsearch()).resolve("lib");
@@ -76,7 +93,6 @@ class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
         assertDoesNotThrow(() -> checkModulesTask.get().getActions().get(0).execute(checkModulesTask.get()));
     }
 
-    @Disabled()
     @Test
     void testAssertAllESJarsAreModularWithNonModularJar() throws IOException {
         Path libPath = tempDir.resolve("elasticsearch-" + VersionProperties.getElasticsearch()).resolve("lib");
@@ -91,7 +107,6 @@ class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
         assertTrue(exception.getMessage().contains("module-info.class no found in"));
     }
 
-    @Disabled()
     @Test
     void testAssertAllModulesPresent() throws IOException {
         Path libPath = tempDir.resolve("elasticsearch-" + VersionProperties.getElasticsearch()).resolve("lib");
@@ -107,7 +122,6 @@ class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
         assertDoesNotThrow(() -> checkModulesTask.get().getActions().get(0).execute(checkModulesTask.get()));
     }
 
-    @Disabled()
     @Test
     void testAssertAllModulesPresentWithMissingModule() throws IOException {
         Path libPath = tempDir.resolve("elasticsearch-" + VersionProperties.getElasticsearch()).resolve("lib");
@@ -141,7 +155,7 @@ class InternalDistributionModuleCheckTaskProviderSapientGeneratedTest {
     }
 
     @ParameterizedTest
-    @CsvSource({ "DEFAULT, ubuntu:20.04, '', apt-get", "UBI, docker.elastic.co/ubi8/ubi-minimal:latest, -ubi, microdnf", "IRON_BANK, ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}, -ironbank, yum", "CLOUD, ubuntu:20.04, -cloud, apt-get", "CLOUD_ESS, '', -cloud-ess, apt-get", "WOLFI, docker.elastic.co/wolfi/chainguard-base:latest@sha256:c16d3ad6cebf387e8dd2ad769f54320c4819fbbaa21e729fad087c7ae223b4d0, -wolfi, apk" })
+    @CsvSource({"DEFAULT, ubuntu:20.04, '', apt-get", "UBI, docker.elastic.co/ubi8/ubi-minimal:latest, -ubi, microdnf", "IRON_BANK, ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}, -ironbank, yum", "CLOUD, ubuntu:20.04, -cloud, apt-get", "CLOUD_ESS, '', -cloud-ess, apt-get", "WOLFI, docker.elastic.co/wolfi/chainguard-base:latest@sha256:c16d3ad6cebf387e8dd2ad769f54320c4819fbbaa21e729fad087c7ae223b4d0, -wolfi, apk"})
     void testDockerBaseEnumProperties(DockerBase dockerBase, String expectedImage, String expectedSuffix, String expectedPackageManager) {
         assertEquals(expectedImage, dockerBase.getImage());
         assertEquals(expectedSuffix, dockerBase.getSuffix());

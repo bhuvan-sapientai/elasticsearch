@@ -1,37 +1,50 @@
 package org.elasticsearch.gradle.internal.distribution;
 
+import org.elasticsearch.gradle.internal.distribution.DockerElasticsearchDistributionType;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.ElasticsearchDistributionType;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class DockerElasticsearchDistributionTypeSapientGeneratedTest {
 
-    //Sapient generated method id: ${getNameTest}, hash: D94F7DEBB173BB7D2E23BBB3C7C37AA7
-    @Test()
+    @Test
     void getNameTest() {
-        //Arrange Statement(s)
         DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
-        
-        //Act Statement(s)
         String result = target.getName();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("docker")));
+        assertAll("getName", () -> assertThat(result, equalTo("docker")), () -> assertThat(result.length(), is(6)));
     }
 
-    //Sapient generated method id: ${isDockerTest}, hash: 183D89E415C3C67BCE4F3E6D481B0E32
-    @Test()
+    @Test
     void isDockerTest() {
-        //Arrange Statement(s)
         DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
-        
-        //Act Statement(s)
         boolean result = target.isDocker();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        assertThat(result, is(true));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void multipleInstanceTest(int instance) {
+        DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
+        assertAll("multiple instances", () -> assertThat(target.getName(), equalTo("docker")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void constructorTest() {
+        DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
+        assertAll("constructor", () -> assertThat(target.getName(), equalTo("docker")), () -> assertThat(target.isDocker(), is(true)));
     }
 }

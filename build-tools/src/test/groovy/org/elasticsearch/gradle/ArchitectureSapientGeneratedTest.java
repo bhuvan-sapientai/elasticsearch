@@ -1,81 +1,58 @@
 package org.elasticsearch.gradle;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+import org.elasticsearch.gradle.Architecture;
 
-@Timeout(value = 5)
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+
 class ArchitectureSapientGeneratedTest {
 
-    //Sapient generated method id: ${currentWhenSwitchArchitectureCaseAarch64}, hash: EB84C8B038E1782CC89A818A0EC08488
-    @Test()
-    void currentWhenSwitchArchitectureCaseAarch64() {
-        /* Branches:
-         * (switch(architecture) = "aarch64") : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  Method java.lang.System::getProperty has a unrepeatable behavior
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Act Statement(s)
-        Architecture result = Architecture.current();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Architecture.AARCH64)));
+    private String originalOsArch;
+
+    @BeforeEach
+    void setUp() {
+        originalOsArch = System.getProperty("os.arch");
     }
 
-    //Sapient generated method id: ${currentWhenSwitchArchitectureCaseAmd64}, hash: E8535EBADB3ABB219E3A28170B84D982
-    @Disabled()
-    @Test()
-    void currentWhenSwitchArchitectureCaseAmd64() {
-        /* Branches:
-         * (switch(architecture) = "amd64" or switch(architecture) = "x86_64") : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  Method java.lang.System::getProperty has a unrepeatable behavior
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Act Statement(s)
-        Architecture result = Architecture.current();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Architecture.X64)));
+    @Test
+    void testArchitectureValues() {
+        assertAll(() -> assertEquals("x86_64", Architecture.X64.classifier), () -> assertEquals("linux/amd64", Architecture.X64.dockerPlatform), () -> assertEquals("aarch64", Architecture.AARCH64.classifier), () -> assertEquals("linux/arm64", Architecture.AARCH64.dockerPlatform));
     }
 
-    //Sapient generated method id: ${currentWhenSwitchArchitectureCaseDefaultThrowsIllegalArgumentException}, hash: 06F8593B4E24522D25E5904058B3B742
-    @Disabled()
-    @Test()
-    void currentWhenSwitchArchitectureCaseDefaultThrowsIllegalArgumentException() {
-        /* Branches:
-         * (switch(architecture) = default) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  Method java.lang.System::getProperty has a unrepeatable behavior
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        IllegalArgumentException illegalArgumentException = new IllegalArgumentException("can not determine architecture from [A]");
-        //Act Statement(s)
-        final IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> {
-            Architecture.current();
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalArgumentException.getMessage()));
-        });
+    @ParameterizedTest
+    @CsvSource({"amd64, X64", "x86_64, X64", "aarch64, AARCH64"})
+    void testCurrent(String osArch, Architecture expected) {
+        System.setProperty("os.arch", osArch);
+        assertEquals(expected, Architecture.current());
+    }
+
+    @Test
+    void testCurrentWithUnsupportedArchitecture() {
+        System.setProperty("os.arch", "unsupported");
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, Architecture::current);
+        assertThat(exception.getMessage(), containsString("can not determine architecture from [unsupported]"));
+    }
+
+    @Test
+    void testToString() {
+        assertAll(() -> assertEquals("X64", Architecture.X64.toString()), () -> assertEquals("AARCH64", Architecture.AARCH64.toString()));
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        assertEquals(Architecture.X64, Architecture.X64);
+        assertNotEquals(Architecture.X64, Architecture.AARCH64);
+        assertEquals(Architecture.X64.hashCode(), Architecture.X64.hashCode());
+        assertNotEquals(Architecture.X64.hashCode(), Architecture.AARCH64.hashCode());
     }
 }

@@ -1,69 +1,54 @@
 package org.elasticsearch.gradle.internal.precommit;
 
+import org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.io.File;
+
+import java.util.regex.Pattern;
+import java.nio.file.Files;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+
+import java.io.UncheckedIOException;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.io.IOException;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class LicenseAnalyzerSapientGeneratedTest {
 
-    //Sapient generated method id: ${licenseTypeWhenMatches}, hash: 6112489A85EC8B257CEB019962140407
-    @Disabled()
-    @Test()
-    void licenseTypeWhenMatches() {
-        /* Branches:
-         * (for-each(matchers)) : true
-         * (matches) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: matcher - Method: matches
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        File file = new File("pathname1");
-        //Act Statement(s)
-        LicenseAnalyzer.LicenseInfo result = LicenseAnalyzer.licenseType(file);
-        LicenseAnalyzer.LicenseInfo licenseAnalyzerLicenseInfo = new LicenseAnalyzer.LicenseInfo("identifier1", false, false);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(licenseAnalyzerLicenseInfo)));
+    @ParameterizedTest
+    @CsvSource({"Apache-2.0, true, false, 'Apache License Version 2.0'", "BSD-2-Clause, true, false, 'Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.'", "BSD-3-Clause, true, false, 'Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.'", "CDDL-1.0, true, false, 'COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0'", "CDDL-1.1, true, false, 'COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.1'", "ICU, true, false, 'ICU License - ICU 1.8.1 and later'", "MIT, true, false, 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.'", "MIT-0, true, false, 'MIT No Attribution Copyright 2023 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.'", "MPL-1.1, true, false, 'Mozilla Public License Version 1.1'", "MPL-2.0, true, false, 'Mozilla Public License Version 2.0'", "XZ, false, false, 'Licensing of XZ for Java'", "EPL-2.0, true, false, 'Eclipse Public License - v 2.0'", "EDL-1.0, true, false, 'Eclipse Distribution License - v 1.0'", "LGPL-2.1, true, true, 'GNU LESSER GENERAL PUBLIC LICENSE Version 2.1'", "LGPL-3.0, true, true, 'GNU LESSER GENERAL PUBLIC LICENSE Version 3'", "GeoLite, false, false, 'The Elastic GeoIP Database Service uses the GeoLite2 Data created and licensed by MaxMind, which is governed by MaxMind's GeoLite2 End User License Agreement, available at https://www.maxmind.com/en/geolite2/eula.'", "GeoIp-Database-Service, false, false, 'By using the GeoIP Database Service, you agree to the Elastic GeoIP Database Service Agreement, available at www.elastic.co/elastic-geoip-database-service-terms.'"})
+    void licenseTypeWhenMatches(String identifier, boolean spdxLicense, boolean sourceRedistributionRequired, String licenseContent) throws IOException {
+        File tempFile = Files.createTempFile("license", ".txt").toFile();
+        Files.writeString(tempFile.toPath(), licenseContent);
+        LicenseAnalyzer.LicenseInfo result = LicenseAnalyzer.licenseType(tempFile);
+        assertAll("result", () -> assertThat(result.identifier(), equalTo(identifier)), () -> assertThat(result.spdxLicense(), equalTo(spdxLicense)), () -> assertThat(result.sourceRedistributionRequired(), equalTo(sourceRedistributionRequired)));
+        tempFile.delete();
     }
 
-    //Sapient generated method id: ${licenseTypeWhenNotMatchesThrowsIllegalStateException}, hash: A2AD1FE3C248E2C1FB24348BE1CA6C76
-    @Disabled()
-    @Test()
-    void licenseTypeWhenNotMatchesThrowsIllegalStateException() {
-        /* Branches:
-         * (for-each(matchers)) : true
-         * (matches) : false
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: matcher - Method: matches
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        File file = new File("pathname1");
-        IllegalStateException illegalStateException = new IllegalStateException("Unknown license for license file: licenseFile");
-        //Act Statement(s)
-        final IllegalStateException result = assertThrows(IllegalStateException.class, () -> {
-            LicenseAnalyzer.licenseType(file);
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalStateException.getMessage()));
-        });
+    @Test
+    void licenseTypeWhenNotMatchesThrowsIllegalStateException() throws IOException {
+        File tempFile = Files.createTempFile("unknown_license", ".txt").toFile();
+        Files.writeString(tempFile.toPath(), "This is not a recognized license text.");
+        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> LicenseAnalyzer.licenseType(tempFile));
+        assertThat(exception.getMessage(), containsString("Unknown license for license file:"));
+        tempFile.delete();
+    }
+
+    @Test
+    void licenseTypeWithNonExistentFileThrowsUncheckedIOException() {
+        File nonExistentFile = new File("non_existent_file.txt");
+        assertThrows(UncheckedIOException.class, () -> LicenseAnalyzer.licenseType(nonExistentFile));
     }
 }

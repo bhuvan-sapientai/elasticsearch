@@ -1,0 +1,415 @@
+Start time: 2024-10-02 10:27:59 minutes
+End time: 2024-10-02 10:46:32 minutes
+Export time: 2024-10-02 10:47:26 minutes
+
+Total execution time: 18 minutes
+------------------------------------------------
+Number of source files processed: 22
+Number of test files generated: 16
+Number of test files not able to be analyzed (error in model creation): 6
+Number of test files with generation error: 0
+Number of test files with compilation error: 0
+Number of test files used FTCG: 16
+Percentage of test files with compilation error: 0
+------------------------------------------------
+Number of paths identified on source files: 64
+Number of paths with uncommentable compilation error: 0
+Number of paths untestable: 0
+Number of paths with generation error: 0
+Number of paths in files with run phase completed: 63
+------------------------------------------------
+Number of test cases created: 94
+Number of test cases success: 53
+Number of test cases failed: 36
+Number of test cases disabled: 0
+Number of test cases timeout: 0
+Number of test cases commented: 5
+Number of test tried LLM: 0
+Number of test tried LLM and had a success response: 0
+Number of test tried LLM and had a error response: 0
+Number of test used LLM: 0
+Number of test used LLM and solver checked result: 0
+Number of test used Z3 and solver checked result: 0
+Number of test used LLM and had a test execution success: 0
+Number of test used LLM and had a test execution commented: 0
+Number of test used LLM and had a test execution NOT Success (failed, skipped, timeout): 0
+Number of test cases with model failure with reason and Success: 0
+Number of test cases WITHOUT TODO and Fail: 36
+------------------------------------------------
+Overall method coverage: 60.98%
+Overall line coverage: 58.22%
+------------------------------------------------
+Absolute percentage of test success (available paths): 82.81%
+Absolute percentage of test failed (available paths): 56.25%
+Absolute percentage of test disabled (available paths): 0%
+------------------------------------------------
+Relative percentage of test success (testable): 56.38%
+Relative percentage of test failed (testable): 38.29%
+Relative percentage of test disabled (testable): 0%
+------------------------------------------------
+Paths identified 
+
+org.elasticsearch.gradle.internal.conventions.BuildToolsConventionsPluginSapientGeneratedTest::applyWhenUtilGetBooleanPropertyTests_fips_enabledFalseEqualsFalse (path identified)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenCaughtIOExceptionThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenOsNotIsFamilyOsFAMILY_WINDOWSAndCaughtIOExceptionThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenOsNotIsFamilyOsFAMILY_WINDOWSAndDefaultBranchAndSourceFolderListIsEmpty2 (path identified)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenSourceFolderListIsNotEmpty (path identified)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNotNull (path identified)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNull (path identified)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::applyWhenIsSnapshotVersionNotProject (path identified)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::applyWhenIsSnapshotVersionProject (path identified)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsHasPluginJavaPlugin (path identified)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsHasPluginShadowPlugin (path identified)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsNotHasPluginShadowPluginAndProject1GetPluginsNotHasPluginJavaPlugin (path identified)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::configureSourcesJarTest (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenElasticsearchIsNullThrowsIllegalStateException (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenElasticsearchMatches_0_9_____0_9_____0_9__EqualsFalseThrowsIllegalStateException (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenQualifierMatches_alpha_beta_rc__d_EqualsFalseThrowsIllegalStateException (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenQualifierMatches_alpha_beta_rc__d_NotEqualsFalseAndSwitchBuildSnaThrowsIllegalArgumentException (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenSwitchBuildSnapshotSystemPropertyCaseFalse (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenSwitchBuildSnapshotSystemPropertyCaseTrue (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionTest (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionWhenDefaultBranch (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionWhenDefaultBranchThrowsThrowable (path identified)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesPluginSapientGeneratedTest::applyTest (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenCaughtIOExceptionThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenDefaultBranchThrowsThrowable (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesExistsDotGitEqualsFalse (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesIsDirectoryDotGitAndDefaultBranchThrowsThrowable (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesNotIsDirectoryDotGitAndDefaultBranchThrowsThrowable (path identified)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::urlFromOriginWhenMatcherNotMatches (path identified)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhenIntegerParseIntMajorVersionLessThanMACOS_MONTEREY_MAJOR_VERSIONAndIsMontereyOrNewerNotProjectGet (path identified)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhenIsMontereyOrNewerProjectGetProvidersAnd_defaultParallelIsNull (path identified)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhen_defaultParallelIsNotNullAnd_defaultParallelLessThan1 (path identified)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhen_defaultParallelIsNull (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWhenBooleanNotGetBooleanBUILD_PERFORMANCE_TEST (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::createTaskTest (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskTest (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchAndFoundErrorThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchAndNotFoundError (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchThrowsThrowable (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenFoundErrorThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenNotFoundError (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskPluginSapientGeneratedTest::applyTest (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getProjectLayoutThrowsUnsupportedOperationException (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getSuccessMarkerTest (path identified)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::writeMarkerTest (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenDefaultValue (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenFalseEqualsPropertyValue (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenFalseNotEqualsPropertyValueThrowsGradleException (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenNotDefaultValue (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenTrueEqualsPropertyValue (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceResourcesTest (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableNotProject (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableProject (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaSourceSetsTest (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestAndMainSourceResourcesWhenMainFileTreeIsPresent (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceResourcesTest (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNotNull (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNull (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsBuildToolsParent (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsNotBuildToolsParent (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsNotIncludedBuildGetProjectDir (path identified)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::toStringableTest (path identified)
+------------------------------------------------
+Paths run completed 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenCaughtIOExceptionThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenOsNotIsFamilyOsFAMILY_WINDOWSAndCaughtIOExceptionThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenOsNotIsFamilyOsFAMILY_WINDOWSAndDefaultBranchAndSourceFolderListIsEmpty2 (path run completed)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::applyWhenSourceFolderListIsNotEmpty (path run completed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNotNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::applyWhenIsSnapshotVersionNotProject (path run completed)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::applyWhenIsSnapshotVersionProject (path run completed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsHasPluginJavaPlugin (path run completed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsHasPluginShadowPlugin (path run completed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::applyWhenProject1GetPluginsNotHasPluginShadowPluginAndProject1GetPluginsNotHasPluginJavaPlugin (path run completed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::configureSourcesJarTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenElasticsearchIsNullThrowsIllegalStateException (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenElasticsearchMatches_0_9_____0_9_____0_9__EqualsFalseThrowsIllegalStateException (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenQualifierMatches_alpha_beta_rc__d_EqualsFalseThrowsIllegalStateException (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenQualifierMatches_alpha_beta_rc__d_NotEqualsFalseAndSwitchBuildSnaThrowsIllegalArgumentException (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenSwitchBuildSnapshotSystemPropertyCaseFalse (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersion1WhenSwitchBuildSnapshotSystemPropertyCaseTrue (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionWhenDefaultBranch (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::loadBuildSrcVersionWhenDefaultBranchThrowsThrowable (path run completed)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesPluginSapientGeneratedTest::applyTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenCaughtIOExceptionThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenDefaultBranchThrowsThrowable (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesExistsDotGitEqualsFalse (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesIsDirectoryDotGitAndDefaultBranchThrowsThrowable (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::gitInfoWhenFilesNotIsDirectoryDotGitAndDefaultBranchThrowsThrowable (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::urlFromOriginWhenMatcherNotMatches (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhenIntegerParseIntMajorVersionLessThanMACOS_MONTEREY_MAJOR_VERSIONAndIsMontereyOrNewerNotProjectGet (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhenIsMontereyOrNewerProjectGetProvidersAnd_defaultParallelIsNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhen_defaultParallelIsNotNullAnd_defaultParallelLessThan1 (path run completed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::findDefaultParallelWhen_defaultParallelIsNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWhenBooleanNotGetBooleanBUILD_PERFORMANCE_TEST (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::createTaskTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchAndFoundErrorThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchAndNotFoundError (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenDefaultBranchThrowsThrowable (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenFoundErrorThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::checkPomWhenNotFoundError (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskPluginSapientGeneratedTest::applyTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getProjectLayoutThrowsUnsupportedOperationException (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getSuccessMarkerTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::writeMarkerTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenDefaultValue (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenFalseEqualsPropertyValue (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenFalseNotEqualsPropertyValueThrowsGradleException (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenNotDefaultValue (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyWhenTrueEqualsPropertyValue (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceResourcesTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableNotProject (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableProject (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaSourceSetsTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestAndMainSourceResourcesWhenMainFileTreeIsPresent (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceResourcesTest (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNotNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsBuildToolsParent (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsNotBuildToolsParent (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsNotIncludedBuildGetProjectDir (path run completed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::toStringableTest (path run completed)
+------------------------------------------------
+------------------------------------------------
+Test files not able to be analyzed 
+
+AstUtilsSapientGeneratedTest (not analyzed)
+HiddenFieldCheckSapientGeneratedTest (not analyzed)
+MissingJavadocTypeCheckSapientGeneratedTest (not analyzed)
+SnippetLengthCheckSapientGeneratedTest (not analyzed)
+StringFormattingCheckSapientGeneratedTest (not analyzed)
+SwitchBetweenCheckSapientGeneratedTest (not analyzed)
+------------------------------------------------
+Test files with generation error 
+
+org.elasticsearch.gradle.internal.checkstyle.AstUtilsSapientGeneratedTest (file generation error)
+------------------------------------------------
+Test cases failed 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_registersTasksCorrectly(test failed)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_setsEclipseProjectName(test failed)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_throwsGradleExceptionOnIOException(test failed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNotNull(test failed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNull(test failed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getGitInfoTest(test failed)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getRevisionTest(test failed)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testApply(test failed)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testLicenseCommitProviderForSnapshotVersion(test failed)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testProjectLicensesMapContent(test failed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testApply(test failed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureJavadocJar(test failed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigurePomGeneration(test failed)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureSourcesJar(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithCommonDir(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithExternalGitDir(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithModuleSetup(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithWorktreeSetup(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOrigin(test failed)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOriginWithNullOrigin(test failed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelOnMacAppleSilicon(test failed)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelWithCpuInfoFile(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithBuildPerformanceTest(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithNonServerProject(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithoutBuildPerformanceTest(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskWithDifferentPublicationNamesTest(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyDevelopers(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyLicenses(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testInvalidPom(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testMissingScm(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testValidPom(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getProjectLayoutThrowsUnsupportedOperationException(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getSuccessMarkerTest(test failed)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::writeMarkerTest(test failed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull(test failed)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir(test failed)
+------------------------------------------------
+Test cases success 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_setsEclipseProjectNameForWindows (test success)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testIsSnapshotVersion (test success)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testAddNameAndDescriptionToPom (test success)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testAddScmInfo (test success)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigurePublications (test success)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testProjectLicensesConfiguration (test success)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testRepositoryConfiguration (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionFromFile (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionInvalidElasticsearchVersion (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionInvalidQualifier (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionInvalidSnapshotValue (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionMissingElasticsearchVersion (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithDifferentScenarios (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithEmptyProperties (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithEmptyQualifier (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithMultipleDigitVersion (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithNonSnapshotBuild (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithQualifierAndNonSnapshotBuild (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testLoadBuildSrcVersionWithQualifierEdgeCases (test success)
+org.elasticsearch.gradle.internal.conventions.VersionPropertiesLoaderSapientGeneratedTest::testQualifierValidation (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testFindOriginUrlWithComments (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testFindOriginUrlWithMultipleRemotes (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGetOrigin (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGetRevision (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithAbsoluteCommonDir (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithEmptyFile (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithMissingRefFile (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithNonExistentGitDir (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithNonExistentReference (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithPackedRefs (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithValidGitDir (test success)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithoutOriginRemote (test success)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelFallback (test success)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelOnMac (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTask (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTaskReturnsCorrectTaskType (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTaskWithJavaBasePluginApplied (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTaskWithoutJavaBasePlugin (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testPluginApply (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testProviderFactoryInjection (test success)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskTest (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanProperty (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getBooleanPropertyThrowsGradleException (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceResourcesTest (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableNotProject (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaMainSourceSetWhenIsJavaExtensionAvailableProject (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaSourceSetsTest (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestAndMainSourceResourcesWhenMainFileTreeIsPresent (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceResourcesTest (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNotNull (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::getJavaTestSourceSetWhenProjectGetExtensionsFindByNameJavaIsNull (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsNotIncludedBuildGetProjectDir (test success)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::toStringableTest (test success)
+------------------------------------------------
+Test cases commented 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_configuresClasspathCorrectly (test commented)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_configuresJavaPluginWhenPresent (test commented)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testLicenseCommitProviderForReleaseVersion (test commented)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTaskConfiguresSourceFolders (test commented)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testSourceFoldersPopulatedWhenJavaBasePluginApplied (test commented)
+------------------------------------------------
+Test files used FTCG 
+
+BuildToolsConventionsPluginSapientGeneratedTest (Used FTCG)
+EclipseConventionPluginSapientGeneratedTest (Used FTCG)
+FormattingPrecommitPluginSapientGeneratedTest (Used FTCG)
+GitInfoPluginSapientGeneratedTest (Used FTCG)
+GitInfoSapientGeneratedTest (Used FTCG)
+LicenseHeadersPrecommitPluginSapientGeneratedTest (Used FTCG)
+LicensingPluginSapientGeneratedTest (Used FTCG)
+ParallelDetectorSapientGeneratedTest (Used FTCG)
+PomValidationPrecommitPluginSapientGeneratedTest (Used FTCG)
+PomValidationTaskSapientGeneratedTest (Used FTCG)
+PrecommitTaskPluginSapientGeneratedTest (Used FTCG)
+PrecommitTaskSapientGeneratedTest (Used FTCG)
+PublishPluginSapientGeneratedTest (Used FTCG)
+UtilSapientGeneratedTest (Used FTCG)
+VersionPropertiesLoaderSapientGeneratedTest (Used FTCG)
+VersionPropertiesPluginSapientGeneratedTest (Used FTCG)
+------------------------------------------------
+Test cases without final result 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_configuresClasspathCorrectly(COMMENTED) (Without result)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_configuresJavaPluginWhenPresent(COMMENTED) (Without result)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testLicenseCommitProviderForReleaseVersion(COMMENTED) (Without result)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testCreateTaskConfiguresSourceFolders(COMMENTED) (Without result)
+org.elasticsearch.gradle.internal.conventions.precommit.LicenseHeadersPrecommitPluginSapientGeneratedTest::testSourceFoldersPopulatedWhenJavaBasePluginApplied(COMMENTED) (Without result)
+------------------------------------------------
+Test cases WITHOUT TODO and Fail 
+
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_registersTasksCorrectly (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_setsEclipseProjectName (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_throwsGradleExceptionOnIOException (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNotNull (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNull (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getGitInfoTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getRevisionTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testApply (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testLicenseCommitProviderForSnapshotVersion (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testProjectLicensesMapContent (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testApply (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureJavadocJar (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigurePomGeneration (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureSourcesJar (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithCommonDir (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithExternalGitDir (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithModuleSetup (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithWorktreeSetup (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOrigin (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOriginWithNullOrigin (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelOnMacAppleSilicon (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelWithCpuInfoFile (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithBuildPerformanceTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithNonServerProject (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithoutBuildPerformanceTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskWithDifferentPublicationNamesTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyDevelopers (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyLicenses (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testInvalidPom (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testMissingScm (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testValidPom (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getProjectLayoutThrowsUnsupportedOperationException (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getSuccessMarkerTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::writeMarkerTest (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull (Without TODO and fail)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir (Without TODO and fail)
+------------------------------------------------
+
+Test grouped by failure reason
+
+Test cases with model failure reason and Fail: 
+
+Summary: 
+
+UNKNOWN (36)
+
+Details: 
+
+UNKNOWN (36)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_setsEclipseProjectName (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_throwsGradleExceptionOnIOException (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.EclipseConventionPluginSapientGeneratedTest::apply_registersTasksCorrectly (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNotNull (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getRevisionTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::getGitInfoTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.GitInfoPluginSapientGeneratedTest::applyWhenInfoGetRevisionIsNull (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testApply (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testLicenseCommitProviderForSnapshotVersion (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.LicensingPluginSapientGeneratedTest::testProjectLicensesMapContent (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testApply (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureSourcesJar (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigurePomGeneration (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.PublishPluginSapientGeneratedTest::testConfigureJavadocJar (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOrigin (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithModuleSetup (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithCommonDir (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithWorktreeSetup (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testGitInfoWithExternalGitDir (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.GitInfoSapientGeneratedTest::testUrlFromOriginWithNullOrigin (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelWithCpuInfoFile (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.info.ParallelDetectorSapientGeneratedTest::testFindDefaultParallelOnMacAppleSilicon (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithNonServerProject (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithBuildPerformanceTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.FormattingPrecommitPluginSapientGeneratedTest::applyWithoutBuildPerformanceTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationPrecommitPluginSapientGeneratedTest::createTaskWithDifferentPublicationNamesTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyDevelopers (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testMissingScm (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testValidPom (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testEmptyLicenses (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PomValidationTaskSapientGeneratedTest::testInvalidPom (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getProjectLayoutThrowsUnsupportedOperationException (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::getSuccessMarkerTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskSapientGeneratedTest::writeMarkerTest (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenVersionFileExistsIncludedBuildGetProjectDir (Failure reason and Fail)
+org.elasticsearch.gradle.internal.conventions.util.UtilSapientGeneratedTest::locateElasticsearchWorkspaceWhenGradleGetParentIsNotNull (Failure reason and Fail)
+
+------------------------------------------------

@@ -1,30 +1,32 @@
 package org.elasticsearch.gradle.plugin;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import org.gradle.api.UnknownDomainObjectException;
+import org.elasticsearch.gradle.plugin.PluginPropertiesExtension;
+import org.gradle.api.file.CopySpec;
+import java.util.List;
 import org.gradle.api.plugins.ExtraPropertiesExtension.UnknownPropertyException;
 import org.gradle.api.provider.Property;
-import org.gradle.api.file.RegularFileProperty;
-import org.gradle.api.plugins.BasePluginExtension;
-import java.io.File;
 import org.gradle.api.plugins.ExtraPropertiesExtension;
-import org.gradle.api.plugins.ExtensionContainer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import java.io.File;
 import org.gradle.api.Project;
-import org.gradle.api.model.ObjectFactory;
-import static org.mockito.Mockito.doNothing;
+import org.gradle.api.plugins.ExtensionContainer;
+import org.gradle.api.file.RegularFileProperty;
+import org.gradle.api.UnknownDomainObjectException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
+import org.gradle.api.plugins.BasePluginExtension;
+import static org.hamcrest.Matchers.*;
+import java.util.ArrayList;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import org.gradle.api.model.ObjectFactory;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Disabled;
 
-@Timeout(value = 5)
 class PluginPropertiesExtensionSapientGeneratedTest {
 
-    private final Project projectMock = mock(Project.class, "project");
+    private final Project projectMock = mock(Project.class);
 
     private final ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
 
@@ -34,223 +36,166 @@ class PluginPropertiesExtensionSapientGeneratedTest {
 
     private final RegularFileProperty regularFilePropertyMock = mock(RegularFileProperty.class);
 
-    //Sapient generated method id: ${getNameWhenNameIsNull}, hash: BD181FA3B579FE413C5E32B7C32A2307
-    @Disabled()
-    @Test()
+    private final BasePluginExtension basePluginExtensionMock = mock(BasePluginExtension.class);
+
+    private final Property<String> propertyMock = mock(Property.class);
+
+    @Test
     void getNameWhenNameIsNull() {
-        /* Branches:
-         * (name == null) : true
-         */
-        //Arrange Statement(s)
-        doReturn("return_of_getName1").when(projectMock).getName();
+        doReturn("projectName").when(projectMock).getName();
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        target.setName((String) null);
-        //Act Statement(s)
         String result = target.getName();
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo("return_of_getName1"));
-            verify(projectMock).getName();
-        });
+        assertThat(result, equalTo("projectName"));
+        verify(projectMock).getName();
     }
 
-    //Sapient generated method id: ${getNameWhenNameIsNotNull}, hash: 52733AB9EEAE4DB126B15A4594EFE5FC
     @Disabled()
-    @Test()
+    @Test
     void getNameWhenNameIsNotNull() {
-        /* Branches:
-         * (name == null) : false
-         */
-        //Arrange Statement(s)
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        target.setName("name1");
-        //Act Statement(s)
+        target.setName("customName");
         String result = target.getName();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("name1")));
+        assertThat(result, equalTo("customName"));
     }
 
-    //Sapient generated method id: ${setNameTest}, hash: D96B25B09FD789742C4802F2C043B2CE
-    @Test()
+    @Test
     void setNameTest() throws UnknownDomainObjectException {
-        //Arrange Statement(s)
         doReturn(extensionContainerMock).when(projectMock).getExtensions();
-        BasePluginExtension basePluginExtensionMock = mock(BasePluginExtension.class);
         doReturn(basePluginExtensionMock).when(extensionContainerMock).getByType(BasePluginExtension.class);
-        Property<String> propertyMock = mock(Property.class);
         doReturn(propertyMock).when(basePluginExtensionMock).getArchivesName();
-        doNothing().when(propertyMock).set("name1");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
-        target.setName("name1");
-        //Assert statement(s)
-        assertAll("result", () -> {
-            verify(projectMock).getExtensions();
-            verify(extensionContainerMock).getByType(BasePluginExtension.class);
-            verify(basePluginExtensionMock).getArchivesName();
-            verify(propertyMock).set("name1");
-        });
+        target.setName("testName");
+        verify(propertyMock).set("testName");
     }
 
-    //Sapient generated method id: ${getVersionWhenVersionIsNull}, hash: D5BF91F2E516467EEE7D6634F45C6E7D
-    @Test()
+    @Test
     void getVersionWhenVersionIsNull() {
-        /* Branches:
-         * (version == null) : true
-         */
-        //Arrange Statement(s)
-        Object objectMock = mock(Object.class, "object");
-        doReturn(objectMock).when(projectMock).getVersion();
+        doReturn("projectVersion").when(projectMock).getVersion();
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        target.setVersion((String) null);
-        //Act Statement(s)
         String result = target.getVersion();
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo("object"));
-            verify(projectMock).getVersion();
-        });
+        assertThat(result, equalTo("projectVersion"));
+        verify(projectMock).getVersion();
     }
 
-    //Sapient generated method id: ${getVersionWhenVersionIsNotNull}, hash: 715D1FFBB1164427D53E96B5321AFE93
-    @Test()
+    @Test
     void getVersionWhenVersionIsNotNull() {
-        /* Branches:
-         * (version == null) : false
-         */
-        //Arrange Statement(s)
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        target.setVersion("version1");
-        //Act Statement(s)
+        target.setVersion("1.0.0");
         String result = target.getVersion();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("version1")));
+        assertThat(result, equalTo("1.0.0"));
     }
 
-    //Sapient generated method id: ${setDescriptionTest}, hash: C1BEF3E8B88436C036E2ABC5D6516433
-    @Test()
+    @Test
     void setDescriptionTest() {
-        //Arrange Statement(s)
-        doNothing().when(projectMock).setDescription("description1");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
-        target.setDescription("description1");
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(target.getDescription(), equalTo("description1"));
-            verify(projectMock).setDescription("description1");
-        });
+        target.setDescription("Test Description");
+        verify(projectMock).setDescription("Test Description");
+        assertThat(target.getDescription(), equalTo("Test Description"));
     }
 
-    //Sapient generated method id: ${setLicenseFileWhenExtraPropertiesHasLicenseFile}, hash: AECBB3847F38F743921193D0AF6852B8
-    @Test()
+    @Test
     void setLicenseFileWhenExtraPropertiesHasLicenseFile() throws UnknownPropertyException {
-        /* Branches:
-         * (extraProperties.has("licenseFile")) : true
-         */
-        //Arrange Statement(s)
         doReturn(extensionContainerMock).when(projectMock).getExtensions();
         doReturn(extraPropertiesExtensionMock).when(extensionContainerMock).getExtraProperties();
         doReturn(true).when(extraPropertiesExtensionMock).has("licenseFile");
         doReturn(regularFilePropertyMock).when(extraPropertiesExtensionMock).get("licenseFile");
-        File file = new File("pathname1");
-        doNothing().when(regularFilePropertyMock).set(file);
+        File file = new File("license.txt");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
         target.setLicenseFile(file);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(target.getLicenseFile(), equalTo(file));
-            verify(projectMock).getExtensions();
-            verify(extensionContainerMock).getExtraProperties();
-            verify(extraPropertiesExtensionMock).has("licenseFile");
-            verify(extraPropertiesExtensionMock).get("licenseFile");
-            verify(regularFilePropertyMock).set(file);
-        });
+        verify(regularFilePropertyMock).set(file);
+        assertThat(target.getLicenseFile(), equalTo(file));
     }
 
-    //Sapient generated method id: ${setLicenseFileWhenExtraPropertiesNotHasLicenseFile}, hash: 3EB9A470E5BE8303D10CD70275C677BB
-    @Test()
+    @Test
     void setLicenseFileWhenExtraPropertiesNotHasLicenseFile() {
-        /* Branches:
-         * (extraProperties.has("licenseFile")) : false
-         */
-        //Arrange Statement(s)
         doReturn(extensionContainerMock).when(projectMock).getExtensions();
         doReturn(extraPropertiesExtensionMock).when(extensionContainerMock).getExtraProperties();
         doReturn(false).when(extraPropertiesExtensionMock).has("licenseFile");
         doReturn(objectFactoryMock).when(projectMock).getObjects();
         doReturn(regularFilePropertyMock).when(objectFactoryMock).fileProperty();
-        File file = new File("pathname1");
-        doNothing().when(regularFilePropertyMock).set(file);
+        File file = new File("license.txt");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
         target.setLicenseFile(file);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(target.getLicenseFile(), equalTo(file));
-            verify(projectMock).getExtensions();
-            verify(extensionContainerMock).getExtraProperties();
-            verify(extraPropertiesExtensionMock).has("licenseFile");
-            verify(projectMock).getObjects();
-            verify(objectFactoryMock).fileProperty();
-            verify(regularFilePropertyMock).set(file);
-        });
+        verify(regularFilePropertyMock).set(file);
+        assertThat(target.getLicenseFile(), equalTo(file));
     }
 
-    //Sapient generated method id: ${setNoticeFileWhenExtraPropertiesHasNoticeFile}, hash: 15D885ACBDA5379046ECA1290E5DBE1A
-    @Test()
+    @Test
     void setNoticeFileWhenExtraPropertiesHasNoticeFile() throws UnknownPropertyException {
-        /* Branches:
-         * (extraProperties.has("noticeFile")) : true
-         */
-        //Arrange Statement(s)
         doReturn(extensionContainerMock).when(projectMock).getExtensions();
         doReturn(extraPropertiesExtensionMock).when(extensionContainerMock).getExtraProperties();
         doReturn(true).when(extraPropertiesExtensionMock).has("noticeFile");
         doReturn(regularFilePropertyMock).when(extraPropertiesExtensionMock).get("noticeFile");
-        File file = new File("pathname1");
-        doNothing().when(regularFilePropertyMock).set(file);
+        File file = new File("notice.txt");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
         target.setNoticeFile(file);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(target.getNoticeFile(), equalTo(file));
-            verify(projectMock).getExtensions();
-            verify(extensionContainerMock).getExtraProperties();
-            verify(extraPropertiesExtensionMock).has("noticeFile");
-            verify(extraPropertiesExtensionMock).get("noticeFile");
-            verify(regularFilePropertyMock).set(file);
-        });
+        verify(regularFilePropertyMock).set(file);
+        assertThat(target.getNoticeFile(), equalTo(file));
     }
 
-    //Sapient generated method id: ${setNoticeFileWhenExtraPropertiesNotHasNoticeFile}, hash: 9FF2AA54374AA79EA12CF3071A24E4F0
-    @Test()
+    @Test
     void setNoticeFileWhenExtraPropertiesNotHasNoticeFile() {
-        /* Branches:
-         * (extraProperties.has("noticeFile")) : false
-         */
-        //Arrange Statement(s)
         doReturn(extensionContainerMock).when(projectMock).getExtensions();
         doReturn(extraPropertiesExtensionMock).when(extensionContainerMock).getExtraProperties();
         doReturn(false).when(extraPropertiesExtensionMock).has("noticeFile");
         doReturn(objectFactoryMock).when(projectMock).getObjects();
         doReturn(regularFilePropertyMock).when(objectFactoryMock).fileProperty();
-        File file = new File("pathname1");
-        doNothing().when(regularFilePropertyMock).set(file);
+        File file = new File("notice.txt");
         PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
-        //Act Statement(s)
         target.setNoticeFile(file);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(target.getNoticeFile(), equalTo(file));
-            verify(projectMock).getExtensions();
-            verify(extensionContainerMock).getExtraProperties();
-            verify(extraPropertiesExtensionMock).has("noticeFile");
-            verify(projectMock).getObjects();
-            verify(objectFactoryMock).fileProperty();
-            verify(regularFilePropertyMock).set(file);
-        });
+        verify(regularFilePropertyMock).set(file);
+        assertThat(target.getNoticeFile(), equalTo(file));
+    }
+
+    @Test
+    void getClassnameTest() {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setClassname("org.example.TestPlugin");
+        assertThat(target.getClassname(), equalTo("org.example.TestPlugin"));
+    }
+
+    @Test
+    void getExtendedPluginsTest() {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setExtendedPlugins(java.util.Arrays.asList("plugin1", "plugin2"));
+        assertThat(target.getExtendedPlugins(), contains("plugin1", "plugin2"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "true", "false" })
+    void hasNativeControllerTest(boolean hasNativeController) {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setHasNativeController(hasNativeController);
+        assertThat(target.isHasNativeController(), equalTo(hasNativeController));
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "true", "false" })
+    void isLicensedTest(boolean isLicensed) {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setLicensed(isLicensed);
+        assertThat(target.isLicensed(), equalTo(isLicensed));
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "true", "false" })
+    void requiresKeystoreTest(boolean requiresKeystore) {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setRequiresKeystore(requiresKeystore);
+        assertThat(target.isRequiresKeystore(), equalTo(requiresKeystore));
+    }
+
+    @Test
+    void getProjectTest() {
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        assertThat(target.getProject(), sameInstance(projectMock));
+    }
+
+    @Test
+    void setBundleSpecTest() {
+        CopySpec bundleSpecMock = mock(CopySpec.class);
+        PluginPropertiesExtension target = new PluginPropertiesExtension(projectMock);
+        target.setBundleSpec(bundleSpecMock);
+        assertThat(target.getBundleSpec(), sameInstance(bundleSpecMock));
     }
 }

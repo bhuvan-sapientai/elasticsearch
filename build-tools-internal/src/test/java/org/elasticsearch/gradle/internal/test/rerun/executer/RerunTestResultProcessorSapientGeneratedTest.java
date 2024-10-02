@@ -1,192 +1,186 @@
 package org.elasticsearch.gradle.internal.test.rerun.executer;
 
-import org.junit.jupiter.api.Timeout;
-import org.mockito.InjectMocks;
+import org.elasticsearch.gradle.internal.test.rerun.executer.RerunTestResultProcessor;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Map;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import java.util.List;
-import org.gradle.api.tasks.testing.TestFailure;
-import org.gradle.api.internal.tasks.testing.TestResultProcessor;
-import org.gradle.api.internal.tasks.testing.TestDescriptorInternal;
-import org.gradle.api.internal.tasks.testing.TestStartEvent;
-import org.mockito.MockitoAnnotations;
 import org.gradle.api.tasks.testing.TestOutputEvent;
-import org.gradle.api.internal.tasks.testing.TestCompleteEvent;
-import static org.mockito.Mockito.doNothing;
+import org.junit.jupiter.api.Timeout;
+import org.gradle.api.tasks.testing.TestFailure;
+import org.gradle.api.internal.tasks.testing.TestDescriptorInternal;
+import org.mockito.MockitoAnnotations;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import org.junit.jupiter.api.Disabled;
+
+import org.gradle.api.internal.tasks.testing.TestResultProcessor;
+import org.mockito.InjectMocks;
+
+import static org.hamcrest.Matchers.*;
+
+import java.util.ArrayList;
+
+import org.gradle.api.internal.tasks.testing.TestCompleteEvent;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.gradle.api.internal.tasks.testing.TestStartEvent;
+
+import static org.mockito.Mockito.*;
+
+import java.util.HashMap;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class RerunTestResultProcessorSapientGeneratedTest {
 
-    private final TestResultProcessor delegateMock = mock(TestResultProcessor.class, "delegate");
+    private TestResultProcessor delegateMock;
 
-    private final TestDescriptorInternal rootTestDescriptorMock = mock(TestDescriptorInternal.class, "rootTestDescriptor");
+    private TestDescriptorInternal rootTestDescriptorMock;
 
     private AutoCloseable autoCloseableMocks;
 
-    @InjectMocks()
+    @InjectMocks
     private RerunTestResultProcessor target;
 
-    @AfterEach()
+    @BeforeEach
+    public void setUp() {
+        delegateMock = mock(TestResultProcessor.class);
+        rootTestDescriptorMock = mock(TestDescriptorInternal.class);
+        target = new RerunTestResultProcessor(delegateMock);
+        autoCloseableMocks = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach
     public void afterTest() throws Exception {
         if (autoCloseableMocks != null)
             autoCloseableMocks.close();
     }
 
-    //Sapient generated method id: ${startedWhenRootTestDescriptorIsNull}, hash: D63E8443B69A878903D2B4DEA2497CFB
-    @Disabled()
-    @Test()
+    @Test
     void startedWhenRootTestDescriptorIsNull() {
-        /* Branches:
-         * (rootTestDescriptor == null) : true
-         */
-        //Arrange Statement(s)
         TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
         Object object = new Object();
-        doReturn(object).when(descriptorMock).getId();
+        when(descriptorMock.getId()).thenReturn(object);
         TestStartEvent testStartEventMock = mock(TestStartEvent.class);
         doNothing().when(delegateMock).started(descriptorMock, testStartEventMock);
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
         target.started(descriptorMock, testStartEventMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            verify(descriptorMock).getId();
-            verify(delegateMock).started(descriptorMock, testStartEventMock);
-        });
+        verify(descriptorMock).getId();
+        verify(delegateMock).started(descriptorMock, testStartEventMock);
     }
 
-    //Sapient generated method id: ${startedWhenActiveDescriptorsByIdEntrySetIsNotEmpty}, hash: 2A93445FAD320476C37F1CD36F61D069
-    @Disabled()
-    @Test()
-    void startedWhenActiveDescriptorsByIdEntrySetIsNotEmpty() {
-        /* Branches:
-         * (rootTestDescriptor == null) : true
-         * (catch-exception (IllegalArgumentException)) : true
-         * (for-each(activeDescriptorsById.entrySet())) : true  #  inside logTracing method
-         */
-        //Arrange Statement(s)
+    @Test
+    void startedWhenRootTestDescriptorIsNotNull() {
         TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
-        Object objectMock = mock(Object.class, "object");
-        Object objectMock2 = mock(Object.class, "object2");
-        doReturn(objectMock, objectMock2).when(descriptorMock).getId();
-        doReturn("A").when(descriptorMock).getDisplayName();
-        IllegalArgumentException illegalArgumentException = new IllegalArgumentException();
+        Object object = new Object();
+        when(descriptorMock.getId()).thenReturn(object);
         TestStartEvent testStartEventMock = mock(TestStartEvent.class);
-        doThrow(illegalArgumentException).when(delegateMock).started(descriptorMock, testStartEventMock);
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
+        when(testStartEventMock.getParentId()).thenReturn(object);
+        target.started(rootTestDescriptorMock, mock(TestStartEvent.class));
         target.started(descriptorMock, testStartEventMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            verify(descriptorMock, times(2)).getId();
-            verify(descriptorMock).getDisplayName();
-            verify(delegateMock).started(descriptorMock, testStartEventMock);
-        });
+        verify(delegateMock).started(descriptorMock, testStartEventMock);
     }
 
-    //Sapient generated method id: ${completedWhenActiveDescriptorsByIdSizeNotEquals1}, hash: 8374A8E70835549C95E72C16D99E83A4
-    @Test()
-    void completedWhenActiveDescriptorsByIdSizeNotEquals1() {
-        /* Branches:
-         * (testId.equals(rootTestDescriptor.getId())) : true
-         * (activeDescriptorsById.size() != 1) : true
-         */
-        //Arrange Statement(s)
+    @Test
+    void startedWhenIllegalArgumentExceptionOccurs() {
+        TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
         Object object = new Object();
-        doReturn(object).when(rootTestDescriptorMock).getId();
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
+        when(descriptorMock.getId()).thenReturn(object);
+        TestStartEvent testStartEventMock = mock(TestStartEvent.class);
+        doThrow(new IllegalArgumentException()).when(delegateMock).started(descriptorMock, testStartEventMock);
+        target.started(descriptorMock, testStartEventMock);
+        verify(delegateMock).started(descriptorMock, testStartEventMock);
+    }
+
+    @Test
+    void completedWhenTestIdEqualsRootTestDescriptorId() {
+        Object object = new Object();
+        when(rootTestDescriptorMock.getId()).thenReturn(object);
+        target.started(rootTestDescriptorMock, mock(TestStartEvent.class));
         TestCompleteEvent testCompleteEventMock = mock(TestCompleteEvent.class);
-        //Act Statement(s)
         target.completed(object, testCompleteEventMock);
-        //Assert statement(s)
-        assertAll("result", () -> verify(rootTestDescriptorMock).getId());
+        verify(delegateMock).completed(object, testCompleteEventMock);
     }
 
-    //Sapient generated method id: ${completedWhenNotActive}, hash: F13F0F5EDAC324E9435F62E1610A47FE
-    @Test()
-    void completedWhenNotActive() {
-        /* Branches:
-         * (testId.equals(rootTestDescriptor.getId())) : false
-         * (active) : false
-         */
-        //Arrange Statement(s)
+    @Test
+    void completedWhenTestIdDoesNotEqualRootTestDescriptorId() {
         Object object = new Object();
-        doReturn(object).when(rootTestDescriptorMock).getId();
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        Object object2 = new Object();
+        Object testId = new Object();
+        when(rootTestDescriptorMock.getId()).thenReturn(object);
+        target.started(rootTestDescriptorMock, mock(TestStartEvent.class));
         TestCompleteEvent testCompleteEventMock = mock(TestCompleteEvent.class);
-        //Act Statement(s)
-        target.completed(object2, testCompleteEventMock);
-        //Assert statement(s)
-        assertAll("result", () -> verify(rootTestDescriptorMock).getId());
+        target.completed(testId, testCompleteEventMock);
+        verify(delegateMock, never()).completed(testId, testCompleteEventMock);
     }
 
-    //Sapient generated method id: ${outputWhenActiveDescriptorsByIdNotContainsKeyTestId}, hash: 87763A86A2D582501C4C5F9B58CE312A
-    @Test()
-    void outputWhenActiveDescriptorsByIdNotContainsKeyTestId() {
-        /* Branches:
-         * (activeDescriptorsById.containsKey(testId)) : false
-         */
-        //Arrange Statement(s)
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        Object object = new Object();
+    @Test
+    void outputWhenTestIdIsActive() {
+        Object testId = new Object();
+        TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
+        when(descriptorMock.getId()).thenReturn(testId);
+        target.started(descriptorMock, mock(TestStartEvent.class));
         TestOutputEvent testOutputEventMock = mock(TestOutputEvent.class);
-        //Act Statement(s)
-        target.output(object, testOutputEventMock);
+        target.output(testId, testOutputEventMock);
+        verify(delegateMock).output(testId, testOutputEventMock);
     }
 
-    //Sapient generated method id: ${failureWhenActiveDescriptorsByIdNotContainsKeyTestId}, hash: 1E8869D7BA5BEABF7257FE30458395A8
-    @Test()
-    void failureWhenActiveDescriptorsByIdNotContainsKeyTestId() {
-        /* Branches:
-         * (activeDescriptorsById.containsKey(testId)) : false
-         */
-        //Arrange Statement(s)
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        Object object = new Object();
+    @Test
+    void outputWhenTestIdIsNotActive() {
+        Object testId = new Object();
+        TestOutputEvent testOutputEventMock = mock(TestOutputEvent.class);
+        target.output(testId, testOutputEventMock);
+        verify(delegateMock, never()).output(testId, testOutputEventMock);
+    }
+
+    @Test
+    void failureWhenTestIdIsActive() {
+        Object testId = new Object();
+        TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
+        when(descriptorMock.getId()).thenReturn(testId);
+        target.started(descriptorMock, mock(TestStartEvent.class));
         TestFailure testFailureMock = mock(TestFailure.class);
-        //Act Statement(s)
-        target.failure(object, testFailureMock);
+        target.failure(testId, testFailureMock);
+        verify(delegateMock).failure(testId, testFailureMock);
     }
 
-    //Sapient generated method id: ${resetTest}, hash: 120995B8F49E0B74940CD110989891E8
-    @Test()
+    @Test
+    void failureWhenTestIdIsNotActive() {
+        Object testId = new Object();
+        TestFailure testFailureMock = mock(TestFailure.class);
+        target.failure(testId, testFailureMock);
+        verify(delegateMock, never()).failure(testId, testFailureMock);
+    }
+
+    @Test
     void resetTest() {
-        //Arrange Statement(s)
         Object object = new Object();
-        doReturn(object).when(rootTestDescriptorMock).getId();
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
+        when(rootTestDescriptorMock.getId()).thenReturn(object);
+        target.started(rootTestDescriptorMock, mock(TestStartEvent.class));
+        target.started(mock(TestDescriptorInternal.class), mock(TestStartEvent.class));
         target.reset();
-        //Assert statement(s)
-        assertAll("result", () -> verify(rootTestDescriptorMock).getId());
+        List<TestDescriptorInternal> activeDescriptors = target.getActiveDescriptors();
+        assertThat(activeDescriptors.size(), equalTo(1));
+        assertThat(activeDescriptors.get(0), equalTo(rootTestDescriptorMock));
     }
 
-    //Sapient generated method id: ${getActiveDescriptorsTest}, hash: 76E400098CD71F3283F402722F4EB2EC
-    @Test()
+    @Test
     void getActiveDescriptorsTest() {
-        //Arrange Statement(s)
-        target = new RerunTestResultProcessor(delegateMock);
-        autoCloseableMocks = MockitoAnnotations.openMocks(this);
-        //Act Statement(s)
+        Object object1 = new Object();
+        Object object2 = new Object();
+        TestDescriptorInternal descriptor1 = mock(TestDescriptorInternal.class);
+        TestDescriptorInternal descriptor2 = mock(TestDescriptorInternal.class);
+        when(descriptor1.getId()).thenReturn(object1);
+        when(descriptor2.getId()).thenReturn(object2);
+        target.started(descriptor1, mock(TestStartEvent.class));
+        target.started(descriptor2, mock(TestStartEvent.class));
         List<TestDescriptorInternal> result = target.getActiveDescriptors();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result.size(), equalTo(0)));
+        assertThat(result.size(), equalTo(2));
+        assertThat(result, containsInAnyOrder(descriptor1, descriptor2));
     }
 }

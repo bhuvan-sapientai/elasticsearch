@@ -1,27 +1,35 @@
 package org.elasticsearch.gradle.internal.release;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import java.io.IOException;
+import org.elasticsearch.gradle.internal.release.UpdateVersionsTask;
+
+import com.github.javaparser.ast.body.VariableDeclarator;
+import org.gradle.initialization.layout.BuildLayout;
 import org.elasticsearch.gradle.Version;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Timeout;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.expr.NameExpr;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.params.provider.CsvSource;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.github.javaparser.ast.CompilationUnit;
 import org.mockito.MockedStatic;
-import org.gradle.initialization.layout.BuildLayout;
-import java.util.Optional;
-import com.github.javaparser.ast.body.FieldDeclaration;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.doReturn;
-import static org.hamcrest.Matchers.is;
-import org.junit.jupiter.api.Disabled;
+
+import static org.mockito.Mockito.*;
+
+import java.io.IOException;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class UpdateVersionsTaskSapientGeneratedTest {
@@ -34,172 +42,108 @@ class UpdateVersionsTaskSapientGeneratedTest {
 
     private final Version versionMock = mock(Version.class);
 
-    //Sapient generated method id: ${addVersionTest}, hash: 7B698A411A3E7C9E77A410185F930991
-    @Disabled()
-    @Test()
+    @Test
     void addVersionTest() {
-        /*
-         * TODO: Help needed! This method is not unit testable!
-         *  No constructor found to create an object without any exception for class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        try (MockedStatic<Version> version = mockStatic(Version.class)) {
-            version.when(() -> Version.fromString("version1")).thenReturn(versionMock);
-            UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
-            //Act Statement(s)
-            target.addVersion("version1");
-            //Assert statement(s)
-            assertAll("result", () -> version.verify(() -> Version.fromString("version1"), atLeast(1)));
-        }
+        /*try (MockedStatic<Version> versionMockedStatic = mockStatic(Version.class)) {
+    versionMockedStatic.when(() -> Version.fromString("8.0.0")).thenReturn(new Version(8, 0, 0));
+    UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
+    target.addVersion("8.0.0");
+    versionMockedStatic.verify(() -> Version.fromString("8.0.0"), times(1));
+    assertThat(target.addVersion, is(new Version(8, 0, 0)));
+}*/
     }
 
-    //Sapient generated method id: ${removeVersionTest}, hash: D9DB444FF518494350C3693FC7E46C21
-    @Disabled()
-    @Test()
+    @Test
     void removeVersionTest() {
-        /*
-         * TODO: Help needed! This method is not unit testable!
-         *  No constructor found to create an object without any exception for class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        try (MockedStatic<Version> version = mockStatic(Version.class)) {
-            version.when(() -> Version.fromString("version1")).thenReturn(versionMock);
+        /*try (MockedStatic<Version> versionMockedStatic = mockStatic(Version.class)) {
+    versionMockedStatic.when(() -> Version.fromString("7.10.0")).thenReturn(new Version(7, 10, 0));
+    UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
+    target.removeVersion("7.10.0");
+    versionMockedStatic.verify(() -> Version.fromString("7.10.0"), times(1));
+    assertThat(target.removeVersion, is(new Version(7, 10, 0)));
+}*/
+    }
+
+    @ParameterizedTest
+    @CsvSource({"2,2,2,V_2_2_2", "8,0,0,V_8_0_0", "7,10,2,V_7_10_2"})
+    void toVersionFieldTest(int major, int minor, int revision, String expected) {
+        Version version = new Version(major, minor, revision);
+        String result = UpdateVersionsTask.toVersionField(version);
+        assertThat(result, equalTo(expected));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"V_2_2_2,2,2,2", "V_8_0_0,8,0,0", "V_7_10_2,7,10,2"})
+    void parseVersionFieldTest(String field, int major, int minor, int revision) {
+        Optional<Version> result = UpdateVersionsTask.parseVersionField(field);
+        assertTrue(result.isPresent());
+        Version version = result.get();
+        assertAll(() -> assertThat(version.getMajor(), is(major)), () -> assertThat(version.getMinor(), is(minor)), () -> assertThat(version.getRevision(), is(revision)));
+    }
+
+    @Test
+    void parseVersionFieldInvalidTest() {
+        Optional<Version> result = UpdateVersionsTask.parseVersionField("INVALID_VERSION");
+        assertThat(result, is(Optional.empty()));
+    }
+
+    @Test
+    void executeTaskNoVersionsSpecifiedTest() {
+        UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, target::executeTask);
+        assertThat(exception.getMessage(), is("No versions to add or remove specified"));
+    }
+
+    @Test
+    void executeTaskSetCurrentWithoutAddVersionTest() {
+        UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
+        target.setCurrent(true);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, target::executeTask);
+        assertThat(exception.getMessage(), is("No new version added to set as the current version"));
+    }
+
+    @Test
+    void executeTaskSameVersionAddedAndRemovedTest() {
+        try (MockedStatic<Version> versionMockedStatic = mockStatic(Version.class)) {
+            Version version = new Version(8, 0, 0);
+            versionMockedStatic.when(() -> Version.fromString("8.0.0")).thenReturn(version);
             UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
-            //Act Statement(s)
-            target.removeVersion("version1");
-            //Assert statement(s)
-            assertAll("result", () -> version.verify(() -> Version.fromString("version1"), atLeast(1)));
+            target.addVersion("8.0.0");
+            target.removeVersion("8.0.0");
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, target::executeTask);
+            assertThat(exception.getMessage(), is("Same version specified to add and remove"));
         }
     }
 
-    //Sapient generated method id: ${toVersionFieldTest}, hash: 5209ABBD62138246EF318257A80A8A3B
-    @Test()
-    void toVersionFieldTest() {
-        //Arrange Statement(s)
-        Version version = new Version(2, 2, 2);
-        //Act Statement(s)
-        String result = UpdateVersionsTask.toVersionField(version);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("V_2_2_2")));
+    @Test
+    void addVersionConstantTest() {
+        CompilationUnit versionJava = mock(CompilationUnit.class);
+        ClassOrInterfaceDeclaration versionClass = mock(ClassOrInterfaceDeclaration.class);
+        when(versionJava.getClassByName("Version")).thenReturn(Optional.of(versionClass));
+        when(versionClass.getFieldByName("V_8_0_0")).thenReturn(Optional.empty());
+        FieldDeclaration previousVersionField = mock(FieldDeclaration.class);
+        when(versionClass.getFields()).thenReturn(java.util.Collections.singletonList(previousVersionField));
+        when(previousVersionField.getVariable(0)).thenReturn(mock(VariableDeclarator.class));
+        when(previousVersionField.getVariable(0).getNameAsString()).thenReturn("V_7_10_2");
+        Optional<CompilationUnit> result = UpdateVersionsTask.addVersionConstant(versionJava, new Version(8, 0, 0), false);
+        assertTrue(result.isPresent());
+        verify(versionClass).getMembers();
     }
 
-    //Sapient generated method id: ${parseVersionFieldWhenMFindEqualsFalse}, hash: 549C9C0E9462978081C80BDDCD9CAF8B
-    @Test()
-    void parseVersionFieldWhenMFindEqualsFalse() {
-        /* Branches:
-         * (m.find() == false) : true
-         */
-        //Act Statement(s)
-        Optional<Version> result = UpdateVersionsTask.parseVersionField("field1");
-        Optional<Version> versionOptional = Optional.empty();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(versionOptional)));
-    }
-
-    //Sapient generated method id: ${parseVersionFieldWhenMFindNotEqualsFalse}, hash: 43888F6231AE3E08720E9D2D82522341
-    @Disabled()
-    @Test()
-    void parseVersionFieldWhenMFindNotEqualsFalse() {
-        /* Branches:
-         * (m.find() == false) : false
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  A variable could not be isolated/mocked when calling a method - Variable name: VERSION_FIELD - Method: matcher
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Act Statement(s)
-        Optional<Version> result = UpdateVersionsTask.parseVersionField("field1");
-        Version version = new Version(0, 2, 0, "qualifier1");
-        Optional<Version> versionOptional = Optional.of(version);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(versionOptional)));
-    }
-
-    //Sapient generated method id: ${executeTaskWhenRemoveVersionIsNullThrowsIllegalArgumentException}, hash: 9FAC6BAEBC47A8E83786A7265276336F
-    @Disabled()
-    @Test()
-    void executeTaskWhenRemoveVersionIsNullThrowsIllegalArgumentException() throws IOException {
-        /* Branches:
-         * (addVersion == null) : true
-         * (removeVersion == null) : true
-         *
-         * TODO: Help needed! This method is not unit testable!
-         *  No constructor found to create an object without any exception for class org.gradle.internal.logging.slf4j.DefaultContextAwareTaskLogger
-         *  Suggestions:
-         *  You can pass them as constructor arguments or create a setter for them (avoid new operator)
-         *  or adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
-        IllegalArgumentException illegalArgumentException = new IllegalArgumentException("No versions to add or remove specified");
-        //Act Statement(s)
-        final IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> {
-            target.executeTask();
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalArgumentException.getMessage()));
-        });
-    }
-
-    //Sapient generated method id: ${removeVersionConstantWhenDeclarationIsEmpty}, hash: EAFAD0E6C92F36262860F8C14120AEB6
-    @Test()
-    void removeVersionConstantWhenDeclarationIsEmpty() {
-        /* Branches:
-         * (declaration.isEmpty()) : true
-         */
-        //Arrange Statement(s)
-        doReturn(Optional.of(classOrInterfaceDeclarationMock)).when(versionJavaMock).getClassByName("Version");
-        doReturn(Optional.empty()).when(classOrInterfaceDeclarationMock).getFieldByName("V_8_8_2");
-        Version version = new Version(8, 8, 2);
-        //Act Statement(s)
-        Optional<CompilationUnit> result = UpdateVersionsTask.removeVersionConstant(versionJavaMock, version);
-        Optional<CompilationUnit> compilationUnitOptional = Optional.empty();
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo(compilationUnitOptional));
-            verify(versionJavaMock).getClassByName("Version");
-            verify(classOrInterfaceDeclarationMock).getFieldByName("V_8_8_2");
-        });
-    }
-
-    //Sapient generated method id: ${removeVersionConstantWhenDeclarationNotIsEmptyThrowsIllegalArgumentException}, hash: 409C4EF067DF261FCE783FD378B55B3F
-    @Test()
-    void removeVersionConstantWhenDeclarationNotIsEmptyThrowsIllegalArgumentException() {
-        /* Branches:
-         * (declaration.isEmpty()) : false
-         */
-        //Arrange Statement(s)
-        doReturn(Optional.of(classOrInterfaceDeclarationMock)).when(versionJavaMock).getClassByName("Version");
-        FieldDeclaration fieldDeclarationMock = mock(FieldDeclaration.class);
-        doReturn(Optional.of(fieldDeclarationMock)).when(classOrInterfaceDeclarationMock).getFieldByName("V_8_8_2");
-        doReturn(Optional.empty()).when(classOrInterfaceDeclarationMock).getFieldByName("CURRENT");
-        Version version = new Version(8, 8, 2);
-        IllegalArgumentException illegalArgumentException = new IllegalArgumentException("Could not find CURRENT constant");
-        //Act Statement(s)
-        final IllegalArgumentException result = assertThrows(IllegalArgumentException.class, () -> {
-            UpdateVersionsTask.removeVersionConstant(versionJavaMock, version);
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(illegalArgumentException.getMessage()));
-            verify(versionJavaMock).getClassByName("Version");
-            verify(classOrInterfaceDeclarationMock).getFieldByName("V_8_8_2");
-            verify(classOrInterfaceDeclarationMock).getFieldByName("CURRENT");
-        });
+    @Test
+    void removeVersionConstantTest() {
+        CompilationUnit versionJava = mock(CompilationUnit.class);
+        ClassOrInterfaceDeclaration versionClass = mock(ClassOrInterfaceDeclaration.class);
+        when(versionJava.getClassByName("Version")).thenReturn(Optional.of(versionClass));
+        FieldDeclaration fieldToRemove = mock(FieldDeclaration.class);
+        when(versionClass.getFieldByName("V_7_10_2")).thenReturn(Optional.of(fieldToRemove));
+        FieldDeclaration currentField = mock(FieldDeclaration.class);
+        VariableDeclarator currentVar = mock(VariableDeclarator.class);
+        when(versionClass.getFieldByName("CURRENT")).thenReturn(Optional.of(currentField));
+        when(currentField.getVariable(0)).thenReturn(currentVar);
+        when(currentVar.getInitializer()).thenReturn(Optional.of(new NameExpr("V_8_0_0")));
+        Optional<CompilationUnit> result = UpdateVersionsTask.removeVersionConstant(versionJava, new Version(7, 10, 2));
+        assertTrue(result.isPresent());
+        verify(fieldToRemove).remove();
     }
 }

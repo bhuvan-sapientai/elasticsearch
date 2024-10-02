@@ -1,39 +1,35 @@
 package org.elasticsearch.gradle.internal;
 
+import org.elasticsearch.gradle.internal.InternalPluginBuildPlugin;
+
 import org.junit.jupiter.api.Timeout;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+import org.gradle.api.plugins.PluginManager;
 import org.junit.jupiter.api.Test;
 import org.gradle.api.Project;
-import org.gradle.api.plugins.PluginManager;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
+
+import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class InternalPluginBuildPluginSapientGeneratedTest {
 
-    //Sapient generated method id: ${applyTest}, hash: C2A631BF13293FF71C71215E6ED986D0
-    @Test()
+    @Test
     void applyTest() {
-        //Arrange Statement(s)
+        // Arrange
         Project projectMock = mock(Project.class);
         PluginManager pluginManagerMock = mock(PluginManager.class);
-        doNothing().when(pluginManagerMock).apply(BuildPlugin.class);
-        PluginManager pluginManagerMock2 = mock(PluginManager.class);
-        doReturn(pluginManagerMock, pluginManagerMock2).when(projectMock).getPluginManager();
-        doNothing().when(pluginManagerMock2).apply(BaseInternalPluginBuildPlugin.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
         InternalPluginBuildPlugin target = new InternalPluginBuildPlugin();
-        
-        //Act Statement(s)
+        // Act
         target.apply(projectMock);
-        
-        //Assert statement(s)
+        // Assert
         assertAll("result", () -> {
-            verify(projectMock, times(2)).getPluginManager();
+            verify(projectMock, times(1)).getPluginManager();
             verify(pluginManagerMock).apply(BuildPlugin.class);
-            verify(pluginManagerMock2).apply(BaseInternalPluginBuildPlugin.class);
+            verify(pluginManagerMock).apply(BaseInternalPluginBuildPlugin.class);
         });
     }
 }

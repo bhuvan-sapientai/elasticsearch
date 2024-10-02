@@ -1,49 +1,74 @@
 package org.elasticsearch.gradle.internal.test.rest.transform.match;
 
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import java.math.BigInteger;
-import com.fasterxml.jackson.databind.node.BigIntegerNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.Matchers.is;
+import org.elasticsearch.gradle.internal.test.rest.transform.match.ReplaceValueInMatch;
 
-@Timeout(value = 5)
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.gradle.api.tasks.Internal;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.ReplaceByKey;
+
+import static org.mockito.ArgumentMatchers.any;
+
 class ReplaceValueInMatchSapientGeneratedTest {
 
-    //Sapient generated method id: ${getKeyToFindTest}, hash: 4042B271D520E65F2FD341CC78D2278F
-    @Test()
+    @Test
     void getKeyToFindTest() {
-        //Arrange Statement(s)
-        BigIntegerNode bigIntegerNode = new BigIntegerNode(new BigInteger("0"));
-        ReplaceValueInMatch target = new ReplaceValueInMatch("replaceKey1", bigIntegerNode, "testName1");
-        
-        //Act Statement(s)
+        ReplaceValueInMatch target = new ReplaceValueInMatch("replaceKey", new TextNode("value"));
         String result = target.getKeyToFind();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("match")));
+        assertThat(result, equalTo("match"));
     }
 
-    //Sapient generated method id: ${transformTestTest}, hash: D8E28B68F72821FA7EDC7DC8F17C2839
-    @Test()
-    void transformTestTest() {
-        //Arrange Statement(s)
-        BigIntegerNode bigIntegerNode = new BigIntegerNode(new BigInteger("0"));
-        ReplaceValueInMatch target = new ReplaceValueInMatch("replaceKey1", bigIntegerNode, "testName1");
-        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
-        ObjectNode objectNode = new ObjectNode(jsonNodeFactory);
-        //Act Statement(s)
-        final NullPointerException result = assertThrows(NullPointerException.class, () -> {
-            target.transformTest(objectNode);
-        });
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(notNullValue())));
+    @ParameterizedTest
+    @CsvSource({"replaceKey,newValue,testName", "anotherKey,anotherValue,", "yetAnotherKey,yetAnotherValue,someTestName"})
+    void constructorTest(String replaceKey, String replacementValue, String testName) {
+        JsonNode replacementNode = new TextNode(replacementValue);
+        ReplaceValueInMatch target = (testName == null) ? new ReplaceValueInMatch(replaceKey, replacementNode) : new ReplaceValueInMatch(replaceKey, replacementNode, testName);
+        assertAll(() -> assertThat(target.getKeyToFind(), equalTo("match")), () -> assertThat(target.requiredChildKey(), equalTo(replaceKey)), () -> assertThat(target.getReplacementNode(), equalTo(replacementNode)), () -> assertThat(target.getTestName(), equalTo(testName)));
+    }
+
+    @Test
+    void transformTestSuccessTest() {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode matchParent = factory.objectNode();
+        ObjectNode matchNode = factory.objectNode();
+        matchNode.put("oldKey", "oldValue");
+        matchParent.set("match", matchNode);
+        ReplaceValueInMatch target = new ReplaceValueInMatch("oldKey", new TextNode("newValue"));
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("match"), is(true)), () -> assertThat(matchParent.get("match").has("oldKey"), is(false)), () -> assertThat(matchParent.get("match").has("oldKey"), is(true)), () -> assertThat(matchParent.get("match").get("oldKey").asText(), equalTo("newValue")));
+    }
+
+    @Test
+    void transformTestMissingMatchNodeTest() {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode matchParent = factory.objectNode();
+        ReplaceValueInMatch target = new ReplaceValueInMatch("oldKey", new TextNode("newValue"));
+        assertThrows(NullPointerException.class, () -> target.transformTest(matchParent));
+    }
+
+    @Test
+    void transformTestMissingKeyToReplaceTest() {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode matchParent = factory.objectNode();
+        ObjectNode matchNode = factory.objectNode();
+        matchNode.put("someOtherKey", "someValue");
+        matchParent.set("match", matchNode);
+        ReplaceValueInMatch target = new ReplaceValueInMatch("nonExistentKey", new TextNode("newValue"));
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("match"), is(true)), () -> assertThat(matchParent.get("match").has("someOtherKey"), is(true)), () -> assertThat(matchParent.get("match").has("nonExistentKey"), is(true)), () -> assertThat(matchParent.get("match").get("nonExistentKey").asText(), equalTo("newValue")));
     }
 }

@@ -1,38 +1,43 @@
 package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.InternalDistributionArchiveCheckPlugin;
+
 import java.nio.file.Files;
-import javax.inject.Inject;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.gradle.api.plugins.BasePlugin;
 import org.junit.jupiter.api.Test;
+import org.elasticsearch.gradle.internal.InternalDistributionArchiveCheckPlugin;
 import org.elasticsearch.gradle.internal.conventions.LicensingPlugin;
 import org.gradle.api.Project;
+
 import java.io.File;
+
 import org.mockito.Mock;
-import org.gradle.api.Action;
-import org.elasticsearch.gradle.internal.conventions.GUtils;
 import org.gradle.api.tasks.Copy;
+import org.mockito.MockitoAnnotations;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.api.GradleException;
 import org.gradle.testfixtures.ProjectBuilder;
+
 import static org.mockito.Mockito.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
-import java.util.Map;
-import java.nio.file.Path;
 import org.gradle.api.file.ArchiveOperations;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.elasticsearch.gradle.VersionProperties;
-import org.gradle.api.Plugin;
-import java.util.concurrent.Callable;
+
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.stream.Collectors;
+
 import org.gradle.api.tasks.TaskProvider;
 import org.gradle.api.Task;
+
 import static org.mockito.ArgumentMatchers.any;
-import org.junit.jupiter.api.Disabled;
 
 class InternalDistributionArchiveCheckPluginSapientGeneratedTest {
 
@@ -45,11 +50,11 @@ class InternalDistributionArchiveCheckPluginSapientGeneratedTest {
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         project = ProjectBuilder.builder().build();
         plugin = new InternalDistributionArchiveCheckPlugin(archiveOperations);
     }
 
-    @Disabled()
     @Test
     void testApply() {
         plugin.apply(project);
@@ -62,112 +67,72 @@ class InternalDistributionArchiveCheckPluginSapientGeneratedTest {
         assertNotNull(project.getTasks().findByName("checkModules"));
         Task checkTask = project.getTasks().findByName("check");
         assertNotNull(checkTask);
-        assertTrue(checkTask.getDependsOn().contains(project.getTasks().findByName("checkExtraction")));
-        assertTrue(checkTask.getDependsOn().contains(project.getTasks().findByName("checkLicense")));
-        assertTrue(checkTask.getDependsOn().contains(project.getTasks().findByName("checkNotice")));
-        assertTrue(checkTask.getDependsOn().contains(project.getTasks().findByName("checkModules")));
+        assertTrue(checkTask.getDependsOn().contains(project.getTasks().getByName("checkExtraction")));
+        assertTrue(checkTask.getDependsOn().contains(project.getTasks().getByName("checkLicense")));
+        assertTrue(checkTask.getDependsOn().contains(project.getTasks().getByName("checkNotice")));
+        assertTrue(checkTask.getDependsOn().contains(project.getTasks().getByName("checkModules")));
     }
 
-    @ParameterizedTest
-    @CsvSource({ "test-zip, zip-extracted", "test-tar, tar-extracted" })
-    void testCalculateArchiveExtractionDir(String projectName, String expectedDirName) {
-        //project.setName(projectName);
-        //File extractionDir = plugin.calculateArchiveExtractionDir(project);
-        //assertEquals(new File(project.getBuildDir(), expectedDirName), extractionDir);
+    @Test
+    void testApplyWithMlCppNotice() {
+        project = ProjectBuilder.builder().withName("distribution-zip").build();
+        plugin.apply(project);
+        Task checkTask = project.getTasks().findByName("check");
+        assertNotNull(checkTask);
+        assertTrue(checkTask.getDependsOn().contains(project.getTasks().getByName("checkMlCppNotice")));
     }
 
     @Test
     void testCalculateArchiveExtractionDirInvalidName() {
-        //project.setName("invalid-project");
-        //assertThrows(GradleException.class, () -> plugin.calculateArchiveExtractionDir(project));
-    }
-
-    @Test
-    void testRegisterCheckMlCppNoticeTask() throws IOException {
-        // Verify that no exception is thrown
-        //project.setName("test-zip");
-        //DistributionArchiveCheckExtension extension = mock(DistributionArchiveCheckExtension.class);
-        //when(extension.getExpectedMlLicenses()).thenReturn(() -> Arrays.asList("License1", "License2"));
-        //TaskProvider<Copy> checkExtraction = project.getTasks().register("checkExtraction", Copy.class);
-        //File destinationDir = new File(project.getBuildDir(), "extracted");
-        //checkExtraction.configure(task -> task.setDestinationDir(destinationDir));
-        //TaskProvider<Task> checkMlCppNoticeTask = InternalDistributionArchiveCheckPlugin.registerCheckMlCppNoticeTask(project, checkExtraction, extension);
-        //assertNotNull(checkMlCppNoticeTask);
-        //assertEquals("checkMlCppNotice", checkMlCppNoticeTask.getName());
-        // Create a mock NOTICE.txt file
-        //File moduleDir = new File(destinationDir, "elasticsearch-" + VersionProperties.getElasticsearch() + "/modules/x-pack-ml");
-        //moduleDir.mkdirs();
-        //File noticeFile = new File(moduleDir, "NOTICE.txt");
-        //Files.write(noticeFile.toPath(), Arrays.asList("License1", "License2", "License3"));
-        // Execute the task
-        //checkMlCppNoticeTask.get().getActions().get(0).execute(checkMlCppNoticeTask.get());
-    }
-
-    @Test
-    void testRegisterCheckNoticeTask() throws IOException {
-        // Verify that no exception is thrown
-        //TaskProvider<Copy> checkExtraction = project.getTasks().register("checkExtraction", Copy.class);
-        //File destinationDir = new File(project.getBuildDir(), "extracted");
-        //checkExtraction.configure(task -> task.setDestinationDir(destinationDir));
-        //TaskProvider<Task> checkNoticeTask = plugin.registerCheckNoticeTask(project, checkExtraction);
-        //assertNotNull(checkNoticeTask);
-        //assertEquals("checkNotice", checkNoticeTask.getName());
-        // Create a mock NOTICE.txt file
-        //File esDir = new File(destinationDir, "elasticsearch-" + VersionProperties.getElasticsearch());
-        //esDir.mkdirs();
-        //File noticeFile = new File(esDir, "NOTICE.txt");
-        //Files.write(noticeFile.toPath(), Arrays.asList("Elasticsearch", "Copyright 2009-2024 Elasticsearch", "Additional line"));
-        // Execute the task
-        //checkNoticeTask.get().getActions().get(0).execute(checkNoticeTask.get());
+        project = ProjectBuilder.builder().withName("invalid-project").build();
+        plugin.apply(project);
+        assertThrows(GradleException.class, () -> {
+            TaskProvider<Copy> checkExtraction = project.getTasks().named("checkExtraction", Copy.class);
+            checkExtraction.get();
+        });
     }
 
     @ParameterizedTest
-    @CsvSource({ "oss-test-zip, AGPL-3.0+SSPL-1.0+ELASTIC-LICENSE-2.0.txt", "integ-test-zip, AGPL-3.0+SSPL-1.0+ELASTIC-LICENSE-2.0.txt", "test-zip, ELASTIC-LICENSE-2.0.txt" })
+    @CsvSource({"test-zip, zip-extracted", "test-tar, tar-extracted"})
+    void testCalculateArchiveExtractionDir(String projectName, String expectedDirName) {
+        project = ProjectBuilder.builder().withName(projectName).build();
+        plugin.apply(project);
+        TaskProvider<Copy> checkExtraction = project.getTasks().named("checkExtraction", Copy.class);
+        File destinationDir = checkExtraction.get().getDestinationDir();
+        assertEquals(expectedDirName, destinationDir.getName());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"oss-test-zip, AGPL-3.0+SSPL-1.0+ELASTIC-LICENSE-2.0.txt", "integ-test-zip, AGPL-3.0+SSPL-1.0+ELASTIC-LICENSE-2.0.txt", "test-zip, ELASTIC-LICENSE-2.0.txt"})
     void testRegisterCheckLicenseTask(String projectName, String expectedLicenseFile) throws IOException {
-        // Verify that no exception is thrown
-        //project.setName(projectName);
-        //TaskProvider<Copy> checkExtraction = project.getTasks().register("checkExtraction", Copy.class);
-        //File destinationDir = new File(project.getBuildDir(), "extracted");
-        //checkExtraction.configure(task -> task.setDestinationDir(destinationDir));
-        // Create mock license files
-        //File licensesDir = new File(project.getRootDir(), "licenses");
-        //licensesDir.mkdirs();
-        //Files.write(new File(licensesDir, "AGPL-3.0+SSPL-1.0+ELASTIC-LICENSE-2.0.txt").toPath(), Arrays.asList("AGPL License", "SSPL License", "Elastic License"));
-        //Files.write(new File(licensesDir, "ELASTIC-LICENSE-2.0.txt").toPath(), Arrays.asList("Elastic License 2.0"));
-        //TaskProvider<Task> checkLicenseTask = plugin.registerCheckLicenseTask(project, checkExtraction);
-        //assertNotNull(checkLicenseTask);
-        //assertEquals("checkLicense", checkLicenseTask.getName());
-        // Create a mock LICENSE.txt file
-        //File esDir = new File(destinationDir, "elasticsearch-" + VersionProperties.getElasticsearch());
-        //esDir.mkdirs();
-        //File licenseFile = new File(esDir, "LICENSE.txt");
-        //Files.write(licenseFile.toPath(), Files.readAllLines(new File(licensesDir, expectedLicenseFile).toPath()));
-        // Execute the task
-        //checkLicenseTask.get().getActions().get(0).execute(checkLicenseTask.get());
+        project = ProjectBuilder.builder().withName(projectName).build();
+        File rootDir = project.getRootDir();
+        File licenseFile = new File(rootDir, "licenses/" + expectedLicenseFile);
+        licenseFile.getParentFile().mkdirs();
+        Files.write(licenseFile.toPath(), Arrays.asList("Test License Content"));
+        plugin.apply(project);
+        TaskProvider<Task> checkLicense = project.getTasks().named("checkLicense");
+        assertNotNull(checkLicense);
     }
 
     @Test
     void testRegisterCheckExtractionTask() {
-        //Project parentProject = ProjectBuilder.builder().build();
-        //project.setParent(parentProject);
-        /*TaskProvider<Task> buildDistTask = parentProject.getTasks().register("buildTestZip", task -> {
-    File outputFile = new File(parentProject.getBuildDir(), "distributions/test.zip");
-    task.getOutputs().file(outputFile);
-});*/
-        //File archiveExtractionDir = new File(project.getBuildDir(), "extracted");
-        //TaskProvider<Copy> checkExtractionTask = plugin.registerCheckExtractionTask(project, buildDistTask, archiveExtractionDir);
-        //assertNotNull(checkExtractionTask);
-        //assertEquals("checkExtraction", checkExtractionTask.getName());
-        //assertTrue(checkExtractionTask.get() instanceof Copy);
-        //Copy copyTask = (Copy) checkExtractionTask.get();
-        //assertEquals(archiveExtractionDir, copyTask.getDestinationDir());
-        //assertTrue(copyTask.getDependsOn().contains(buildDistTask.get()));
+        project = ProjectBuilder.builder().withName("test-zip").build();
+        plugin.apply(project);
+        TaskProvider<Copy> checkExtraction = project.getTasks().named("checkExtraction", Copy.class);
+        assertNotNull(checkExtraction);
+        Copy task = checkExtraction.get();
+        assertTrue(task.getSource().isEmpty());
+        assertEquals(new File(project.getBuildDir(), "zip-extracted"), task.getDestinationDir());
     }
 
     @ParameterizedTest
-    @CsvSource({ "test-project, buildTestProject", "distribution-zip, buildDistributionZip", "archive-tar, buildArchiveTar" })
+    @CsvSource({"test-project, buildTestProject", "distribution-zip, buildDistributionZip", "archive-tar, buildArchiveTar"})
     void testCalculateBuildTask(String projectName, String expectedTaskName) {
-        //assertEquals(expectedTaskName, plugin.calculateBuildTask(projectName));
+        project = ProjectBuilder.builder().withName(projectName).build();
+        plugin.apply(project);
+        TaskProvider<Task> buildTask = project.getTasks().named(expectedTaskName);
+        assertNotNull(buildTask);
     }
 
     @Test

@@ -1,287 +1,168 @@
 package org.elasticsearch.gradle;
 
-import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.LazyPropertyMap;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Test;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Collection;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.LazyPropertyMap;
 import java.util.function.Supplier;
-import java.util.function.BiFunction;
-import static org.mockito.Mockito.doNothing;
+import org.junit.jupiter.api.Timeout;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.hamcrest.Matchers.nullValue;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.doReturn;
-import static org.hamcrest.Matchers.is;
+import java.util.function.BiFunction;
+import static org.hamcrest.Matchers.*;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import java.util.*;
+import static org.mockito.ArgumentMatchers.any;
 import org.junit.jupiter.api.Disabled;
 
 @Timeout(value = 5)
 class LazyPropertyMapSapientGeneratedTest {
 
-    private final BiFunction biFunctionMock = mock(BiFunction.class);
+    private final BiFunction<Object, Object, ?> biFunctionMock = mock(BiFunction.class);
 
-    private final Object objectMock = mock(Object.class, "key");
-
-    private final Supplier supplierMock = mock(Supplier.class);
-
-    //Sapient generated method id: ${sizeTest}, hash: 0D8B2DD1D7ABFD46116C297178BD6051
-    @Test()
+    @Test
     void sizeTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
-        int result = target.size();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(0)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertThat(target.size(), equalTo(0));
+        target.put("key1", "value1");
+        assertThat(target.size(), equalTo(1));
+        target.put("key2", "value2");
+        assertThat(target.size(), equalTo(2));
     }
 
-    //Sapient generated method id: ${isEmptyTest}, hash: CEC2FD4429C9A5E8993045854CCF672C
-    @Test()
+    @Test
     void isEmptyTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
-        boolean result = target.isEmpty();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertTrue(target.isEmpty());
+        target.put("key", "value");
+        assertFalse(target.isEmpty());
     }
 
-    //Sapient generated method id: ${containsKeyTest}, hash: 77656BA474246847095153C44AD4E4C8
-    @Test()
+    @Test
     void containsKeyTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        Object object2 = new Object();
-        //Act Statement(s)
-        boolean result = target.containsKey(object2);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.FALSE)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertFalse(target.containsKey("key"));
+        target.put("key", "value");
+        assertTrue(target.containsKey("key"));
     }
 
-    //Sapient generated method id: ${containsValueTest}, hash: F0E6362945D4DD8FFF10C414219A3149
-    @Test()
+    @Test
     void containsValueTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        Object object2 = new Object();
-        //Act Statement(s)
-        boolean result = target.containsValue(object2);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.FALSE)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertFalse(target.containsValue("value"));
+        target.put("key", "value");
+        assertTrue(target.containsValue("value"));
     }
 
-    //Sapient generated method id: ${getWhenEntryIsNull}, hash: A4028386F4F3F3D6BB1279BD11149395
-    @Test()
-    void getWhenEntryIsNull() {
-        /* Branches:
-         * (entry != null) : false
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        Object object2 = new Object();
-        //Act Statement(s)
-        Object result = target.get(object2);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(nullValue())));
+    @Test
+    void getTest() {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertNull(target.get("nonexistent"));
+        target.put("key", "value");
+        assertEquals("value", target.get("key"));
     }
 
-    //Sapient generated method id: ${putTest}, hash: 122A3C5426F0DC61DF596B0262670945
-    @Test()
+    @Test
     void putTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = spy(new LazyPropertyMap("name1", object, biFunctionMock));
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        doReturn(object2).when(target).put(object3, object4, PropertyNormalization.DEFAULT);
-        //Act Statement(s)
-        Object result = target.put(object3, object4);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo(object2));
-            verify(target).put(object3, object4, PropertyNormalization.DEFAULT);
-        });
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertNull(target.put("key", "value"));
+        assertEquals("value", target.get("key"));
+        assertEquals("value", target.put("key", "newValue"));
+        assertEquals("newValue", target.get("key"));
     }
 
-    //Sapient generated method id: ${put1Test}, hash: FB9E14F2346FA302CB082068DCC8D4FA
-    @Disabled()
-    @Test()
-    void put1Test() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = spy(new LazyPropertyMap("name1", object, biFunctionMock));
-        Object object2 = new Object();
-        doNothing().when(target).assertNotNull(object2, "value for key 'key'");
-        //Act Statement(s)
-        Object result = target.put(objectMock, object2, PropertyNormalization.DEFAULT);
-        //Assert statement(s)
-        //TODO: Please implement equals method in Object for verification of the entire object or you need to adjust respective assertion statements
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            verify(target).assertNotNull(object2, "value for key 'key'");
-        });
+    @Test
+    void putWithNormalizationTest() {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertNull(target.put("key", "value", PropertyNormalization.IGNORE_VALUE));
+        assertEquals("value", target.get("key"));
     }
 
-    //Sapient generated method id: ${put2Test}, hash: 72F56D1A7552B3156F7861F9D7363F55
-    @Test()
-    void put2Test() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = spy(new LazyPropertyMap("name1", object, biFunctionMock));
-        Object object2 = new Object();
-        Object object3 = new Object();
-        doReturn(object2).when(target).put(object3, supplierMock, PropertyNormalization.DEFAULT);
-        //Act Statement(s)
-        Object result = target.put(object3, supplierMock);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, equalTo(object2));
-            verify(target).put(object3, supplierMock, PropertyNormalization.DEFAULT);
-        });
+    @Test
+    void putWithSupplierTest() {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        Supplier<String> supplier = () -> "suppliedValue";
+        assertNull(target.put("key", supplier));
+        assertEquals("suppliedValue", target.get("key"));
     }
 
-    //Sapient generated method id: ${put3WhenPreviousIsNull}, hash: E6CF13945035FA7C5FE15BE2D4620EF8
-    @Test()
-    void put3WhenPreviousIsNull() {
-        /* Branches:
-         * (previous == null) : true
-         *
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = spy(new LazyPropertyMap("name1", object, biFunctionMock));
-        doNothing().when(target).assertNotNull(supplierMock, "supplier for key 'key'");
-        //Act Statement(s)
-        Object result = target.put(objectMock, supplierMock, PropertyNormalization.DEFAULT);
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(nullValue()));
-            verify(target).assertNotNull(supplierMock, "supplier for key 'key'");
-        });
+    @Test
+    void removeTest() {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        target.put("key", "value");
+        assertEquals("value", target.remove("key"));
+        assertNull(target.get("key"));
+        assertNull(target.remove("nonexistent"));
     }
 
-    //Sapient generated method id: ${removeWhenPreviousIsNull}, hash: C6D0CFCF62E71828B6813885C1B29423
-    @Test()
-    void removeWhenPreviousIsNull() {
-        /* Branches:
-         * (previous == null) : true
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        Object object2 = new Object();
-        //Act Statement(s)
-        Object result = target.remove(object2);
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, is(nullValue())));
-    }
-
-    //Sapient generated method id: ${putAllThrowsUnsupportedOperationException}, hash: 00F21B6C9328AF0F9A49457686CF1879
-    @Test()
+    @Test
     void putAllThrowsUnsupportedOperationException() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        Map<Object, Object> anyMap = new HashMap<>();
-        UnsupportedOperationException unsupportedOperationException = new UnsupportedOperationException("org.elasticsearch.gradle.LazyPropertyMap does not support putAll()");
-        //Act Statement(s)
-        final UnsupportedOperationException result = assertThrows(UnsupportedOperationException.class, () -> {
-            target.putAll(anyMap);
-        });
-        //Assert statement(s)
-        assertAll("result", () -> {
-            assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(unsupportedOperationException.getMessage()));
-        });
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        Map<String, String> map = new HashMap<>();
+        assertThrows(UnsupportedOperationException.class, () -> target.putAll(map));
     }
 
-    //Sapient generated method id: ${clearTest}, hash: 292520F7527B0A85957E88C15A4B0BCE
-    @Test()
+    @Test
     void clearTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        target.put("key1", "value1");
+        target.put("key2", "value2");
+        assertFalse(target.isEmpty());
         target.clear();
+        assertTrue(target.isEmpty());
     }
 
-    //Sapient generated method id: ${keySetTest}, hash: ACE7C30DC4EBC56378A64E600037048B
-    @Test()
+    @Test
     void keySetTest() {
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
-        Set<Object> result = target.keySet();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result.size(), equalTo(0)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        target.put("key1", "value1");
+        target.put("key2", "value2");
+        Set<String> keySet = target.keySet();
+        assertThat(keySet, containsInAnyOrder("key1", "key2"));
     }
 
-    //Sapient generated method id: ${valuesTest}, hash: 4B59095F5BE77479369A469E4451A27C
-    @Test()
+    @Test
     void valuesTest() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
-        Collection<Object> result = target.values();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result.size(), equalTo(0)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        target.put("key1", "value1");
+        target.put("key2", "value2");
+        Collection<String> values = target.values();
+        assertThat(values, containsInAnyOrder("value1", "value2"));
     }
 
-    //Sapient generated method id: ${entrySetTest}, hash: 063CD0A918A018C7AF303CA961D4DF63
-    @Test()
+    @Test
     void entrySetTest() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
-        Set<Map.Entry<Object, Object>> result = target.entrySet();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result.size(), equalTo(0)));
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        target.put("key1", "value1");
+        target.put("key2", "value2");
+        Set<Map.Entry<String, String>> entrySet = target.entrySet();
+        assertThat(entrySet, hasSize(2));
+        assertTrue(entrySet.stream().anyMatch(entry -> entry.getKey().equals("key1") && entry.getValue().equals("value1")));
+        assertTrue(entrySet.stream().anyMatch(entry -> entry.getKey().equals("key2") && entry.getValue().equals("value2")));
     }
 
-    //Sapient generated method id: ${getNormalizedCollectionTest}, hash: FC206EF8293F67562338F1A81D58F518
-    @Test()
+    @Test
     void getNormalizedCollectionTest() {
-        /*
-         * TODO: Help needed! Please adjust the input/test parameter values manually to satisfy the requirements of the given test scenario.
-         *  The test code, including the assertion statements, has been successfully generated.
-         */
-        //Arrange Statement(s)
-        Object object = new Object();
-        LazyPropertyMap target = new LazyPropertyMap("name1", object, biFunctionMock);
-        //Act Statement(s)
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1", null, (k, v) -> k + ":" + v);
+        target.put("key1", "value1");
+        target.put("key2", "value2", PropertyNormalization.IGNORE_VALUE);
         List<? extends Object> result = target.getNormalizedCollection();
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result.size(), equalTo(0)));
+        assertThat(result, containsInAnyOrder("key1:value1"));
+    }
+
+    @Disabled()
+    @ParameterizedTest
+    @CsvSource({ "name1, , ", "name2, owner, ", "name3, owner, biFunctionMock" })
+    void constructorTest(String name, Object owner, BiFunction<String, String, ?> normalizer) {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>(name, owner, normalizer);
+        assertNotNull(target);
+    }
+
+    @Test
+    void assertNotNullTest() {
+        LazyPropertyMap<String, String> target = new LazyPropertyMap<>("name1");
+        assertThrows(NullPointerException.class, () -> target.put("key", (String) null));
     }
 }

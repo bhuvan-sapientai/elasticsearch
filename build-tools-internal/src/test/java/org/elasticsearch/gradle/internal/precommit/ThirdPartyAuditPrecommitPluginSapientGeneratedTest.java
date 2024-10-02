@@ -1,33 +1,45 @@
 package org.elasticsearch.gradle.internal.precommit;
 
 import org.elasticsearch.gradle.internal.precommit.ThirdPartyAuditPrecommitPlugin;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.Project;
+
 import java.io.File;
+
 import org.junit.jupiter.api.io.TempDir;
+
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import org.gradle.api.plugins.JavaPlugin;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.api.artifacts.Dependency;
 import org.gradle.testfixtures.ProjectBuilder;
 import org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin;
+
 import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.BeforeEach;
+
 import java.nio.file.Path;
+
 import org.gradle.api.artifacts.Configuration;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitPlugin;
 import org.elasticsearch.gradle.internal.info.BuildParams;
+
 import static org.elasticsearch.gradle.internal.util.DependenciesUtils.createFileCollectionFromNonTransitiveArtifactsView;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask;
 import org.gradle.api.file.FileCollection;
 import org.gradle.api.tasks.TaskProvider;
 import org.gradle.api.Task;
+
 import static org.mockito.ArgumentMatchers.any;
-import org.junit.jupiter.api.Disabled;
 
 class ThirdPartyAuditPrecommitPluginSapientGeneratedTest {
 
@@ -73,9 +85,8 @@ class ThirdPartyAuditPrecommitPluginSapientGeneratedTest {
         assertThat(config.getDependencies(), hasItem(hasProperty("group", equalTo("de.thetaphi"))));
     }
 
-    @Disabled()
     @ParameterizedTest
-    @CsvSource({ "true, false", "false, true" })
+    @CsvSource({"true, false", "false, true"})
     void testElasticsearchCoreDependencyAdded(boolean isElasticsearchCoreProject, boolean shouldAddDependency) {
         Project mockProject = mock(Project.class);
         when(mockProject.getPath()).thenReturn(isElasticsearchCoreProject ? ThirdPartyAuditPrecommitPlugin.LIBS_ELASTICSEARCH_CORE_PROJECT_PATH : ":some:other:project");

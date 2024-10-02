@@ -1,48 +1,114 @@
 package org.elasticsearch.gradle.internal.test.rest;
 
+import org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension;
+
 import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.BeforeEach;
+import org.gradle.api.provider.ListProperty;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import org.gradle.api.Action;
 import org.gradle.api.model.ObjectFactory;
-import static org.mockito.Mockito.doNothing;
+
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
 
 @Timeout(value = 5)
 class RestResourcesExtensionSapientGeneratedTest {
 
-    private final ObjectFactory objectFactoryMock = mock(ObjectFactory.class);
+    private ObjectFactory objectFactoryMock;
 
-    //Sapient generated method id: ${restApiTest}, hash: D6585F3D500BE50B8A7E7DB9293C4AEF
-    @Test()
-    void restApiTest() {
-        //Arrange Statement(s)
-        Action<RestResourcesExtension.RestResourcesSpec> specMock = mock(Action.class);
-        doNothing().when(specMock).execute((RestResourcesExtension.RestResourcesSpec) any());
-        RestResourcesExtension target = new RestResourcesExtension(objectFactoryMock);
-        
-        //Act Statement(s)
-        target.restApi(specMock);
-        
-        //Assert statement(s)
-        assertAll("result", () -> verify(specMock).execute((RestResourcesExtension.RestResourcesSpec) any()));
+    private RestResourcesExtension target;
+
+    @BeforeEach
+    void setUp() {
+        objectFactoryMock = mock(ObjectFactory.class);
+        target = new RestResourcesExtension(objectFactoryMock);
     }
 
-    //Sapient generated method id: ${restTestsTest}, hash: 060EDEE5490A774112CA5C68EBC6198C
-    @Test()
+    @Test
+    void restApiTest() {
+        Action<RestResourcesExtension.RestResourcesSpec> specMock = mock(Action.class);
+        doNothing().when(specMock).execute(any(RestResourcesExtension.RestResourcesSpec.class));
+        target.restApi(specMock);
+        verify(specMock).execute(any(RestResourcesExtension.RestResourcesSpec.class));
+    }
+
+    @Test
     void restTestsTest() {
-        //Arrange Statement(s)
         Action<RestResourcesExtension.XpackRestResourcesSpec> specMock = mock(Action.class);
-        doNothing().when(specMock).execute((RestResourcesExtension.XpackRestResourcesSpec) any());
-        RestResourcesExtension target = new RestResourcesExtension(objectFactoryMock);
-        
-        //Act Statement(s)
+        doNothing().when(specMock).execute(any(RestResourcesExtension.XpackRestResourcesSpec.class));
         target.restTests(specMock);
-        
-        //Assert statement(s)
-        assertAll("result", () -> verify(specMock).execute((RestResourcesExtension.XpackRestResourcesSpec) any()));
+        verify(specMock).execute(any(RestResourcesExtension.XpackRestResourcesSpec.class));
+    }
+
+    @Test
+    void getRestApiTest() {
+        RestResourcesExtension.RestResourcesSpec result = target.getRestApi();
+        assertNotNull(result);
+        assertTrue(result instanceof RestResourcesExtension.RestResourcesSpec);
+    }
+
+    @Test
+    void getRestTestsTest() {
+        RestResourcesExtension.XpackRestResourcesSpec result = target.getRestTests();
+        assertNotNull(result);
+        assertTrue(result instanceof RestResourcesExtension.XpackRestResourcesSpec);
+    }
+
+    @Test
+    void restResourcesSpecIncludeTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.RestResourcesSpec spec = new RestResourcesExtension.RestResourcesSpec(objectFactoryMock);
+        spec.include("test1", "test2");
+        verify(listPropertyMock).addAll("test1", "test2");
+    }
+
+    @Test
+    void restResourcesSpecGetIncludeTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.RestResourcesSpec spec = new RestResourcesExtension.RestResourcesSpec(objectFactoryMock);
+        ListProperty<String> result = spec.getInclude();
+        assertSame(listPropertyMock, result);
+    }
+
+    @Test
+    void xpackRestResourcesSpecIncludeCoreTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
+        spec.includeCore("core1", "core2");
+        verify(listPropertyMock).addAll("core1", "core2");
+    }
+
+    @Test
+    void xpackRestResourcesSpecIncludeXpackTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
+        spec.includeXpack("xpack1", "xpack2");
+        verify(listPropertyMock).addAll("xpack1", "xpack2");
+    }
+
+    @Test
+    void xpackRestResourcesSpecGetIncludeCoreTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
+        ListProperty<String> result = spec.getIncludeCore();
+        assertSame(listPropertyMock, result);
+    }
+
+    @Test
+    void xpackRestResourcesSpecGetIncludeXpackTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
+        ListProperty<String> result = spec.getIncludeXpack();
+        assertSame(listPropertyMock, result);
     }
 }

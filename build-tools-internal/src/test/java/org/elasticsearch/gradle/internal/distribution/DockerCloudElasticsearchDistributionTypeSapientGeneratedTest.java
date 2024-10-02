@@ -1,37 +1,50 @@
 package org.elasticsearch.gradle.internal.distribution;
 
+import org.elasticsearch.gradle.internal.distribution.DockerCloudElasticsearchDistributionType;
+
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.ElasticsearchDistributionType;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class DockerCloudElasticsearchDistributionTypeSapientGeneratedTest {
 
-    //Sapient generated method id: ${getNameTest}, hash: 3BBF55A56B1E57A203148A54267200FF
-    @Test()
+    @Test
     void getNameTest() {
-        //Arrange Statement(s)
         DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
-        
-        //Act Statement(s)
         String result = target.getName();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo("dockerCloud")));
+        assertAll("result", () -> assertThat(result, equalTo("dockerCloud")), () -> assertThat(result.length(), is(11)));
     }
 
-    //Sapient generated method id: ${isDockerTest}, hash: D7AD467D3E9479AB3C9E1DDD0CAC3FDE
-    @Test()
+    @Test
     void isDockerTest() {
-        //Arrange Statement(s)
         DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
-        
-        //Act Statement(s)
         boolean result = target.isDocker();
-        
-        //Assert statement(s)
-        assertAll("result", () -> assertThat(result, equalTo(Boolean.TRUE)));
+        assertAll("result", () -> assertThat(result, is(true)), () -> assertThat(result, equalTo(Boolean.TRUE)));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void multipleInstanceTest(int instance) {
+        DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
+        assertAll("Multiple instances should behave the same", () -> assertThat(target.getName(), equalTo("dockerCloud")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void constructorTest() {
+        DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
+        assertAll("Constructor should initialize object correctly", () -> assertThat(target.getName(), equalTo("dockerCloud")), () -> assertThat(target.isDocker(), is(true)));
     }
 }
