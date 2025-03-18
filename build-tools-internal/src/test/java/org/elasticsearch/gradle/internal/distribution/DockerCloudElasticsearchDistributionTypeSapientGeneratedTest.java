@@ -8,12 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.elasticsearch.gradle.ElasticsearchDistributionType;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.elasticsearch.gradle.internal.distribution.DockerCloudElasticsearchDistributionType;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
@@ -46,5 +50,23 @@ class DockerCloudElasticsearchDistributionTypeSapientGeneratedTest {
     void constructorTest() {
         DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
         assertAll("Constructor should initialize object correctly", () -> assertThat(target.getName(), equalTo("dockerCloud")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void implementsElasticsearchDistributionTypeTest() {
+        DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
+        assertThat(target instanceof ElasticsearchDistributionType, is(true));
+    }
+
+    @Test
+    void getNameConsistencyTest() {
+        DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
+        assertThat(target.getName(), equalTo(target.getName()));
+    }
+
+    @Test
+    void isDockerConsistencyTest() {
+        DockerCloudElasticsearchDistributionType target = new DockerCloudElasticsearchDistributionType();
+        assertThat(target.isDocker(), equalTo(target.isDocker()));
     }
 }

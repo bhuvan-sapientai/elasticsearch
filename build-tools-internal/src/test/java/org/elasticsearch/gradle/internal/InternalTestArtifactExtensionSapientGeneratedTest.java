@@ -2,28 +2,27 @@ package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.InternalTestArtifactExtension;
 
+import org.gradle.api.plugins.PluginContainer;
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.plugins.JavaPluginExtension;
-
-import static org.mockito.ArgumentMatchers.any;
-
 import org.junit.jupiter.api.Test;
 import org.gradle.api.artifacts.Configuration;
-
-import static org.mockito.ArgumentMatchers.eq;
-
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.provider.ProviderFactory;
 import org.gradle.api.plugins.BasePluginExtension;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
 import org.gradle.api.plugins.JavaPlugin;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.gradle.api.artifacts.Dependency;
 import org.gradle.api.tasks.TaskProvider;
 
 import static org.mockito.Mockito.*;
 
 import org.gradle.jvm.tasks.Jar;
+import org.elasticsearch.gradle.internal.InternalTestArtifactExtension;
 import org.gradle.api.provider.Provider;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -59,12 +58,14 @@ class InternalTestArtifactExtensionSapientGeneratedTest {
         //when(projectMock.getTasks()).thenReturn(taskContainerMock);
         //TaskProvider<Jar> jarTaskProviderMock = mock(TaskProvider.class);
         //when(taskContainerMock.named(eq("testSourceSetJar"), eq(Jar.class))).thenReturn(jarTaskProviderMock);
+        //PluginContainer pluginContainerMock = mock(PluginContainer.class);
+        //when(projectMock.getPlugins()).thenReturn(pluginContainerMock);
         //InternalTestArtifactExtension extension = new InternalTestArtifactExtension(projectMock, providerFactoryMock);
         // Act
         //extension.registerTestArtifactFromSourceSet(sourceSetMock);
         // Assert
         //verify(javaPluginExtensionMock).registerFeature(eq("testSourceSetArtifacts"), any());
-        //verify(projectMock.getPlugins()).withType(eq(JavaPlugin.class), any());
+        //verify(pluginContainerMock).withType(eq(JavaPlugin.class), any());
         //verify(apiElementsConfigMock).extendsFrom(apiConfigTestArtifactsMock);
         //verify(runtimeElementsConfigMock).extendsFrom(runtimeElementsTestArtifactsMock);
         //verify(dependencyHandlerMock, times(2)).create(projectMock);

@@ -3,8 +3,10 @@ package org.elasticsearch.gradle.internal.release;
 import org.elasticsearch.gradle.internal.release.MinorVersion;
 
 import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.release.MinorVersion;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.api.Test;
@@ -65,5 +67,31 @@ class MinorVersionSapientGeneratedTest {
     @Test
     void testNullCheck() {
         assertThrows(NullPointerException.class, () -> MinorVersion.of(null));
+    }
+
+    @Test
+    void testOfWithDifferentQualifiedVersions() {
+        QualifiedVersion v1 = new QualifiedVersion(1, 2, 3, null);
+        QualifiedVersion v2 = new QualifiedVersion(4, 5, 6, null);
+        MinorVersion mv1 = MinorVersion.of(v1);
+        MinorVersion mv2 = MinorVersion.of(v2);
+        assertAll(() -> assertEquals(1, mv1.major()), () -> assertEquals(2, mv1.minor()), () -> assertEquals(4, mv2.major()), () -> assertEquals(5, mv2.minor()));
+    }
+
+    @Test
+    void testComparatorConsistency() {
+        MinorVersion v1 = new MinorVersion(2, 3);
+        MinorVersion v2 = new MinorVersion(2, 3);
+        MinorVersion v3 = new MinorVersion(2, 4);
+        MinorVersion v4 = new MinorVersion(3, 1);
+        assertAll(() -> assertEquals(0, v1.compareTo(v2)), () -> assertTrue(v1.compareTo(v3) < 0), () -> assertTrue(v3.compareTo(v1) > 0), () -> assertTrue(v1.compareTo(v4) < 0), () -> assertTrue(v4.compareTo(v1) > 0));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1, 0, 2, 0, true", "2, 0, 2, 1, true", "2, 1, 2, 1, false", "3, 0, 2, 1, false"})
+    void testIsBeforeWithVariousScenarios(int major1, int minor1, int major2, int minor2, boolean expected) {
+        MinorVersion v1 = new MinorVersion(major1, minor1);
+        MinorVersion v2 = new MinorVersion(major2, minor2);
+        assertEquals(expected, v1.isBefore(v2));
     }
 }

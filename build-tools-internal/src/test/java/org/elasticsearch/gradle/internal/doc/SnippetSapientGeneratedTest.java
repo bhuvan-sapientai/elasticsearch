@@ -7,15 +7,19 @@ import static org.mockito.Mockito.mock;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 
-import java.util.ArrayList;
 import java.nio.file.Path;
 
+import org.elasticsearch.gradle.internal.doc.Snippet;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -88,5 +92,42 @@ class SnippetSapientGeneratedTest {
         Snippet target = new Snippet(pathMock, 1, 2, "contents", null, false, false, false, false, null, false, null, null, null, null, false, new ArrayList<>(), false, "name");
         String result = target.toString();
         assertThat(result, equalTo("path[1:2]"));
+    }
+
+    @Test
+    void toStringWithTestTearDown() {
+        Snippet target = new Snippet(pathMock, 1, 2, "contents", null, false, false, false, true, null, false, null, null, null, null, false, new ArrayList<>(), false, "name");
+        String result = target.toString();
+        assertThat(result, equalTo("path[1:2]"));
+    }
+
+    @Test
+    void toStringWithLanguageOnly() {
+        Snippet target = new Snippet(pathMock, 1, 2, "contents", null, false, false, false, false, null, false, "python", null, null, null, false, new ArrayList<>(), false, "name");
+        String result = target.toString();
+        assertThat(result, equalTo("path[1:2](python)"));
+    }
+
+    @Test
+    void isConsoleCandidateWhenLanguageIsNotJsAndNotCurl() {
+        List<String> stringList = new ArrayList<>();
+        Snippet target = new Snippet(pathMock, 0, 0, "contents1", null, false, false, false, false, "skip1", false, "python", "catchPart1", "setup1", "teardown1", false, stringList, false, "name1");
+        boolean result = target.isConsoleCandidate();
+        assertFalse(result);
+    }
+
+    @Test
+    void toStringWithMultipleWarnings() {
+        List<String> warnings = List.of("warning1", "warning2", "warning3");
+        Snippet target = new Snippet(pathMock, 1, 2, "contents", null, true, false, false, false, null, false, null, null, null, null, false, warnings, false, "name");
+        String result = target.toString();
+        assertThat(result, equalTo("path[1:2]// TEST[warning:warning1][warning:warning2][warning:warning3]"));
+    }
+
+    @Test
+    void toStringWithOnlySkipShardsFailures() {
+        Snippet target = new Snippet(pathMock, 1, 2, "contents", null, true, false, false, false, null, false, null, null, null, null, false, new ArrayList<>(), true, "name");
+        String result = target.toString();
+        assertThat(result, equalTo("path[1:2]// TEST[skip_shard_failures]"));
     }
 }

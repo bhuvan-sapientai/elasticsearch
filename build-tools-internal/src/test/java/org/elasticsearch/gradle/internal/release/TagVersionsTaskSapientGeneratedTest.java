@@ -2,10 +2,11 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.TagVersionsTask;
 
+import org.gradle.initialization.layout.BuildLayout;
+
 import java.nio.file.Files;
 import java.util.List;
 
-import org.gradle.initialization.layout.BuildLayout;
 import org.elasticsearch.gradle.Version;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -16,6 +17,8 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.gradle.api.logging.Logger;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -23,6 +26,9 @@ import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.gradle.api.logging.Logging;
+
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
@@ -31,19 +37,20 @@ import static org.mockito.ArgumentMatchers.any;
 
 class TagVersionsTaskSapientGeneratedTest {
 
-    private TagVersionsTask task;
-
+    @Mock
     private BuildLayout mockBuildLayout;
 
+    @Mock
     private Path mockRootDir;
 
+    @Mock
     private Logger mockLogger;
+
+    private TagVersionsTask task;
 
     @BeforeEach
     void setUp() {
-        //mockBuildLayout = mock(BuildLayout.class);
-        //mockRootDir = mock(Path.class);
-        //mockLogger = mock(Logger.class);
+        //MockitoAnnotations.openMocks(this);
         //task = new TagVersionsTask(mockBuildLayout);
         //task.LOGGER = mockLogger;
         //when(mockBuildLayout.getRootDirectory()).thenReturn(mockRootDir);
@@ -113,5 +120,34 @@ class TagVersionsTaskSapientGeneratedTest {
     void addVersionRecordDuplicateVersionDifferentIdTest() {
         List<String> input = List.of("8.0.0,1");
         assertThrows(IllegalArgumentException.class, () -> TagVersionsTask.addVersionRecord(input, Version.fromString("8.0.0"), 2), "Release [8.0.0] already recorded with version id [1], cannot update to version [2]");
+    }
+
+    @Test
+    void expandV7VersionTest() {
+        //Map<String, Integer> input = Map.of("Version", 42);
+        //Map<String, Integer> result = TagVersionsTask.expandV7Version(input);
+        //assertEquals(Map.of(TagVersionsTask.TRANSPORT_VERSION_TYPE, 42, TagVersionsTask.INDEX_VERSION_TYPE, 42), result);
+    }
+
+    @Test
+    void expandV7VersionNoV7Test() {
+        //Map<String, Integer> input = Map.of("TransportVersion", 1, "IndexVersion", 2);
+        //Map<String, Integer> result = TagVersionsTask.expandV7Version(input);
+        //assertEquals(input, result);
+    }
+
+    @Test
+    void executeTaskWithV7Version() throws IOException {
+        //task.release("8.0.0");
+        //task.tagVersions(List.of("Version:42"));
+        //Path mockTransportFile = mock(Path.class);
+        //Path mockIndexFile = mock(Path.class);
+        //when(mockRootDir.resolve(TagVersionsTask.TRANSPORT_VERSIONS_RECORD)).thenReturn(mockTransportFile);
+        //when(mockRootDir.resolve(TagVersionsTask.INDEX_VERSIONS_RECORD)).thenReturn(mockIndexFile);
+        //List<String> mockContent = List.of("7.0.0,0", "7.1.0,1");
+        //when(Files.readAllLines(any(Path.class))).thenReturn(mockContent);
+        //task.executeTask();
+        //verify(mockLogger, times(2)).lifecycle(anyString(), anyString(), any(), any(), any());
+        //verify(Files.class, times(2)).write(any(Path.class), any(), any());
     }
 }

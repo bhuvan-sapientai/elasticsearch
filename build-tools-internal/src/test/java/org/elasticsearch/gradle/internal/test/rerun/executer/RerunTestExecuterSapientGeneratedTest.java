@@ -2,14 +2,21 @@ package org.elasticsearch.gradle.internal.test.rerun.executer;
 
 import org.elasticsearch.gradle.internal.test.rerun.executer.RerunTestExecuter;
 
-import java.util.List;
-
 import org.elasticsearch.gradle.internal.test.rerun.TestRerunTaskExtension;
 import org.gradle.internal.id.CompositeIdGenerator;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.gradle.api.provider.Property;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
+import static org.mockito.ArgumentMatchers.eq;
+
 import org.gradle.api.internal.tasks.testing.TestExecuter;
 import org.gradle.api.internal.tasks.testing.TestDescriptorInternal;
 
@@ -19,12 +26,14 @@ import org.gradle.api.internal.tasks.testing.TestResultProcessor;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.params.provider.ValueSource;
 import org.gradle.api.GradleException;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Collectors;
+
+import static org.mockito.ArgumentMatchers.anyBoolean;
 
 import org.gradle.api.internal.tasks.testing.JvmTestExecutionSpec;
 
@@ -139,5 +148,29 @@ class RerunTestExecuterSapientGeneratedTest {
         testExecuter.report(1, descriptors);
         verify(descriptor).getId();
         verify(descriptor, never()).getName();
+    }
+
+    @Test
+    void executeWithMultipleRetries() {
+        when(maxRerunsPropertyMock.get()).thenReturn(3);
+        doThrow(ExecException.class).doThrow(ExecException.class).doNothing().when(delegateMock).execute(eq(specMock), any(RerunTestResultProcessor.class));
+        testExecuter.execute(specMock, resultProcessorMock);
+        verify(delegateMock, times(3)).execute(eq(specMock), any(RerunTestResultProcessor.class));
+        verify(didRerunPropertyMock, times(2)).set(true);
+    }
+
+    @Test
+    void reportWithEmptyDescriptorList() {
+        List<TestDescriptorInternal> descriptors = new ArrayList<>();
+        testExecuter.report(1, descriptors);
+        // No exceptions should be thrown
+    }
+
+    @Test
+    void executeWithZeroMaxRetries() {
+        when(maxRerunsPropertyMock.get()).thenReturn(0);
+        testExecuter.execute(specMock, resultProcessorMock);
+        verify(delegateMock, times(1)).execute(specMock, resultProcessorMock);
+        verify(didRerunPropertyMock, never()).set(anyBoolean());
     }
 }

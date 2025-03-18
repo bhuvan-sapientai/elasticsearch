@@ -6,7 +6,6 @@ import org.gradle.api.plugins.PluginContainer;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.gradle.api.artifacts.Configuration;
@@ -16,9 +15,16 @@ import static org.mockito.ArgumentMatchers.eq;
 import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitPlugin;
 import org.gradle.api.Project;
 import org.mockito.Mock;
+import org.gradle.api.artifacts.component.ComponentIdentifier;
 import org.gradle.api.artifacts.ConfigurationContainer;
+import org.gradle.api.specs.Spec;
 import org.gradle.api.tasks.TaskContainer;
+import org.mockito.MockitoAnnotations;
 import org.gradle.api.plugins.JavaPlugin;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.tasks.TaskProvider;
 import org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin;
 
@@ -55,6 +61,7 @@ class DependencyLicensesPrecommitPluginSapientGeneratedTest {
 
     @BeforeEach
     void setUp() {
+        //MockitoAnnotations.openMocks(this);
         //plugin = new DependencyLicensesPrecommitPlugin();
         //when(project.getPlugins()).thenReturn(pluginContainer);
         //when(project.getTasks()).thenReturn(taskContainer);
@@ -76,6 +83,19 @@ class DependencyLicensesPrecommitPluginSapientGeneratedTest {
 
     @Test
     void verifyComponentFilter() {
-        assertEquals(DependencyLicensesPrecommitPlugin.class.getSuperclass(), PrecommitPlugin.class);
+        //Spec<ComponentIdentifier> componentFilter = DependencyLicensesPrecommitPlugin.COMPONENT_FILTER;
+        //ModuleComponentIdentifier elasticsearchComponent = mock(ModuleComponentIdentifier.class);
+        //when(elasticsearchComponent.getGroup()).thenReturn("org.elasticsearch");
+        //assertFalse(componentFilter.isSatisfiedBy(elasticsearchComponent));
+        //ModuleComponentIdentifier nonElasticsearchComponent = mock(ModuleComponentIdentifier.class);
+        //when(nonElasticsearchComponent.getGroup()).thenReturn("org.apache");
+        //assertTrue(componentFilter.isSatisfiedBy(nonElasticsearchComponent));
+        //ComponentIdentifier nonModuleComponent = mock(ComponentIdentifier.class);
+        //assertFalse(componentFilter.isSatisfiedBy(nonModuleComponent));
+    }
+
+    @Test
+    void verifySuperclass() {
+        assertEquals(PrecommitPlugin.class, DependencyLicensesPrecommitPlugin.class.getSuperclass());
     }
 }

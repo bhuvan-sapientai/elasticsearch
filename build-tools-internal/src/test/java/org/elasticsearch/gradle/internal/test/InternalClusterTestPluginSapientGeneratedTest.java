@@ -1,18 +1,20 @@
 package org.elasticsearch.gradle.internal.test;
 
 // import org.elasticsearch.gradle.internal.test.InternalClusterTestPlugin;
+// import org.gradle.api.tasks.SourceSet;
+// import org.junit.jupiter.api.BeforeEach;
+// import static org.mockito.ArgumentMatchers.any;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// import org.junit.jupiter.api.Test;
+// import org.gradle.api.Project;
+// import org.elasticsearch.gradle.internal.info.BuildParams;
 // import org.gradle.api.JavaVersion;
 // import org.gradle.api.tasks.testing.Test;
-// import org.junit.jupiter.api.BeforeEach;
 // import org.elasticsearch.gradle.util.GradleUtils;
-// import org.junit.jupiter.api.Test;
-// import static org.junit.jupiter.api.Assertions.*;
-// import org.gradle.api.Project;
+// import static org.mockito.ArgumentMatchers.argThat;
 // import org.gradle.api.tasks.TaskProvider;
 // import org.mockito.MockedStatic;
 // import static org.mockito.Mockito.*;
-// import org.gradle.api.Action;
-// import org.elasticsearch.gradle.internal.info.BuildParams;
 // import static org.mockito.ArgumentMatchers.any;
 
 class InternalClusterTestPluginSapientGeneratedTest {
@@ -38,14 +40,14 @@ class InternalClusterTestPluginSapientGeneratedTest {
 //             gradleUtils.when(() -> GradleUtils.addTestSourceSet(projectMock, "internalClusterTest")).thenReturn(taskProviderMock);
 //             gradleUtils.when(() -> GradleUtils.extendSourceSet(any(), any(), any())).thenReturn(null);
 //             plugin.apply(projectMock);
-//             verify(taskProviderMock).configure(argThat((Action<Test> action) -> {
+//             verify(taskProviderMock).configure(argThat((org.gradle.api.Action<Test> action) -> {
 //                 Test testMock = mock(Test.class);
 //                 action.execute(testMock);
 //                 verify(testMock).jvmArgs("-XX:+UseConcMarkSweepGC", "-XX:CMSInitiatingOccupancyFraction=75", "-XX:+UseCMSInitiatingOccupancyOnly");
 //                 return true;
 //             }));
 //             gradleUtils.verify(() -> GradleUtils.addTestSourceSet(projectMock, "internalClusterTest"));
-//             gradleUtils.verify(() -> GradleUtils.extendSourceSet(projectMock, "test", "internalClusterTest"));
+//             gradleUtils.verify(() -> GradleUtils.extendSourceSet(projectMock, SourceSet.TEST_SOURCE_SET_NAME, "internalClusterTest"));
 //         }
 //     }
 
@@ -57,14 +59,14 @@ class InternalClusterTestPluginSapientGeneratedTest {
 //             gradleUtils.when(() -> GradleUtils.addTestSourceSet(projectMock, "internalClusterTest")).thenReturn(taskProviderMock);
 //             gradleUtils.when(() -> GradleUtils.extendSourceSet(any(), any(), any())).thenReturn(null);
 //             plugin.apply(projectMock);
-//             verify(taskProviderMock).configure(argThat((Action<Test> action) -> {
+//             verify(taskProviderMock).configure(argThat((org.gradle.api.Action<Test> action) -> {
 //                 Test testMock = mock(Test.class);
 //                 action.execute(testMock);
 //                 verify(testMock).jvmArgs("-XX:+UseG1GC");
 //                 return true;
 //             }));
-//             graduleUtils.verify(() -> GradleUtils.addTestSourceSet(projectMock, "internalClusterTest"));
-//             graduleUtils.verify(() -> GradleUtils.extendSourceSet(projectMock, "test", "internalClusterTest"));
+//             gradleUtils.verify(() -> GradleUtils.addTestSourceSet(projectMock, "internalClusterTest"));
+//             gradleUtils.verify(() -> GradleUtils.extendSourceSet(projectMock, SourceSet.TEST_SOURCE_SET_NAME, "internalClusterTest"));
 //         }
 //     }
 

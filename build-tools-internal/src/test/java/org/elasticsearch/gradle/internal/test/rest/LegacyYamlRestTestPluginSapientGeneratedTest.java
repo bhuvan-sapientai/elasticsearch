@@ -3,6 +3,9 @@ package org.elasticsearch.gradle.internal.test.rest;
 import org.elasticsearch.gradle.internal.test.rest.LegacyYamlRestTestPlugin;
 
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.InvalidUserDataException;
 import org.gradle.api.Project;
@@ -12,6 +15,7 @@ import java.io.File;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.Action;
 import org.gradle.api.plugins.ExtensionContainer;
+import org.elasticsearch.gradle.internal.test.rest.LegacyYamlRestTestPlugin;
 import org.elasticsearch.gradle.internal.test.LegacyRestTestBasePlugin;
 import org.mockito.MockedStatic;
 
@@ -138,5 +142,15 @@ class LegacyYamlRestTestPluginSapientGeneratedTest {
             restTestUtil.verify(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock));
             restTestUtil.verify(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock));
         }
+    }
+
+    @Test
+    void testSourceSetName() {
+        assertEquals("yamlRestTest", LegacyYamlRestTestPlugin.SOURCE_SET_NAME);
+    }
+
+    @Test
+    void testDeprecation() {
+        assertTrue(LegacyYamlRestTestPlugin.class.isAnnotationPresent(Deprecated.class));
     }
 }

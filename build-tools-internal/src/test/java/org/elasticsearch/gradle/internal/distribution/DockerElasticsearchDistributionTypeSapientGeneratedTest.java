@@ -2,12 +2,18 @@ package org.elasticsearch.gradle.internal.distribution;
 
 import org.elasticsearch.gradle.internal.distribution.DockerElasticsearchDistributionType;
 
-import org.junit.jupiter.api.Timeout;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.jupiter.api.Timeout;
+import org.elasticsearch.gradle.internal.distribution.DockerElasticsearchDistributionType;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.elasticsearch.gradle.ElasticsearchDistributionType;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -46,5 +52,24 @@ class DockerElasticsearchDistributionTypeSapientGeneratedTest {
     void constructorTest() {
         DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
         assertAll("constructor", () -> assertThat(target.getName(), equalTo("docker")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void instanceOfElasticsearchDistributionTypeTest() {
+        DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
+        assertTrue(target instanceof ElasticsearchDistributionType);
+    }
+
+    @Test
+    void consistencyTest() {
+        DockerElasticsearchDistributionType target1 = new DockerElasticsearchDistributionType();
+        DockerElasticsearchDistributionType target2 = new DockerElasticsearchDistributionType();
+        assertAll("consistency", () -> assertThat(target1.getName(), equalTo(target2.getName())), () -> assertThat(target1.isDocker(), is(target2.isDocker())));
+    }
+
+    @Test
+    void nullCheckTest() {
+        DockerElasticsearchDistributionType target = new DockerElasticsearchDistributionType();
+        assertNotNull(target.getName());
     }
 }

@@ -80,4 +80,37 @@ class DockerResultSapientGeneratedTest {
         DockerResult result2 = new DockerResult(exitCode2, stdout2, stderr2);
         assertEquals(expectedResult, result1.equals(result2));
     }
+
+    @Test
+    void testHashCodeConsistency() {
+        DockerResult result = new DockerResult(0, "stdout", "stderr");
+        int initialHashCode = result.hashCode();
+        assertEquals(initialHashCode, result.hashCode());
+        result.setExitCode(1);
+        assertNotEquals(initialHashCode, result.hashCode());
+    }
+
+    @Test
+    void testHashCodeWithNullValues() {
+        DockerResult result1 = new DockerResult(0, null, null);
+        DockerResult result2 = new DockerResult(0, null, null);
+        assertEquals(result1.hashCode(), result2.hashCode());
+    }
+
+    @Test
+    void testEqualsWithNullValues() {
+        DockerResult result1 = new DockerResult(0, null, null);
+        DockerResult result2 = new DockerResult(0, null, null);
+        assertEquals(result1, result2);
+    }
+
+    @Test
+    void testToString() {
+        DockerResult result = new DockerResult(0, "stdout", "stderr");
+        String toString = result.toString();
+        assertNotNull(toString);
+        assertTrue(toString.contains("exitCode=0"));
+        assertTrue(toString.contains("stdout=stdout"));
+        assertTrue(toString.contains("stderr=stderr"));
+    }
 }

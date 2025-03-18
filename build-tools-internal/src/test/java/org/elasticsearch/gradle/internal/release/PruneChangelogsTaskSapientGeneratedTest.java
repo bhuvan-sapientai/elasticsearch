@@ -2,6 +2,10 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.PruneChangelogsTask;
 
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
@@ -11,14 +15,15 @@ import org.gradle.api.Project;
 import java.io.File;
 
 import org.elasticsearch.gradle.VersionProperties;
-import org.junit.jupiter.api.Timeout;
 import org.gradle.process.ExecOperations;
+import org.junit.jupiter.api.Timeout;
 
 import java.util.stream.Stream;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.params.provider.CsvSource;
@@ -34,8 +39,6 @@ import org.mockito.MockedStatic;
 import static org.mockito.Mockito.*;
 
 import org.gradle.api.model.ObjectFactory;
-
-import java.util.TreeSet;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -72,7 +75,6 @@ class PruneChangelogsTaskSapientGeneratedTest {
     @CsvSource({"true, false, false", "false, true, false", "false, false, true", "false, false, false"})
     void findAndDeleteFilesTest(boolean allFilesEmpty, boolean earlierFilesEmpty, boolean filesToDeleteEmpty) {
         Set<File> allFiles = allFilesEmpty ? new HashSet<>() : Set.of(new File("test.file"));
-        Set<String> earlierFiles = earlierFilesEmpty ? new HashSet<>() : Set.of("test.file");
         when(gitWrapperMock.listFiles(anyString(), anyString())).thenReturn(Stream.of("docs/changelog/test.file"));
         when(gitWrapperMock.listVersions(anyString())).thenReturn(Stream.of(qualifiedVersionMock));
         when(qualifiedVersionMock.isBefore(any())).thenReturn(true);
@@ -98,12 +100,40 @@ class PruneChangelogsTaskSapientGeneratedTest {
 
     @Test
     void findPreviousVersionTest() {
-        //QualifiedVersion version = QualifiedVersion.of("8.0.0");
-        //when(gitWrapperMock.listVersions("v8.*")).thenReturn(Stream.of(QualifiedVersion.of("8.0.0-alpha1"), QualifiedVersion.of("8.0.0-beta1")));
-        //when(gitWrapperMock.listVersions("v7.*")).thenReturn(Stream.of(QualifiedVersion.of("7.17.0"), QualifiedVersion.of("7.16.0")));
-        //Stream<QualifiedVersion> result = PruneChangelogsTask.findPreviousVersion(gitWrapperMock, version);
-        //List<QualifiedVersion> resultList = result.collect(Collectors.toList());
-        //assertThat(resultList, hasSize(2));
-        //assertThat(resultList, containsInAnyOrder(QualifiedVersion.of("7.17.0"), QualifiedVersion.of("7.16.0")));
+        QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        when(gitWrapperMock.listVersions("v8.*")).thenReturn(Stream.of(QualifiedVersion.of("8.0.0-alpha1"), QualifiedVersion.of("8.0.0-beta1")));
+        when(gitWrapperMock.listVersions("v7.*")).thenReturn(Stream.of(QualifiedVersion.of("7.17.0"), QualifiedVersion.of("7.16.0")));
+        Stream<QualifiedVersion> result = PruneChangelogsTask.findPreviousVersion(gitWrapperMock, version);
+        List<QualifiedVersion> resultList = result.collect(Collectors.toList());
+        assertThat(resultList, hasSize(2));
+        assertThat(resultList, containsInAnyOrder(QualifiedVersion.of("7.17.0"), QualifiedVersion.of("7.16.0")));
+    }
+
+    @Test
+    void findAndDeleteFilesWithNoChangelogsTest() {
+        Set<File> allFiles = new HashSet<>();
+        PruneChangelogsTask.findAndDeleteFiles(gitWrapperMock, deleteHelperMock, qualifiedVersionMock, allFiles, pathMock);
+        verifyNoInteractions(gitWrapperMock, deleteHelperMock);
+    }
+
+    @Test
+    void findAndDeleteFilesWithNoEarlierFilesTest() {
+        Set<File> allFiles = Set.of(new File("test.file"));
+        when(gitWrapperMock.listVersions(anyString())).thenReturn(Stream.empty());
+        PruneChangelogsTask.findAndDeleteFiles(gitWrapperMock, deleteHelperMock, qualifiedVersionMock, allFiles, pathMock);
+        verify(gitWrapperMock, times(2)).listVersions(anyString());
+        verifyNoInteractions(deleteHelperMock);
+    }
+
+    @Test
+    void findAndDeleteFilesWithNoFilesToDeleteTest() {
+        Set<File> allFiles = Set.of(new File("test.file"));
+        when(gitWrapperMock.listFiles(anyString(), anyString())).thenReturn(Stream.of("docs/changelog/other.file"));
+        when(gitWrapperMock.listVersions(anyString())).thenReturn(Stream.of(qualifiedVersionMock));
+        when(qualifiedVersionMock.isBefore(any())).thenReturn(true);
+        PruneChangelogsTask.findAndDeleteFiles(gitWrapperMock, deleteHelperMock, qualifiedVersionMock, allFiles, pathMock);
+        verify(gitWrapperMock).listFiles(anyString(), anyString());
+        verify(gitWrapperMock, times(2)).listVersions(anyString());
+        verifyNoInteractions(deleteHelperMock);
     }
 }

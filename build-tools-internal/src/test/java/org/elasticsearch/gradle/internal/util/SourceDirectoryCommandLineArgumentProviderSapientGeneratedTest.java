@@ -9,6 +9,9 @@ import java.util.Arrays;
 import org.gradle.api.tasks.PathSensitive;
 import org.gradle.process.CommandLineArgumentProvider;
 import org.junit.jupiter.api.BeforeEach;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
@@ -116,5 +119,32 @@ class SourceDirectoryCommandLineArgumentProviderSapientGeneratedTest {
         Iterable<String> result = provider.asArguments();
         assertThat(result, hasItem("-s"));
         assertThat(Arrays.asList(result).get(0), is("-s"));
+    }
+
+    @Test
+    void testAsArgumentsSecondArgumentIsAbsolutePath() {
+        File mockFile = new File("/absolute/path");
+        when(mockDirectory.getAsFile()).thenReturn(mockFile);
+        Iterable<String> result = provider.asArguments();
+        assertThat(Arrays.asList(result).get(1), is(mockFile.getAbsolutePath()));
+    }
+
+    @Test
+    void testAsArgumentsWithEmptyPath() {
+        File mockFile = new File("");
+        when(mockDirectory.getAsFile()).thenReturn(mockFile);
+        Iterable<String> result = provider.asArguments();
+        assertThat(result, contains("-s", mockFile.getAbsolutePath()));
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        SourceDirectoryCommandLineArgumentProvider provider1 = new SourceDirectoryCommandLineArgumentProvider(mockDirectory);
+        SourceDirectoryCommandLineArgumentProvider provider2 = new SourceDirectoryCommandLineArgumentProvider(mockDirectory);
+        SourceDirectoryCommandLineArgumentProvider provider3 = new SourceDirectoryCommandLineArgumentProvider(mock(Directory.class));
+        assertEquals(provider1, provider2);
+        assertNotEquals(provider1, provider3);
+        assertEquals(provider1.hashCode(), provider2.hashCode());
+        assertNotEquals(provider1.hashCode(), provider3.hashCode());
     }
 }

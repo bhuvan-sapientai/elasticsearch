@@ -2,15 +2,13 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.ReleaseNotesIndexGenerator;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-
 import java.nio.file.Files;
 import java.io.FileWriter;
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
-import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
@@ -21,9 +19,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.ArgumentMatchers.anyMap;
-import static org.mockito.ArgumentMatchers.anySet;
+
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.mockito.ArgumentMatchers.*;
 
 import org.mockito.MockedStatic;
 
@@ -31,6 +30,7 @@ import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
+import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
@@ -121,6 +121,32 @@ class ReleaseNotesIndexGeneratorSapientGeneratedTest {
             assertThat(result, is("rendered content"));
             verify(version1).isSnapshot();
             verify(version2).isSnapshot();
+            templateUtilsMock.verify(() -> TemplateUtils.render(eq("template"), anyMap()));
+        }
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1.0.0,2.0.0,3.0.0", "1.0.0-alpha1,1.0.0-beta1,1.0.0-rc1", "1.0.0,1.0.1,1.1.0"})
+    void generateFileWithDifferentVersions(String v1, String v2, String v3) throws IOException {
+        Set<QualifiedVersion> versions = new HashSet<>();
+        versions.add(QualifiedVersion.of(v1));
+        versions.add(QualifiedVersion.of(v2));
+        versions.add(QualifiedVersion.of(v3));
+        try (MockedStatic<TemplateUtils> templateUtilsMock = mockStatic(TemplateUtils.class)) {
+            templateUtilsMock.when(() -> TemplateUtils.render(eq("template"), anyMap())).thenReturn("rendered content");
+            String result = ReleaseNotesIndexGenerator.generateFile(versions, "template");
+            assertThat(result, is("rendered content"));
+            templateUtilsMock.verify(() -> TemplateUtils.render(eq("template"), anyMap()));
+        }
+    }
+
+    @Test
+    void generateFileWithEmptyVersionSet() throws IOException {
+        Set<QualifiedVersion> versions = new HashSet<>();
+        try (MockedStatic<TemplateUtils> templateUtilsMock = mockStatic(TemplateUtils.class)) {
+            templateUtilsMock.when(() -> TemplateUtils.render(eq("template"), anyMap())).thenReturn("rendered content");
+            String result = ReleaseNotesIndexGenerator.generateFile(versions, "template");
+            assertThat(result, is("rendered content"));
             templateUtilsMock.verify(() -> TemplateUtils.render(eq("template"), anyMap()));
         }
     }

@@ -6,17 +6,19 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformByParentObject;
 import org.gradle.api.tasks.Internal;
+import org.elasticsearch.gradle.internal.test.rest.transform.feature.FeatureInjector;
 
 import java.util.Map;
 
-import org.elasticsearch.gradle.internal.test.rest.transform.feature.FeatureInjector;
+import static org.mockito.ArgumentMatchers.any;
+
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransform;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.jupiter.params.ParameterizedTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -144,5 +146,57 @@ class InjectHeadersSapientGeneratedTest {
         assertThat(result, notNullValue());
         assertThat(result.size(), equalTo(1));
         assertThat(result.get("key"), equalTo("value"));
+    }
+
+    @Test
+    void transformTestWhenNoConditionsApply() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("key", "value");
+        Set<Function<ObjectNode, Boolean>> applyConditions = new HashSet<>();
+        Function<ObjectNode, Boolean> function = mock(Function.class);
+        when(function.apply(any())).thenReturn(false);
+        applyConditions.add(function);
+        InjectHeaders target = new InjectHeaders(headers, applyConditions);
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode doNodeParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNodeValue = new ObjectNode(jsonNodeFactory);
+        doNodeParent.set("do", doNodeValue);
+        target.transformTest(doNodeParent);
+        assertFalse(doNodeValue.has("headers"));
+    }
+
+    @Test
+    void transformTestWhenAllConditionsApply() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("key1", "value1");
+        headers.put("key2", "value2");
+        Set<Function<ObjectNode, Boolean>> applyConditions = new HashSet<>();
+        Function<ObjectNode, Boolean> function1 = mock(Function.class);
+        Function<ObjectNode, Boolean> function2 = mock(Function.class);
+        when(function1.apply(any())).thenReturn(true);
+        when(function2.apply(any())).thenReturn(true);
+        applyConditions.add(function1);
+        applyConditions.add(function2);
+        InjectHeaders target = new InjectHeaders(headers, applyConditions);
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode doNodeParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNodeValue = new ObjectNode(jsonNodeFactory);
+        doNodeParent.set("do", doNodeValue);
+        target.transformTest(doNodeParent);
+        assertTrue(doNodeValue.has("headers"));
+        ObjectNode headersNode = (ObjectNode) doNodeValue.get("headers");
+        assertThat(headersNode.get("key1"), equalTo(TextNode.valueOf("value1")));
+        assertThat(headersNode.get("key2"), equalTo(TextNode.valueOf("value2")));
+    }
+
+    @Test
+    void transformTestWhenDoNodeNotPresent() {
+        Map<String, String> headers = new HashMap<>();
+        Set<Function<ObjectNode, Boolean>> applyConditions = new HashSet<>();
+        InjectHeaders target = new InjectHeaders(headers, applyConditions);
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode doNodeParent = new ObjectNode(jsonNodeFactory);
+        target.transformTest(doNodeParent);
+        assertFalse(doNodeParent.has("do"));
     }
 }

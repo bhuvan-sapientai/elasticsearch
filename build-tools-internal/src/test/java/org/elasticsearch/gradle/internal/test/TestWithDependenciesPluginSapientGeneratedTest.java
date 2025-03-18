@@ -2,35 +2,43 @@ package org.elasticsearch.gradle.internal.test;
 
 import org.elasticsearch.gradle.internal.test.TestWithDependenciesPlugin;
 
-import org.gradle.api.tasks.SourceSetOutput;
 import org.gradle.api.invocation.Gradle;
 import org.elasticsearch.gradle.plugin.PluginBuildPlugin;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.gradle.api.plugins.ExtraPropertiesExtension;
+import org.junit.jupiter.api.Test;
+import org.gradle.api.Project;
+
+import java.io.File;
+
+import org.elasticsearch.gradle.internal.test.TestWithDependenciesPlugin;
+import org.gradle.api.tasks.SourceSetContainer;
+import org.gradle.api.Action;
+import org.gradle.api.artifacts.ConfigurationContainer;
+import org.gradle.api.plugins.ExtensionContainer;
+import org.gradle.api.tasks.Copy;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.tasks.SourceSetOutput;
+import org.gradle.api.plugins.PluginContainer;
 import org.gradle.api.tasks.SourceSet;
 
 import java.util.Map;
 
-import org.gradle.api.plugins.ExtraPropertiesExtension;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.gradle.api.artifacts.Configuration;
-import org.gradle.api.Project;
 import org.gradle.api.artifacts.ProjectDependency;
-
-import java.io.File;
-
-import org.gradle.api.tasks.SourceSetContainer;
-import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.tasks.TaskContainer;
-import org.gradle.api.plugins.ExtensionContainer;
-import org.gradle.api.tasks.Copy;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.api.artifacts.DependencySet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.gradle.api.tasks.TaskProvider;
 
-import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
 class TestWithDependenciesPluginSapientGeneratedTest {
@@ -137,10 +145,11 @@ class TestWithDependenciesPluginSapientGeneratedTest {
         //when(testImplConfigMock.getDependencies()).thenReturn(dependencySetMock);
         //when(projectMock.getGradle()).thenReturn(gradleMock);
         //when(projectDependencyMock.getDependencyProject()).thenReturn(dependencyProjectMock);
-        //when(dependencyProjectMock.getPlugins()).thenReturn(mock(org.gradle.api.plugins.PluginContainer.class));
-        //when(dependencyProjectMock.getPlugins().hasPlugin(PluginBuildPlugin.class)).thenReturn(true);
+        //PluginContainer pluginContainerMock = mock(PluginContainer.class);
+        //when(dependencyProjectMock.getPlugins()).thenReturn(pluginContainerMock);
+        //when(pluginContainerMock.hasPlugin(PluginBuildPlugin.class)).thenReturn(true);
         /*doAnswer(invocation -> {
-    invocation.<org.gradle.api.Action<org.gradle.api.artifacts.Dependency>>getArgument(0).execute(projectDependencyMock);
+    invocation.<Action<org.gradle.api.artifacts.Dependency>>getArgument(0).execute(projectDependencyMock);
     return null;
 }).when(dependencySetMock).all(any());*/
         //TestWithDependenciesPlugin plugin = new TestWithDependenciesPlugin();

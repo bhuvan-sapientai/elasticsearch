@@ -8,8 +8,13 @@ import org.elasticsearch.gradle.Version;
 
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
+
+import java.nio.file.Path;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.release.UpdateVersionsTask;
 import org.junit.jupiter.api.Timeout;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.expr.NameExpr;
@@ -35,12 +40,6 @@ import static org.mockito.ArgumentMatchers.any;
 class UpdateVersionsTaskSapientGeneratedTest {
 
     private final BuildLayout buildLayoutMock = mock(BuildLayout.class);
-
-    private final ClassOrInterfaceDeclaration classOrInterfaceDeclarationMock = mock(ClassOrInterfaceDeclaration.class);
-
-    private final CompilationUnit versionJavaMock = mock(CompilationUnit.class);
-
-    private final Version versionMock = mock(Version.class);
 
     @Test
     void addVersionTest() {
@@ -88,14 +87,14 @@ class UpdateVersionsTaskSapientGeneratedTest {
     }
 
     @Test
-    void executeTaskNoVersionsSpecifiedTest() {
+    void executeTaskNoVersionsSpecifiedTest() throws IOException {
         UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, target::executeTask);
         assertThat(exception.getMessage(), is("No versions to add or remove specified"));
     }
 
     @Test
-    void executeTaskSetCurrentWithoutAddVersionTest() {
+    void executeTaskSetCurrentWithoutAddVersionTest() throws IOException {
         UpdateVersionsTask target = new UpdateVersionsTask(buildLayoutMock);
         target.setCurrent(true);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, target::executeTask);
@@ -103,7 +102,7 @@ class UpdateVersionsTaskSapientGeneratedTest {
     }
 
     @Test
-    void executeTaskSameVersionAddedAndRemovedTest() {
+    void executeTaskSameVersionAddedAndRemovedTest() throws IOException {
         try (MockedStatic<Version> versionMockedStatic = mockStatic(Version.class)) {
             Version version = new Version(8, 0, 0);
             versionMockedStatic.when(() -> Version.fromString("8.0.0")).thenReturn(version);
@@ -145,5 +144,22 @@ class UpdateVersionsTaskSapientGeneratedTest {
         Optional<CompilationUnit> result = UpdateVersionsTask.removeVersionConstant(versionJava, new Version(7, 10, 2));
         assertTrue(result.isPresent());
         verify(fieldToRemove).remove();
+    }
+
+    @Test
+    void executeTaskSuccessfulAddAndRemoveTest() throws IOException {
+        //UpdateVersionsTask target = spy(new UpdateVersionsTask(buildLayoutMock));
+        //Path mockPath = mock(Path.class);
+        //when(target.rootDir).thenReturn(mockPath);
+        //when(mockPath.resolve(any())).thenReturn(mockPath);
+        //CompilationUnit mockCompilationUnit = mock(CompilationUnit.class);
+        /*try (MockedStatic<com.github.javaparser.StaticJavaParser> parserMockedStatic = mockStatic(com.github.javaparser.StaticJavaParser.class)) {
+    parserMockedStatic.when(() -> com.github.javaparser.StaticJavaParser.parse(any(Path.class))).thenReturn(mockCompilationUnit);
+    target.addVersion("8.0.0");
+    target.removeVersion("7.10.0");
+    doNothing().when(target).writeOutNewContents(any(), any());
+    target.executeTask();
+    verify(target).writeOutNewContents(any(), any());
+}*/
     }
 }

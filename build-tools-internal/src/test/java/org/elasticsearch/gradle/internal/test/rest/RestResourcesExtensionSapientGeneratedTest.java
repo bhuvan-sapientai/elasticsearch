@@ -5,7 +5,11 @@ import org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.BeforeEach;
 import org.gradle.api.provider.ListProperty;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
+import org.elasticsearch.gradle.internal.test.rest.RestResourcesExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -110,5 +114,31 @@ class RestResourcesExtensionSapientGeneratedTest {
         RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
         ListProperty<String> result = spec.getIncludeXpack();
         assertSame(listPropertyMock, result);
+    }
+
+    @Test
+    void constructorTest() {
+        assertNotNull(target);
+        assertNotNull(target.getRestApi());
+        assertNotNull(target.getRestTests());
+    }
+
+    @Test
+    void restResourcesSpecConstructorTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.RestResourcesSpec spec = new RestResourcesExtension.RestResourcesSpec(objectFactoryMock);
+        assertNotNull(spec);
+        assertNotNull(spec.getInclude());
+    }
+
+    @Test
+    void xpackRestResourcesSpecConstructorTest() {
+        ListProperty<String> listPropertyMock = mock(ListProperty.class);
+        when(objectFactoryMock.listProperty(String.class)).thenReturn(listPropertyMock);
+        RestResourcesExtension.XpackRestResourcesSpec spec = new RestResourcesExtension.XpackRestResourcesSpec(objectFactoryMock);
+        assertNotNull(spec);
+        assertNotNull(spec.getIncludeCore());
+        assertNotNull(spec.getIncludeXpack());
     }
 }

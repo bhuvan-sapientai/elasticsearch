@@ -4,7 +4,11 @@ import org.elasticsearch.gradle.internal.InternalReaperPlugin;
 
 import org.junit.jupiter.api.Timeout;
 import org.gradle.api.file.ProjectLayout;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
+import org.elasticsearch.gradle.internal.InternalReaperPlugin;
 import org.gradle.api.Project;
 import org.mockito.MockedStatic;
 

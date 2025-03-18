@@ -2,29 +2,41 @@ package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.ElasticsearchJavaPlugin;
 
-import org.gradle.api.plugins.PluginContainer;
 import org.gradle.external.javadoc.CoreJavadocOptions;
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar;
+import org.gradle.api.plugins.BasePlugin;
+import org.gradle.api.plugins.ExtraPropertiesExtension;
 import org.junit.jupiter.api.Test;
-import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.Project;
 
 import java.io.File;
 
-import nebula.plugin.info.InfoBrokerPlugin;
+import org.gradle.language.base.plugins.LifecycleBasePlugin;
+import org.gradle.api.Action;
 import org.gradle.api.artifacts.ConfigurationContainer;
-import org.gradle.api.tasks.TaskContainer;
-import org.gradle.api.tasks.javadoc.Javadoc;
+import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.plugins.JavaLibraryPlugin;
 import org.gradle.api.plugins.JavaPlugin;
+
+import static org.mockito.Mockito.*;
+
+import org.gradle.api.plugins.PluginContainer;
+import org.gradle.api.artifacts.Configuration;
+import org.elasticsearch.gradle.internal.ElasticsearchJavaPlugin;
+import nebula.plugin.info.InfoBrokerPlugin;
+import org.gradle.api.tasks.TaskContainer;
+import org.gradle.api.tasks.javadoc.Javadoc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.gradle.api.tasks.bundling.Jar;
 import org.gradle.api.tasks.TaskProvider;
+import org.gradle.api.Task;
 
-import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
 class ElasticsearchJavaPluginSapientGeneratedTest {
@@ -36,11 +48,15 @@ class ElasticsearchJavaPluginSapientGeneratedTest {
         TaskContainer taskContainer = mock(TaskContainer.class);
         ConfigurationContainer configurationContainer = mock(ConfigurationContainer.class);
         PluginContainer pluginContainer = mock(PluginContainer.class);
+        ExtensionContainer extensionContainer = mock(ExtensionContainer.class);
+        ExtraPropertiesExtension extraProperties = mock(ExtraPropertiesExtension.class);
         when(project.getPluginManager()).thenReturn(pluginManager);
         when(project.getTasks()).thenReturn(taskContainer);
         when(project.getConfigurations()).thenReturn(configurationContainer);
         when(project.getPlugins()).thenReturn(pluginContainer);
         when(project.getBuildDir()).thenReturn(new File("build"));
+        when(project.getExtensions()).thenReturn(extensionContainer);
+        when(extensionContainer.getExtraProperties()).thenReturn(extraProperties);
         ElasticsearchJavaPlugin plugin = new ElasticsearchJavaPlugin();
         plugin.apply(project);
         verify(pluginManager).apply(ElasticsearchJavaBasePlugin.class);
@@ -63,12 +79,16 @@ class ElasticsearchJavaPluginSapientGeneratedTest {
         Project project = mock(Project.class);
         TaskContainer taskContainer = mock(TaskContainer.class);
         PluginManager pluginManager = mock(PluginManager.class);
+        TaskProvider<Task> assembleTask = mock(TaskProvider.class);
         when(project.getTasks()).thenReturn(taskContainer);
         when(project.getPluginManager()).thenReturn(pluginManager);
         when(project.getBuildDir()).thenReturn(new File("build"));
+        when(taskContainer.named(BasePlugin.ASSEMBLE_TASK_NAME)).thenReturn(assembleTask);
         ElasticsearchJavaPlugin.configureJars(project);
         verify(taskContainer).withType(Jar.class);
         verify(pluginManager).withPlugin(eq("com.github.johnrengelman.shadow"), any());
+        verify(taskContainer).named(JavaPlugin.JAR_TASK_NAME, Jar.class);
+        verify(assembleTask).configure(any());
     }
 
     @Test
@@ -94,16 +114,19 @@ class ElasticsearchJavaPluginSapientGeneratedTest {
         //TaskProvider<Javadoc> javadocProvider = mock(TaskProvider.class);
         //Javadoc javadocTask = mock(Javadoc.class);
         //CoreJavadocOptions javadocOptions = mock(CoreJavadocOptions.class);
+        //TaskProvider<Task> checkTask = mock(TaskProvider.class);
         //when(project.getTasks()).thenReturn(taskContainer);
         //when(taskContainer.withType(Javadoc.class)).thenReturn(taskContainer);
         //when(taskContainer.named("javadoc", Javadoc.class)).thenReturn(javadocProvider);
         //when(javadocProvider.get()).thenReturn(javadocTask);
         //when(javadocTask.getOptions()).thenReturn(javadocOptions);
+        //when(taskContainer.named(LifecycleBasePlugin.CHECK_TASK_NAME)).thenReturn(checkTask);
         //ElasticsearchJavaPlugin plugin = new ElasticsearchJavaPlugin();
         //plugin.apply(project);
         //verify(taskContainer).withType(Javadoc.class);
         //verify(javadocOptions).addBooleanOption("html5", true);
         //verify(javadocProvider).configure(any());
+        //verify(checkTask).configure(any());
     }
 
     @Test

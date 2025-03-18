@@ -2,7 +2,16 @@ package org.elasticsearch.gradle.internal.testfixtures;
 
 import org.elasticsearch.gradle.internal.testfixtures.TestFixturesDeployPlugin;
 
+import java.util.Arrays;
+
 import org.elasticsearch.gradle.internal.docker.DockerBuildTask;
+
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.gradle.api.provider.ListProperty;
+import org.gradle.api.provider.Property;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.gradle.api.NamedDomainObjectContainer;
@@ -12,6 +21,7 @@ import org.elasticsearch.gradle.internal.info.BuildParams;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.tasks.TaskCollection;
 import org.gradle.api.plugins.ExtensionContainer;
+import org.elasticsearch.gradle.internal.testfixtures.TestFixturesDeployPlugin;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,10 +70,10 @@ class TestFixturesDeployPluginSapientGeneratedTest {
         //DockerBuildTask taskMock = mock(DockerBuildTask.class);
         //when(projectMock.getTasks()).thenReturn(taskContainerMock);
         //when(fixtureMock.getName()).thenReturn("testFixture");
-        //when(fixtureMock.getDockerContext()).thenReturn(mock(org.gradle.api.provider.Property.class));
-        //when(fixtureMock.getBaseImages()).thenReturn(mock(org.gradle.api.provider.ListProperty.class));
-        //when(fixtureMock.getVersion()).thenReturn(mock(org.gradle.api.provider.Property.class));
-        //when(fixtureMock.getDockerRegistry()).thenReturn(mock(org.gradle.api.provider.Property.class));
+        //when(fixtureMock.getDockerContext()).thenReturn(mock(Property.class));
+        //when(fixtureMock.getBaseImages()).thenReturn(mock(ListProperty.class));
+        //when(fixtureMock.getVersion()).thenReturn(mock(Property.class));
+        //when(fixtureMock.getDockerRegistry()).thenReturn(mock(Property.class));
         //when(taskContainerMock.register(eq("deployTestFixtureDockerImage"), eq(DockerBuildTask.class), any(Action.class))).thenReturn(taskProviderMock);
         //when(taskProviderMock.get()).thenReturn(taskMock);
         /*try (MockedStatic<BuildParams> buildParamsMock = mockStatic(BuildParams.class)) {
@@ -80,7 +90,7 @@ class TestFixturesDeployPluginSapientGeneratedTest {
     @Test
     void resolveTargetDockerRegistryWithCustomRegistry() {
         //TestFixtureDeployment fixtureMock = mock(TestFixtureDeployment.class);
-        //org.gradle.api.provider.Property<String> registryProperty = mock(org.gradle.api.provider.Property.class);
+        //Property<String> registryProperty = mock(Property.class);
         //when(fixtureMock.getDockerRegistry()).thenReturn(registryProperty);
         //when(registryProperty.getOrElse(anyString())).thenReturn("custom.registry");
         //String result = TestFixturesDeployPlugin.resolveTargetDockerRegistry(fixtureMock);
@@ -90,7 +100,7 @@ class TestFixturesDeployPluginSapientGeneratedTest {
     @Test
     void resolveTargetDockerRegistryWithDefaultRegistry() {
         //TestFixtureDeployment fixtureMock = mock(TestFixtureDeployment.class);
-        //org.gradle.api.provider.Property<String> registryProperty = mock(org.gradle.api.provider.Property.class);
+        //Property<String> registryProperty = mock(Property.class);
         //when(fixtureMock.getDockerRegistry()).thenReturn(registryProperty);
         //when(registryProperty.getOrElse(anyString())).thenReturn("docker.elastic.co/elasticsearch-dev");
         //String result = TestFixturesDeployPlugin.resolveTargetDockerRegistry(fixtureMock);
@@ -110,13 +120,14 @@ class TestFixturesDeployPluginSapientGeneratedTest {
         when(projectMock.getExtensions()).thenReturn(extensionContainerMock);
         when(projectMock.getTasks()).thenReturn(taskContainerMock);
         when(fixtureMock.getName()).thenReturn("testFixture");
-        when(fixtureMock.getDockerContext()).thenReturn(mock(org.gradle.api.provider.Property.class));
-        when(fixtureMock.getBaseImages()).thenReturn(mock(org.gradle.api.provider.ListProperty.class));
-        when(fixtureMock.getVersion()).thenReturn(mock(org.gradle.api.provider.Property.class));
-        when(fixtureMock.getDockerRegistry()).thenReturn(mock(org.gradle.api.provider.Property.class));
+        when(fixtureMock.getDockerContext()).thenReturn(mock(Property.class));
+        ListProperty<String> baseImagesProperty = mock(ListProperty.class);
+        when(fixtureMock.getBaseImages()).thenReturn(baseImagesProperty);
+        when(fixtureMock.getVersion()).thenReturn(mock(Property.class));
+        when(fixtureMock.getDockerRegistry()).thenReturn(mock(Property.class));
         when(taskContainerMock.register(eq("deployTestFixtureDockerImage"), eq(DockerBuildTask.class), any(Action.class))).thenReturn(taskProviderMock);
         when(taskProviderMock.get()).thenReturn(taskMock);
-        when(fixtureMock.getBaseImages().get()).thenReturn(java.util.Arrays.asList("base1", "base2"));
+        when(baseImagesProperty.get()).thenReturn(Arrays.asList("base1", "base2"));
         try (MockedStatic<BuildParams> buildParamsMock = mockStatic(BuildParams.class)) {
             buildParamsMock.when(BuildParams::isCi).thenReturn(false);
             TestFixturesDeployPlugin plugin = new TestFixturesDeployPlugin();
@@ -125,5 +136,64 @@ class TestFixturesDeployPluginSapientGeneratedTest {
                 verify(taskMock).setBaseImages(new String[]{"base1", "base2"});
             });
         }
+    }
+
+    @Test
+    void applyWhenBaseImagesIsEmpty() {
+        Project projectMock = mock(Project.class);
+        NamedDomainObjectContainer<TestFixtureDeployment> containerMock = mock(NamedDomainObjectContainer.class);
+        ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        TaskContainer taskContainerMock = mock(TaskContainer.class);
+        TestFixtureDeployment fixtureMock = mock(TestFixtureDeployment.class);
+        TaskProvider<DockerBuildTask> taskProviderMock = mock(TaskProvider.class);
+        DockerBuildTask taskMock = mock(DockerBuildTask.class);
+        when(projectMock.container(TestFixtureDeployment.class)).thenReturn(containerMock);
+        when(projectMock.getExtensions()).thenReturn(extensionContainerMock);
+        when(projectMock.getTasks()).thenReturn(taskContainerMock);
+        when(fixtureMock.getName()).thenReturn("testFixture");
+        when(fixtureMock.getDockerContext()).thenReturn(mock(Property.class));
+        ListProperty<String> baseImagesProperty = mock(ListProperty.class);
+        when(fixtureMock.getBaseImages()).thenReturn(baseImagesProperty);
+        when(fixtureMock.getVersion()).thenReturn(mock(Property.class));
+        when(fixtureMock.getDockerRegistry()).thenReturn(mock(Property.class));
+        when(taskContainerMock.register(eq("deployTestFixtureDockerImage"), eq(DockerBuildTask.class), any(Action.class))).thenReturn(taskProviderMock);
+        when(taskProviderMock.get()).thenReturn(taskMock);
+        when(baseImagesProperty.get()).thenReturn(List.of());
+        try (MockedStatic<BuildParams> buildParamsMock = mockStatic(BuildParams.class)) {
+            buildParamsMock.when(BuildParams::isCi).thenReturn(false);
+            TestFixturesDeployPlugin plugin = new TestFixturesDeployPlugin();
+            plugin.apply(projectMock);
+            containerMock.all(fixture -> {
+                verify(taskMock, never()).setBaseImages(any());
+            });
+        }
+    }
+
+    @Test
+    void applySetsPlatformsForAllArchitectures() {
+        //Project projectMock = mock(Project.class);
+        //NamedDomainObjectContainer<TestFixtureDeployment> containerMock = mock(NamedDomainObjectContainer.class);
+        //ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        //TaskContainer taskContainerMock = mock(TaskContainer.class);
+        //TestFixtureDeployment fixtureMock = mock(TestFixtureDeployment.class);
+        //TaskProvider<DockerBuildTask> taskProviderMock = mock(TaskProvider.class);
+        //DockerBuildTask taskMock = mock(DockerBuildTask.class);
+        //ListProperty<String> platformsProperty = mock(ListProperty.class);
+        //when(projectMock.container(TestFixtureDeployment.class)).thenReturn(containerMock);
+        //when(projectMock.getExtensions()).thenReturn(extensionContainerMock);
+        //when(projectMock.getTasks()).thenReturn(taskContainerMock);
+        //when(fixtureMock.getName()).thenReturn("testFixture");
+        //when(fixtureMock.getDockerContext()).thenReturn(mock(Property.class));
+        //when(fixtureMock.getBaseImages()).thenReturn(mock(ListProperty.class));
+        //when(fixtureMock.getVersion()).thenReturn(mock(Property.class));
+        //when(fixtureMock.getDockerRegistry()).thenReturn(mock(Property.class));
+        //when(taskContainerMock.register(eq("deployTestFixtureDockerImage"), eq(DockerBuildTask.class), any(Action.class))).thenReturn(taskProviderMock);
+        //when(taskProviderMock.get()).thenReturn(taskMock);
+        //when(taskMock.getPlatforms()).thenReturn(platformsProperty);
+        //TestFixturesDeployPlugin plugin = new TestFixturesDeployPlugin();
+        //plugin.apply(projectMock);
+        /*containerMock.all(fixture -> {
+    verify(platformsProperty).addAll(Arrays.asList("linux/amd64", "linux/arm64"));
+});*/
     }
 }

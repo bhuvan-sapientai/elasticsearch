@@ -50,6 +50,7 @@ import java.util.Set;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.elasticsearch.gradle.internal.snyk.GenerateSnykDependencyGraph;
 import org.gradle.api.artifacts.ResolvedConfiguration;
 import org.gradle.api.provider.Provider;
 
@@ -146,8 +147,12 @@ class GenerateSnykDependencyGraphSapientGeneratedTest {
         //when(targetReferenceProperty.get()).thenReturn("main");
         //when(gradleVersionProperty.get()).thenReturn("6.8");
         /*try (MockedStatic<BuildParams> buildParamsMock = mockStatic(BuildParams.class);
-    MockedStatic<JsonOutput> jsonOutputMock = mockStatic(JsonOutput.class)) {
+    MockedStatic<JsonOutput> jsonOutputMock = mockStatic(JsonOutput.class);
+    MockedStatic<Files> filesMock = mockStatic(Files.class)) {
     buildParamsMock.when(BuildParams::getGitRevision).thenReturn("abcdef");
+    jsonOutputMock.when(() -> JsonOutput.toJson(anyMap())).thenReturn("{}");
+    jsonOutputMock.when(() -> JsonOutput.prettyPrint("{}")).thenReturn("{\n}");
+    filesMock.when(() -> Files.writeString(any(), any(), any(), any())).thenReturn(null);
     task.resolveGraph();
     verify(versionProperty).map(any());
     verify(stringProvider).get();

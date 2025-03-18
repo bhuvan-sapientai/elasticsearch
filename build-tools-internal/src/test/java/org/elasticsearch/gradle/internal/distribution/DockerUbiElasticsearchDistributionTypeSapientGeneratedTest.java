@@ -8,6 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.elasticsearch.gradle.ElasticsearchDistributionType;
+import org.elasticsearch.gradle.internal.distribution.DockerUbiElasticsearchDistributionType;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -46,5 +50,18 @@ class DockerUbiElasticsearchDistributionTypeSapientGeneratedTest {
     void testConstructor() {
         DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
         assertAll("Constructor test", () -> assertThat(target.getName(), equalTo("dockerUbi")), () -> assertThat(target.isDocker(), is(true)));
+    }
+
+    @Test
+    void testImplementsElasticsearchDistributionType() {
+        DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
+        assertThat(target instanceof ElasticsearchDistributionType, is(true));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"dockerUbi, true", "docker, true", "ubi, true", "archive, false", "integ-test-zip, false"})
+    void testGetNameAndIsDockerConsistency(String expectedName, boolean expectedIsDocker) {
+        DockerUbiElasticsearchDistributionType target = new DockerUbiElasticsearchDistributionType();
+        assertAll("Name and isDocker consistency", () -> assertThat(target.getName(), equalTo("dockerUbi")), () -> assertThat(target.isDocker(), is(true)), () -> assertThat(target.getName().equals(expectedName) == target.isDocker(), is(expectedIsDocker)));
     }
 }

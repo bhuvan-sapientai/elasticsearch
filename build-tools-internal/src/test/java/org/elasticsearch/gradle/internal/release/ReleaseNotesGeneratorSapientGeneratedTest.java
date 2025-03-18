@@ -13,11 +13,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.io.File;
+
+import org.elasticsearch.gradle.internal.release.ReleaseNotesGenerator;
+
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+
+import java.lang.reflect.Method;
 
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -25,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.mockito.Mockito;
 
+import java.util.TreeMap;
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -73,9 +79,7 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
         //entry.setType("enhancement");
         //entry.setArea("area1");
         //entry.setSummary("Breaking change 1");
-        //Breaking breaking = new Breaking();
-        //breaking.setDetails("This is a breaking change");
-        //entry.setBreaking(breaking);
+        //entry.setBreaking(new ChangelogEntry.Breaking("This is a breaking change"));
         //changelogs.add(entry);
         //String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
         //assertThat(result, containsString("Version: 2.0.0"));
@@ -181,16 +185,76 @@ class ReleaseNotesGeneratorSapientGeneratedTest {
         //entry3.setType("feature");
         //entry3.setArea("area1");
         //entry3.setSummary("New feature");
-        //Breaking breaking = new Breaking();
-        //breaking.setDetails("Breaking change");
-        //entry3.setBreaking(breaking);
+        //entry3.setBreaking(new ChangelogEntry.Breaking("Breaking change"));
         //changelogs.add(entry3);
-        //java.lang.reflect.Method method = ReleaseNotesGenerator.class.getDeclaredMethod("buildChangelogBreakdown", Set.class);
+        //Method method = ReleaseNotesGenerator.class.getDeclaredMethod("buildChangelogBreakdown", Set.class);
         //method.setAccessible(true);
         //Map<String, Map<String, List<ChangelogEntry>>> result = (Map<String, Map<String, List<ChangelogEntry>>>) method.invoke(null, changelogs);
         //assertThat(result.keySet(), containsInAnyOrder("enhancement", "bug", "breaking"));
         //assertThat(result.get("enhancement").keySet(), contains("area1"));
         //assertThat(result.get("bug").keySet(), contains("area2"));
         //assertThat(result.get("breaking").keySet(), contains("area1"));
+    }
+
+    @Test
+    void testGenerateFileWithMultipleEntriesInSameArea() throws IOException {
+        String template = "Version: {{version}}\nChanges:\n{{#changelogsByTypeByArea}}{{#each this}}{{@key}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea}}";
+        QualifiedVersion version = QualifiedVersion.of("1.2.0");
+        Set<ChangelogEntry> changelogs = new HashSet<>();
+        ChangelogEntry entry1 = new ChangelogEntry();
+        entry1.setType("enhancement");
+        entry1.setArea("area1");
+        entry1.setSummary("Enhancement 1");
+        changelogs.add(entry1);
+        ChangelogEntry entry2 = new ChangelogEntry();
+        entry2.setType("enhancement");
+        entry2.setArea("area1");
+        entry2.setSummary("Enhancement 2");
+        changelogs.add(entry2);
+        String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
+        assertThat(result, containsString("Version: 1.2.0"));
+        assertThat(result, containsString("area1:"));
+        assertThat(result, containsString("* Enhancement 1"));
+        assertThat(result, containsString("* Enhancement 2"));
+    }
+
+    @Test
+    void testGenerateFileWithAllTypeLabels() throws IOException {
+        //String template = "Version: {{version}}\nChanges:\n{{#changelogsByTypeByArea}}{{#each this}}{{TYPE_LABELS.[0]}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea}}";
+        //QualifiedVersion version = QualifiedVersion.of("2.0.0");
+        //Set<ChangelogEntry> changelogs = new HashSet<>();
+        /*for (String type : ReleaseNotesGenerator.TYPE_LABELS.keySet()) {
+    ChangelogEntry entry = new ChangelogEntry();
+    entry.setType(type);
+    entry.setArea("area1");
+    entry.setSummary(type + " change");
+    changelogs.add(entry);
+}*/
+        //String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
+        /*for (String label : ReleaseNotesGenerator.TYPE_LABELS.values()) {
+    assertThat(result, containsString(label + ":"));
+}*/
+    }
+
+    @Test
+    void testGenerateFileWithKnownIssueAndSecurity() throws IOException {
+        String template = "Version: {{version}}\nChanges:\n{{#changelogsByTypeByArea}}{{#each this}}{{@key}}:\n{{#each this}}* {{summary}}\n{{/each}}{{/each}}{{/changelogsByTypeByArea}}";
+        QualifiedVersion version = QualifiedVersion.of("3.0.0");
+        Set<ChangelogEntry> changelogs = new HashSet<>();
+        ChangelogEntry entry1 = new ChangelogEntry();
+        entry1.setType("known-issue");
+        entry1.setArea("area1");
+        entry1.setSummary("Known issue 1");
+        changelogs.add(entry1);
+        ChangelogEntry entry2 = new ChangelogEntry();
+        entry2.setType("security");
+        entry2.setArea("area2");
+        entry2.setSummary("Security fix 1");
+        changelogs.add(entry2);
+        String result = ReleaseNotesGenerator.generateFile(template, version, changelogs);
+        assertThat(result, containsString("Version: 3.0.0"));
+        assertThat(result, containsString("_all_:"));
+        assertThat(result, containsString("* Known issue 1"));
+        assertThat(result, containsString("* Security fix 1"));
     }
 }

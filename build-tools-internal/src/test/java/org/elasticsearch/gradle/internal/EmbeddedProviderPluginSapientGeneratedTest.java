@@ -2,7 +2,10 @@ package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.EmbeddedProviderPlugin;
 
+import org.elasticsearch.gradle.internal.EmbeddedProviderPlugin;
+
 import static org.gradle.api.artifacts.type.ArtifactTypeDefinition.JAR_TYPE;
+import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
 import org.elasticsearch.gradle.transform.UnzipTransform;
@@ -19,6 +22,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler;
 import static org.gradle.api.artifacts.type.ArtifactTypeDefinition.DIRECTORY_TYPE;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.mockito.ArgumentCaptor;
 import org.gradle.api.tasks.TaskProvider;
 
 import static org.mockito.Mockito.*;
@@ -48,7 +52,6 @@ class EmbeddedProviderPluginSapientGeneratedTest {
         //verify(dependencyHandlerMock).registerTransform(eq(UnzipTransform.class), any());
         //verify(taskContainerMock).register(eq("generateProviderImpls"), any());
         //verify(extensionContainerMock).create(eq("embeddedProviders"), eq(EmbeddedProviderExtension.class), eq(projectMock), eq(taskProviderMock));
-        // Verify IMPL_ATTR
         //assertEquals(Attribute.of("is.impl", Boolean.class), EmbeddedProviderPlugin.IMPL_ATTR);
     }
 
@@ -62,7 +65,10 @@ class EmbeddedProviderPluginSapientGeneratedTest {
         // Act
         plugin.apply(projectMock);
         // Assert
-        verify(dependencyHandlerMock).registerTransform(eq(UnzipTransform.class), any(Action.class));
+        ArgumentCaptor<Action> actionCaptor = ArgumentCaptor.forClass(Action.class);
+        verify(dependencyHandlerMock).registerTransform(eq(UnzipTransform.class), actionCaptor.capture());
+        Action capturedAction = actionCaptor.getValue();
+        assertNotNull(capturedAction);
     }
 
     @Test

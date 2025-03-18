@@ -2,23 +2,19 @@ package org.elasticsearch.gradle.internal;
 
 import org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-
-import org.gradle.api.plugins.PluginContainer;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.gradle.api.Project;
-import org.gradle.api.Plugin;
 import org.junit.jupiter.api.Timeout;
+import org.gradle.api.plugins.ExtensionContainer;
 
 import static org.hamcrest.Matchers.notNullValue;
 
+import org.gradle.api.plugins.PluginContainer;
+import org.elasticsearch.gradle.internal.InternalAvailableTcpPortProviderPlugin;
 import org.elasticsearch.gradle.internal.util.ports.ReservedPortRange;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.junit.jupiter.api.Test;
+import org.gradle.api.Project;
 import org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator;
 
 import static org.mockito.Mockito.*;
@@ -29,41 +25,27 @@ import static org.mockito.ArgumentMatchers.any;
 class InternalAvailableTcpPortProviderPluginSapientGeneratedTest {
 
     @Test
-    void applyThrowsNullPointerException() {
+    void applyAddsPortRangeExtension() {
         // Arrange
         Project projectMock = mock(Project.class);
         Project rootProjectMock = mock(Project.class);
         PluginContainer pluginContainerMock = mock(PluginContainer.class);
         InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin rootPluginMock = mock(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class);
-        doReturn(rootProjectMock).when(projectMock).getRootProject();
-        doReturn(pluginContainerMock).when(rootProjectMock).getPlugins();
-        doReturn(rootPluginMock).when(pluginContainerMock).apply(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class);
+        AvailablePortAllocator allocatorMock = mock(AvailablePortAllocator.class);
+        ReservedPortRange portRangeMock = mock(ReservedPortRange.class);
+        ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        when(projectMock.getRootProject()).thenReturn(rootProjectMock);
+        when(rootProjectMock.getPlugins()).thenReturn(pluginContainerMock);
+        when(pluginContainerMock.apply(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class)).thenReturn(rootPluginMock);
+        when(rootPluginMock.allocator).thenReturn(allocatorMock);
+        when(allocatorMock.reservePortRange()).thenReturn(portRangeMock);
+        when(projectMock.getExtensions()).thenReturn(extensionContainerMock);
         InternalAvailableTcpPortProviderPlugin target = new InternalAvailableTcpPortProviderPlugin();
-        // Act & Assert
-        final NullPointerException result = assertThrows(NullPointerException.class, () -> target.apply(projectMock));
-        assertAll("result", () -> assertThat(result, is(notNullValue())), () -> verify(projectMock).getRootProject(), () -> verify(rootProjectMock).getPlugins(), () -> verify(pluginContainerMock).apply(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class));
-    }
-
-    @Test
-    void applyAddsPortRangeExtension() {
-        // Arrange
-        //Project projectMock = mock(Project.class);
-        //Project rootProjectMock = mock(Project.class);
-        //PluginContainer pluginContainerMock = mock(PluginContainer.class);
-        //InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin rootPluginMock = mock(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class);
-        //AvailablePortAllocator allocatorMock = mock(AvailablePortAllocator.class);
-        //ReservedPortRange portRangeMock = mock(ReservedPortRange.class);
-        //doReturn(rootProjectMock).when(projectMock).getRootProject();
-        //doReturn(pluginContainerMock).when(rootProjectMock).getPlugins();
-        //doReturn(rootPluginMock).when(pluginContainerMock).apply(InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin.class);
-        //doReturn(allocatorMock).when(rootPluginMock).allocator;
-        //doReturn(portRangeMock).when(allocatorMock).reservePortRange();
-        //InternalAvailableTcpPortProviderPlugin target = new InternalAvailableTcpPortProviderPlugin();
         // Act
-        //target.apply(projectMock);
+        target.apply(projectMock);
         // Assert
-        //verify(projectMock).getExtensions();
-        //verify(projectMock.getExtensions()).add("portRange", portRangeMock);
+        verify(projectMock).getExtensions();
+        verify(extensionContainerMock).add("portRange", portRangeMock);
     }
 
     @Test
@@ -76,5 +58,23 @@ class InternalAvailableTcpPortProviderPluginSapientGeneratedTest {
         // Assert
         assertThat(target.allocator, is(notNullValue()));
         assertThat(target.allocator.getClass(), is(AvailablePortAllocator.class));
+    }
+
+    @Test
+    void applyWithNullProject() {
+        // Arrange
+        InternalAvailableTcpPortProviderPlugin target = new InternalAvailableTcpPortProviderPlugin();
+        // Act & Assert
+        assertThat(target, is(notNullValue()));
+        org.junit.jupiter.api.Assertions.assertThrows(NullPointerException.class, () -> target.apply(null));
+    }
+
+    @Test
+    void rootPluginApplyWithNullProject() {
+        // Arrange
+        InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin target = new InternalAvailableTcpPortProviderPlugin.InternalAvailableTcpPortProviderRootPlugin();
+        // Act & Assert
+        assertThat(target, is(notNullValue()));
+        org.junit.jupiter.api.Assertions.assertThrows(NullPointerException.class, () -> target.apply(null));
     }
 }

@@ -3,18 +3,18 @@ package org.elasticsearch.gradle.internal.test.rest;
 // import org.elasticsearch.gradle.internal.test.rest.RestTestUtil;
 // import org.gradle.api.DomainObjectCollection;
 // import static org.mockito.ArgumentMatchers.any;
-// import org.junit.jupiter.api.Test;
 // import org.gradle.api.InvalidUserDataException;
+// import org.junit.jupiter.api.Test;
 // import org.gradle.api.Project;
 // import org.gradle.api.Action;
 // import org.gradle.api.UnknownProjectException;
 // import static org.hamcrest.MatcherAssert.assertThat;
-// import org.junit.jupiter.params.provider.CsvSource;
 // import org.gradle.api.plugins.JavaPlugin;
 // import org.gradle.api.artifacts.dsl.DependencyHandler;
+// import org.junit.jupiter.params.provider.CsvSource;
 // import org.gradle.api.artifacts.Dependency;
-// import org.mockito.MockedStatic;
 // import static org.mockito.Mockito.*;
+// import org.mockito.MockedStatic;
 // import org.gradle.api.tasks.SourceSetOutput;
 // import static org.junit.jupiter.api.Assertions.assertAll;
 // import org.gradle.api.plugins.PluginContainer;
@@ -23,11 +23,10 @@ package org.elasticsearch.gradle.internal.test.rest;
 // import org.junit.jupiter.params.ParameterizedTest;
 // import static org.mockito.ArgumentMatchers.eq;
 // import static org.junit.jupiter.api.Assertions.assertThrows;
-// import org.junit.jupiter.api.Timeout;
 // import org.gradle.api.tasks.TaskContainer;
+// import org.junit.jupiter.api.Timeout;
 // import org.gradle.api.UnknownTaskException;
 // import org.gradle.api.tasks.testing.Test;
-// import org.mockito.stubbing.Answer;
 // import org.elasticsearch.gradle.internal.test.RestIntegTestTask;
 // import org.gradle.api.file.FileCollection;
 // import org.gradle.api.tasks.TaskProvider;
@@ -131,7 +130,7 @@ class RestTestUtilSapientGeneratedTest {
 //     @Test
 //     void setupYamlRestTestDependenciesDefaultsTest() {
 //         try (MockedStatic<RestTestUtil> restTestUtil = mockStatic(RestTestUtil.class, CALLS_REAL_METHODS)) {
-//             restTestUtil.when(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, false)).thenAnswer((Answer<Void>) invocation -> null);
+//             restTestUtil.when(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, false)).thenAnswer(invocation -> null);
 //             RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock);
 //             assertAll("result", () -> restTestUtil.verify(() -> RestTestUtil.setupYamlRestTestDependenciesDefaults(projectMock, sourceSetMock, false), atLeast(1)));
 //         }

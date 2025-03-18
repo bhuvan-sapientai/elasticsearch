@@ -2,24 +2,27 @@ package org.elasticsearch.gradle.internal.precommit;
 
 import org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer;
 
-import org.junit.jupiter.api.Timeout;
-
 import java.util.regex.Pattern;
 import java.nio.file.Files;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
 import java.io.UncheckedIOException;
 
-import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer;
+
+import java.io.File;
+
+import org.junit.jupiter.api.Timeout;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -50,5 +53,33 @@ class LicenseAnalyzerSapientGeneratedTest {
     void licenseTypeWithNonExistentFileThrowsUncheckedIOException() {
         File nonExistentFile = new File("non_existent_file.txt");
         assertThrows(UncheckedIOException.class, () -> LicenseAnalyzer.licenseType(nonExistentFile));
+    }
+
+    @Test
+    void licenseTypeWithEmptyFileThrowsIllegalStateException() throws IOException {
+        File emptyFile = Files.createTempFile("empty_license", ".txt").toFile();
+        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> LicenseAnalyzer.licenseType(emptyFile));
+        assertThat(exception.getMessage(), containsString("Unknown license for license file:"));
+        emptyFile.delete();
+    }
+
+    @Test
+    void licenseTypeWithMultipleMatches() throws IOException {
+        String licenseContent = "Apache License Version 2.0\nMozilla Public License Version 2.0";
+        File tempFile = Files.createTempFile("multiple_licenses", ".txt").toFile();
+        Files.writeString(tempFile.toPath(), licenseContent);
+        LicenseAnalyzer.LicenseInfo result = LicenseAnalyzer.licenseType(tempFile);
+        assertThat(result.identifier(), equalTo("Apache-2.0"));
+        tempFile.delete();
+    }
+
+    @Test
+    void licenseTypeWithSpecialCharacters() throws IOException {
+        String licenseContent = "Apache\n*\nLicense\n*\nVersion\n*\n2.0";
+        File tempFile = Files.createTempFile("special_chars_license", ".txt").toFile();
+        Files.writeString(tempFile.toPath(), licenseContent);
+        LicenseAnalyzer.LicenseInfo result = LicenseAnalyzer.licenseType(tempFile);
+        assertThat(result.identifier(), equalTo("Apache-2.0"));
+        tempFile.delete();
     }
 }

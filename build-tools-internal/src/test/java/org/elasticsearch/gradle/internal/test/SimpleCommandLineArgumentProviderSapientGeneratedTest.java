@@ -2,24 +2,29 @@ package org.elasticsearch.gradle.internal.test;
 
 import org.elasticsearch.gradle.internal.test.SimpleCommandLineArgumentProvider;
 
+import org.elasticsearch.gradle.internal.test.SimpleCommandLineArgumentProvider;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import org.junit.jupiter.api.Timeout;
-
-import java.util.stream.Stream;
 import java.util.List;
 
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.Collections;
+
+import org.junit.jupiter.api.Timeout;
+
+import java.util.stream.Stream;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -53,5 +58,26 @@ class SimpleCommandLineArgumentProviderSapientGeneratedTest {
         SimpleCommandLineArgumentProvider target = new SimpleCommandLineArgumentProvider((String[]) null);
         Iterable<String> result = target.asArguments();
         assertAll("result", () -> assertThat(result, is(notNullValue())), () -> assertThat(result, is(emptyIterable())));
+    }
+
+    @Test
+    void constructorTestWithNullArgument() {
+        SimpleCommandLineArgumentProvider target = new SimpleCommandLineArgumentProvider((String) null);
+        Iterable<String> result = target.asArguments();
+        assertAll("result", () -> assertThat(result, is(notNullValue())), () -> assertThat(result, contains((Object) null)));
+    }
+
+    @Test
+    void constructorTestWithMultipleNullArguments() {
+        SimpleCommandLineArgumentProvider target = new SimpleCommandLineArgumentProvider(null, null, null);
+        Iterable<String> result = target.asArguments();
+        assertAll("result", () -> assertThat(result, is(notNullValue())), () -> assertThat(result, contains(null, null, null)));
+    }
+
+    @Test
+    void constructorTestWithMixedNullAndNonNullArguments() {
+        SimpleCommandLineArgumentProvider target = new SimpleCommandLineArgumentProvider("arg1", null, "arg3");
+        Iterable<String> result = target.asArguments();
+        assertAll("result", () -> assertThat(result, is(notNullValue())), () -> assertThat(result, contains("arg1", null, "arg3")));
     }
 }

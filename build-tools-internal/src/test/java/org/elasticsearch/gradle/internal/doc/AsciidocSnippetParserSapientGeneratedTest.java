@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -81,9 +81,9 @@ class AsciidocSnippetParserSapientGeneratedTest {
     List<Snippet> snippetList = new ArrayList<>();
     target.parseLine(snippetList, 0, "A");
     mockedStatic.verify(() -> AsciidocSnippetParser.matchSource("A"), times(1));
-    assertThat(target.getCurrentName(), is("name1"));
-    assertThat(target.getLastLanguage(), is("language1"));
-    assertThat(target.getLastLanguageLine(), is(0));
+    assertThat(target.currentName, is("name1"));
+    assertThat(target.lastLanguage, is("language1"));
+    assertThat(target.lastLanguageLine, is(0));
 }*/
     }
 
@@ -110,8 +110,8 @@ class AsciidocSnippetParserSapientGeneratedTest {
         //when(mockBuilder.withLanguage(any())).thenReturn(mockBuilder);
         //AsciidocSnippetParser spyTarget = spy(target);
         //doReturn(mockBuilder).when(spyTarget).newSnippetBuilder();
-        //spyTarget.setLastLanguageLine(-1);
-        //spyTarget.setLastLanguage("testLang");
+        //spyTarget.lastLanguageLine = -1;
+        //spyTarget.lastLanguage = "testLang";
         //List<Snippet> snippetList = new ArrayList<>();
         //spyTarget.parseLine(snippetList, 0, "----");
         //verify(mockBuilder).withLineNumber(1);
@@ -147,5 +147,31 @@ class AsciidocSnippetParserSapientGeneratedTest {
     @Test
     void testGetConsoleRegex() {
         assertThat(target.getConsoleRegex(), is(AsciidocSnippetParser.CONSOLE_REGEX));
+    }
+
+    @Test
+    void testParseLineWithSnippetPattern() {
+        List<Snippet> snippets = new ArrayList<>();
+        SnippetBuilder mockBuilder = mock(SnippetBuilder.class);
+        when(mockBuilder.withLineNumber(anyInt())).thenReturn(mockBuilder);
+        when(mockBuilder.withName(any())).thenReturn(mockBuilder);
+        when(mockBuilder.withSubstitutions(any())).thenReturn(mockBuilder);
+        AsciidocSnippetParser spyTarget = spy(target);
+        doReturn(mockBuilder).when(spyTarget).newSnippetBuilder();
+        spyTarget.parseLine(snippets, 0, "----");
+        verify(mockBuilder).withLineNumber(1);
+        verify(mockBuilder).withName(null);
+        verify(mockBuilder).withSubstitutions(any());
+    }
+
+    @Test
+    void testParseLineWithSnippetPatternAndExistingBuilder() {
+        List<Snippet> snippets = new ArrayList<>();
+        SnippetBuilder mockBuilder = mock(SnippetBuilder.class);
+        when(mockBuilder.withEnd(anyInt())).thenReturn(mockBuilder);
+        AsciidocSnippetParser spyTarget = spy(target);
+        spyTarget.snippetBuilder = mockBuilder;
+        spyTarget.parseLine(snippets, 0, "----");
+        verify(mockBuilder).withEnd(1);
     }
 }

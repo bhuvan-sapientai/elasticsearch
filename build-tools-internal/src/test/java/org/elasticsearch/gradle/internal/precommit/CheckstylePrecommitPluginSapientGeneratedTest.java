@@ -3,18 +3,12 @@ package org.elasticsearch.gradle.internal.precommit;
 import org.elasticsearch.gradle.internal.precommit.CheckstylePrecommitPlugin;
 
 import org.gradle.api.plugins.quality.CheckstyleExtension;
-import org.junit.jupiter.api.BeforeEach;
 
 import static org.mockito.ArgumentMatchers.any;
 
 import org.gradle.api.plugins.quality.Checkstyle;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.elasticsearch.gradle.internal.precommit.CheckstylePrecommitPlugin;
 import org.junit.jupiter.api.Test;
-
-import static org.mockito.ArgumentMatchers.eq;
-
 import org.gradle.api.Project;
 
 import java.io.File;
@@ -33,12 +27,18 @@ import static org.mockito.ArgumentMatchers.anyString;
 import org.gradle.api.artifacts.VersionCatalogsExtension;
 import org.gradle.api.plugins.JavaBasePlugin;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
-import org.gradle.api.tasks.TaskProvider;
 
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
+import org.junit.jupiter.api.BeforeEach;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.gradle.api.tasks.TaskProvider;
 import org.gradle.api.Task;
 import org.gradle.api.provider.Provider;
 
@@ -95,7 +95,7 @@ class CheckstylePrecommitPluginSapientGeneratedTest {
     }
 
     @Test
-    void createTask_shouldHandleJarProtocol() throws IOException {
+    void createTask_shouldHandleJarProtocol() throws Exception {
         // Arrange
         URL mockUrl = new URL("jar:file:/path/to/jar!/resource");
         JarURLConnection mockConnection = mock(JarURLConnection.class);
@@ -128,7 +128,7 @@ class CheckstylePrecommitPluginSapientGeneratedTest {
     }
 
     @Test
-    void createTask_shouldHandleFileProtocol() throws IOException {
+    void createTask_shouldHandleFileProtocol() throws Exception {
         // Arrange
         URL mockUrl = new File("/path/to/file").toURI().toURL();
         // Use reflection to set the static field
@@ -156,5 +156,20 @@ class CheckstylePrecommitPluginSapientGeneratedTest {
         verify(dependencyHandler, times(2)).addProvider(eq("checkstyle"), any(Provider.class));
         verify(project.getTasks(), atLeastOnce()).withType(Checkstyle.class);
         verify(project.getPlugins()).withType(eq(JavaBasePlugin.class), any(Action.class));
+    }
+
+    @Test
+    void createTask_shouldThrowExceptionForUnsupportedProtocol() throws Exception {
+        // Arrange
+        URL mockUrl = new URL("http://example.com/resource");
+        // Use reflection to set the static field
+        java.lang.reflect.Field field = CheckstylePrecommitPlugin.class.getDeclaredField("checkstyleConfUrl");
+        field.setAccessible(true);
+        field.set(null, mockUrl);
+        // Mock other necessary dependencies
+        when(project.getBuildDir()).thenReturn(new File("build"));
+        when(project.getTasks()).thenReturn(mock(org.gradle.api.tasks.TaskContainer.class));
+        // Act & Assert
+        assertThrows(UnsupportedOperationException.class, () -> plugin.createTask(project));
     }
 }

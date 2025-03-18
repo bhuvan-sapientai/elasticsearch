@@ -2,15 +2,17 @@ package org.elasticsearch.gradle.internal.test.rest.compat.compat;
 
 // import org.elasticsearch.gradle.internal.test.rest.compat.compat.YamlRestCompatTestPlugin;
 // import static org.junit.jupiter.api.Assertions.assertAll;
-// import org.junit.jupiter.api.BeforeEach;
 // import org.gradle.api.tasks.SourceSet;
+// import org.junit.jupiter.api.BeforeEach;
 // import javax.inject.Inject;
 // import org.junit.jupiter.api.Test;
 // import static org.hamcrest.Matchers.equalTo;
+// import static org.junit.jupiter.api.Assertions.assertThrows;
 // import org.gradle.api.Project;
 // import org.gradle.api.Plugin;
 // import org.elasticsearch.gradle.internal.test.rest.RestTestUtil;
 // import org.junit.jupiter.api.Timeout;
+// import org.elasticsearch.gradle.internal.test.rest.compat.compat.YamlRestCompatTestPlugin;
 // import org.gradle.api.file.ProjectLayout;
 // import org.gradle.api.tasks.testing.Test;
 // import org.elasticsearch.gradle.testclusters.StandaloneRestIntegTestTask;

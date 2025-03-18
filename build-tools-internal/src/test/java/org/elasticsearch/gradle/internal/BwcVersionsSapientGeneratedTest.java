@@ -5,12 +5,8 @@ import org.elasticsearch.gradle.internal.BwcVersions;
 import java.util.Arrays;
 import java.util.List;
 
-import org.elasticsearch.gradle.internal.BwcVersions;
 import org.elasticsearch.gradle.Version;
 import org.junit.jupiter.api.BeforeEach;
-
-import static org.mockito.ArgumentMatchers.any;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.elasticsearch.gradle.VersionProperties;

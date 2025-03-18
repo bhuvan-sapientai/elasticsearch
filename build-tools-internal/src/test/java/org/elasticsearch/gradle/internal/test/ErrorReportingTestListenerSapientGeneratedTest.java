@@ -4,19 +4,25 @@ package org.elasticsearch.gradle.internal.test;
 // import org.gradle.api.tasks.testing.logging.TestLoggingContainer;
 // import java.util.List;
 // import org.junit.jupiter.api.BeforeEach;
-// import org.junit.jupiter.api.Test;
+// import org.gradle.api.tasks.testing.TestListener;
 // import org.gradle.api.tasks.testing.TestOutputEvent;
+// import org.junit.jupiter.api.Test;
 // import org.junit.jupiter.params.ParameterizedTest;
+// import java.io.StringReader;
+// import java.io.File;
 // import org.gradle.api.logging.Logger;
 // import org.gradle.api.tasks.testing.TestDescriptor;
+// import org.gradle.api.tasks.testing.TestOutputListener;
 // import org.gradle.api.tasks.testing.Test;
-// import java.io.*;
+// import java.io.BufferedReader;
 // import java.util.ArrayList;
 // import org.junit.jupiter.params.provider.CsvSource;
 // import static org.junit.jupiter.api.Assertions.*;
 // import org.gradle.api.internal.tasks.testing.logging.FullExceptionFormatter;
+// import org.mockito.ArgumentCaptor;
 // import org.gradle.api.tasks.testing.TestResult;
 // import static org.mockito.Mockito.*;
+// import java.io.IOException;
 // import static org.mockito.ArgumentMatchers.any;
 
 class ErrorReportingTestListenerSapientGeneratedTest {
@@ -74,13 +80,23 @@ class ErrorReportingTestListenerSapientGeneratedTest {
 //     }
 
 //     @Test
-//     void testAfterSuite() throws IOException {
+//     void testAfterSuiteSuccess() throws IOException {
 //         TestDescriptor suiteDescriptorMock = mock(TestDescriptor.class);
 //         TestResult resultMock = mock(TestResult.class);
 //         when(resultMock.getResultType()).thenReturn(TestResult.ResultType.SUCCESS);
 //         when(suiteDescriptorMock.getParent()).thenReturn(null);
 //         listener.afterSuite(suiteDescriptorMock, resultMock);
 //         verify(loggerMock, never()).lifecycle(anyString());
+//     }
+
+//     @Test
+//     void testAfterSuiteFailure() throws IOException {
+//         TestDescriptor suiteDescriptorMock = mock(TestDescriptor.class);
+//         TestResult resultMock = mock(TestResult.ResultType.class);
+//         when(resultMock.getResultType()).thenReturn(TestResult.ResultType.FAILURE);
+//         when(suiteDescriptorMock.getParent()).thenReturn(null);
+//         listener.afterSuite(suiteDescriptorMock, resultMock);
+//         verify(loggerMock, times(1)).lifecycle("\nTests with failures:");
 //     }
 
 //     @Test
@@ -151,5 +167,66 @@ class ErrorReportingTestListenerSapientGeneratedTest {
 //         }
 //         eventWriter.close();
 //         assertFalse(tempFile.exists());
+//     }
+
+//     @Test
+//     void testEventWriterWithStdErr() throws IOException {
+//         ErrorReportingTestListener.Descriptor descriptorMock = mock(ErrorReportingTestListener.Descriptor.class);
+//         when(descriptorMock.className()).thenReturn("TestClass");
+//         File tempFile = File.createTempFile("test", ".out");
+//         tempFile.deleteOnExit();
+//         when(outputDirectoryMock.getPath()).thenReturn(tempFile.getParent());
+//         ErrorReportingTestListener.EventWriter eventWriter = listener.new EventWriter(descriptorMock);
+//         TestOutputEvent outputEventMock = mock(TestOutputEvent.class);
+//         when(outputEventMock.getDestination()).thenReturn(TestOutputEvent.Destination.StdErr);
+//         when(outputEventMock.getMessage()).thenReturn("Error message");
+//         eventWriter.write(outputEventMock);
+//         eventWriter.flush();
+//         try (BufferedReader reader = eventWriter.reader()) {
+//             assertEquals("  2> Error message", reader.readLine());
+//         }
+//         eventWriter.close();
+//         assertFalse(tempFile.exists());
+//     }
+
+//     @Test
+//     void testAfterSuiteWithFailures() throws IOException {
+//         TestDescriptor suiteDescriptorMock = mock(TestDescriptor.class);
+//         TestResult resultMock = mock(TestResult.class);
+//         when(resultMock.getResultType()).thenReturn(TestResult.ResultType.FAILURE);
+//         when(suiteDescriptorMock.getParent()).thenReturn(null);
+//         TestDescriptor failedTestDescriptorMock = mock(TestDescriptor.class);
+//         when(failedTestDescriptorMock.getName()).thenReturn("failedTest");
+//         when(failedTestDescriptorMock.getClassName()).thenReturn("FailedTestClass");
+//         listener.failedTests.add(ErrorReportingTestListener.Descriptor.of(failedTestDescriptorMock));
+//         listener.afterSuite(suiteDescriptorMock, resultMock);
+//         verify(loggerMock).lifecycle("\nTests with failures:");
+//         verify(loggerMock).lifecycle(" - FailedTestClass.failedTest");
+//     }
+
+//     @Test
+//     void testAfterTestFailureWithExceptions() {
+//         TestDescriptor testDescriptorMock = mock(TestDescriptor.class);
+//         TestResult resultMock = mock(TestResult.class);
+//         TestDescriptor parentMock = mock(TestDescriptor.class);
+//         when(resultMock.getResultType()).thenReturn(TestResult.ResultType.FAILURE);
+//         when(testDescriptorMock.getParent()).thenReturn(parentMock);
+//         List<Throwable> exceptions = new ArrayList<>();
+//         exceptions.add(new RuntimeException("Test exception"));
+//         when(resultMock.getExceptions()).thenReturn(exceptions);
+//         listener.afterTest(testDescriptorMock, resultMock);
+//         assertFalse(listener.getFailedTests().isEmpty());
+//         verify(testDescriptorMock).getParent();
+//         verify(resultMock).getExceptions();
+//     }
+
+//     @Test
+//     void testOnOutputWithNewline() {
+//         TestDescriptor testDescriptorMock = mock(TestDescriptor.class);
+//         TestOutputEvent outputEventMock = mock(TestOutputEvent.class);
+//         when(outputEventMock.getMessage()).thenReturn("\n");
+//         listener.onOutput(testDescriptorMock, outputEventMock);
+//         // Verify that the newline is written without a prefix
+//         verify(outputEventMock).getMessage();
 //     }
 }

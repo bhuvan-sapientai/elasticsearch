@@ -6,6 +6,10 @@ import org.gradle.api.artifacts.dsl.ArtifactHandler;
 import org.gradle.api.artifacts.PublishArtifact;
 import org.gradle.api.plugins.PluginContainer;
 import org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.elasticsearch.gradle.internal.DependenciesInfoPlugin;
 import org.junit.jupiter.api.Test;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.Project;
@@ -13,6 +17,7 @@ import org.gradle.api.attributes.Category;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.plugins.JavaPlugin;
+import org.mockito.ArgumentCaptor;
 import org.gradle.api.tasks.TaskProvider;
 import org.elasticsearch.gradle.dependencies.CompileOnlyResolvePlugin;
 
@@ -45,7 +50,7 @@ class DependenciesInfoPluginSapientGeneratedTest {
         //when(configurations.getByName(CompileOnlyResolvePlugin.RESOLVEABLE_COMPILE_ONLY_CONFIGURATION_NAME)).thenReturn(compileOnly);
         //when(configurations.create("dependenciesInfoFiles")).thenReturn(dependenciesInfoFiles);
         //TaskProvider<DependenciesInfoTask> depsInfoTask = mock(TaskProvider.class);
-        //when(tasks.register("dependenciesInfo", DependenciesInfoTask.class)).thenReturn(depsInfoTask);
+        //when(tasks.register(eq("dependenciesInfo"), eq(DependenciesInfoTask.class), any())).thenReturn(depsInfoTask);
         //TaskProvider<DependencyLicensesTask> depLicTask = mock(TaskProvider.class);
         //when(tasks.named("dependencyLicenses", DependencyLicensesTask.class)).thenReturn(depLicTask);
         //Category category = mock(Category.class);
@@ -55,7 +60,12 @@ class DependenciesInfoPluginSapientGeneratedTest {
         //plugin.apply(project);
         // Assert
         //verify(plugins).apply(CompileOnlyResolvePlugin.class);
-        //verify(tasks).register(eq("dependenciesInfo"), eq(DependenciesInfoTask.class), any());
+        //ArgumentCaptor<DependenciesInfoTask> taskCaptor = ArgumentCaptor.forClass(DependenciesInfoTask.class);
+        //verify(tasks).register(eq("dependenciesInfo"), eq(DependenciesInfoTask.class), taskCaptor.capture());
+        //DependenciesInfoTask capturedTask = taskCaptor.getValue();
+        //verify(capturedTask).setRuntimeConfiguration(runtimeClasspath);
+        //verify(capturedTask).setCompileOnlyConfiguration(compileOnly);
+        //verify(capturedTask.getConventionMapping()).map(eq("mappings"), any());
         //verify(configurations).create("dependenciesInfoFiles");
         //verify(dependenciesInfoFiles).setCanBeResolved(false);
         //verify(dependenciesInfoFiles).setCanBeConsumed(true);

@@ -1,34 +1,31 @@
 package org.elasticsearch.gradle.internal.test;
 
 // import org.elasticsearch.gradle.internal.test.MutedTestPlugin;
+// import java.util.Arrays;
 // import org.gradle.api.invocation.Gradle;
+// import org.junit.jupiter.api.BeforeEach;
+// import static org.mockito.ArgumentMatchers.any;
 // import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.params.ParameterizedTest;
+// import static org.mockito.ArgumentMatchers.eq;
 // import org.gradle.api.Project;
 // import java.io.File;
-// import org.gradle.api.Action;
-// import org.gradle.api.file.ProjectLayout;
-// import org.junit.jupiter.params.provider.CsvSource;
-// import org.mockito.MockedStatic;
-// import static org.mockito.Mockito.*;
-// import java.util.Arrays;
-// import java.util.List;
-// import org.junit.jupiter.api.BeforeEach;
-// import groovy.lang.MissingPropertyException;
-// import org.junit.jupiter.params.ParameterizedTest;
 // import org.gradle.api.file.RegularFile;
 // import org.elasticsearch.gradle.internal.info.BuildParams;
-// import org.junit.jupiter.api.Timeout;
-// import org.gradle.api.tasks.TaskContainer;
 // import org.gradle.api.tasks.TaskCollection;
+// import org.gradle.api.tasks.TaskContainer;
+// import org.gradle.api.file.ProjectLayout;
 // import org.gradle.api.tasks.testing.Test;
+// import static org.mockito.ArgumentMatchers.anyString;
 // import java.util.ArrayList;
+// import org.junit.jupiter.params.provider.CsvSource;
 // import org.gradle.api.file.Directory;
-// import static org.junit.jupiter.api.Assertions.*;
 // import org.gradle.api.services.BuildServiceRegistry;
+// import org.mockito.MockedStatic;
+// import static org.mockito.Mockito.*;
 // import org.gradle.api.provider.Provider;
 // import static org.mockito.ArgumentMatchers.any;
 
-// @Timeout(value = 5)
 class MutedTestPluginSapientGeneratedTest {
 
 //     private BuildServiceRegistry buildServiceRegistryMock;
@@ -65,7 +62,7 @@ class MutedTestPluginSapientGeneratedTest {
 //         projectDirectoryMock = mock(Directory.class);
 //         when(projectMock.getGradle()).thenReturn(gradleMock);
 //         when(gradleMock.getSharedServices()).thenReturn(buildServiceRegistryMock);
-//         when(buildServiceRegistryMock.registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), any(Action.class))).thenReturn(providerMock);
+//         when(buildServiceRegistryMock.registerIfAbsent(eq("mutedTests"), eq(MutedTestsBuildService.class), any())).thenReturn(providerMock);
 //         when(providerMock.get()).thenReturn(mutedTestsBuildServiceMock);
 //         when(projectMock.getRootProject()).thenReturn(rootProjectMock);
 //         when(rootProjectMock.getProjectDir()).thenReturn(new File("rootProjectDir"));
@@ -88,7 +85,7 @@ class MutedTestPluginSapientGeneratedTest {
 //             verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
 //             verify(projectMock).property("org.elasticsearch.additional.muted.tests");
 //             verify(projectDirectoryMock, times(2)).file(anyString());
-//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             verify(taskCollectionMock).configureEach(any());
 //             buildParams.verify(BuildParams::isCi, times(1));
 //         }
 //     }
@@ -111,7 +108,7 @@ class MutedTestPluginSapientGeneratedTest {
 //                 verify(projectMock).property("org.elasticsearch.additional.muted.tests");
 //                 verify(projectDirectoryMock).file(anyString());
 //             }
-//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             verify(taskCollectionMock).configureEach(any());
 //             buildParams.verify(BuildParams::isCi, times(1));
 //         }
 //     }
@@ -125,7 +122,7 @@ class MutedTestPluginSapientGeneratedTest {
 //             MutedTestPlugin plugin = new MutedTestPlugin();
 //             plugin.apply(projectMock);
 //             verify(projectMock).hasProperty("org.elasticsearch.additional.muted.tests");
-//             verify(taskCollectionMock).configureEach(any(Action.class));
+//             verify(taskCollectionMock).configureEach(any());
 //             buildParams.verify(BuildParams::isCi, times(1));
 //         }
 //     }

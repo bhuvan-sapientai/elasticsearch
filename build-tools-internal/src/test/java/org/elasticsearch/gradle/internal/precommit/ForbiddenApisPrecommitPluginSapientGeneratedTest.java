@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 import static org.elasticsearch.gradle.internal.precommit.CheckForbiddenApisTask.BUNDLED_SIGNATURE_DEFAULTS;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitPlugin;
 import org.gradle.api.Project;
 
 import java.io.File;
 
-import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitPlugin;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.elasticsearch.gradle.internal.info.BuildParams;
 
@@ -29,12 +29,11 @@ import org.gradle.api.plugins.JavaBasePlugin;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.params.provider.CsvSource;
-import org.elasticsearch.gradle.internal.precommit.ForbiddenApisPrecommitPlugin;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.gradle.testfixtures.ProjectBuilder;
 import org.elasticsearch.gradle.internal.ExportElasticsearchBuildResourcesTask;
+import org.gradle.testfixtures.ProjectBuilder;
 import org.gradle.api.tasks.TaskProvider;
 
 import static org.mockito.Mockito.*;

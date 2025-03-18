@@ -3,6 +3,7 @@ package org.elasticsearch.gradle.internal.doc;
 import org.elasticsearch.gradle.internal.doc.DocsTestPlugin;
 
 import org.gradle.api.plugins.JavaPluginExtension;
+import org.gradle.api.plugins.PluginManager;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -15,11 +16,15 @@ import org.mockito.Mock;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.elasticsearch.gradle.testclusters.ElasticsearchCluster;
 import org.gradle.api.file.ProjectLayout;
+import org.gradle.api.plugins.ExtensionContainer;
 
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
+import org.mockito.MockedStatic;
 import org.elasticsearch.gradle.testclusters.TestClustersPlugin;
+import org.gradle.api.tasks.SourceSetOutput;
+import org.elasticsearch.gradle.internal.doc.DocsTestPlugin;
 import org.elasticsearch.gradle.Version;
 import org.gradle.api.tasks.SourceSet;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,8 +35,15 @@ import static org.mockito.ArgumentMatchers.eq;
 
 import org.elasticsearch.gradle.VersionProperties;
 import org.gradle.api.tasks.TaskContainer;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
+
 import org.gradle.api.file.Directory;
 import org.gradle.api.tasks.TaskProvider;
+
+import static org.mockito.Mockito.verify;
+
 import org.gradle.api.internal.file.FileOperations;
 import org.gradle.api.provider.Provider;
 
@@ -66,18 +78,25 @@ class DocsTestPluginSapientGeneratedTest {
     @Mock
     private Provider<Directory> restRootDirProvider;
 
+    @Mock
+    private PluginManager pluginManager;
+
+    @Mock
+    private ExtensionContainer extensionContainer;
+
     private DocsTestPlugin plugin;
 
     @BeforeEach
     void setUp() {
         plugin = new DocsTestPlugin(fileOperations, projectLayout);
-        when(project.getExtensions()).thenReturn(mock(org.gradle.api.plugins.ExtensionContainer.class));
-        when(project.getExtensions().getByName(TestClustersPlugin.EXTENSION_NAME)).thenReturn(testClusters);
+        when(project.getPluginManager()).thenReturn(pluginManager);
+        when(project.getExtensions()).thenReturn(extensionContainer);
+        when(extensionContainer.getByName(TestClustersPlugin.EXTENSION_NAME)).thenReturn(testClusters);
         when(project.getTasks()).thenReturn(taskContainer);
-        when(project.getExtensions().getByType(JavaPluginExtension.class)).thenReturn(javaPluginExtension);
+        when(extensionContainer.getByType(JavaPluginExtension.class)).thenReturn(javaPluginExtension);
         when(javaPluginExtension.getSourceSets()).thenReturn(sourceSetContainer);
         when(sourceSetContainer.getByName("yamlRestTest")).thenReturn(yamlRestTestSourceSet);
-        when(yamlRestTestSourceSet.getOutput()).thenReturn(mock(org.gradle.api.tasks.SourceSetOutput.class));
+        when(yamlRestTestSourceSet.getOutput()).thenReturn(mock(SourceSetOutput.class));
         when(projectLayout.getBuildDirectory()).thenReturn(mock(org.gradle.api.file.DirectoryProperty.class));
         when(projectLayout.getBuildDirectory().dir(anyString())).thenReturn(restRootDirProvider);
     }
@@ -85,7 +104,7 @@ class DocsTestPluginSapientGeneratedTest {
     @Test
     void testApply() {
         //plugin.apply(project);
-        //verify(project.getPluginManager()).apply("elasticsearch.legacy-yaml-rest-test");
+        //verify(pluginManager).apply("elasticsearch.legacy-yaml-rest-test");
         //verify(testClusters).matching(any());
         //verify(taskContainer).named(eq("assemble"), any());
         //verify(taskContainer).register(eq("listSnippets"), eq(DocSnippetTask.class), any());
@@ -96,9 +115,6 @@ class DocsTestPluginSapientGeneratedTest {
 
     @Test
     void testCommonDefaultSubstitutions() {
-        //plugin.apply(project);
-        //TaskProvider<DocSnippetTask> listSnippetsTask = mock(TaskProvider.class);
-        //when(taskContainer.register(eq("listSnippets"), eq(DocSnippetTask.class), any())).thenReturn(listSnippetsTask);
         /*try (MockedStatic<Version> versionMockedStatic = mockStatic(Version.class);
     MockedStatic<VersionProperties> versionPropertiesMockedStatic = mockStatic(VersionProperties.class);
     MockedStatic<OS> osMockedStatic = mockStatic(OS.class)) {
@@ -112,6 +128,9 @@ class DocsTestPluginSapientGeneratedTest {
     when(mockConditional.onWindows(any())).thenReturn(mockConditional);
     when(mockConditional.onUnix(any())).thenReturn(mockConditional);
     when(mockConditional.supply()).thenReturn("mock-build-type");
+    TaskProvider<DocSnippetTask> listSnippetsTask = mock(TaskProvider.class);
+    when(taskContainer.register(eq("listSnippets"), eq(DocSnippetTask.class), any())).thenReturn(listSnippetsTask);
+    plugin.apply(project);
     verify(listSnippetsTask).configure(any());
 }*/
     }

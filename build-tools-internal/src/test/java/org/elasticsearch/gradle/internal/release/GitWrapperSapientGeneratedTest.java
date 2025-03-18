@@ -8,6 +8,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.release.GitWrapper;
 import org.gradle.api.Action;
 import org.junit.jupiter.api.Timeout;
 import org.gradle.process.ExecOperations;

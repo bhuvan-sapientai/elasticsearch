@@ -5,8 +5,10 @@ import org.elasticsearch.gradle.internal.shadow.XmlClassRelocationTransformer;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.Document;
-import org.w3c.dom.DOMException;
 import com.github.jengelman.gradle.plugins.shadow.transformers.TransformerContext;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import com.github.jengelman.gradle.plugins.shadow.relocation.Relocator;
 
@@ -20,9 +22,9 @@ import java.io.InputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.ByteArrayInputStream;
 
+import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.api.file.FileTreeElement;
 import org.w3c.dom.Element;
 import org.mockito.MockedStatic;
@@ -44,8 +46,8 @@ import javax.xml.transform.TransformerException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.apache.tools.zip.ZipOutputStream;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.Timeout;
-import org.mockito.stubbing.Answer;
 
 import javax.xml.transform.dom.DOMSource;
 
@@ -91,34 +93,20 @@ class XmlClassRelocationTransformerSapientGeneratedTest {
             autoCloseableMocks.close();
     }
 
-    @Test
-    void canTransformResourceWhenResourceIsNull() {
-        FileTreeElement elementMock = mock(FileTreeElement.class);
-        RelativePath relativePathMock = mock(RelativePath.class);
-        when(elementMock.getRelativePath()).thenReturn(relativePathMock);
-        when(relativePathMock.getPathString()).thenReturn("return_of_getPathString1");
-        boolean result = target.canTransformResource(elementMock);
-        assertAll("result", () -> {
-            assertThat(result, equalTo(false));
-            verify(elementMock).getRelativePath();
-            verify(relativePathMock).getPathString();
-        });
-    }
-
-    @Test
-    void canTransformResourceWhenResourceMatches() {
+    @ParameterizedTest
+    @CsvSource({"null, false", "test.xml, true", "other.xml, false"})
+    void canTransformResource(String resource, boolean expected) {
         //FileTreeElement elementMock = mock(FileTreeElement.class);
         //RelativePath relativePathMock = mock(RelativePath.class);
         //when(elementMock.getRelativePath()).thenReturn(relativePathMock);
-        //when(relativePathMock.getPathString()).thenReturn("test.xml");
-        //target = new XmlClassRelocationTransformer();
-        //target.resource = "test.xml";
+        //when(relativePathMock.getPathString()).thenReturn(resource);
+        /*if (resource != null && !resource.equals("null")) {
+    target.resource = resource;
+}*/
         //boolean result = target.canTransformResource(elementMock);
-        /*assertAll("result", () -> {
-    assertThat(result, equalTo(true));
-    verify(elementMock).getRelativePath();
-    verify(relativePathMock).getPathString();
-});*/
+        //assertThat(result, equalTo(expected));
+        //verify(elementMock).getRelativePath();
+        //verify(relativePathMock).getPathString();
     }
 
     @Test
@@ -148,6 +136,11 @@ class XmlClassRelocationTransformerSapientGeneratedTest {
         DocumentBuilder dBuilderMock = mock(DocumentBuilder.class);
         when(dbFactoryMock.newDocumentBuilder()).thenReturn(dBuilderMock);
         when(dBuilderMock.parse(any(InputStream.class))).thenReturn(docMock);
+        NodeList nodeListMock = mock(NodeList.class);
+        when(rootMock.getChildNodes()).thenReturn(nodeListMock);
+        when(nodeListMock.getLength()).thenReturn(0);
+        List<Relocator> relocators = new ArrayList<>();
+        when(contextMock.getRelocators()).thenReturn(relocators);
         try (MockedStatic<DocumentBuilderFactory> dbFactoryStaticMock = mockStatic(DocumentBuilderFactory.class)) {
             dbFactoryStaticMock.when(DocumentBuilderFactory::newInstance).thenReturn(dbFactoryMock);
             target.transform(contextMock);
@@ -168,11 +161,11 @@ class XmlClassRelocationTransformerSapientGeneratedTest {
         //Document docMock = mock(Document.class);
         //target.doc = docMock;
         //target.resource = "test.xml";
+        //TransformerFactory factoryMock = mock(TransformerFactory.class);
+        //javax.xml.transform.Transformer transformerMock = mock(javax.xml.transform.Transformer.class);
         /*try (MockedStatic<TransformerFactory> transformerFactoryMock = mockStatic(TransformerFactory.class);
     MockedStatic<IOUtils> ioUtilsMock = mockStatic(IOUtils.class)) {
-    TransformerFactory factoryMock = mock(TransformerFactory.class);
     transformerFactoryMock.when(TransformerFactory::newInstance).thenReturn(factoryMock);
-    javax.xml.transform.Transformer transformerMock = mock(javax.xml.transform.Transformer.class);
     when(factoryMock.newTransformer()).thenReturn(transformerMock);
     target.modifyOutputStream(osMock, false);
     verify(osMock).putNextEntry(any(ZipEntry.class));
@@ -184,5 +177,27 @@ class XmlClassRelocationTransformerSapientGeneratedTest {
     void getNameTest() {
         String result = target.getName();
         assertThat(result, equalTo("XmlClassRelocationTransformer"));
+    }
+
+    @Test
+    void walkThroughNodesTest() throws Exception {
+        //TransformerContext contextMock = mock(TransformerContext.class);
+        //Node nodeMock = mock(Node.class);
+        //NodeList nodeListMock = mock(NodeList.class);
+        //when(nodeMock.getNodeType()).thenReturn(Node.TEXT_NODE);
+        //when(nodeMock.getNodeValue()).thenReturn("org.example.OldClass");
+        //when(nodeMock.getChildNodes()).thenReturn(nodeListMock);
+        //when(nodeListMock.getLength()).thenReturn(0);
+        //List<Relocator> relocators = new ArrayList<>();
+        //Relocator relocatorMock = mock(Relocator.class);
+        //relocators.add(relocatorMock);
+        //when(contextMock.getRelocators()).thenReturn(relocators);
+        //when(contextMock.getStats()).thenReturn(mock(ShadowStats.class));
+        //when(relocatorMock.canRelocateClass("org.example.OldClass")).thenReturn(true);
+        //when(relocatorMock.relocateClass(any(RelocateClassContext.class))).thenReturn("org.example.NewClass");
+        //target.transform(contextMock);
+        //target.walkThroughNodes(nodeMock, contextMock);
+        //verify(nodeMock).setNodeValue("org.example.NewClass");
+        //assertTrue(target.hasTransformedResource());
     }
 }

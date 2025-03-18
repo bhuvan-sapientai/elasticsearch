@@ -4,28 +4,20 @@ import org.elasticsearch.gradle.internal.DependenciesInfoTask;
 
 import java.nio.file.Files;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask;
 import org.gradle.api.file.DirectoryProperty;
 
-import java.nio.file.Path;
+import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
-import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradle.api.artifacts.Configuration;
 import org.elasticsearch.gradle.internal.precommit.LicenseAnalyzer;
 
 import java.io.File;
 
-import org.gradle.api.logging.Logger;
 import org.gradle.api.file.ProjectLayout;
 import org.junit.jupiter.api.io.TempDir;
 import org.gradle.api.provider.ProviderFactory;
 import org.gradle.api.artifacts.ResolvedModuleVersion;
-import org.gradle.api.artifacts.DependencySet;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.elasticsearch.gradle.internal.DependenciesInfoTask;
 import org.gradle.api.artifacts.Dependency;
 import org.gradle.api.artifacts.ResolvedArtifact;
 
@@ -34,6 +26,18 @@ import static org.mockito.Mockito.*;
 import org.gradle.api.model.ObjectFactory;
 
 import java.io.IOException;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.elasticsearch.gradle.internal.precommit.DependencyLicensesTask;
+
+import java.nio.file.Path;
+
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradle.api.artifacts.Configuration;
+import org.gradle.api.logging.Logger;
+import org.gradle.api.artifacts.DependencySet;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.gradle.api.artifacts.ResolvedConfiguration;
 
@@ -111,6 +115,34 @@ class DependenciesInfoTaskSapientGeneratedTest {
     void testCreateURL() {
         String url = task.createURL("org.example", "lib1", "1.0");
         assertEquals("https://repo1.maven.org/maven2/org/example/lib1/1.0", url);
+    }
+
+    @Test
+    void testGetDependencyInfoFile() {
+        File licenseFile = tempDir.resolve("lib1-LICENSE.txt").toFile();
+        try {
+            licenseFile.createNewFile();
+        } catch (IOException e) {
+            fail("Failed to create test license file");
+        }
+        File result = task.getDependencyInfoFile("org.example", "lib1", "LICENSE");
+        assertEquals(licenseFile, result);
+    }
+
+    @Test
+    void testGetDependencyInfoFileMissing() {
+        assertThrows(IllegalStateException.class, () -> {
+            task.getDependencyInfoFile("org.missing", "lib-missing", "LICENSE");
+        });
+    }
+
+    @Test
+    void testSetMappings() {
+        LinkedHashMap<String, String> mappings = new LinkedHashMap<>();
+        mappings.put("key1", "value1");
+        mappings.put("key2", "value2");
+        task.setMappings(mappings);
+        assertEquals(mappings, task.getMappings());
     }
 
     private Dependency mockDependency(String group, String name, String version) {

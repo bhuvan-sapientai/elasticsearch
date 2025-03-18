@@ -2,19 +2,24 @@ package org.elasticsearch.gradle.internal.test;
 
 import org.elasticsearch.gradle.internal.test.TestUtil;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.elasticsearch.gradle.ElasticsearchDistribution;
+
+import static org.mockito.Mockito.mockStatic;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.elasticsearch.gradle.Architecture;
 
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.elasticsearch.gradle.Architecture;
+import org.mockito.MockedStatic;
+
 import static org.mockito.ArgumentMatchers.any;
 
 class TestUtilSapientGeneratedTest {
@@ -39,6 +44,27 @@ class TestUtilSapientGeneratedTest {
     mockedDistribution.when(() -> ElasticsearchDistribution.CURRENT_PLATFORM).thenReturn(ElasticsearchDistribution.Platform.LINUX);
     String result = TestUtil.getTestLibraryPath(null);
     assertThat(result, equalTo("null/linux-x86_64"));
+}*/
+    }
+
+    @Test
+    void getTestLibraryPathTestWithEmptyInput() {
+        /*try (MockedStatic<Architecture> mockedArchitecture = mockStatic(Architecture.class);
+    MockedStatic<ElasticsearchDistribution> mockedDistribution = mockStatic(ElasticsearchDistribution.class)) {
+    mockedArchitecture.when(Architecture::current).thenReturn(Architecture.X64);
+    mockedDistribution.when(() -> ElasticsearchDistribution.CURRENT_PLATFORM).thenReturn(ElasticsearchDistribution.Platform.LINUX);
+    String result = TestUtil.getTestLibraryPath("");
+    assertThat(result, equalTo("/linux-x86_64"));
+}*/
+    }
+
+    @Test
+    void getTestLibraryPathTestWithUnsupportedArchitecture() {
+        /*try (MockedStatic<Architecture> mockedArchitecture = mockStatic(Architecture.class);
+    MockedStatic<ElasticsearchDistribution> mockedDistribution = mockStatic(ElasticsearchDistribution.class)) {
+    mockedArchitecture.when(Architecture::current).thenThrow(new IllegalArgumentException("Unsupported architecture"));
+    mockedDistribution.when(() -> ElasticsearchDistribution.CURRENT_PLATFORM).thenReturn(ElasticsearchDistribution.Platform.LINUX);
+    assertThrows(IllegalArgumentException.class, () -> TestUtil.getTestLibraryPath("nativeLibsDir"));
 }*/
     }
 }

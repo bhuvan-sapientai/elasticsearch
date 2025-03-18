@@ -28,6 +28,7 @@ import java.nio.file.Path;
 import org.gradle.api.artifacts.Configuration;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.elasticsearch.gradle.internal.info.BuildParams;
+import org.elasticsearch.gradle.internal.precommit.ThirdPartyAuditPrecommitPlugin;
 
 import static org.elasticsearch.gradle.internal.util.DependenciesUtils.createFileCollectionFromNonTransitiveArtifactsView;
 import static org.hamcrest.Matchers.*;

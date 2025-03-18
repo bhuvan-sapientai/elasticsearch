@@ -2,22 +2,25 @@ package org.elasticsearch.gradle.internal.util.ports;
 
 import org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator;
 
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.Timeout;
 import org.gradle.internal.Pair;
-
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.elasticsearch.gradle.internal.util.ports.AvailablePortAllocator;
 import org.mockito.MockedStatic;
 
 import static org.mockito.Mockito.*;
@@ -94,8 +97,22 @@ class AvailablePortAllocatorSapientGeneratedTest {
         //ReservedPortRangeFactory mockFactory = mock(ReservedPortRangeFactory.class);
         //target.portRangeFactory = mockFactory;
         /*for (int i = 0; i < 300; i++) {
+    when(mockFactory.getReservedPortRange(anyInt(), anyInt())).thenReturn(mock(ReservedPortRange.class));
     target.reservePortRange();
 }*/
         //assertThrows(IllegalStateException.class, target::reservePortRange);
+    }
+
+    @Test
+    void testConstantValues() {
+        assertEquals(10300, AvailablePortAllocator.MIN_PRIVATE_PORT);
+        assertEquals(13300, AvailablePortAllocator.MAX_PRIVATE_PORT);
+        assertEquals(10, AvailablePortAllocator.DEFAULT_RANGE_SIZE);
+    }
+
+    @Test
+    void testDefaultReservedPortRangeFactory() {
+        //AvailablePortAllocator allocator = new AvailablePortAllocator();
+        //assertThat(allocator.portRangeFactory, instanceOf(DefaultReservedPortRangeFactory.class));
     }
 }

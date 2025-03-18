@@ -9,6 +9,8 @@ import java.lang.module.ModuleFinder;
 
 import org.junit.jupiter.api.BeforeEach;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import java.io.File;
 
 import org.elasticsearch.gradle.VersionProperties;
+import org.elasticsearch.gradle.internal.precommit.JavaModulePrecommitTask;
 
 import java.util.Set;
 
@@ -34,6 +37,7 @@ import org.gradle.api.file.FileCollection;
 
 import static org.mockito.Mockito.*;
 
+import org.mockito.MockedStatic;
 import org.gradle.api.model.ObjectFactory;
 
 import java.io.IOException;
@@ -122,7 +126,6 @@ class JavaModulePrecommitTaskSapientGeneratedTest {
     @Test
     void testCheckModuleNoModuleInfo() throws IOException {
         when(srcDirs.get()).thenReturn(Set.of(new File("src")));
-        // Should not throw any exception
         task.checkModule();
     }
 
@@ -182,7 +185,7 @@ class JavaModulePrecommitTaskSapientGeneratedTest {
         //when(classesDir.toPath()).thenReturn(Path.of("/mock/classes"));
         //ModuleFinder mockFinder = mock(ModuleFinder.class);
         //when(mockFinder.findAll()).thenReturn(Set.of(mockModuleRef));
-        /*try (var mocked = mockStatic(ModuleFinder.class)) {
+        /*try (MockedStatic<ModuleFinder> mocked = mockStatic(ModuleFinder.class)) {
     mocked.when(() -> ModuleFinder.of(any(Path.class))).thenReturn(mockFinder);
     task.checkModule();
 }*/
@@ -193,7 +196,7 @@ class JavaModulePrecommitTaskSapientGeneratedTest {
         when(resourcesDir.toPath()).thenReturn(Path.of("/mock/resources"));
         when(Files.exists(servicesDir.toPath())).thenReturn(true);
         var pathStream = services.stream().map(s -> Path.of("/mock/resources/META-INF/services", s)).toList();
-        try (var mocked = mockStatic(Files.class)) {
+        try (MockedStatic<Files> mocked = mockStatic(Files.class)) {
             mocked.when(() -> Files.walk(any(Path.class))).thenReturn(pathStream.stream());
             mocked.when(() -> Files.isRegularFile(any(Path.class))).thenReturn(true);
             task.checkModule();

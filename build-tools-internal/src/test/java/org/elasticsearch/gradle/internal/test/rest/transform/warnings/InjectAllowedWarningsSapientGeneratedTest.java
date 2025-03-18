@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -15,6 +17,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.junit.jupiter.api.Timeout;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
+import org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectAllowedWarnings;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -135,5 +138,39 @@ class InjectAllowedWarningsSapientGeneratedTest {
         //assertFalse(target.isRegex);
         //assertEquals(stringList, target.getAllowedWarnings());
         //assertNull(target.getTestName());
+    }
+
+    @Test
+    void constructorWithIsRegexTest() {
+        //List<String> stringList = new ArrayList<>(List.of("Warning1", "Warning2"));
+        //InjectAllowedWarnings target = new InjectAllowedWarnings(true, stringList);
+        //assertTrue(target.isRegex);
+        //assertEquals(stringList, target.getAllowedWarnings());
+        //assertNull(target.getTestName());
+    }
+
+    @Test
+    void constructorWithIsRegexAndTestNameTest() {
+        //List<String> stringList = new ArrayList<>(List.of("Warning1", "Warning2"));
+        //String testName = "testName1";
+        //InjectAllowedWarnings target = new InjectAllowedWarnings(true, stringList, testName);
+        //assertTrue(target.isRegex);
+        //assertEquals(stringList, target.getAllowedWarnings());
+        //assertEquals(testName, target.getTestName());
+    }
+
+    @Test
+    void transformTestWithRegex() {
+        List<String> stringList = new ArrayList<>(List.of("Warning.*"));
+        InjectAllowedWarnings target = spy(new InjectAllowedWarnings(true, stringList, "testName1"));
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parentNode = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNode = new ObjectNode(jsonNodeFactory);
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode arrayWarnings = (ArrayNode) doNode.get("allowed_warnings_regex");
+        assertNotNull(arrayWarnings);
+        assertEquals(1, arrayWarnings.size());
+        assertEquals("Warning.*", arrayWarnings.get(0).asText());
     }
 }

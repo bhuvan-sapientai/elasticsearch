@@ -5,6 +5,9 @@ import org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask;
 import java.nio.file.Files;
 
 import org.gradle.workers.WorkerExecutor;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.gradle.api.provider.Property;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +23,7 @@ import org.gradle.api.GradleException;
 
 import static org.mockito.Mockito.*;
 
+import org.elasticsearch.gradle.internal.precommit.SplitPackagesAuditTask;
 import org.gradle.api.model.ObjectFactory;
 
 import java.io.IOException;
@@ -116,20 +120,12 @@ class SplitPackagesAuditTaskSapientGeneratedTest {
 
     @Test
     void testSetProjectBuildDirs() {
-        //Map<File, String> projectBuildDirs = new HashMap<>();
-        //projectBuildDirs.put(new File("dir1"), "project1");
-        //projectBuildDirs.put(new File("dir2"), "project2");
-        //task.setProjectBuildDirs(projectBuildDirs);
-        // We can't directly verify the private field, but we can test its effect in auditSplitPackages
-        //task.auditSplitPackages();
-        /*verify(workerExecutor.noIsolation()).submit(eq(SplitPackagesAuditTask.SplitPackagesAuditAction.class), argThat(action -> {
-    try {
-        action.execute(mock(WorkAction.Parameters.class));
-        return true;
-    } catch (Exception e) {
-        return false;
-    }
-}));*/
+        Map<File, String> projectBuildDirs = new HashMap<>();
+        projectBuildDirs.put(new File("dir1"), "project1");
+        projectBuildDirs.put(new File("dir2"), "project2");
+        task.setProjectBuildDirs(projectBuildDirs);
+        task.auditSplitPackages();
+        verify(workerExecutor.noIsolation()).submit(eq(SplitPackagesAuditTask.SplitPackagesAuditAction.class), any());
     }
 
     @Test
@@ -184,14 +180,12 @@ class SplitPackagesAuditTaskSapientGeneratedTest {
         //when(parameters.getMarkerFile()).thenReturn(markerFile);
         //when(projectPath.get()).thenReturn("testProject");
         //when(projectBuildDirs.get()).thenReturn(new HashMap<>());
-        // Create a temporary directory with a Java file
         //Path tempDir = Files.createTempDirectory("testSrcDir");
         //Path javaFile = tempDir.resolve("com/example/Test.java");
         //Files.createDirectories(javaFile.getParent());
         //Files.writeString(javaFile, "package com.example; public class Test {}");
         //Set<File> srcDirsSet = new HashSet<>(Arrays.asList(tempDir.toFile()));
         //when(srcDirs.get()).thenReturn(srcDirsSet);
-        // Mock classpath to contain a jar with the same package
         //File mockJar = new File("mockJar.jar");
         //Set<File> classpathFiles = new HashSet<>(Arrays.asList(mockJar));
         //when(classpath.getFiles()).thenReturn(classpathFiles);

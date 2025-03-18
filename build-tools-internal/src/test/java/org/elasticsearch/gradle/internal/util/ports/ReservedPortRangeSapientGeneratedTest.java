@@ -2,6 +2,7 @@ package org.elasticsearch.gradle.internal.util.ports;
 
 import org.elasticsearch.gradle.internal.util.ports.ReservedPortRange;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -69,13 +70,13 @@ class ReservedPortRangeSapientGeneratedTest {
 
     @Test
     void testGetAllocated() {
-        //when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
-        //reservedPortRange.getOrAllocate("id1");
-        //Integer allocatedPort = reservedPortRange.getAllocated("id1");
-        //assertThat(allocatedPort, notNullValue());
-        //assertThat(allocatedPort, allOf(greaterThanOrEqualTo(1000), lessThanOrEqualTo(2000)));
-        //Integer nonExistentPort = reservedPortRange.getAllocated("nonexistent");
-        //assertThat(nonExistentPort, nullValue());
+        when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
+        reservedPortRange.getOrAllocate("id1");
+        Integer allocatedPort = reservedPortRange.getAllocated("id1");
+        assertThat(allocatedPort, notNullValue());
+        assertThat(allocatedPort, allOf(greaterThanOrEqualTo(1000), lessThanOrEqualTo(2000)));
+        Integer nonExistentPort = reservedPortRange.getAllocated("nonexistent");
+        assertThat(nonExistentPort, nullValue());
     }
 
     @Test
@@ -126,11 +127,12 @@ class ReservedPortRangeSapientGeneratedTest {
     }
 
     @Test
-    void testGetAllocated() {
-        //when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
-        //int port1 = reservedPortRange.allocate();
-        //int port2 = reservedPortRange.allocate();
-        //assertThat(reservedPortRange.getAllocated(), containsInAnyOrder(port1, port2));
+    void testGetAllocatedList() {
+        when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
+        int port1 = reservedPortRange.allocate();
+        int port2 = reservedPortRange.allocate();
+        List<Integer> allocated = reservedPortRange.getAllocated();
+        assertThat(allocated, containsInAnyOrder(port1, port2));
     }
 
     @Test
@@ -144,5 +146,43 @@ class ReservedPortRangeSapientGeneratedTest {
         //int port4 = smallRange.allocate();
         //assertThat(Arrays.asList(port1, port2, port3), containsInAnyOrder(1000, 1001, 1002));
         //assertThat(port4, isOneOf(1000, 1001, 1002));
+    }
+
+    @Test
+    void testAllocateAllPorts() {
+        //ReservedPortRange smallRange = new ReservedPortRange(1000, 1002);
+        //smallRange.portDetector = mockPortDetector;
+        //when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
+        //int port1 = smallRange.allocate();
+        //int port2 = smallRange.allocate();
+        //int port3 = smallRange.allocate();
+        //assertThat(Arrays.asList(port1, port2, port3), containsInAnyOrder(1000, 1001, 1002));
+        //int port4 = smallRange.allocate();
+        //assertThat(port4, equalTo(-1));
+    }
+
+    @Test
+    void testDeallocateNonExistentPort() {
+        reservedPortRange.deallocate(1500);
+        assertThat(reservedPortRange.getAllocated(), not(hasItem(1500)));
+    }
+
+    @Test
+    void testGetOrAllocateMultipleTimes() {
+        when(mockPortDetector.isAvailable(anyInt())).thenReturn(true);
+        Integer port1 = reservedPortRange.getOrAllocate("id1");
+        Integer port2 = reservedPortRange.getOrAllocate("id1");
+        Integer port3 = reservedPortRange.getOrAllocate("id1");
+        assertThat(port1, allOf(greaterThanOrEqualTo(1000), lessThanOrEqualTo(2000)));
+        assertThat(port2, equalTo(port1));
+        assertThat(port3, equalTo(port1));
+    }
+
+    @Test
+    void testAllocateWhenSomePortsUnavailable() {
+        when(mockPortDetector.isAvailable(anyInt())).thenReturn(false).thenReturn(false).thenReturn(true);
+        int port = reservedPortRange.allocate();
+        assertThat(port, allOf(greaterThanOrEqualTo(1000), lessThanOrEqualTo(2000)));
+        verify(mockPortDetector, times(3)).isAvailable(anyInt());
     }
 }

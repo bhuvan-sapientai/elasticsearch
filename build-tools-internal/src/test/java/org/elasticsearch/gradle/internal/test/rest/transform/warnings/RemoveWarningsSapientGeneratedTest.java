@@ -3,6 +3,9 @@ package org.elasticsearch.gradle.internal.test.rest.transform.warnings;
 import org.elasticsearch.gradle.internal.test.rest.transform.warnings.RemoveWarnings;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -20,6 +23,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.warnings.RemoveWarnings;
+
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -58,6 +64,43 @@ class RemoveWarningsSapientGeneratedTest {
     }
 
     @Test
+    void transformTestWhenAllWarningsAreRemoved() {
+        Set<String> warningsSet = new HashSet<>();
+        warningsSet.add("warning1");
+        warningsSet.add("warning2");
+        RemoveWarnings target = new RemoveWarnings(warningsSet, "testName1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parentNode = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNode = new ObjectNode(jsonNodeFactory);
+        ArrayNode warningsNode = doNode.putArray("warnings");
+        warningsNode.add("warning1");
+        warningsNode.add("warning2");
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode resultWarnings = (ArrayNode) doNode.get("warnings");
+        assertEquals(0, resultWarnings.size());
+    }
+
+    @Test
+    void transformTestWhenNoWarningsAreRemoved() {
+        Set<String> warningsSet = new HashSet<>();
+        warningsSet.add("warning3");
+        RemoveWarnings target = new RemoveWarnings(warningsSet, "testName1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parentNode = new ObjectNode(jsonNodeFactory);
+        ObjectNode doNode = new ObjectNode(jsonNodeFactory);
+        ArrayNode warningsNode = doNode.putArray("warnings");
+        warningsNode.add("warning1");
+        warningsNode.add("warning2");
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode resultWarnings = (ArrayNode) doNode.get("warnings");
+        assertEquals(2, resultWarnings.size());
+        assertEquals("warning1", resultWarnings.get(0).asText());
+        assertEquals("warning2", resultWarnings.get(1).asText());
+    }
+
+    @Test
     void getKeyToFindTest() {
         Set<String> stringSet = new HashSet<>();
         RemoveWarnings target = new RemoveWarnings(stringSet, "testName1");
@@ -93,5 +136,22 @@ class RemoveWarningsSapientGeneratedTest {
         RemoveWarnings target = new RemoveWarnings(warningsSet, testName);
         String result = target.getTestName();
         assertEquals(testName, result);
+    }
+
+    @Test
+    void constructorWithoutTestName() {
+        Set<String> warningsSet = new HashSet<>();
+        warningsSet.add("warning1");
+        RemoveWarnings target = new RemoveWarnings(warningsSet);
+        assertNull(target.getTestName());
+        assertEquals(warningsSet, target.getWarnings());
+    }
+
+    @Test
+    void shouldApplyWithNullTestName() {
+        Set<String> warningsSet = new HashSet<>();
+        RemoveWarnings target = new RemoveWarnings(warningsSet);
+        assertTrue(target.shouldApply(testContextMock));
+        verify(testContextMock, never()).testName();
     }
 }

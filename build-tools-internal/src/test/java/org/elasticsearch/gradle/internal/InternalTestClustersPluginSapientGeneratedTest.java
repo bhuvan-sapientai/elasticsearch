@@ -5,6 +5,9 @@ import org.elasticsearch.gradle.internal.InternalTestClustersPlugin;
 import org.elasticsearch.gradle.testclusters.TestClustersPlugin;
 import org.gradle.api.plugins.PluginContainer;
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.Project;
 import org.gradle.api.NamedDomainObjectContainer;
@@ -15,6 +18,7 @@ import org.elasticsearch.gradle.VersionProperties;
 import org.gradle.api.Action;
 import org.elasticsearch.gradle.internal.info.BuildParams;
 import org.elasticsearch.gradle.testclusters.ElasticsearchCluster;
+import org.elasticsearch.gradle.internal.InternalTestClustersPlugin;
 import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.provider.ProviderFactory;
 

@@ -32,7 +32,6 @@ import org.junit.jupiter.api.BeforeEach;
 import java.nio.file.Path;
 import java.util.Collections;
 
-import org.gradle.api.file.FileSystemLocation;
 import com.networknt.schema.SchemaValidatorsConfig;
 
 import java.util.Set;
@@ -143,11 +142,6 @@ class ValidateJsonAgainstSchemaTaskSapientGeneratedTest {
     @Override
     public File getFile() {
         return file;
-    }
-
-    @Override
-    public FileSystemLocation getFileSystemLocation() {
-        return () -> file;
     }
 };*/
     }

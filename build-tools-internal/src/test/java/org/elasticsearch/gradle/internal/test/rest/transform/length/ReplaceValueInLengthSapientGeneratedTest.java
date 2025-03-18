@@ -8,6 +8,8 @@ import org.gradle.api.tasks.Internal;
 
 import java.math.BigInteger;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.databind.node.DoubleNode;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.params.provider.CsvSource;
+import org.elasticsearch.gradle.internal.test.rest.transform.length.ReplaceValueInLength;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,7 +64,7 @@ class ReplaceValueInLengthSapientGeneratedTest {
         ObjectNode lengthNode = matchParent.putObject("length");
         lengthNode.put("oldKey", 10);
         target.transformTest(matchParent);
-        assertAll(() -> assertThat(matchParent.has("length"), is(true)), () -> assertThat(matchParent.get("length").has("oldKey"), is(false)), () -> assertThat(matchParent.get("length").get("oldKey"), is(nullValue())), () -> assertThat(matchParent.get("length").get("oldKey"), equalTo(new IntNode(42))));
+        assertAll(() -> assertThat(matchParent.has("length"), is(true)), () -> assertThat(matchParent.get("length").has("oldKey"), is(true)), () -> assertThat(matchParent.get("length").get("oldKey"), equalTo(new IntNode(42))));
     }
 
     @Test
@@ -99,5 +102,27 @@ class ReplaceValueInLengthSapientGeneratedTest {
         matchParent.putObject("length");
         target.transformTest(matchParent);
         assertAll(() -> assertThat(matchParent.has("length"), is(true)), () -> assertThat(matchParent.get("length").has("key"), is(true)), () -> assertThat(matchParent.get("length").get("key").asInt(), equalTo(1)));
+    }
+
+    @Test
+    void transformTestWithDifferentKey() {
+        ReplaceValueInLength target = new ReplaceValueInLength("newKey", new IntNode(42));
+        ObjectNode matchParent = JsonNodeFactory.instance.objectNode();
+        ObjectNode lengthNode = matchParent.putObject("length");
+        lengthNode.put("oldKey", 10);
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("length"), is(true)), () -> assertThat(matchParent.get("length").has("oldKey"), is(true)), () -> assertThat(matchParent.get("length").get("oldKey").asInt(), equalTo(10)), () -> assertThat(matchParent.get("length").has("newKey"), is(true)), () -> assertThat(matchParent.get("length").get("newKey").asInt(), equalTo(42)));
+    }
+
+    @Test
+    void transformTestWithMultipleKeys() {
+        ReplaceValueInLength target = new ReplaceValueInLength("key2", new IntNode(20));
+        ObjectNode matchParent = JsonNodeFactory.instance.objectNode();
+        ObjectNode lengthNode = matchParent.putObject("length");
+        lengthNode.put("key1", 10);
+        lengthNode.put("key2", 15);
+        lengthNode.put("key3", 30);
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("length"), is(true)), () -> assertThat(matchParent.get("length").has("key1"), is(true)), () -> assertThat(matchParent.get("length").get("key1").asInt(), equalTo(10)), () -> assertThat(matchParent.get("length").has("key2"), is(true)), () -> assertThat(matchParent.get("length").get("key2").asInt(), equalTo(20)), () -> assertThat(matchParent.get("length").has("key3"), is(true)), () -> assertThat(matchParent.get("length").get("key3").asInt(), equalTo(30)));
     }
 }

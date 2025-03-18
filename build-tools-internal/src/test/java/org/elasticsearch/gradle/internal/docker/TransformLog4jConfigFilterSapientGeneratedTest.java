@@ -2,9 +2,17 @@ package org.elasticsearch.gradle.internal.docker;
 
 import org.elasticsearch.gradle.internal.docker.TransformLog4jConfigFilter;
 
-import org.junit.jupiter.api.Timeout;
+import org.apache.commons.io.IOUtils;
 
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import java.io.StringReader;
+import java.io.Reader;
+
+import org.junit.jupiter.api.Timeout;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -12,14 +20,11 @@ import java.util.ArrayList;
 
 import static org.hamcrest.Matchers.*;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.StringReader;
-import java.io.Reader;
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -141,5 +146,45 @@ class TransformLog4jConfigFilterSapientGeneratedTest {
         }
         String expected = "appender.rolling.type = Console\n" + "appender.rolling.name = rolling\n" + "appender.rolling.layout.type = PatternLayout\n" + "appender.rolling.layout.pattern = [%d{ISO8601}][%-5p][%-25c{1.}] [%node_name]%marker %m%n\n";
         assertEquals(expected, result.toString());
+    }
+
+    @Test
+    void testTransformWithEmptyInput() throws IOException {
+        Reader reader = new StringReader("");
+        TransformLog4jConfigFilter filter = new TransformLog4jConfigFilter(reader);
+        String result = IOUtils.toString(filter);
+        assertEquals("", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"appender.console.type = Console", "rootLogger.appenderRef.rolling = rolling", "logger.action.name = org.elasticsearch.action", "logger.transport.name = org.elasticsearch.transport"})
+    void testTransformConfigWithUnchangedLines(String line) {
+        List<String> input = List.of(line);
+        List<String> result = TransformLog4jConfigFilter.transformConfig(input);
+        assertEquals(input, result);
+    }
+
+    @Test
+    void testTransformConfigWithMultiLineSkip() {
+        List<String> input = List.of("appender.rolling.policies.type = Policies \\", "appender.rolling.policies.time.type = TimeBasedTriggeringPolicy", "appender.rolling.policies.time.interval = 1", "appender.rolling.policies.time.modulate = true");
+        List<String> result = TransformLog4jConfigFilter.transformConfig(input);
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void testSkipBlanksWithAllEmptyLines() {
+        List<String> input = List.of("", "", "", "");
+        List<String> result = TransformLog4jConfigFilter.skipBlanks(input);
+        assertEquals(List.of(""), result);
+    }
+
+    @Test
+    void testTransformWithMixedContent() throws IOException {
+        String input = "appender.rolling.type = RollingFile\n" + "appender.console.type = Console\n" + "rootLogger.appenderRef.rolling = rolling\n" + "appender.rolling.filePattern = ${sys:es.logs.base_path}${sys:file.separator}${sys:es.logs.cluster_name}-%d{yyyy-MM-dd}-%i.log.gz\n" + "logger.action.name = org.elasticsearch.action\n";
+        Reader reader = new StringReader(input);
+        TransformLog4jConfigFilter filter = new TransformLog4jConfigFilter(reader);
+        String result = IOUtils.toString(filter);
+        String expected = "appender.rolling.type = Console\n" + "appender.console.type = Console\n" + "rootLogger.appenderRef.rolling = rolling\n" + "logger.action.name = org.elasticsearch.action\n";
+        assertEquals(expected, result);
     }
 }

@@ -5,10 +5,14 @@ import org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransformByParentObject;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestTransform;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.elasticsearch.gradle.internal.test.rest.transform.skip.Skip;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.junit.jupiter.api.Timeout;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -105,5 +109,43 @@ class SkipSapientGeneratedTest {
     void getKeyToFindTest() {
         Skip target = new Skip("testName1", "skipReason1");
         assertThat(target.getKeyToFind(), is("testName1"));
+    }
+
+    @Test
+    void constructorWithOnlySkipReason() {
+        Skip target = new Skip("skipReason1");
+        assertAll(() -> assertThat(target.getSkipReason(), is("skipReason1")), () -> assertThat(target.getTestName(), is("")));
+    }
+
+    @Test
+    void constructorWithTestNameAndSkipReason() {
+        Skip target = new Skip("testName1", "skipReason1");
+        assertAll(() -> assertThat(target.getTestName(), is("testName1")), () -> assertThat(target.getSkipReason(), is("skipReason1")));
+    }
+
+    @Test
+    void transformSetupWithMultipleExistingSkips() {
+        Skip target = new Skip("newSkipReason");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode setupNodeParent = new ObjectNode(jsonNodeFactory);
+        ArrayNode setupNode = setupNodeParent.putArray("setup");
+        ObjectNode existingSkip1 = setupNode.addObject();
+        existingSkip1.putObject("skip").put("awaits_fix", "oldReason1");
+        ObjectNode existingSkip2 = setupNode.addObject();
+        existingSkip2.putObject("skip").put("awaits_fix", "oldReason2");
+        ObjectNode result = target.transformSetup(setupNodeParent);
+        assertAll(() -> assertThat(result, notNullValue()), () -> assertThat(result.has("setup"), is(true)), () -> assertThat(result.get("setup"), instanceOf(ArrayNode.class)), () -> assertThat(result.get("setup").size(), is(2)), () -> assertThat(result.get("setup").get(0).has("skip"), is(true)), () -> assertThat(result.get("setup").get(0).get("skip").get("awaits_fix").asText(), is("newSkipReason")), () -> assertThat(result.get("setup").get(1).get("skip").get("awaits_fix").asText(), is("oldReason2")));
+    }
+
+    @Test
+    void transformTestWithExistingSkip() {
+        Skip target = new Skip("testName1", "newSkipReason");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode parent = new ObjectNode(jsonNodeFactory);
+        ArrayNode testArray = parent.putArray("testName1");
+        ObjectNode existingSkip = testArray.addObject();
+        existingSkip.putObject("skip").put("awaits_fix", "oldReason");
+        target.transformTest(parent);
+        assertAll(() -> assertThat(parent.has("testName1"), is(true)), () -> assertThat(parent.get("testName1"), instanceOf(ArrayNode.class)), () -> assertThat(parent.get("testName1").size(), is(1)), () -> assertThat(parent.get("testName1").get(0).has("skip"), is(true)), () -> assertThat(parent.get("testName1").get(0).get("skip").get("awaits_fix").asText(), is("newSkipReason")));
     }
 }

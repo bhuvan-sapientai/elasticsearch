@@ -6,8 +6,6 @@ import org.elasticsearch.gradle.LoggedExec;
 
 import java.nio.file.Files;
 
-import static org.mockito.ArgumentMatchers.any;
-
 import org.gradle.api.plugins.ExtraPropertiesExtension;
 import org.junit.jupiter.api.Test;
 import org.gradle.api.Project;
@@ -18,8 +16,8 @@ import org.mockito.Mock;
 import org.gradle.process.ExecOperations;
 import org.gradle.process.ExecResult;
 import org.gradle.api.file.ProjectLayout;
-import org.gradle.process.ExecSpec;
 import org.gradle.api.plugins.ExtensionContainer;
+import org.gradle.process.ExecSpec;
 import org.mockito.MockitoAnnotations;
 import org.gradle.api.provider.ProviderFactory;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,7 +28,6 @@ import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
-import org.elasticsearch.gradle.internal.InternalBwcGitPlugin;
 import org.gradle.initialization.layout.BuildLayout;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -126,6 +123,13 @@ class InternalBwcGitPluginSapientGeneratedTest {
         //String defaultRefSpec = "refs/heads/main";
         //when(providerFactory.systemProperty("bwc.checkout.align")).thenReturn(mock(Provider.class));
         //when(execOperations.exec(any())).thenReturn(mock(ExecResult.class));
+        //ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        /*when(execOperations.exec(any())).thenAnswer(invocation -> {
+    ExecSpec spec = invocation.getArgument(0);
+    spec.setStandardOutput(outputStream);
+    outputStream.write("Test output".getBytes());
+    return mock(ExecResult.class);
+});*/
         //String result = plugin.maybeAlignedRefSpec(logger, defaultRefSpec);
         //assertNotNull(result);
     }

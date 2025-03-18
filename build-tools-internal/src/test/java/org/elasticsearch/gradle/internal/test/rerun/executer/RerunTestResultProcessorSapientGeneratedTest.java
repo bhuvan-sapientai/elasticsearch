@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Map;
 
+import org.gradle.api.tasks.testing.TestOutputEvent;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.gradle.api.tasks.testing.TestOutputEvent;
 import org.junit.jupiter.api.Timeout;
-import org.gradle.api.tasks.testing.TestFailure;
 import org.gradle.api.internal.tasks.testing.TestDescriptorInternal;
+import org.gradle.api.tasks.testing.TestFailure;
 import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -182,5 +182,29 @@ class RerunTestResultProcessorSapientGeneratedTest {
         List<TestDescriptorInternal> result = target.getActiveDescriptors();
         assertThat(result.size(), equalTo(2));
         assertThat(result, containsInAnyOrder(descriptor1, descriptor2));
+    }
+
+    @Test
+    void completedWhenActiveDescriptorsSizeIsNotOne() {
+        Object object = new Object();
+        when(rootTestDescriptorMock.getId()).thenReturn(object);
+        target.started(rootTestDescriptorMock, mock(TestStartEvent.class));
+        target.started(mock(TestDescriptorInternal.class), mock(TestStartEvent.class));
+        TestCompleteEvent testCompleteEventMock = mock(TestCompleteEvent.class);
+        target.completed(object, testCompleteEventMock);
+        verify(delegateMock, never()).completed(object, testCompleteEventMock);
+    }
+
+    @Test
+    void logTracingTest() {
+        TestDescriptorInternal descriptorMock = mock(TestDescriptorInternal.class);
+        Object testId = new Object();
+        when(descriptorMock.getId()).thenReturn(testId);
+        when(descriptorMock.getDisplayName()).thenReturn("Test Display Name");
+        target.started(descriptorMock, mock(TestStartEvent.class));
+        doThrow(new IllegalArgumentException("Test Exception")).when(delegateMock).failure(eq(testId), any(TestFailure.class));
+        target.failure(testId, mock(TestFailure.class));
+        // We can't directly verify the System.out.println calls, but we can check that the method completes without throwing an exception
+        assertDoesNotThrow(() -> target.failure(testId, mock(TestFailure.class)));
     }
 }

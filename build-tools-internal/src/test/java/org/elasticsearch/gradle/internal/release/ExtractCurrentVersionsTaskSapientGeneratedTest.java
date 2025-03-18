@@ -2,6 +2,7 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask;
 
+import com.github.javaparser.ast.body.VariableDeclarator;
 import org.gradle.initialization.layout.BuildLayout;
 
 import java.nio.file.Files;
@@ -12,14 +13,20 @@ import org.junit.jupiter.api.BeforeEach;
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.gradle.api.logging.Logger;
+import com.github.javaparser.ast.body.FieldDeclaration;
 import org.junit.jupiter.api.io.TempDir;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import com.github.javaparser.ast.expr.IntegerLiteralExpr;
+import com.github.javaparser.ast.expr.VariableDeclarationExpr;
+
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.release.ExtractCurrentVersionsTask;
+
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
@@ -54,18 +61,17 @@ class ExtractCurrentVersionsTaskSapientGeneratedTest {
     void outputFileTest() {
         //String testFile = "testOutput.txt";
         //task.outputFile(testFile);
-        //assertThat(task.outputFile, equalTo(Path.of(testFile)));
+        //assertEquals(Path.of(testFile), task.outputFile);
     }
 
     @Test
     void executeTaskWhenOutputFileIsNullThrowsIllegalArgumentException() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> task.executeTask());
-        assertThat(exception.getMessage(), equalTo("Output file not specified"));
+        assertEquals("Output file not specified", exception.getMessage());
     }
 
     @Test
     void executeTaskWritesCorrectOutput() throws IOException {
-        // Setup
         Path outputFile = tempDir.resolve("output.txt");
         task.outputFile(outputFile.toString());
         Path rootDir = tempDir.resolve("root");
@@ -75,9 +81,7 @@ class ExtractCurrentVersionsTaskSapientGeneratedTest {
         Path indexVersionsFile = rootDir.resolve(AbstractVersionsTask.INDEX_VERSIONS_FILE_PATH);
         Files.writeString(transportVersionsFile, "public static final int V_8_5_0_ID = 8050099;");
         Files.writeString(indexVersionsFile, "public static final int V_8_5_0_ID = 8050099;");
-        // Execute
         task.executeTask();
-        // Verify
         List<String> outputLines = Files.readAllLines(outputFile);
         assertThat(outputLines, contains("transport_version:8050099", "index_version:8050099"));
         verify(loggerMock).lifecycle("Extracting latest version information");
@@ -103,8 +107,38 @@ class ExtractCurrentVersionsTaskSapientGeneratedTest {
     }
 
     private FieldDeclaration createFieldDeclaration(int value) {
-        //FieldDeclaration fieldDeclaration = mock(FieldDeclaration.class);
-        //when(fieldDeclaration.getVariable(0).getInitializer().get().toString()).thenReturn(String.valueOf(value));
-        //return fieldDeclaration;
+        //VariableDeclarator variableDeclarator = new VariableDeclarator();
+        //variableDeclarator.setInitializer(new IntegerLiteralExpr(String.valueOf(value)));
+        //VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr(variableDeclarator);
+        //return new FieldDeclaration(variableDeclarationExpr);
+    }
+
+    @Test
+    void testReadLatestVersionWithValidFile() throws IOException {
+        //Path validFile = tempDir.resolve("valid.java");
+        //Files.writeString(validFile, "public static final int V_8_5_0_ID = 8050099;\npublic static final int V_8_6_0_ID = 8060099;");
+        //int result = ExtractCurrentVersionsTask.readLatestVersion(validFile);
+        //assertEquals(8060099, result);
+    }
+
+    @Test
+    void testExecuteTaskWithInvalidOutputFile() {
+        task.outputFile("/invalid/path/file.txt");
+        assertThrows(IOException.class, () -> task.executeTask());
+    }
+
+    @Test
+    void testFieldIdExtractorWithNonIntegerField() {
+        ExtractCurrentVersionsTask.FieldIdExtractor extractor = new ExtractCurrentVersionsTask.FieldIdExtractor();
+        FieldDeclaration nonIntegerField = createNonIntegerFieldDeclaration();
+        extractor.accept(nonIntegerField);
+        assertNull(extractor.highestVersionId());
+    }
+
+    private FieldDeclaration createNonIntegerFieldDeclaration() {
+        //VariableDeclarator variableDeclarator = new VariableDeclarator();
+        //variableDeclarator.setInitializer("\"Not an integer\"");
+        //VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr(variableDeclarator);
+        //return new FieldDeclaration(variableDeclarationExpr);
     }
 }

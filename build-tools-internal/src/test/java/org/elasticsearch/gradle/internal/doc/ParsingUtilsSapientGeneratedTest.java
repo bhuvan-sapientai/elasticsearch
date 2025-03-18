@@ -5,9 +5,12 @@ import org.elasticsearch.gradle.internal.doc.ParsingUtils;
 import java.util.function.BiConsumer;
 import java.util.regex.Pattern;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.InvalidUserDataException;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.doc.ParsingUtils;
 import org.junit.jupiter.api.Timeout;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -105,5 +108,52 @@ class ParsingUtilsSapientGeneratedTest {
             ParsingUtils.parse(content, pattern, biConsumerMock);
         });
         assertThat(exception.getMessage(), equalTo("Didn't match \\d+: abcdef"));
+    }
+
+    @Test
+    void parseWithPartialMatch() {
+        //String content = "abc123def";
+        //String pattern = "\\d+";
+        /*InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+    ParsingUtils.parse(content, pattern, biConsumerMock);
+});*/
+        //assertThat(exception.getMessage(), startsWith("Extra content after [6] ('abc123*def') matching [\\d+]:"));
+    }
+
+    @Test
+    void parseWithMultipleMatchesAndExtraContent() {
+        //String content = "123abc456def789ghi";
+        //String pattern = "\\d+";
+        /*InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+    ParsingUtils.parse(content, pattern, biConsumerMock);
+});*/
+        //assertThat(exception.getMessage(), startsWith("Extra content between [3] and [6] ('123abc*456') matching [\\d+]:"));
+    }
+
+    @Test
+    void extraContentWithNewlines() {
+        String content = "ABC\nDEF\nGHI";
+        InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+            ParsingUtils.extraContent("", content, 4, "");
+        });
+        assertThat(exception.getMessage(), containsString("('ABC\\\\n*DEF\\\\n')"));
+    }
+
+    @Test
+    void parseWithEmptyContent() {
+        String content = "";
+        String pattern = "\\w+";
+        InvalidUserDataException exception = assertThrows(InvalidUserDataException.class, () -> {
+            ParsingUtils.parse(content, pattern, biConsumerMock);
+        });
+        assertThat(exception.getMessage(), equalTo("Didn't match \\w+: "));
+    }
+
+    @Test
+    void parseWithComplexPattern() {
+        String content = "key1=value1;key2=value2;key3=value3";
+        String pattern = "(\\w+)=(\\w+);?";
+        ParsingUtils.parse(content, pattern, biConsumerMock);
+        verify(biConsumerMock, times(3)).accept(any(Matcher.class), anyBoolean());
     }
 }

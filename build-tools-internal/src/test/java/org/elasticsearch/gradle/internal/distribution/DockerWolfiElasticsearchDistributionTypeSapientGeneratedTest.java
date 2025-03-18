@@ -2,19 +2,24 @@ package org.elasticsearch.gradle.internal.distribution;
 
 import org.elasticsearch.gradle.internal.distribution.DockerWolfiElasticsearchDistributionType;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 import org.junit.jupiter.api.Timeout;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.elasticsearch.gradle.ElasticsearchDistributionType;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.elasticsearch.gradle.internal.distribution.DockerWolfiElasticsearchDistributionType;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,5 +52,20 @@ class DockerWolfiElasticsearchDistributionTypeSapientGeneratedTest {
     void testConstructor() {
         DockerWolfiElasticsearchDistributionType target = new DockerWolfiElasticsearchDistributionType();
         assertNotNull(target);
+    }
+
+    @Test
+    void testImplementsElasticsearchDistributionType() {
+        DockerWolfiElasticsearchDistributionType target = new DockerWolfiElasticsearchDistributionType();
+        assertThat(target instanceof ElasticsearchDistributionType, is(true));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"dockerWolfi, true", "dockerWolfi, true", "dockerWolfi, true"})
+    void testMultipleInstances(String expectedName, boolean expectedDocker) {
+        DockerWolfiElasticsearchDistributionType instance1 = new DockerWolfiElasticsearchDistributionType();
+        DockerWolfiElasticsearchDistributionType instance2 = new DockerWolfiElasticsearchDistributionType();
+        DockerWolfiElasticsearchDistributionType instance3 = new DockerWolfiElasticsearchDistributionType();
+        assertAll(() -> assertThat(instance1.getName(), equalTo(expectedName)), () -> assertThat(instance1.isDocker(), is(expectedDocker)), () -> assertThat(instance2.getName(), equalTo(expectedName)), () -> assertThat(instance2.isDocker(), is(expectedDocker)), () -> assertThat(instance3.getName(), equalTo(expectedName)), () -> assertThat(instance3.isDocker(), is(expectedDocker)));
     }
 }

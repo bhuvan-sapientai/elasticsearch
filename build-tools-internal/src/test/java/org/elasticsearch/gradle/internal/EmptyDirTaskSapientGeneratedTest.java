@@ -5,6 +5,7 @@ import org.elasticsearch.gradle.internal.EmptyDirTask;
 import org.gradle.internal.file.FileException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+
+import org.elasticsearch.gradle.internal.EmptyDirTask;
 
 import static org.mockito.Mockito.*;
 
@@ -80,5 +83,49 @@ class EmptyDirTaskSapientGeneratedTest {
         int result = target.getDirMode();
         // Assert
         assertThat(result, equalTo(testMode));
+    }
+
+    @Test
+    void defaultDirModeTest() {
+        // Arrange
+        EmptyDirTask target = new EmptyDirTask();
+        // Act
+        int result = target.getDirMode();
+        // Assert
+        assertThat(result, equalTo(0755));
+    }
+
+    @Test
+    void createWithNonExistentParentDir() throws FileException {
+        // Arrange
+        EmptyDirTask target = spy(new EmptyDirTask());
+        Chmod chmodMock = mock(Chmod.class);
+        doReturn(chmodMock).when(target).getChmod();
+        File file = new File("nonExistentParent/testDir");
+        target.setDir(file);
+        // Act
+        target.create();
+        // Assert
+        verify(chmodMock).chmod(file, 0755);
+        assertTrue(file.exists());
+        assertTrue(file.isDirectory());
+        assertTrue(file.getParentFile().exists());
+    }
+
+    @Test
+    void createWithExistingDir() throws FileException {
+        // Arrange
+        EmptyDirTask target = spy(new EmptyDirTask());
+        Chmod chmodMock = mock(Chmod.class);
+        doReturn(chmodMock).when(target).getChmod();
+        File file = new File("existingDir");
+        file.mkdirs();
+        target.setDir(file);
+        // Act
+        target.create();
+        // Assert
+        verify(chmodMock).chmod(file, 0755);
+        assertTrue(file.exists());
+        assertTrue(file.isDirectory());
     }
 }

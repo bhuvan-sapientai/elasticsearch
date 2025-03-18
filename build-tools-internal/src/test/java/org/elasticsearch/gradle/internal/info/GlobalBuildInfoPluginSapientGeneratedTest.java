@@ -2,12 +2,8 @@ package org.elasticsearch.gradle.internal.info;
 
 import org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin;
 
-import static org.mockito.Mockito.doReturn;
-
 import java.nio.file.Files;
 import java.io.UncheckedIOException;
-
-import static org.mockito.ArgumentMatchers.any;
 
 import org.gradle.internal.jvm.inspection.JvmMetadataDetector;
 import org.gradle.api.plugins.ExtensionContainer;
@@ -16,19 +12,23 @@ import org.mockito.MockitoAnnotations;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.gradle.api.GradleException;
+import org.elasticsearch.gradle.internal.info.GlobalBuildInfoPlugin;
+
+import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
 import org.gradle.internal.jvm.Jvm;
 import org.gradle.api.plugins.PluginContainer;
 
-import static org.mockito.Mockito.doNothing;
-
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.AfterEach;
 
 import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.jupiter.params.ParameterizedTest;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
@@ -52,17 +52,12 @@ import java.io.File;
 import org.gradle.api.execution.TaskExecutionGraph;
 import org.gradle.api.Action;
 import org.gradle.api.JavaVersion;
-
-import static org.mockito.Mockito.atLeast;
-
 import org.gradle.api.provider.ProviderFactory;
 
 import java.util.function.Consumer;
 
 import org.gradle.jvm.toolchain.internal.InstallationLocation;
-
-import static org.mockito.Mockito.times;
-
+import org.junit.jupiter.params.provider.CsvSource;
 import org.gradle.jvm.toolchain.JavaLauncher;
 import org.mockito.MockedStatic;
 import org.gradle.api.model.ObjectFactory;
@@ -71,24 +66,15 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.eq;
-
 import org.gradle.internal.jvm.inspection.JavaInstallationRegistry;
 import org.elasticsearch.gradle.VersionProperties;
 import org.gradle.api.Plugin;
 
-import static org.mockito.Mockito.mock;
 import static org.hamcrest.Matchers.notNullValue;
 
 import org.gradle.api.UnknownDomainObjectException;
 import org.mockito.stubbing.Answer;
-
-import static org.mockito.Mockito.mockStatic;
-
 import org.elasticsearch.gradle.util.GradleUtils;
-
-import static org.mockito.Mockito.CALLS_REAL_METHODS;
-
 import org.mockito.InjectMocks;
 
 import java.util.ArrayList;
@@ -97,7 +83,6 @@ import java.util.concurrent.Callable;
 import org.gradle.jvm.toolchain.JavaToolchainService;
 import org.gradle.api.Transformer;
 
-import static org.mockito.Mockito.verify;
 import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
@@ -113,16 +98,16 @@ class GlobalBuildInfoPluginSapientGeneratedTest {
 
     private AutoCloseable autoCloseableMocks;
 
-    @InjectMocks()
+    @InjectMocks
     private GlobalBuildInfoPlugin target;
 
-    @AfterEach()
+    @AfterEach
     public void afterTest() throws Exception {
         if (autoCloseableMocks != null)
             autoCloseableMocks.close();
     }
 
-    @Test()
+    @Test
     void applyWhenProjectNotEqualsProjectGetRootProjectThrowsIllegalStateException() {
         Project projectMock = mock(Project.class);
         Project projectMock2 = mock(Project.class);
@@ -141,7 +126,7 @@ class GlobalBuildInfoPluginSapientGeneratedTest {
         });
     }
 
-    @Test()
+    @Test
     void applyWhenGradleVersionCurrentCompareToMinimumGradleVersionLessThan0ThrowsGradleException() throws UnknownDomainObjectException {
         Project projectMock = mock(Project.class);
         PluginContainer pluginContainerMock = mock(PluginContainer.class);
@@ -185,17 +170,59 @@ class GlobalBuildInfoPluginSapientGeneratedTest {
         }
     }
 
-    @Test()
-    void getResourceContentsWhenBLengthNotEquals0AndCaughtIOExceptionThrowsUncheckedIOException() {
-        IOException iOException = new IOException();
-        UncheckedIOException uncheckedIOException = new UncheckedIOException("Error trying to read classpath resource: server/src/main/java/org/elasticsearch/Version.java", iOException);
+    @ParameterizedTest
+    @CsvSource({"server/src/main/java/org/elasticsearch/Version.java, Error trying to read classpath resource: server/src/main/java/org/elasticsearch/Version.java", "/minimumGradleVersion, Error trying to read classpath resource: /minimumGradleVersion", "/minimumCompilerVersion, Error trying to read classpath resource: /minimumCompilerVersion"})
+    void getResourceContentsThrowsUncheckedIOException(String resourcePath, String expectedErrorMessage) {
         final UncheckedIOException result = assertThrows(UncheckedIOException.class, () -> {
-            GlobalBuildInfoPlugin.getResourceContents("server/src/main/java/org/elasticsearch/Version.java");
+            GlobalBuildInfoPlugin.getResourceContents(resourcePath);
         });
         assertAll("result", () -> {
             assertThat(result, is(notNullValue()));
-            assertThat(result.getMessage(), equalTo(uncheckedIOException.getMessage()));
-            assertThat(result.getCause(), is(instanceOf(iOException.getClass())));
+            assertThat(result.getMessage(), equalTo(expectedErrorMessage));
+            assertThat(result.getCause(), is(instanceOf(IOException.class)));
         });
+    }
+
+    @Test
+    void applySuccessfullyConfiguresBuildParams() throws Exception {
+        Project projectMock = mock(Project.class);
+        PluginContainer pluginContainerMock = mock(PluginContainer.class);
+        ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        Gradle gradleMock = mock(Gradle.class);
+        TaskExecutionGraph taskExecutionGraphMock = mock(TaskExecutionGraph.class);
+        JvmMetadataDetector jvmMetadataDetectorMock = mock(JvmMetadataDetector.class);
+        Provider<File> runtimeJavaHomeProviderMock = mock(Provider.class);
+        doReturn(projectMock).when(projectMock).getRootProject();
+        doReturn(pluginContainerMock).when(projectMock).getPlugins();
+        doReturn(extensionContainerMock).when(projectMock).getExtensions();
+        doReturn(toolChainServiceMock).when(extensionContainerMock).getByType(JavaToolchainService.class);
+        doReturn(gradleMock).when(projectMock).getGradle();
+        doReturn(taskExecutionGraphMock).when(gradleMock).getTaskGraph();
+        doReturn(runtimeJavaHomeProviderMock).when(providersMock).provider(any(Callable.class));
+        try (MockedStatic<GradleVersion> gradleVersionMockedStatic = mockStatic(GradleVersion.class);
+             MockedStatic<GlobalBuildInfoPlugin> globalBuildInfoPluginMockedStatic = mockStatic(GlobalBuildInfoPlugin.class);
+             MockedStatic<GitInfo> gitInfoMockedStatic = mockStatic(GitInfo.class);
+             MockedStatic<GradleUtils> gradleUtilsMockedStatic = mockStatic(GradleUtils.class)) {
+            GradleVersion currentVersionMock = mock(GradleVersion.class);
+            GradleVersion minimumVersionMock = mock(GradleVersion.class);
+            gradleVersionMockedStatic.when(GradleVersion::current).thenReturn(currentVersionMock);
+            doReturn(1).when(currentVersionMock).compareTo(any(GradleVersion.class));
+            globalBuildInfoPluginMockedStatic.when(() -> GlobalBuildInfoPlugin.getResourceContents(anyString())).thenReturn("1.0");
+            gradleVersionMockedStatic.when(() -> GradleVersion.version(anyString())).thenReturn(minimumVersionMock);
+            GitInfo gitInfoMock = mock(GitInfo.class);
+            gitInfoMockedStatic.when(() -> GitInfo.gitInfo(any())).thenReturn(gitInfoMock);
+            gradleUtilsMockedStatic.when(() -> GradleUtils.isIncludedBuild(any())).thenReturn(false);
+            target = new GlobalBuildInfoPlugin(objectFactoryMock, javaInstallationRegistryMock, jvmMetadataDetectorMock, providersMock);
+            autoCloseableMocks = MockitoAnnotations.openMocks(this);
+            target.apply(projectMock);
+            verify(projectMock).getRootProject();
+            verify(projectMock).getPlugins();
+            verify(pluginContainerMock).apply(JvmToolchainsPlugin.class);
+            verify(projectMock).getExtensions();
+            verify(extensionContainerMock).getByType(JavaToolchainService.class);
+            verify(projectMock).getGradle();
+            verify(gradleMock).getTaskGraph();
+            verify(taskExecutionGraphMock).whenReady(any(Action.class));
+        }
     }
 }

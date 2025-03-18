@@ -5,6 +5,9 @@ import org.elasticsearch.gradle.internal.snyk.UploadSnykDependenciesGraph;
 import javax.inject.Inject;
 
 import org.apache.http.client.methods.HttpPut;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.gradle.api.provider.Property;
 import org.junit.jupiter.api.Test;
 import org.gradle.api.tasks.InputFile;
@@ -39,7 +42,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.StatusLine;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -67,7 +69,7 @@ class UploadSnykDependenciesGraphSapientGeneratedTest {
     private CloseableHttpResponse httpResponse;
 
     @Mock
-    private StatusLine statusLine;
+    private org.apache.http.StatusLine statusLine;
 
     private UploadSnykDependenciesGraph task;
 
@@ -138,5 +140,19 @@ class UploadSnykDependenciesGraphSapientGeneratedTest {
         //task.getSnykOrganisation().set(null);
         //result = task.calculateEffectiveEndpoint();
         //assertEquals("http://test.url", result);
+    }
+
+    @Test
+    void testGettersAndSetters() {
+        assertNotNull(task.getToken());
+        assertNotNull(task.getUrl());
+        assertNotNull(task.getSnykOrganisation());
+        assertNotNull(task.getInputFile());
+    }
+
+    @Test
+    void testDefaultValues() {
+        UploadSnykDependenciesGraph newTask = new UploadSnykDependenciesGraph(objectFactory);
+        assertEquals(UploadSnykDependenciesGraph.DEFAULT_SERVER + UploadSnykDependenciesGraph.GRADLE_GRAPH_ENDPOINT, newTask.getUrl().get());
     }
 }

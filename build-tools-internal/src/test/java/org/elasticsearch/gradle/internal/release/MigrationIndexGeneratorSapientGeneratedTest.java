@@ -2,15 +2,17 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.MigrationIndexGenerator;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-
 import java.nio.file.Files;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.ArgumentMatchers.eq;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.io.File;
 
@@ -24,11 +26,17 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anySet;
 
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.mockito.MockedStatic;
 
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
+
+import org.elasticsearch.gradle.internal.release.MigrationIndexGenerator;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -97,5 +105,52 @@ class MigrationIndexGeneratorSapientGeneratedTest {
         Set<MinorVersion> versions = new HashSet<>();
         versions.add(new MinorVersion(8, 0));
         assertThrows(NullPointerException.class, () -> MigrationIndexGenerator.generateFile(versions, null));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"8,0,7,17,8.0,7.17", "9,1,8,0,9.1,8.0", "7,10,6,8,7.10,6.8"})
+    void generateFileWithDifferentVersions(int major1, int minor1, int major2, int minor2, String expected1, String expected2) throws IOException {
+        Set<MinorVersion> versions = new HashSet<>();
+        versions.add(new MinorVersion(major1, minor1));
+        versions.add(new MinorVersion(major2, minor2));
+        String template = "Template with ${versions} and ${includeVersions}";
+        try (MockedStatic<TemplateUtils> mockedTemplateUtils = mockStatic(TemplateUtils.class)) {
+            mockedTemplateUtils.when(() -> TemplateUtils.render(eq(template), anyMap())).thenReturn("Rendered template");
+            String result = MigrationIndexGenerator.generateFile(versions, template);
+            assertThat(result, is("Rendered template"));
+            mockedTemplateUtils.verify(() -> TemplateUtils.render(eq(template), argThat(map -> {
+                Set<?> versionSet = (Set<?>) map.get("versions");
+                return versionSet.contains(new MinorVersion(major1, minor1)) && versionSet.contains(new MinorVersion(major2, minor2)) && ((Set<?>) map.get("includeVersions")).contains(expected1.replace(".", "_")) && ((Set<?>) map.get("includeVersions")).contains(expected2.replace(".", "_"));
+            })));
+        }
+    }
+
+    @Test
+    void generateFileWithLargeNumberOfVersions() throws IOException {
+        Set<MinorVersion> versions = new HashSet<>();
+        for (int i = 0; i < 100; i++) {
+            versions.add(new MinorVersion(i, i));
+        }
+        String template = "Template with ${versions} and ${includeVersions}";
+        try (MockedStatic<TemplateUtils> mockedTemplateUtils = mockStatic(TemplateUtils.class)) {
+            mockedTemplateUtils.when(() -> TemplateUtils.render(eq(template), anyMap())).thenReturn("Rendered template");
+            String result = MigrationIndexGenerator.generateFile(versions, template);
+            assertThat(result, is("Rendered template"));
+            mockedTemplateUtils.verify(() -> TemplateUtils.render(eq(template), argThat(map -> ((Set<?>) map.get("versions")).size() == 100 && ((Set<?>) map.get("includeVersions")).size() == 100)));
+        }
+    }
+
+    @Test
+    void generateFileWithComplexTemplate() throws IOException {
+        Set<MinorVersion> versions = new HashSet<>();
+        versions.add(new MinorVersion(8, 0));
+        versions.add(new MinorVersion(7, 17));
+        String template = "Complex template with ${versions} and ${includeVersions} and some other ${placeholder}";
+        try (MockedStatic<TemplateUtils> mockedTemplateUtils = mockStatic(TemplateUtils.class)) {
+            mockedTemplateUtils.when(() -> TemplateUtils.render(eq(template), anyMap())).thenReturn("Complex rendered template");
+            String result = MigrationIndexGenerator.generateFile(versions, template);
+            assertThat(result, is("Complex rendered template"));
+            mockedTemplateUtils.verify(() -> TemplateUtils.render(eq(template), argThat(map -> map.containsKey("versions") && map.containsKey("includeVersions") && !map.containsKey("placeholder"))));
+        }
     }
 }

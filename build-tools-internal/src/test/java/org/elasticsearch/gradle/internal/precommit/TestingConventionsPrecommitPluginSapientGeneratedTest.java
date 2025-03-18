@@ -26,6 +26,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 
 import org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin;
 import org.gradle.api.plugins.JavaBasePlugin;
+import org.elasticsearch.gradle.internal.precommit.TestingConventionsPrecommitPlugin;
 import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.api.tasks.TaskProvider;
 
@@ -103,6 +104,19 @@ class TestingConventionsPrecommitPluginSapientGeneratedTest {
     void createTaskShouldRegisterTestingConventionsTask() {
         TaskProvider<? extends Task> result = plugin.createTask(project);
         verify(project.getTasks()).register(eq(TestingConventionsPrecommitPlugin.TESTING_CONVENTIONS_TASK_NAME), any(Action.class));
+        assertEquals(taskProvider, result);
+    }
+
+    @Test
+    void setupTaskForSourceSetShouldConfigureSourceSet() {
+        //NamedDomainObjectProvider<SourceSet> sourceSetProvider = mock(NamedDomainObjectProvider.class);
+        //plugin.setupTaskForSourceSet(project, sourceSetProvider, mock(Action.class));
+        //verify(sourceSetProvider).configure(any(Action.class));
+    }
+
+    @Test
+    void createTaskShouldReturnTaskProvider() {
+        TaskProvider<? extends Task> result = plugin.createTask(project);
         assertEquals(taskProvider, result);
     }
 }

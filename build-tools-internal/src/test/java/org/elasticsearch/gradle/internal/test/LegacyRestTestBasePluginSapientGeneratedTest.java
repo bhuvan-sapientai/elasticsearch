@@ -2,11 +2,15 @@ package org.elasticsearch.gradle.internal.test;
 
 import org.elasticsearch.gradle.internal.test.LegacyRestTestBasePlugin;
 
-import org.gradle.api.invocation.Gradle;
 import org.elasticsearch.gradle.internal.precommit.InternalPrecommitTasks;
+import org.gradle.api.invocation.Gradle;
 import org.elasticsearch.gradle.internal.ElasticsearchTestBasePlugin;
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
+import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Project;
 import org.mockito.Mock;
 import org.elasticsearch.gradle.testclusters.ElasticsearchCluster;
@@ -14,28 +18,35 @@ import org.elasticsearch.gradle.internal.RestrictedBuildApiService;
 import org.elasticsearch.gradle.internal.InternalTestClustersPlugin;
 import org.elasticsearch.gradle.internal.ElasticsearchJavaBasePlugin;
 import org.mockito.MockitoAnnotations;
-import org.gradle.api.provider.ProviderFactory;
 import org.elasticsearch.gradle.testclusters.StandaloneRestIntegTestTask;
+import org.gradle.api.provider.ProviderFactory;
+
+import static org.mockito.ArgumentMatchers.anyString;
+
+import org.gradle.api.plugins.JavaBasePlugin;
 import org.gradle.api.tasks.bundling.Zip;
 
+import static org.elasticsearch.gradle.plugin.BasePluginBuildPlugin.EXPLODED_BUNDLE_PLUGIN_TASK_NAME;
 import static org.mockito.Mockito.*;
 
 import org.elasticsearch.gradle.testclusters.TestClustersPlugin;
 import org.elasticsearch.gradle.internal.FixtureStop;
 import org.gradle.api.tasks.Sync;
-
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
+
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.gradle.api.Plugin;
+import org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider;
 import org.gradle.api.tasks.TaskCollection;
 import org.gradle.api.tasks.TaskContainer;
-import org.gradle.api.UnknownTaskException;
-import org.gradle.api.UnknownDomainObjectException;
+
+import static org.elasticsearch.gradle.plugin.BasePluginBuildPlugin.BUNDLE_PLUGIN_TASK_NAME;
+
 import org.elasticsearch.gradle.util.GradleUtils;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.elasticsearch.gradle.internal.RestrictedBuildApiService.BUILD_API_RESTRICTIONS_SYS_PROPERTY;
 
 import org.gradle.api.services.BuildServiceRegistry;
 import org.gradle.api.tasks.TaskProvider;
@@ -85,6 +96,9 @@ class LegacyRestTestBasePluginSapientGeneratedTest {
     @Mock
     private ElasticsearchCluster elasticsearchCluster;
 
+    @Mock
+    private NamedDomainObjectContainer<ElasticsearchCluster> testClusters;
+
     private LegacyRestTestBasePlugin plugin;
 
     @BeforeEach
@@ -100,7 +114,9 @@ class LegacyRestTestBasePluginSapientGeneratedTest {
         when(taskContainer.withType(RestIntegTestTask.class)).thenReturn(restIntegTestTaskCollection);
         when(taskContainer.withType(StandaloneRestIntegTestTask.class)).thenReturn(standaloneRestIntegTestTaskCollection);
         when(taskContainer.withType(FixtureStop.class)).thenReturn(fixtureStopTaskCollection);
-        when(taskContainer.named("check")).thenReturn(checkTaskProvider);
+        when(taskContainer.named(JavaBasePlugin.CHECK_TASK_NAME)).thenReturn(checkTaskProvider);
+        when(project.getExtensions().getByName(TestClustersPlugin.EXTENSION_NAME)).thenReturn(testClusters);
+        when(testClusters.maybeCreate(anyString())).thenReturn(elasticsearchCluster);
     }
 
     @Test
@@ -113,7 +129,6 @@ class LegacyRestTestBasePluginSapientGeneratedTest {
 
     @Test
     void apply_configuresRestIntegTestTasks() {
-        when(project.getExtensions().getByName(TestClustersPlugin.EXTENSION_NAME)).thenReturn(mock(ElasticsearchCluster.class));
         when(providerFactory.systemProperty("tests.rest.cluster")).thenReturn(mock(Provider.class));
         when(providerFactory.systemProperty("tests.cluster")).thenReturn(mock(Provider.class));
         when(providerFactory.systemProperty("tests.clustername")).thenReturn(mock(Provider.class));
@@ -134,7 +149,7 @@ class LegacyRestTestBasePluginSapientGeneratedTest {
     }
 
     @Test
-    void apply_configuresPluginTasks_whenEspluginApplied() throws UnknownTaskException {
+    void apply_configuresPluginTasks_whenEspluginApplied() {
         when(project.getPath()).thenReturn("test-path");
         when(taskContainer.withType(Sync.class)).thenReturn(mock(TaskCollection.class));
         when(taskContainer.withType(Zip.class)).thenReturn(mock(TaskCollection.class));
@@ -173,5 +188,30 @@ class LegacyRestTestBasePluginSapientGeneratedTest {
         when(providerFactory.systemProperty("tests.cluster").getOrNull()).thenReturn(null);
         when(providerFactory.systemProperty("tests.clustername").getOrNull()).thenReturn("non-null");
         assertThrows(IllegalArgumentException.class, () -> plugin.apply(project));
+    }
+
+    @Test
+    void apply_createsInternalPrecommitTasks() {
+        plugin.apply(project);
+        verify(project).getPluginManager();
+    }
+
+    @Test
+    void apply_configuresSystemProperties() {
+        when(providerFactory.systemProperty(anyString())).thenReturn(mock(Provider.class));
+        plugin.apply(project);
+        verify(restIntegTestTaskCollection).configureEach(any());
+    }
+
+    @Test
+    void apply_setsMaxParallelForks() {
+        plugin.apply(project);
+        verify(standaloneRestIntegTestTaskCollection).configureEach(any());
+    }
+
+    @Test
+    void apply_configuresCacheability() {
+        plugin.apply(project);
+        verify(standaloneRestIntegTestTaskCollection, times(2)).configureEach(any());
     }
 }

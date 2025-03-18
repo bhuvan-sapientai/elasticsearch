@@ -65,4 +65,23 @@ class ShellRetrySapientGeneratedTest {
         String result = ShellRetry.loop("zeroIndent", "echo 'Zero'", 0, "exit");
         assertThat(result, equalTo("for iter in 1 2 3 4 5 6 7 8 9 10; do \\\necho 'Zero' && \\\nexit_code=0 && break || \\\nexit_code=$? && echo \"zeroIndent error: retry $iter in 10s\" && sleep 10; \\\ndone; \\\nexit $exit_code"));
     }
+
+    @Test
+    void loopWithLargeIndent() {
+        String result = ShellRetry.loop("largeIndent", "echo 'Large'", 10, "exit");
+        assertThat(result, equalTo("for iter in 1 2 3 4 5 6 7 8 9 10; do \\\n          echo 'Large' && \\\n          exit_code=0 && break || \\\n            exit_code=$? && echo \"largeIndent error: retry $iter in 10s\" && sleep 10; \\\n          done; \\\n          exit $exit_code"));
+    }
+
+    @Test
+    void loopWithSpecialCharacters() {
+        String result = ShellRetry.loop("special!@#$%^&*", "echo 'Special!@#$%^&*'", 4, "exit");
+        assertThat(result, equalTo("for iter in 1 2 3 4 5 6 7 8 9 10; do \\\n    echo 'Special!@#$%^&*' && \\\n    exit_code=0 && break || \\\n      exit_code=$? && echo \"special!@#$%^&* error: retry $iter in 10s\" && sleep 10; \\\n  done; \\\n  exit $exit_code"));
+    }
+
+    @Test
+    void loopWithMultilineCommand() {
+        String multilineCommand = "echo 'Line 1' && \\\necho 'Line 2' && \\\necho 'Line 3'";
+        String result = ShellRetry.loop("multiline", multilineCommand, 4, "exit");
+        assertThat(result, equalTo("for iter in 1 2 3 4 5 6 7 8 9 10; do \\\n    echo 'Line 1' && \\\necho 'Line 2' && \\\necho 'Line 3' && \\\n    exit_code=0 && break || \\\n      exit_code=$? && echo \"multiline error: retry $iter in 10s\" && sleep 10; \\\n  done; \\\n  exit $exit_code"));
+    }
 }

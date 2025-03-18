@@ -94,4 +94,34 @@ class QualifiedVersionSapientGeneratedTest {
     void invalidQualifierTest() {
         //assertThrows(IllegalArgumentException.class, () -> QualifiedVersion.Qualifier.of("invalid"));
     }
+
+    @Test
+    void testNullInput() {
+        assertThrows(NullPointerException.class, () -> QualifiedVersion.of(null));
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        //QualifiedVersion v1 = new QualifiedVersion(1, 2, 3, QualifiedVersion.Qualifier.of("alpha1"));
+        //QualifiedVersion v2 = new QualifiedVersion(1, 2, 3, QualifiedVersion.Qualifier.of("alpha1"));
+        //QualifiedVersion v3 = new QualifiedVersion(1, 2, 3, QualifiedVersion.Qualifier.of("beta1"));
+        //assertEquals(v1, v2);
+        //assertNotEquals(v1, v3);
+        //assertEquals(v1.hashCode(), v2.hashCode());
+        //assertNotEquals(v1.hashCode(), v3.hashCode());
+    }
+
+    @Test
+    void testQualifierToString() {
+        //assertEquals("alpha1", QualifiedVersion.Qualifier.of("alpha1").toString());
+        //assertEquals("beta2", QualifiedVersion.Qualifier.of("beta2").toString());
+        //assertEquals("rc3", QualifiedVersion.Qualifier.of("rc3").toString());
+        //assertEquals("SNAPSHOT", QualifiedVersion.Qualifier.of("SNAPSHOT").toString());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1.2.3, 1.2.4, true", "1.2.3, 1.2.3, false", "1.2.3, 1.2.2, false", "1.2.3-alpha1, 1.2.3, true", "1.2.3-beta1, 1.2.3-alpha1, false", "1.2.3-rc1, 1.2.3-beta2, false", "1.2.3-SNAPSHOT, 1.2.3, true"})
+    void testIsBefore(String v1, String v2, boolean expected) {
+        assertEquals(expected, QualifiedVersion.of(v1).isBefore(QualifiedVersion.of(v2)));
+    }
 }

@@ -2,17 +2,25 @@ package org.elasticsearch.gradle.internal.test.rest.transform.match;
 
 import org.elasticsearch.gradle.internal.test.rest.transform.match.RemoveMatch;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import static org.mockito.ArgumentMatchers.any;
+
+import org.junit.jupiter.api.Test;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.Timeout;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.match.RemoveMatch;
+
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -35,28 +43,18 @@ class RemoveMatchSapientGeneratedTest {
         assertThat(result, equalTo("removeKey1"));
     }
 
-    @Test
-    void shouldApplyWhenTestContextTestNameEqualsTestName() {
-        doReturn("A").when(testContextMock).testName();
-        RemoveMatch target = new RemoveMatch("removeKey1", "A");
+    @ParameterizedTest
+    @CsvSource({"A, A, true", "A, B, false", "A, '', true"})
+    void shouldApplyTest(String contextTestName, String targetTestName, boolean expected) {
+        when(testContextMock.testName()).thenReturn(contextTestName);
+        RemoveMatch target = new RemoveMatch("removeKey1", targetTestName.isEmpty() ? null : targetTestName);
         boolean result = target.shouldApply(testContextMock);
-        assertAll(() -> assertThat(result, is(true)), () -> verify(testContextMock).testName());
-    }
-
-    @Test
-    void shouldApplyWhenTestContextTestNameNotEqualsTestName() {
-        doReturn("A").when(testContextMock).testName();
-        RemoveMatch target = new RemoveMatch("removeKey1", "B");
-        boolean result = target.shouldApply(testContextMock);
-        assertAll(() -> assertThat(result, is(false)), () -> verify(testContextMock).testName());
-    }
-
-    @Test
-    void shouldApplyWhenTestNameIsNull() {
-        doReturn("A").when(testContextMock).testName();
-        RemoveMatch target = new RemoveMatch("removeKey1");
-        boolean result = target.shouldApply(testContextMock);
-        assertAll(() -> assertThat(result, is(true)), () -> verify(testContextMock, never()).testName());
+        assertThat(result, is(expected));
+        if (!targetTestName.isEmpty()) {
+            verify(testContextMock).testName();
+        } else {
+            verify(testContextMock, never()).testName();
+        }
     }
 
     @Test
@@ -91,5 +89,40 @@ class RemoveMatchSapientGeneratedTest {
         RemoveMatch target = new RemoveMatch("removeKey1");
         String result = target.getTestName();
         assertThat(result, is(nullValue()));
+    }
+
+    @Test
+    void constructorWithOneParameterTest() {
+        RemoveMatch target = new RemoveMatch("removeKey1");
+        assertAll(() -> assertThat(target.getRemoveKey(), equalTo("removeKey1")), () -> assertThat(target.getTestName(), is(nullValue())));
+    }
+
+    @Test
+    void constructorWithTwoParametersTest() {
+        RemoveMatch target = new RemoveMatch("removeKey1", "testName1");
+        assertAll(() -> assertThat(target.getRemoveKey(), equalTo("removeKey1")), () -> assertThat(target.getTestName(), equalTo("testName1")));
+    }
+
+    @Test
+    void transformTestWithEmptyMatchObjectTest() {
+        RemoveMatch target = new RemoveMatch("removeKey1", "testName1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode matchParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode matchObject = new ObjectNode(jsonNodeFactory);
+        matchParent.set("match", matchObject);
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("match"), is(true)), () -> assertThat(matchObject.isEmpty(), is(true)));
+    }
+
+    @Test
+    void transformTestWithNonExistentRemoveKeyTest() {
+        RemoveMatch target = new RemoveMatch("nonExistentKey", "testName1");
+        JsonNodeFactory jsonNodeFactory = new JsonNodeFactory(false);
+        ObjectNode matchParent = new ObjectNode(jsonNodeFactory);
+        ObjectNode matchObject = new ObjectNode(jsonNodeFactory);
+        matchObject.put("existingKey", "value1");
+        matchParent.set("match", matchObject);
+        target.transformTest(matchParent);
+        assertAll(() -> assertThat(matchParent.has("match"), is(true)), () -> assertThat(matchObject.has("existingKey"), is(true)), () -> assertThat(matchObject.size(), is(1)));
     }
 }

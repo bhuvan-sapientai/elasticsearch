@@ -2,9 +2,14 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.ReleaseToolsPlugin;
 
+import org.elasticsearch.gradle.internal.release.ReleaseToolsPlugin;
 import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitTaskPlugin;
 import org.elasticsearch.gradle.Version;
+import org.junit.jupiter.api.BeforeEach;
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.file.FileTree;
 import org.elasticsearch.gradle.internal.precommit.ValidateYamlAgainstSchemaTask;
@@ -13,6 +18,7 @@ import org.gradle.api.Project;
 import java.io.File;
 
 import org.elasticsearch.gradle.VersionProperties;
+import org.mockito.Mock;
 import org.gradle.api.Action;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.file.ProjectLayout;
@@ -32,17 +38,37 @@ import static org.mockito.ArgumentMatchers.any;
 
 class ReleaseToolsPluginSapientGeneratedTest {
 
-    @Test
-    void applyTest() {
-        // Arrange
-        Project projectMock = mock(Project.class);
-        PluginManager pluginManagerMock = mock(PluginManager.class);
-        TaskContainer taskContainerMock = mock(TaskContainer.class);
-        ProjectLayout projectLayoutMock = mock(ProjectLayout.class);
-        Directory projectDirectoryMock = mock(Directory.class);
-        Directory changelogDirectoryMock = mock(Directory.class);
-        FileTree fileTreeMock = mock(FileTree.class);
-        Version versionMock = mock(Version.class);
+    @Mock
+    private Project projectMock;
+
+    @Mock
+    private PluginManager pluginManagerMock;
+
+    @Mock
+    private TaskContainer taskContainerMock;
+
+    @Mock
+    private ProjectLayout projectLayoutMock;
+
+    @Mock
+    private Directory projectDirectoryMock;
+
+    @Mock
+    private Directory changelogDirectoryMock;
+
+    @Mock
+    private FileTree fileTreeMock;
+
+    @Mock
+    private Version versionMock;
+
+    @Mock
+    private TaskProvider<Task> taskProviderMock;
+
+    private ReleaseToolsPlugin plugin;
+
+    @BeforeEach
+    void setUp() {
         when(projectMock.getPluginManager()).thenReturn(pluginManagerMock);
         when(projectMock.getTasks()).thenReturn(taskContainerMock);
         when(projectMock.getRootDir()).thenReturn(new File("rootDir"));
@@ -51,12 +77,15 @@ class ReleaseToolsPluginSapientGeneratedTest {
         when(projectDirectoryMock.dir("docs/changelog")).thenReturn(changelogDirectoryMock);
         when(changelogDirectoryMock.getAsFileTree()).thenReturn(fileTreeMock);
         when(fileTreeMock.matching(any(PatternSet.class))).thenReturn(fileTreeMock);
+        when(taskContainerMock.named(anyString())).thenReturn(taskProviderMock);
+        plugin = new ReleaseToolsPlugin(projectLayoutMock);
+    }
+
+    @Test
+    void applyTest() {
         try (MockedStatic<VersionProperties> versionPropertiesMock = mockStatic(VersionProperties.class)) {
             versionPropertiesMock.when(VersionProperties::getElasticsearchVersion).thenReturn(versionMock);
-            // Act
-            ReleaseToolsPlugin plugin = new ReleaseToolsPlugin(projectLayoutMock);
             plugin.apply(projectMock);
-            // Assert
             verify(pluginManagerMock).apply(PrecommitTaskPlugin.class);
             verify(taskContainerMock).register(eq("updateVersions"), eq(UpdateVersionsTask.class), any(Action.class));
             verify(taskContainerMock).register("extractCurrentVersions", ExtractCurrentVersionsTask.class);
@@ -69,5 +98,42 @@ class ReleaseToolsPluginSapientGeneratedTest {
             verify(taskContainerMock).named("precommit");
             versionPropertiesMock.verify(VersionProperties::getElasticsearchVersion);
         }
+    }
+
+    @Test
+    void testUpdateVersionsTaskConfiguration() {
+        //plugin.apply(projectMock);
+        //verify(taskContainerMock).register(eq("updateVersions"), eq(UpdateVersionsTask.class), any(Action.class));
+        //verify(taskProviderMock).mustRunAfter(any(TaskProvider.class));
+    }
+
+    @Test
+    void testSetCompatibleVersionsTaskConfiguration() {
+        plugin.apply(projectMock);
+        verify(taskContainerMock).register(eq("setCompatibleVersions"), eq(SetCompatibleVersionsTask.class), any(Action.class));
+    }
+
+    @Test
+    void testValidateChangelogsTaskConfiguration() {
+        plugin.apply(projectMock);
+        verify(taskContainerMock).register(eq("validateChangelogs"), eq(ValidateYamlAgainstSchemaTask.class), any(Action.class));
+    }
+
+    @Test
+    void testGenerateReleaseNotesTaskConfiguration() {
+        plugin.apply(projectMock);
+        verify(taskContainerMock).register(eq("generateReleaseNotes"), eq(GenerateReleaseNotesTask.class));
+    }
+
+    @Test
+    void testGenerateStubReleaseNotesTaskConfiguration() {
+        plugin.apply(projectMock);
+        verify(taskContainerMock).register(eq("generateStubReleaseNotes"), eq(GenerateReleaseNotesTask.class));
+    }
+
+    @Test
+    void testPruneChangelogsTaskConfiguration() {
+        plugin.apply(projectMock);
+        verify(taskContainerMock).register(eq("pruneChangelogs"), eq(PruneChangelogsTask.class), any(Action.class));
     }
 }

@@ -4,6 +4,7 @@ package org.elasticsearch.gradle.internal.test.rerun;
 // import org.junit.jupiter.api.BeforeEach;
 // import static org.mockito.ArgumentMatchers.any;
 // import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.params.ParameterizedTest;
 // import static org.mockito.ArgumentMatchers.eq;
 // import org.gradle.api.internal.tasks.testing.TestExecuter;
 // import org.gradle.api.internal.plugins.ExtensionContainerInternal;
@@ -14,6 +15,7 @@ package org.elasticsearch.gradle.internal.test.rerun;
 // import java.lang.reflect.InvocationTargetException;
 // import org.elasticsearch.gradle.internal.test.rerun.executer.RerunTestExecuter;
 // import java.lang.reflect.Method;
+// import org.junit.jupiter.params.provider.CsvSource;
 // import static org.junit.jupiter.api.Assertions.*;
 // import org.gradle.api.internal.tasks.testing.JvmTestExecutionSpec;
 // import static org.mockito.Mockito.*;
@@ -153,5 +155,28 @@ class TestTaskConfigurerSapientGeneratedTest {
 //         setTestExecuterMethod.setAccessible(true);
 //         executeMethod.invoke(initTaskAction, testTask);
 //         verify(testTask).setTestExecuter(mockRerunTestExecuter);
+//     }
+
+//     @ParameterizedTest
+//     @CsvSource({ "TestClass, testMethod", "AnotherClass, anotherMethod" })
+//     void testDeclaredMethodWithDifferentClasses(String className, String methodName) throws Exception {
+//         Method declaredMethodMethod = TestTaskConfigurer.class.getDeclaredMethod("declaredMethod", Class.class, String.class, Class[].class);
+//         declaredMethodMethod.setAccessible(true);
+//         Class<?> testClass = Class.forName("java.lang." + className);
+//         Method result = (Method) declaredMethodMethod.invoke(null, testClass, methodName);
+//         assertNotNull(result);
+//         assertEquals(methodName, result.getName());
+//         assertTrue(result.isAccessible());
+//     }
+
+//     @Test
+//     void testInvokeWithNullArguments() throws Exception {
+//         Method invokeMethod = TestTaskConfigurer.class.getDeclaredMethod("invoke", Method.class, Object.class, Object[].class);
+//         invokeMethod.setAccessible(true);
+//         Method mockMethod = mock(Method.class);
+//         Object mockInstance = new Object();
+//         when(mockMethod.invoke(mockInstance, (Object[]) null)).thenReturn(null);
+//         Object result = invokeMethod.invoke(null, mockMethod, mockInstance, (Object[]) null);
+//         assertNull(result);
 //     }
 }

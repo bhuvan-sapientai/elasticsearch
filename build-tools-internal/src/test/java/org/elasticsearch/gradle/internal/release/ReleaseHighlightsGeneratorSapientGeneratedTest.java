@@ -4,6 +4,9 @@ import org.elasticsearch.gradle.internal.release.ReleaseHighlightsGenerator;
 
 import java.nio.file.Files;
 import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
@@ -24,6 +27,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.elasticsearch.gradle.internal.release.ReleaseHighlightsGenerator;
 import org.mockito.MockedStatic;
 
 import static org.mockito.Mockito.*;
@@ -34,8 +38,6 @@ import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
 class ReleaseHighlightsGeneratorSapientGeneratedTest {
-
-    private final QualifiedVersion qualifiedVersionMock = mock(QualifiedVersion.class);
 
     @Test
     void updateTest() throws IOException {
@@ -102,6 +104,45 @@ class ReleaseHighlightsGeneratorSapientGeneratedTest {
         List<ChangelogEntry> entries = new ArrayList<>();
         String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
         assertThat(result, not(containsString("${highlights}")));
+    }
+
+    @Test
+    void generateFileWithMultipleHighlights() throws IOException {
+        //QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        //String template = "Highlights: ${notableHighlights}\n${nonNotableHighlights}";
+        //List<ChangelogEntry> entries = new ArrayList<>();
+        //ChangelogEntry entry1 = new ChangelogEntry();
+        //entry1.setHighlight(new ChangelogEntry.Highlight("Notable highlight 1", true, 1));
+        //ChangelogEntry entry2 = new ChangelogEntry();
+        //entry2.setHighlight(new ChangelogEntry.Highlight("Notable highlight 2", true, 2));
+        //ChangelogEntry entry3 = new ChangelogEntry();
+        //entry3.setHighlight(new ChangelogEntry.Highlight("Non-notable highlight", false, 3));
+        //entries.add(entry1);
+        //entries.add(entry2);
+        //entries.add(entry3);
+        //String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        //assertThat(result, containsString("Notable highlight 1"));
+        //assertThat(result, containsString("Notable highlight 2"));
+        //assertThat(result, containsString("Non-notable highlight"));
+    }
+
+    @Test
+    void generateFileWithNoHighlights() throws IOException {
+        QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        String template = "Highlights: ${notableHighlights}\n${nonNotableHighlights}";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        assertThat(result, not(containsString("${notableHighlights}")));
+        assertThat(result, not(containsString("${nonNotableHighlights}")));
+    }
+
+    @Test
+    void generateFileWithSnapshotVersion() throws IOException {
+        QualifiedVersion version = QualifiedVersion.of("8.0.0-SNAPSHOT");
+        String template = "Version: ${version}";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        String result = ReleaseHighlightsGenerator.generateFile(version, template, entries);
+        assertThat(result, containsString("Version: 8.0.0-SNAPSHOT"));
     }
 
     private File createTempFile(String prefix, String suffix) throws IOException {

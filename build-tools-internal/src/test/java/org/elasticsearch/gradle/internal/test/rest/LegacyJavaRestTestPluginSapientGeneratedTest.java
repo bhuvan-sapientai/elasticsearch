@@ -4,6 +4,9 @@ import org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin;
 
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.plugins.PluginManager;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.gradle.api.InvalidUserDataException;
 import org.gradle.api.Project;
@@ -13,6 +16,7 @@ import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.UnknownDomainObjectException;
 import org.mockito.stubbing.Answer;
 import org.elasticsearch.gradle.util.GradleUtils;
+import org.elasticsearch.gradle.internal.test.rest.LegacyJavaRestTestPlugin;
 import org.elasticsearch.gradle.internal.test.LegacyRestTestBasePlugin;
 import org.elasticsearch.gradle.internal.test.RestIntegTestTask;
 
@@ -59,5 +63,57 @@ class LegacyJavaRestTestPluginSapientGeneratedTest {
     @Test
     void testSourceSetName() {
         assertEquals("javaRestTest", LegacyJavaRestTestPlugin.SOURCE_SET_NAME);
+    }
+
+    @Test
+    void testApplyWithNullProject() {
+        LegacyJavaRestTestPlugin plugin = new LegacyJavaRestTestPlugin();
+        assertThrows(NullPointerException.class, () -> plugin.apply(null));
+    }
+
+    @Test
+    void testApplyWithExceptionInRegisterTestTask() throws UnknownDomainObjectException, InvalidUserDataException {
+        // Arrange
+        Project projectMock = mock(Project.class);
+        PluginManager pluginManagerMock = mock(PluginManager.class);
+        ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        SourceSetContainer sourceSetContainerMock = mock(SourceSetContainer.class);
+        SourceSet sourceSetMock = mock(SourceSet.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doNothing().when(pluginManagerMock).apply(LegacyRestTestBasePlugin.class);
+        doReturn(extensionContainerMock).when(projectMock).getExtensions();
+        doReturn(sourceSetContainerMock).when(extensionContainerMock).getByType(SourceSetContainer.class);
+        doReturn(sourceSetMock).when(sourceSetContainerMock).create(LegacyJavaRestTestPlugin.SOURCE_SET_NAME);
+        try (MockedStatic<RestTestUtil> restTestUtil = mockStatic(RestTestUtil.class);
+             MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
+            restTestUtil.when(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock)).thenThrow(new RuntimeException("Test exception"));
+            LegacyJavaRestTestPlugin target = new LegacyJavaRestTestPlugin();
+            // Act & Assert
+            assertThrows(RuntimeException.class, () -> target.apply(projectMock));
+        }
+    }
+
+    @Test
+    void testApplyWithExceptionInSetupJavaRestTestDependenciesDefaults() throws UnknownDomainObjectException, InvalidUserDataException {
+        // Arrange
+        Project projectMock = mock(Project.class);
+        PluginManager pluginManagerMock = mock(PluginManager.class);
+        ExtensionContainer extensionContainerMock = mock(ExtensionContainer.class);
+        SourceSetContainer sourceSetContainerMock = mock(SourceSetContainer.class);
+        SourceSet sourceSetMock = mock(SourceSet.class);
+        Provider<RestIntegTestTask> providerMock = mock(Provider.class);
+        doReturn(pluginManagerMock).when(projectMock).getPluginManager();
+        doNothing().when(pluginManagerMock).apply(LegacyRestTestBasePlugin.class);
+        doReturn(extensionContainerMock).when(projectMock).getExtensions();
+        doReturn(sourceSetContainerMock).when(extensionContainerMock).getByType(SourceSetContainer.class);
+        doReturn(sourceSetMock).when(sourceSetContainerMock).create(LegacyJavaRestTestPlugin.SOURCE_SET_NAME);
+        try (MockedStatic<RestTestUtil> restTestUtil = mockStatic(RestTestUtil.class);
+             MockedStatic<GradleUtils> gradleUtils = mockStatic(GradleUtils.class)) {
+            restTestUtil.when(() -> RestTestUtil.registerTestTask(projectMock, sourceSetMock)).thenReturn(providerMock);
+            restTestUtil.when(() -> RestTestUtil.setupJavaRestTestDependenciesDefaults(projectMock, sourceSetMock)).thenThrow(new RuntimeException("Test exception"));
+            LegacyJavaRestTestPlugin target = new LegacyJavaRestTestPlugin();
+            // Act & Assert
+            assertThrows(RuntimeException.class, () -> target.apply(projectMock));
+        }
     }
 }

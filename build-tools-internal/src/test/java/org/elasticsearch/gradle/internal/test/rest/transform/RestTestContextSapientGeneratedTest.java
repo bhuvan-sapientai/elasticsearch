@@ -2,6 +2,7 @@ package org.elasticsearch.gradle.internal.test.rest.transform;
 
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
 
+import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -58,5 +59,23 @@ class RestTestContextSapientGeneratedTest {
         RestTestContext context = new RestTestContext("exampleTest");
         String expectedString = "RestTestContext[testName=exampleTest]";
         assertEquals(expectedString, context.toString());
+    }
+
+    @Test
+    void testRecordComponents() {
+        RestTestContext context = new RestTestContext("testComponent");
+        assertEquals(1, context.getClass().getRecordComponents().length);
+        assertEquals("testName", context.getClass().getRecordComponents()[0].getName());
+        assertEquals(String.class, context.getClass().getRecordComponents()[0].getType());
+    }
+
+    @Test
+    void testImmutability() {
+        String testName = "originalTest";
+        RestTestContext context = new RestTestContext(testName);
+        assertEquals(testName, context.testName());
+        // Attempt to modify the testName
+        testName = "modifiedTest";
+        assertEquals("originalTest", context.testName());
     }
 }

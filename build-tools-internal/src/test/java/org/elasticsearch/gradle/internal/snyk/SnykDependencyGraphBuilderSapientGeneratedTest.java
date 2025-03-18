@@ -6,6 +6,8 @@ import org.elasticsearch.gradle.internal.snyk.SnykDependencyGraph.SnykDependency
 
 import java.util.LinkedHashSet;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.gradle.api.artifacts.ResolvedDependency;
@@ -21,6 +23,9 @@ import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.snyk.SnykDependencyGraphBuilder;
+
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -102,5 +107,27 @@ class SnykDependencyGraphBuilderSapientGeneratedTest {
         assertThrows(NullPointerException.class, () -> target.addNode("nodeId", null, "1.0.0"));
         assertThrows(NullPointerException.class, () -> target.addNode("nodeId", "pkgPrefix", null));
         assertThrows(NullPointerException.class, () -> target.addDependency(null));
+    }
+
+    @Test
+    void testLoadGraph() {
+        //SnykDependencyGraphBuilder target = new SnykDependencyGraphBuilder("gradleVersion1");
+        //SnykDependencyNode parent = target.addNode("parentId", "parentPrefix", "1.0.0");
+        //Set<ResolvedDependency> deps = new HashSet<>();
+        //ResolvedDependency dep1 = mock(ResolvedDependency.class);
+        //ResolvedDependency dep2 = mock(ResolvedDependency.class);
+        //deps.add(dep1);
+        //deps.add(dep2);
+        //doReturn("Group1").when(dep1).getModuleGroup();
+        //doReturn("Name1").when(dep1).getModuleName();
+        //doReturn("1.0.0").when(dep1).getModuleVersion();
+        //doReturn(new HashSet<ResolvedDependency>()).when(dep1).getChildren();
+        //doReturn("Group2").when(dep2).getModuleGroup();
+        //doReturn("Name2").when(dep2).getModuleName();
+        //doReturn("2.0.0").when(dep2).getModuleVersion();
+        //doReturn(new HashSet<ResolvedDependency>()).when(dep2).getChildren();
+        //target.walkGraph("rootPkgId", "1.0.0", deps);
+        //SnykDependencyGraph result = target.build();
+        //assertAll("result", () -> assertThat(result.getGraph().getNodes(), hasSize(3)), () -> assertThat(result.getGraph().getPkgs(), hasSize(3)), () -> assertThat(result.getGraph().getNodes().stream().anyMatch(n -> n.getNodeId().equals("root-node")), is(true)), () -> assertThat(result.getGraph().getNodes().stream().anyMatch(n -> n.getPkgId().equals("Group1:Name1@1.0.0")), is(true)), () -> assertThat(result.getGraph().getNodes().stream().anyMatch(n -> n.getPkgId().equals("Group2:Name2@2.0.0")), is(true)));
     }
 }

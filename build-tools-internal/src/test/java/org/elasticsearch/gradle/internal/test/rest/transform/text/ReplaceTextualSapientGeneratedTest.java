@@ -2,13 +2,8 @@ package org.elasticsearch.gradle.internal.test.rest.transform.text;
 
 import org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import static org.mockito.Mockito.doReturn;
-
 import com.fasterxml.jackson.databind.node.BigIntegerNode;
 
 import java.math.BigInteger;
@@ -21,16 +16,17 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.Timeout;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
-
-import static org.mockito.Mockito.mock;
-
 import com.fasterxml.jackson.databind.JsonNode;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.text.ReplaceTextual;
+
+import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(value = 5)
@@ -43,31 +39,27 @@ class ReplaceTextualSapientGeneratedTest {
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
         String result = target.requiredChildKey();
-        assertAll("result", () -> assertThat(result, equalTo("valueToBeReplaced1")));
+        assertThat(result, equalTo("valueToBeReplaced1"));
     }
 
     @Test
     void shouldApplyWhenTestContextTestNameEqualsTestName() {
-        doReturn("A").when(testContextMock).testName();
+        when(testContextMock.testName()).thenReturn("A");
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "A");
         boolean result = target.shouldApply(testContextMock);
-        assertAll("result", () -> {
-            assertThat(result, equalTo(Boolean.TRUE));
-            verify(testContextMock).testName();
-        });
+        assertTrue(result);
+        verify(testContextMock).testName();
     }
 
     @Test
     void shouldApplyWhenTestContextTestNameNotEqualsTestName() {
-        doReturn("A").when(testContextMock).testName();
+        when(testContextMock.testName()).thenReturn("A");
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "B");
         boolean result = target.shouldApply(testContextMock);
-        assertAll("result", () -> {
-            assertThat(result, equalTo(Boolean.FALSE));
-            verify(testContextMock).testName();
-        });
+        assertFalse(result);
+        verify(testContextMock).testName();
     }
 
     @Test
@@ -85,7 +77,7 @@ class ReplaceTextualSapientGeneratedTest {
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
         JsonNode result = target.getReplacementNode();
-        assertAll("result", () -> assertThat(result, equalTo(textNode)));
+        assertThat(result, equalTo(textNode));
     }
 
     @ParameterizedTest
@@ -127,6 +119,43 @@ class ReplaceTextualSapientGeneratedTest {
         TextNode textNode = new TextNode("v1");
         ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode);
         boolean result = target.shouldApply(testContextMock);
-        assertThat(result, equalTo(true));
+        assertTrue(result);
+    }
+
+    @Test
+    void constructorWithoutTestNameTest() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode);
+        assertNull(target.getTestName());
+        assertEquals("keyToReplaceName1", target.getKeyToFind());
+        assertEquals("valueToBeReplaced1", target.getValueToBeReplaced());
+        assertEquals(textNode, target.getReplacementNode());
+    }
+
+    @Test
+    void constructorWithTestNameTest() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "valueToBeReplaced1", textNode, "testName1");
+        assertEquals("testName1", target.getTestName());
+        assertEquals("keyToReplaceName1", target.getKeyToFind());
+        assertEquals("valueToBeReplaced1", target.getValueToBeReplaced());
+        assertEquals(textNode, target.getReplacementNode());
+    }
+
+    @Test
+    void matchesWithNonTextNode() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "123", textNode, "testName1");
+        BigIntegerNode bigIntegerNode = new BigIntegerNode(new BigInteger("123"));
+        boolean result = target.matches(bigIntegerNode);
+        assertTrue(result);
+    }
+
+    @Test
+    void matchesWithNullNode() {
+        TextNode textNode = new TextNode("v1");
+        ReplaceTextual target = new ReplaceTextual("keyToReplaceName1", "null", textNode, "testName1");
+        boolean result = target.matches(null);
+        assertFalse(result);
     }
 }

@@ -19,6 +19,7 @@ package org.elasticsearch.gradle.internal.testfixtures;
 // import java.util.Collections;
 // import com.avast.gradle.dockercompose.ComposeExtension;
 // import org.elasticsearch.gradle.test.SystemPropertyCommandLineArgumentProvider;
+// import org.elasticsearch.gradle.internal.testfixtures.TestFixturesPlugin;
 // import org.gradle.api.tasks.TaskContainer;
 // import org.gradle.api.tasks.testing.Test;
 // import org.elasticsearch.gradle.util.GradleUtils;
@@ -92,6 +93,8 @@ class TestFixturesPluginSapientGeneratedTest {
 //             tasks.withType(Test.class).configureEach(testTask -> {
 //                 assertTrue(testTask.getDependsOn().contains(tasks.named("postProcessFixture")));
 //                 assertTrue(testTask.getFinalizedBy().getDependencies().contains(tasks.named("composeDown")));
+//                 SystemPropertyCommandLineArgumentProvider sysArgumentsProvider = testTask.getExtensions().getByType(SystemPropertyCommandLineArgumentProvider.class);
+//                 assertNotNull(sysArgumentsProvider);
 //             });
 //         }
 //     }

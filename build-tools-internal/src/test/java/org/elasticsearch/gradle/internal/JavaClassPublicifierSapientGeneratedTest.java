@@ -6,35 +6,42 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
 import java.nio.file.Files;
-import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.gradle.api.file.DirectoryProperty;
-import org.junit.jupiter.api.AfterEach;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
 import org.mockito.Mock;
-import org.objectweb.asm.tree.InnerClassNode;
-import org.gradle.api.file.RegularFile;
-import org.junit.jupiter.api.Timeout;
 import org.mockito.MockitoAnnotations;
-import org.objectweb.asm.ClassReader;
-import org.mockito.InjectMocks;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 
-import org.gradle.api.file.Directory;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
 import org.gradle.api.model.ObjectFactory;
 
+import java.util.List;
+
+import org.elasticsearch.gradle.internal.JavaClassPublicifier;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.objectweb.asm.tree.InnerClassNode;
+import org.gradle.api.file.RegularFile;
+import org.junit.jupiter.api.Timeout;
+import org.objectweb.asm.ClassReader;
+import org.mockito.InjectMocks;
+
+import java.util.ArrayList;
+
+import org.gradle.api.file.Directory;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @Timeout(5)
@@ -59,6 +66,7 @@ class JavaClassPublicifierSapientGeneratedTest {
         closeable = MockitoAnnotations.openMocks(this);
         javaClassPublicifier = new JavaClassPublicifier(objectFactory);
         javaClassPublicifier.setClassFiles(new ArrayList<>());
+        when(objectFactory.directoryProperty()).thenReturn(mock(DirectoryProperty.class));
     }
 
     @AfterEach
@@ -90,7 +98,6 @@ class JavaClassPublicifierSapientGeneratedTest {
         //when(outputDirMock.file("TestClass.class")).thenReturn(outputFileMock);
         //when(inputFileMock.getAsFile()).thenReturn(inputFile);
         //when(outputFileMock.getAsFile()).thenReturn(outputFile);
-        // Mock Files.newInputStream and Files.write
         /*try (var mockedFiles = mockStatic(Files.class)) {
     byte[] classBytes = createMockClassBytes();
     mockedFiles.when(() -> Files.newInputStream(inputFile.toPath())).thenReturn(new ByteArrayInputStream(classBytes));
@@ -130,7 +137,6 @@ class JavaClassPublicifierSapientGeneratedTest {
         //when(outputFileMock.getAsFile()).thenReturn(outputFile);
         //when(inputOuterFileMock.getAsFile()).thenReturn(inputOuterFile);
         //when(outputOuterFileMock.getAsFile()).thenReturn(outputOuterFile);
-        // Mock Files.newInputStream and Files.write
         /*try (var mockedFiles = mockStatic(Files.class)) {
     byte[] innerClassBytes = createMockInnerClassBytes();
     byte[] outerClassBytes = createMockOuterClassBytes();
@@ -149,6 +155,26 @@ class JavaClassPublicifierSapientGeneratedTest {
     mockedFiles.verify(() -> Files.write(eq(outputFile.toPath()), any()));
     mockedFiles.verify(() -> Files.write(eq(outputOuterFile.toPath()), any()));
 }*/
+    }
+
+    @Test
+    void testGetClassFiles() {
+        List<String> classFiles = new ArrayList<>();
+        classFiles.add("TestClass.class");
+        javaClassPublicifier.setClassFiles(classFiles);
+        assertEquals(classFiles, javaClassPublicifier.getClassFiles());
+    }
+
+    @Test
+    void testGetInputDir() {
+        DirectoryProperty result = javaClassPublicifier.getInputDir();
+        assertNotNull(result);
+    }
+
+    @Test
+    void testGetOutputDir() {
+        DirectoryProperty result = javaClassPublicifier.getOutputDir();
+        assertNotNull(result);
     }
 
     private byte[] createMockClassBytes() {

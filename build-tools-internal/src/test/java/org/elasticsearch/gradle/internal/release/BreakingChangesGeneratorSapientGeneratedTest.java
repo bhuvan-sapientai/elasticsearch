@@ -2,10 +2,15 @@ package org.elasticsearch.gradle.internal.release;
 
 import org.elasticsearch.gradle.internal.release.BreakingChangesGenerator;
 
+import org.elasticsearch.gradle.internal.release.BreakingChangesGenerator;
+
 import java.nio.file.Files;
 import java.util.List;
 import java.io.FileWriter;
 import java.util.Map;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
@@ -46,16 +51,21 @@ class BreakingChangesGeneratorSapientGeneratedTest {
         Path mockPath = mock(Path.class);
         when(migrationTemplateFile.toPath()).thenReturn(mockPath);
         when(Files.readString(mockPath)).thenReturn("template content");
+        FileWriter mockFileWriter = mock(FileWriter.class);
         try (MockedStatic<VersionProperties> mockVersionProperties = mockStatic(VersionProperties.class);
              MockedStatic<Files> mockFiles = mockStatic(Files.class);
-             MockedStatic<BreakingChangesGenerator> mockGenerator = mockStatic(BreakingChangesGenerator.class, CALLS_REAL_METHODS)) {
+             MockedStatic<BreakingChangesGenerator> mockGenerator = mockStatic(BreakingChangesGenerator.class, CALLS_REAL_METHODS);
+             MockedStatic<FileWriter> mockFileWriterStatic = mockStatic(FileWriter.class)) {
             mockVersionProperties.when(VersionProperties::getElasticsearch).thenReturn("8.0.0");
             mockFiles.when(() -> Files.readString(any(Path.class))).thenReturn("template content");
             mockGenerator.when(() -> BreakingChangesGenerator.generateMigrationFile(any(), anyString(), anyList())).thenReturn("generated content");
+            mockFileWriterStatic.when(() -> new FileWriter(migrationOutputFile)).thenReturn(mockFileWriter);
             BreakingChangesGenerator.update(migrationTemplateFile, migrationOutputFile, entries);
             mockVersionProperties.verify(VersionProperties::getElasticsearch);
             mockFiles.verify(() -> Files.readString(any(Path.class)));
             mockGenerator.verify(() -> BreakingChangesGenerator.generateMigrationFile(any(), eq("template content"), eq(entries)));
+            verify(mockFileWriter).write("generated content");
+            verify(mockFileWriter).close();
         }
     }
 
@@ -97,5 +107,32 @@ class BreakingChangesGeneratorSapientGeneratedTest {
     assertThat(result, is("Rendered content"));
     mockTemplateUtils.verify(() -> TemplateUtils.render(eq(template), any()));
 }*/
+    }
+
+    @Test
+    void generateMigrationFileWithEmptyEntriesTest() throws IOException {
+        QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        String template = "Empty template";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        try (MockedStatic<TemplateUtils> mockTemplateUtils = mockStatic(TemplateUtils.class)) {
+            mockTemplateUtils.when(() -> TemplateUtils.render(eq(template), any())).thenReturn("Rendered empty content");
+            String result = BreakingChangesGenerator.generateMigrationFile(version, template, entries);
+            assertThat(result, is("Rendered empty content"));
+            mockTemplateUtils.verify(() -> TemplateUtils.render(eq(template), any()));
+        }
+    }
+
+    @Test
+    void generateMigrationFileWithNullTemplateTest() {
+        QualifiedVersion version = QualifiedVersion.of("8.0.0");
+        List<ChangelogEntry> entries = new ArrayList<>();
+        assertThrows(NullPointerException.class, () -> BreakingChangesGenerator.generateMigrationFile(version, null, entries));
+    }
+
+    @Test
+    void generateMigrationFileWithNullVersionTest() {
+        String template = "Test template";
+        List<ChangelogEntry> entries = new ArrayList<>();
+        assertThrows(NullPointerException.class, () -> BreakingChangesGenerator.generateMigrationFile(null, template, entries));
     }
 }

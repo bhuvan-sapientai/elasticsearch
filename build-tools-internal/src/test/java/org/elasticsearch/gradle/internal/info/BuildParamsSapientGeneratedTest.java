@@ -4,14 +4,19 @@ import org.elasticsearch.gradle.internal.info.BuildParams;
 
 import java.util.List;
 
+import org.elasticsearch.gradle.internal.BwcVersions;
 import org.gradle.jvm.toolchain.JavaToolchainSpec;
 import org.junit.jupiter.api.BeforeEach;
+
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 
 import java.io.File;
 
 import org.gradle.api.Action;
+import org.elasticsearch.gradle.internal.info.BuildParams;
 import org.gradle.api.specs.Spec;
 import org.gradle.api.JavaVersion;
 
@@ -172,12 +177,12 @@ class BuildParamsSapientGeneratedTest {
 
     @Test
     void getBwcVersionsTest() {
-        //BwcVersions mockBwcVersions = mock(BwcVersions.class);
-        //Provider<BwcVersions> mockProvider = mock(Provider.class);
-        //when(mockProvider.get()).thenReturn(mockBwcVersions);
-        //mockedBuildParams.when(BuildParams::getBwcVersions).thenReturn(mockBwcVersions);
-        //BwcVersions result = BuildParams.getBwcVersions();
-        //assertThat(result, is(mockBwcVersions));
+        BwcVersions mockBwcVersions = mock(BwcVersions.class);
+        Provider<BwcVersions> mockProvider = mock(Provider.class);
+        when(mockProvider.get()).thenReturn(mockBwcVersions);
+        mockedBuildParams.when(BuildParams::getBwcVersions).thenReturn(mockBwcVersions);
+        BwcVersions result = BuildParams.getBwcVersions();
+        assertThat(result, is(mockBwcVersions));
     }
 
     @Test

@@ -6,7 +6,14 @@ import org.gradle.api.invocation.Gradle;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.gradle.api.Project;
 
 import java.io.File;
@@ -18,15 +25,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.ArrayList;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.gradle.api.services.BuildServiceRegistry;
 
 import static org.mockito.Mockito.*;
 
-import org.gradle.api.provider.Provider;
 import org.gradle.api.Task;
+import org.gradle.api.provider.Provider;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -55,7 +59,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //BuildServiceRegistry buildServiceRegistryMock = mock(BuildServiceRegistry.class);
         //when(gradleMock.getSharedServices()).thenReturn(buildServiceRegistryMock);
         //Provider<DockerSupportService> providerMock = mock(Provider.class);
-        //when(buildServiceRegistryMock.registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any())).thenReturn(providerMock);
+        //when(buildServiceRegistryMock.registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any())).thenReturn(providerMock);
         //File rootDirMock = mock(File.class);
         //when(projectMock.getRootDir()).thenReturn(rootDirMock);
         //TaskExecutionGraph taskExecutionGraphMock = mock(TaskExecutionGraph.class);
@@ -65,7 +69,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //verify(projectMock).getRootProject();
         //verify(projectMock, times(2)).getGradle();
         //verify(gradleMock).getSharedServices();
-        //verify(buildServiceRegistryMock).registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any());
+        //verify(buildServiceRegistryMock).registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any());
         //verify(projectMock).getRootDir();
         //verify(gradleMock).getTaskGraph();
         //verify(taskExecutionGraphMock).whenReady(any());
@@ -80,7 +84,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //BuildServiceRegistry buildServiceRegistryMock = mock(BuildServiceRegistry.class);
         //when(gradleMock.getSharedServices()).thenReturn(buildServiceRegistryMock);
         //Provider<DockerSupportService> providerMock = mock(Provider.class);
-        //when(buildServiceRegistryMock.registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any())).thenReturn(providerMock);
+        //when(buildServiceRegistryMock.registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any())).thenReturn(providerMock);
         //DockerSupportService dockerSupportServiceMock = mock(DockerSupportService.class);
         //when(providerMock.get()).thenReturn(dockerSupportServiceMock);
         //File rootDirMock = mock(File.class);
@@ -97,7 +101,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //verify(projectMock).getRootProject();
         //verify(projectMock, times(2)).getGradle();
         //verify(gradleMock).getSharedServices();
-        //verify(buildServiceRegistryMock).registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any());
+        //verify(buildServiceRegistryMock).registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any());
         //verify(projectMock).getRootDir();
         //verify(gradleMock).getTaskGraph();
         //verify(taskExecutionGraphMock).whenReady(any());
@@ -113,7 +117,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //BuildServiceRegistry buildServiceRegistryMock = mock(BuildServiceRegistry.class);
         //when(gradleMock.getSharedServices()).thenReturn(buildServiceRegistryMock);
         //Provider<DockerSupportService> providerMock = mock(Provider.class);
-        //when(buildServiceRegistryMock.registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any())).thenReturn(providerMock);
+        //when(buildServiceRegistryMock.registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any())).thenReturn(providerMock);
         //DockerSupportService dockerSupportServiceMock = mock(DockerSupportService.class);
         //when(providerMock.get()).thenReturn(dockerSupportServiceMock);
         //File rootDirMock = mock(File.class);
@@ -127,7 +131,7 @@ class DockerSupportPluginSapientGeneratedTest {
         //verify(projectMock).getRootProject();
         //verify(projectMock, times(2)).getGradle();
         //verify(gradleMock).getSharedServices();
-        //verify(buildServiceRegistryMock).registerIfAbsent(eq("dockerSupportService"), eq(DockerSupportService.class), any());
+        //verify(buildServiceRegistryMock).registerIfAbsent(eq(DockerSupportPlugin.DOCKER_SUPPORT_SERVICE_NAME), eq(DockerSupportService.class), any());
         //verify(projectMock).getRootDir();
         //verify(gradleMock).getTaskGraph();
         //verify(taskExecutionGraphMock).whenReady(any());

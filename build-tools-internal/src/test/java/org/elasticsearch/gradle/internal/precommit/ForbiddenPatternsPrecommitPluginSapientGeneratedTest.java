@@ -10,13 +10,12 @@ import org.gradle.api.Project;
 import java.io.File;
 
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.gradle.api.provider.ProviderFactory;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
-
-import org.mockito.MockedStatic;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +31,6 @@ import org.elasticsearch.gradle.internal.conventions.precommit.PrecommitPlugin;
 import org.gradle.api.tasks.TaskContainer;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
 
 import org.elasticsearch.gradle.util.GradleUtils;
 import org.gradle.api.tasks.TaskProvider;
@@ -65,6 +63,7 @@ class ForbiddenPatternsPrecommitPluginSapientGeneratedTest {
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         plugin = new ForbiddenPatternsPrecommitPlugin(providerFactory);
     }
 
@@ -77,15 +76,13 @@ class ForbiddenPatternsPrecommitPluginSapientGeneratedTest {
         //when(sourceSet.getAllSource()).thenReturn(mock(org.gradle.api.file.SourceDirectorySet.class));
         //when(sourceSet.getProcessResourcesTaskName()).thenReturn("processResources");
         //List<SourceSet> sourceSets = Arrays.asList(sourceSet);
-        /*try (MockedStatic<GradleUtils> mockedGradleUtils = mockStatic(GradleUtils.class)) {
-    mockedGradleUtils.when(() -> GradleUtils.getJavaSourceSets(project)).thenReturn(sourceSets);
-    Provider<List<Object>> mockProvider = (Provider<List<Object>>) mock(Provider.class);
-    when(providerFactory.provider(any())).thenReturn((Provider) mockProvider);
-    TaskProvider<? extends Task> result = plugin.createTask(project);
-    assertThat(result, equalTo((TaskProvider<? extends Task>) taskProvider));
-    verify(taskContainer).register(eq(ForbiddenPatternsPrecommitPlugin.FORBIDDEN_PATTERNS_TASK_NAME), eq(ForbiddenPatternsTask.class), any());
-    verify(providerFactory).provider(any());
-}*/
+        //when(GradleUtils.getJavaSourceSets(project)).thenReturn(sourceSets);
+        //Provider<List<Object>> mockProvider = (Provider<List<Object>>) mock(Provider.class);
+        //when(providerFactory.provider(any())).thenReturn((Provider) mockProvider);
+        //TaskProvider<? extends Task> result = plugin.createTask(project);
+        //assertThat(result, equalTo((TaskProvider<? extends Task>) taskProvider));
+        //verify(taskContainer).register(eq(ForbiddenPatternsPrecommitPlugin.FORBIDDEN_PATTERNS_TASK_NAME), eq(ForbiddenPatternsTask.class), any());
+        //verify(providerFactory).provider(any());
     }
 
     @Test
@@ -113,14 +110,12 @@ class ForbiddenPatternsPrecommitPluginSapientGeneratedTest {
         //when(sourceSet1.getProcessResourcesTaskName()).thenReturn("processResources1");
         //when(sourceSet2.getProcessResourcesTaskName()).thenReturn("processResources2");
         //List<SourceSet> sourceSets = Arrays.asList(sourceSet1, sourceSet2);
-        /*try (MockedStatic<GradleUtils> mockedGradleUtils = mockStatic(GradleUtils.class)) {
-    mockedGradleUtils.when(() -> GradleUtils.getJavaSourceSets(project)).thenReturn(sourceSets);
-    Provider<List<Object>> mockProvider = (Provider<List<Object>>) mock(Provider.class);
-    when(providerFactory.provider(any())).thenReturn((Provider) mockProvider);
-    plugin.createTask(project);
-    verify(forbiddenPatternsTask).getSourceFolders();
-    verify(forbiddenPatternsTask).dependsOn(Arrays.asList("processResources1", "processResources2"));
-    verify(forbiddenPatternsTask).getRootDir();
-}*/
+        //when(GradleUtils.getJavaSourceSets(project)).thenReturn(sourceSets);
+        //Provider<List<Object>> mockProvider = (Provider<List<Object>>) mock(Provider.class);
+        //when(providerFactory.provider(any())).thenReturn((Provider) mockProvider);
+        //plugin.createTask(project);
+        //verify(forbiddenPatternsTask).getSourceFolders();
+        //verify(forbiddenPatternsTask).dependsOn(Arrays.asList("processResources1", "processResources2"));
+        //verify(forbiddenPatternsTask).getRootDir();
     }
 }

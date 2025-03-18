@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -17,6 +19,8 @@ import org.junit.jupiter.api.Timeout;
 import org.elasticsearch.gradle.internal.test.rest.transform.RestTestContext;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.elasticsearch.gradle.internal.test.rest.transform.warnings.InjectWarnings;
 
 import java.util.ArrayList;
 
@@ -142,5 +146,41 @@ class InjectWarningsSapientGeneratedTest {
     void constructorThrowsNullPointerExceptionForNullTestName() {
         List<String> warnings = new ArrayList<>();
         assertThrows(NullPointerException.class, () -> new InjectWarnings(warnings, null));
+    }
+
+    @Test
+    void transformTestWithRegex() {
+        List<String> warnings = List.of("Warning.*");
+        InjectWarnings target = new InjectWarnings(true, warnings, "testName1");
+        JsonNodeFactory jsonNodeFactory = JsonNodeFactory.instance;
+        ObjectNode parentNode = jsonNodeFactory.objectNode();
+        ObjectNode doNode = jsonNodeFactory.objectNode();
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode arrayWarnings = (ArrayNode) doNode.get("warnings_regex");
+        assertNotNull(arrayWarnings);
+        assertEquals(1, arrayWarnings.size());
+        assertEquals("Warning.*", arrayWarnings.get(0).asText());
+    }
+
+    @Test
+    void transformTestWithEmptyWarningsList() {
+        List<String> warnings = new ArrayList<>();
+        InjectWarnings target = new InjectWarnings(false, warnings, "testName1");
+        JsonNodeFactory jsonNodeFactory = JsonNodeFactory.instance;
+        ObjectNode parentNode = jsonNodeFactory.objectNode();
+        ObjectNode doNode = jsonNodeFactory.objectNode();
+        parentNode.set("do", doNode);
+        target.transformTest(parentNode);
+        ArrayNode arrayWarnings = (ArrayNode) doNode.get("warnings");
+        assertNotNull(arrayWarnings);
+        assertEquals(0, arrayWarnings.size());
+    }
+
+    @Test
+    void transformTestWithNullParentNode() {
+        List<String> warnings = List.of("Warning1");
+        InjectWarnings target = new InjectWarnings(false, warnings, "testName1");
+        assertThrows(NullPointerException.class, () -> target.transformTest(null));
     }
 }
