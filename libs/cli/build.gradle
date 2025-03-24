@@ -24,6 +24,12 @@ dependencies {
   testImplementation("org.junit.vintage:junit-vintage-engine:5.10.2")
 
   testImplementation("org.junit.jupiter:junit-jupiter-engine:5.12.0")
+  testImplementation("org.junit.platform:junit-platform-launcher:1.12.0")
+  testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.0")
+  testImplementation("org.junit.platform:junit-platform-launcher:1.12.0")
+  testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.0")
+  testImplementation("org.junit.platform:junit-platform-launcher:1.12.0")
+  testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.0")
 }
 
 // Since CLI does not depend on :server, it cannot run the jarHell task
